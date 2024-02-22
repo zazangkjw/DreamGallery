@@ -1,0 +1,133 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class LionDanceSceneManager : MonoBehaviour
+
+{
+    public Scrollbar mouseSens; // 마우스 감도 스크롤바
+    public Dropdown language; // 설정창 언어 드롭다운
+    public Text[] uiTexts; // UI 텍스트 목록
+
+    public Material fogMat; // 안개 매테리얼
+
+    public PlayerController playerController; // 플레이어 컨트롤러 스크립트
+    public LionDanceDirector lionDanceDirector; // 이 씬의 컷씬이 담겨있는 스크립트
+    public PutDialogScript putDialogScript; // 대사 넣는 스크립트
+
+    public GameObject pauseUI; // 일시정지 UI
+    public bool isPausing; // 일시정지 상태인지
+
+    //public int width;
+    //public int height;
+    //public bool fullScreen;
+
+    void Start()
+    {
+        fogMat.color = new Color(1f, 1f, 1f, (150f / 255f)); // 연기 초기화
+
+        // 오프닝 시작
+        lionDanceDirector.OpeningDirector();
+
+        // 마우스 감도 받아오고 플레이어에게 적용
+        mouseSens.value = GameManager.instance.saveManager.settingData.mouseSens;
+        playerController.lookSensitivity = mouseSens.value;
+
+        // 언어 받아오고 텍스트 새로고침
+        language.value = GameManager.instance.saveManager.settingData.language;
+        ReloadText();
+
+        // 해상도 받아오고 해상도 새로고침
+        //width = GameManager.instance.saveManager.settingData.width;
+        //height = GameManager.instance.saveManager.settingData.height;
+        //fullScreen = GameManager.instance.saveManager.settingData.fullScreen;
+        //Screen.SetResolution(width, height, fullScreen);
+    }
+
+    void Update()
+    {
+        PressESC();
+    }
+
+    // ESC 누르면 일시정지
+    public void PressESC()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isPausing = true;
+            Time.timeScale = 0f;
+            playerController.enabled = false;
+            putDialogScript.enabled = false;
+            pauseUI.SetActive(true);
+        }
+    }
+
+    // 돌아가기 버튼
+    public void PressReturnButton()
+    {
+        isPausing = false;
+        Time.timeScale = 1f;
+        putDialogScript.enabled = true;
+        if (!putDialogScript.isClickMode)
+        {
+            playerController.enabled = true;
+        }
+        pauseUI.SetActive(false);
+    }
+
+    // 설정 적용 버튼
+    public void PressApplyButton()
+    {
+        // 마우스 감도 보내고 플레이어에게 적용
+        GameManager.instance.saveManager.settingData.mouseSens = mouseSens.value;
+        playerController.lookSensitivity = mouseSens.value;
+
+        // 언어 보내고 텍스트 새로고침
+        GameManager.instance.saveManager.settingData.language = language.value;
+        GameManager.instance.textFileManager.Reload(language.value);
+        ReloadText();
+
+        // 해상도 보내고 해상도 새로고침
+        //GameManager.instance.saveManager.settingData.width = width;
+        //GameManager.instance.saveManager.settingData.height = height;
+        //GameManager.instance.saveManager.settingData.fullScreen = fullScreen;
+        //Screen.SetResolution(width, height, fullScreen);
+
+        // 보낸 데이터로 설정 파일 저장
+        GameManager.instance.saveManager.SaveSettingData();
+    }
+
+    // 설정 취소 버튼
+    public void PressCancelButon()
+    {
+        // 마우스 감도 받아오기(적용 안 눌렀으면 바꾸기 전으로)
+        mouseSens.value = GameManager.instance.saveManager.settingData.mouseSens;
+
+        // 언어 받아오기(적용 안 눌렀으면 바꾸기 전으로)
+        language.value = GameManager.instance.saveManager.settingData.language;
+    }
+
+    // 나가기 버튼
+    public void PressExitButton()
+    {
+        Time.timeScale = 1f;
+        LoadSceneScript.LoadScene("02_ArtGallery");
+    }
+
+    // 언어 변경된 텍스트 새로고침
+    public void ReloadText()
+    {
+        uiTexts[0].text = GameManager.instance.textFileManager.ui[4];
+        uiTexts[1].text = GameManager.instance.textFileManager.ui[5];
+        uiTexts[2].text = GameManager.instance.textFileManager.ui[6];
+        uiTexts[3].text = GameManager.instance.textFileManager.ui[7];
+        uiTexts[4].text = GameManager.instance.textFileManager.ui[8];
+        uiTexts[5].text = GameManager.instance.textFileManager.ui[9];
+        uiTexts[6].text = GameManager.instance.textFileManager.ui[10];
+        uiTexts[7].text = GameManager.instance.textFileManager.ui[11];
+        uiTexts[8].text = GameManager.instance.textFileManager.ui[12];
+        uiTexts[9].text = GameManager.instance.textFileManager.ui[13];
+    }
+}

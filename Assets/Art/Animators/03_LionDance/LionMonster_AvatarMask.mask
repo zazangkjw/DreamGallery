@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LionMonster_AvatarMask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature_LionMonster
+    m_Weight: 0
+  - m_Path: Armature_LionMonster/Bone.067
+    m_Weight: 0
+  - m_Path: Armature_LionMonster/Bone.067/Bone.006
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.067/Bone.006/Bone.007
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.067/Bone.006/Bone.007/Bone.008
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.067/Bone.009
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.067/Bone.009/Bone.010
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.067/Bone.009/Bone.010/Bone.011
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.068
+    m_Weight: 0
+  - m_Path: Armature_LionMonster/Bone.068/Bone.012
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.068/Bone.012/Bone.013
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.068/Bone.012/Bone.013/Bone.014
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.068/Bone.015
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.068/Bone.015/Bone.016
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.068/Bone.015/Bone.016/Bone.017
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.069
+    m_Weight: 0
+  - m_Path: Armature_LionMonster/Bone.069/Bone.018
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.069/Bone.018/Bone.019
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.069/Bone.018/Bone.019/Bone.020
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.069/Bone.021
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.069/Bone.021/Bone.022
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.069/Bone.021/Bone.022/Bone.023
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.070
+    m_Weight: 0
+  - m_Path: Armature_LionMonster/Bone.070/Bone.024
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.070/Bone.024/Bone.025
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.070/Bone.024/Bone.025/Bone.026
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.070/Bone.027
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.070/Bone.027/Bone.028
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.070/Bone.027/Bone.028/Bone.029
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.071
+    m_Weight: 0
+  - m_Path: Armature_LionMonster/Bone.071/Bone.030
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.071/Bone.030/Bone.031
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.071/Bone.030/Bone.031/Bone.032
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.071/Bone.033
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.071/Bone.033/Bone.034
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.071/Bone.033/Bone.034/Bone.035
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.072
+    m_Weight: 0
+  - m_Path: Armature_LionMonster/Bone.072/Bone.036
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.072/Bone.036/Bone.037
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.072/Bone.036/Bone.037/Bone.038
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.072/Bone.039
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.072/Bone.039/Bone.040
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.072/Bone.039/Bone.040/Bone.041
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.073
+    m_Weight: 0
+  - m_Path: Armature_LionMonster/Bone.073/Bone.042
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.073/Bone.042/Bone.043
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.073/Bone.042/Bone.043/Bone.044
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.073/Bone.045
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.073/Bone.045/Bone.046
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.073/Bone.045/Bone.046/Bone.047
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.074
+    m_Weight: 0
+  - m_Path: Armature_LionMonster/Bone.074/Bone.048
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.074/Bone.048/Bone.049
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.074/Bone.048/Bone.049/Bone.050
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.074/Bone.051
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.074/Bone.051/Bone.052
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.074/Bone.051/Bone.052/Bone.053
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.075
+    m_Weight: 0
+  - m_Path: Armature_LionMonster/Bone.075/Bone.054
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.075/Bone.054/Bone.055
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.075/Bone.054/Bone.055/Bone.056
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.075/Bone.057
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.075/Bone.057/Bone.058
+    m_Weight: 1
+  - m_Path: Armature_LionMonster/Bone.075/Bone.057/Bone.058/Bone.059
+    m_Weight: 1
+  - m_Path: LionMonster
+    m_Weight: 0
