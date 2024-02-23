@@ -29,9 +29,6 @@ public class ArtGallerySceneManager : MonoBehaviour
 
     void Start()
     {
-        // 페이드 인
-        fadeInOutScript.FadeOut(fadeInOutImage);
-
         // 마우스 감도 받아오고 플레이어에게 적용
         mouseSens.value = GameManager.instance.saveManager.settingData.mouseSens;
         playerController.lookSensitivity = mouseSens.value;

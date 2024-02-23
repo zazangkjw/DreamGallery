@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
@@ -16,10 +17,15 @@ public class ArtGalleryDirector : MonoBehaviour
     public RawImage fadeInOutImage; // 페이드-인, 아웃 이미지
     public FadeInOutScript fadeInOutScript; // 페이드-인, 아웃 스크립트
 
+    public GameObject[] vrCamPos; // VR 기기 앞 vr 카메라 포지션 배열
+    public GameObject[] vrPlayerPos; // VR 기기 앞 플레이어 포지션 배열
+
     public static bool isFromDream; // 꿈에서 다시 아트갤러리로 나온 것인지
-    public static int selectedDream; // 선택된 꿈
-    // 꿈 번호와 씬 이름
-    // 0: LionDance
+    public enum Dreams // 꿈 번호와 씬 이름
+    {
+        LionDance
+    }
+    public static Dreams selectedDream;
 
 
 
@@ -28,7 +34,7 @@ public class ArtGalleryDirector : MonoBehaviour
     {
         if (isFromDream)
         {
-            // 꿈에서 나왔다면, VR에서 나오는 컷신 실행
+            ExitVR(); // 꿈에서 나왔다면, VR에서 나오는 컷신 실행
             isFromDream = false;
         }
     }
@@ -39,7 +45,6 @@ public class ArtGalleryDirector : MonoBehaviour
     // VR 기기 보는 컷신
     public PlayableDirector LookVRDirector;
     public GameObject lookVRCam;
-    public GameObject[] vrCamPos;
 
     public void LookVR()
     {
@@ -52,22 +57,55 @@ public class ArtGalleryDirector : MonoBehaviour
         directorCam.SetActive(true);
         mouseText.enabled = false;
 
-        lookVRCam.transform.position = vrCamPos[selectedDream].transform.position;
-        lookVRCam.transform.rotation = vrCamPos[selectedDream].transform.rotation;
+        lookVRCam.transform.position = vrCamPos[(int)selectedDream].transform.position;
+        lookVRCam.transform.rotation = vrCamPos[(int)selectedDream].transform.rotation;
 
         LookVRDirector.Play();
         yield return new WaitForSeconds(0.5f);
         fadeInOutScript.FadeIn(fadeInOutImage);
         yield return new WaitForSeconds(2f);
 
+        isFromDream = true;
+
         switch (selectedDream)
         {
-            case 0:
+            case Dreams.LionDance:
                 LoadSceneScript.LoadScene("03_LionDance");
                 break;
 
             default:
                 break;
         }
+    }
+
+
+
+
+    // VR 기기 나오는 컷신
+    public PlayableDirector ExitVRDirector;
+    public GameObject exitVRCam;
+
+    public void ExitVR()
+    {
+        StartCoroutine(ExitVRCoroutine());
+    }
+
+    IEnumerator ExitVRCoroutine()
+    {
+        player.SetActive(false);
+        directorCam.SetActive(true);
+        mouseText.enabled = false;
+
+        exitVRCam.transform.position = vrCamPos[(int)selectedDream].transform.position;
+        exitVRCam.transform.rotation = vrCamPos[(int)selectedDream].transform.rotation;
+        player.transform.position = vrPlayerPos[(int)selectedDream].transform.position;
+        player.transform.rotation = vrPlayerPos[(int)selectedDream].transform.rotation;
+
+        ExitVRDirector.Play();
+        fadeInOutScript.FadeOut(fadeInOutImage);
+        yield return new WaitForSeconds(2.5f);
+
+        player.SetActive(true);
+        directorCam.SetActive(false);
     }
 }

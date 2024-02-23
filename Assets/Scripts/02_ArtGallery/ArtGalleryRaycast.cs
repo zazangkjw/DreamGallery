@@ -42,7 +42,7 @@ public class ArtGalleryRaycast : MonoBehaviour
         // 허공일 때
         else
         {
-            mouseText.text = ""; // 텍스트 없어짐
+            mouseText.enabled = false; // 텍스트 없어짐
         }
     }
 
@@ -56,7 +56,7 @@ public class ArtGalleryRaycast : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                ArtGalleryDirector.selectedDream = 0;
+                ArtGalleryDirector.selectedDream = ArtGalleryDirector.Dreams.LionDance;
                 artGalleryDirector.LookVR();
             }
         }
