@@ -13,10 +13,14 @@ public class PutDialogScript : MonoBehaviour
     public Image dialogArrow;
     float timer; // 대사 사라지는 타이머
     public PlayerController playerController;
+
     public bool isClickMode;
     int textNum;
     WaitForSeconds wait = new WaitForSeconds(0.005f);
+    WaitForSeconds wait2 = new WaitForSeconds(0.05f);
     bool isDialogArrowOn;
+
+    Coroutine textPrintCoroutine;
 
     void Start()
     {
@@ -29,29 +33,19 @@ public class PutDialogScript : MonoBehaviour
         TextClick();
     }
 
-    // 대사 넣기
+
+
+
+    // 대사 넣기(타이머형)
     public void putDialog(string text, float time)
     {
+        textStacks[0] = text;
         if (!isClickMode)
         {
-            dialogText.text = text;
+            TextPrint();
             dialogText.enabled = true;
             timer = time;
         }
-    }
-
-    public void putDialogWithClick(string[] text)
-    {
-        textStacks.Clear();
-        for (int i = 0; i < text.Length; i++)
-        {
-            textStacks.Add(text[i]);
-        }
-        isClickMode = true;
-        dialogText.text = textStacks[0];
-        dialogText.enabled = true;
-        dialogArrow.enabled = true;
-        playerController.enabled = false;
     }
 
     // 타이머형 대사
@@ -71,6 +65,24 @@ public class PutDialogScript : MonoBehaviour
         }
     }
 
+
+
+
+    // 대사 넣기(클릭형)
+    public void putDialogWithClick(string[] text)
+    {
+        textStacks.Clear();
+        for (int i = 0; i < text.Length; i++)
+        {
+            textStacks.Add(text[i]);
+        }
+        isClickMode = true;
+        TextPrint();
+        dialogText.enabled = true;
+        dialogArrow.enabled = true;
+        playerController.enabled = false;
+    }
+
     // 클릭형 대사
     void TextClick()
     {
@@ -79,7 +91,7 @@ public class PutDialogScript : MonoBehaviour
             textNum++;
             if (textStacks.Count > textNum)
             {
-                dialogText.text = textStacks[textNum];
+                TextPrint();
             }
             else
             {
@@ -91,6 +103,9 @@ public class PutDialogScript : MonoBehaviour
             }
         }
     }
+
+
+
 
     // 대사 화살표 반짝거림
     IEnumerator DialogArrow()
@@ -116,6 +131,30 @@ public class PutDialogScript : MonoBehaviour
             }
             
             yield return wait;
+        }
+    }
+
+
+
+
+    // 텍스트 하나씩 출력
+    void TextPrint()
+    {
+        if (textPrintCoroutine != null)
+        {
+            StopCoroutine(textPrintCoroutine);
+        }
+        textPrintCoroutine = StartCoroutine(TextPrintCoroutine(textStacks[textNum]));
+    }
+
+    IEnumerator TextPrintCoroutine(string text)
+    {
+        dialogText.text = "";
+
+        for (int i = 0; i < text.Length; i++)
+        {
+            dialogText.text += text[i];
+            yield return wait2;
         }
     }
 }

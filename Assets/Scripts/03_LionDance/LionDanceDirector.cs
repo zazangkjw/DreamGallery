@@ -46,7 +46,7 @@ public class LionDanceDirector : MonoBehaviour
 
         // ¿ÀÇÁ´× ´ë»ç
         putDialogScript.putDialogWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[0]["Content"],
-                                                                                (string)GameManager.instance.textFileManager.dialog[1]["Content"]});
+                                                          (string)GameManager.instance.textFileManager.dialog[1]["Content"]});
     }
 
 
