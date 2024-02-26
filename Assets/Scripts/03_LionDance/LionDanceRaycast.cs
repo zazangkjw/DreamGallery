@@ -1,6 +1,7 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +10,7 @@ public class LionDanceRaycast : MonoBehaviour
 {
     public RaycastHit hitInfo;
     public GameObject hitObject;
-    public Text mouseText;
+    public TextMeshProUGUI mouseText;
     public PutDialogScript putDialogScript;
     public GameObject[] doorAndWindow; // 문, 창문 (본)오브젝트 배열 자동 생성
     public GameObject balconyWindow; // 발코니 창문 오브젝트

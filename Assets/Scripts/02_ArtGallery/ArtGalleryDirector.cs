@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -11,7 +12,7 @@ public class ArtGalleryDirector : MonoBehaviour
     public GameObject player;
     public GameObject playerCam;
     public GameObject directorCam;
-    public Text mouseText;
+    public TextMeshProUGUI mouseText;
     public PutDialogScript putDialogScript;
 
     public RawImage fadeInOutImage; // 페이드-인, 아웃 이미지

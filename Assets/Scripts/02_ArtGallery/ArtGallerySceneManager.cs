@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,8 +8,8 @@ using UnityEngine.UI;
 public class ArtGallerySceneManager : MonoBehaviour
 {
     public Scrollbar mouseSens; // 마우스 감도 스크롤바
-    public Dropdown language; // 설정창 언어 드롭다운
-    public Text[] uiTexts; // UI 텍스트 목록
+    public TMP_Dropdown language; // 설정창 언어 드롭다운
+    public TextMeshProUGUI[] uiTexts; // UI 텍스트 목록
 
     public PlayerController playerController; // 플레이어 컨트롤러 스크립트
     public ArtGalleryDirector ArtGalleryDirector; // 이 씬의 컷씬이 담겨있는 스크립트
@@ -17,6 +18,7 @@ public class ArtGallerySceneManager : MonoBehaviour
     public RawImage fadeInOutImage; // 페이드-인, 아웃 이미지
     public FadeInOutScript fadeInOutScript; // 페이드-인, 아웃 스크립트
 
+    public GameObject settingUI; // 설정 UI
     public GameObject pauseUI; // 일시정지 UI
     public bool isPausing; // 일시정지 상태인지
 
@@ -50,16 +52,27 @@ public class ArtGallerySceneManager : MonoBehaviour
 
     }
 
-    // ESC 누르면 일시정지
+    // ESC 누르면 일시정지 및 창 꺼짐
     public void PressESC()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!isPausing && Input.GetKeyDown(KeyCode.Escape)) // 일시정지
         {
             isPausing = true;
             Time.timeScale = 0f;
             playerController.enabled = false;
             putDialogScript.enabled = false;
             pauseUI.SetActive(true);
+        }
+        else if (isPausing && Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (settingUI.activeInHierarchy) // 설정창 열려있으면 닫기
+            {
+                PressCancelButon();
+            }
+            else // 일시정지 풀림
+            {
+                PressReturnButton();
+            }
         }
     }
 
@@ -101,6 +114,8 @@ public class ArtGallerySceneManager : MonoBehaviour
     // 설정 취소 버튼
     public void PressCancelButon()
     {
+        settingUI.SetActive(false);
+
         // 마우스 감도 받아오기(적용 안 눌렀으면 바꾸기 전으로)
         mouseSens.value = GameManager.instance.saveManager.settingData.mouseSens;
 
@@ -113,14 +128,6 @@ public class ArtGallerySceneManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         LoadSceneScript.LoadScene("01_MainMenu");
-    }
-
-    // 다음 씬 이동 코루틴
-    public IEnumerator NextSceneCoroutine(string sceneName)
-    {
-        fadeInOutScript.FadeIn(fadeInOutImage);
-        yield return new WaitForSeconds(2f);
-        LoadSceneScript.LoadScene(sceneName);
     }
 
     // 언어 변경된 텍스트 새로고침

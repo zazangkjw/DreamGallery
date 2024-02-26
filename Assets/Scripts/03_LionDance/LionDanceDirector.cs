@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
@@ -10,7 +11,7 @@ public class LionDanceDirector : MonoBehaviour
     public Animator lionMonsterAnimator;
     public GameObject player;
     public GameObject directorCam;
-    public Text mouseText;
+    public TextMeshProUGUI mouseText;
     public PutDialogScript putDialogScript;
 
     public RawImage fadeInOutImage; // 페이드-인, 아웃 이미지

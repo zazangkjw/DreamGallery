@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +8,7 @@ using UnityEngine.UI;
 public class PutDialogScript : MonoBehaviour
 {
     // 대사 사라지는 타이머, 대사 넣기 
-    public Text dialogText;
+    public TextMeshProUGUI dialogText;
     public List<string> textStacks; // 대기중인 텍스트들
     public Image dialogArrow;
     float timer; // 대사 사라지는 타이머

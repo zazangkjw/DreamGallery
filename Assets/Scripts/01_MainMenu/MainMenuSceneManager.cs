@@ -3,18 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class MainMenuSceneManager : MonoBehaviour
 {
     public GameObject menuUI;
     public Scrollbar mouseSens;
-    public Dropdown language;
+    public TMP_Dropdown language;
+    public TextMeshProUGUI[] uiTexts;
+
     //public int width;
     //public int height;
     //public bool fullScreen;
+
     WaitForSeconds wait = new WaitForSeconds(0.01f);
     public FadeInOutScript fadeInOutScript;
     public RawImage fadeInOutImage;
+
+    public GameObject settingUI; // 설정 UI
 
     void Start()
     {
@@ -33,6 +39,23 @@ public class MainMenuSceneManager : MonoBehaviour
         //height = GameManager.instance.saveManager.settingData.height;
         //fullScreen = GameManager.instance.saveManager.settingData.fullScreen;
         //Screen.SetResolution(width, height, fullScreen);
+    }
+
+    void Update()
+    {
+        PressESC();
+    }
+
+    // ESC 누르면 창 꺼짐
+    public void PressESC()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (settingUI.activeInHierarchy) // 설정창 열려있으면 닫기
+            {
+                PressCancelButon();
+            }
+        }
     }
 
     // 설정 적용 버튼
@@ -59,6 +82,8 @@ public class MainMenuSceneManager : MonoBehaviour
     // 설정 취소 버튼
     public void PressCancelButon()
     {
+        settingUI.SetActive(false);
+
         // 마우스 감도 받아오기(적용 안 눌렀으면 바꾸기 전으로)
         mouseSens.value = GameManager.instance.saveManager.settingData.mouseSens;
 
@@ -67,7 +92,6 @@ public class MainMenuSceneManager : MonoBehaviour
     }
 
     // 언어 변경된 텍스트 새로고침
-    public Text[] uiTexts;
     public void ReloadText()
     {
         uiTexts[0].text = GameManager.instance.textFileManager.ui[0];
@@ -81,20 +105,6 @@ public class MainMenuSceneManager : MonoBehaviour
         uiTexts[8].text = GameManager.instance.textFileManager.ui[11];
         uiTexts[9].text = GameManager.instance.textFileManager.ui[12];
         uiTexts[10].text = GameManager.instance.textFileManager.ui[13];
-    }
-
-    public void GoToNextScene()
-    {
-        StartCoroutine(NextSceneCoroutine());
-    }
-
-    // 다음 씬 이동 코루틴
-    IEnumerator NextSceneCoroutine()
-    {
-        yield return new WaitForSeconds(0.5f);
-        fadeInOutScript.FadeIn(fadeInOutImage);
-        yield return new WaitForSeconds(2f);
-        LoadSceneScript.LoadScene("02_ArtGallery");
     }
 
     // 게임 종료

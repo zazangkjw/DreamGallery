@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,7 +11,7 @@ public class ArtGalleryRaycast : MonoBehaviour
     public RaycastHit hitInfo;
     public GameObject hitObject;
 
-    public Text mouseText;
+    public TextMeshProUGUI mouseText;
     public PutDialogScript putDialogScript;
 
     public ArtGallerySceneManager artGallerySceneManager;
