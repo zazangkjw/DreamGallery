@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,7 +11,7 @@ public class ArtGalleryRaycast : MonoBehaviour
     public RaycastHit hitInfo;
     public GameObject hitObject;
 
-    public Text mouseText;
+    public TextMeshProUGUI mouseText;
     public PutDialogScript putDialogScript;
 
     public ArtGallerySceneManager artGallerySceneManager;
@@ -42,7 +43,7 @@ public class ArtGalleryRaycast : MonoBehaviour
         // 허공일 때
         else
         {
-            mouseText.text = ""; // 텍스트 없어짐
+            mouseText.enabled = false; // 텍스트 없어짐
         }
     }
 
@@ -56,7 +57,7 @@ public class ArtGalleryRaycast : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                ArtGalleryDirector.selectedDream = 0;
+                ArtGalleryDirector.selectedDream = ArtGalleryDirector.Dreams.LionDance;
                 artGalleryDirector.LookVR();
             }
         }
