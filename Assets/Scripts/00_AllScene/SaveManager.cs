@@ -7,9 +7,10 @@ public class SettingData
 {
     public int language;
     public float mouseSens;
-    //public int width; // 화면 너비
-    //public int height; // 화면 높이
-    //public bool fullScreen; // 전체 화면
+    public int resolution; // 해상도 설정 값
+    public int width; // 화면 너비
+    public int height; // 화면 높이
+    public bool isFullScreen; // 화면 모드
 }
 
 public class SaveManager : MonoBehaviour
@@ -19,9 +20,10 @@ public class SaveManager : MonoBehaviour
         // 처음 게임 켰을 때 언어는 한글, 기본 감도가 0.5f이고, 설정 파일이 존재하면 받아오기
         settingData.language = 0;
         settingData.mouseSens = 0.5f;
-        //settingData.width = 1920;
-        //settingData.height = 1080;
-        //settingData.fullScreen = true;
+        settingData.resolution = 0;
+        settingData.width = 1920;
+        settingData.height = 1080;
+        settingData.isFullScreen = true;
         ReloadSettingData();
         GameManager.instance.textFileManager.Reload(settingData.language);
     }
@@ -54,6 +56,35 @@ public class SaveManager : MonoBehaviour
         if (File.Exists(Application.persistentDataPath + "/SettingData.json"))
         {
             settingData = JsonUtility.FromJson<SettingData>(File.ReadAllText(Application.persistentDataPath + "/SettingData.json"));  
+        }
+    }
+
+
+
+
+
+
+    ////////////////////////////
+    //// 그래픽 데이터 저장 ////
+    ////////////////////////////
+
+    // 해상도 값 넣기
+    public void SetResolution(int value)
+    {
+        settingData.resolution = value;
+
+        switch (value)
+        {
+            case 0:
+                settingData.width = 1920;
+                settingData.height = 1080;
+                break;
+            case 1:
+                settingData.width = 1280;
+                settingData.height = 720;
+                break;
+            default:
+                break;
         }
     }
 }

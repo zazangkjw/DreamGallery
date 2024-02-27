@@ -26,6 +26,7 @@ public class MainMenuDirector : MonoBehaviour
     
     IEnumerator EnterGalleryCoroutine()
     {
+        Cursor.visible = false;
         doorAnimator.SetBool("Active", true);
         fadeInOutScript.FadeIn(fadeInOutImage);
         yield return new WaitForSeconds(2f);

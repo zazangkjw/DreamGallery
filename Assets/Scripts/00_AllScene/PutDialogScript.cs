@@ -17,7 +17,7 @@ public class PutDialogScript : MonoBehaviour
     public bool isClickMode;
     int textNum;
     WaitForSeconds wait = new WaitForSeconds(0.005f);
-    WaitForSeconds wait2 = new WaitForSeconds(0.05f);
+    WaitForSeconds wait2 = new WaitForSeconds(0.025f);
     bool isDialogArrowOn;
 
     Coroutine textPrintCoroutine;

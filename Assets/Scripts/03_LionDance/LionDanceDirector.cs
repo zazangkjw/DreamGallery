@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class LionDanceDirector : MonoBehaviour
 {
     public LionDanceSceneManager lionDanceSceneManager;
+    public LionDanceColliderTrigger lionDanceColliderTrigger;
     public Animator lionMonsterAnimator;
     public GameObject player;
     public GameObject directorCam;
@@ -41,8 +42,8 @@ public class LionDanceDirector : MonoBehaviour
 
         yield return new WaitForSeconds(8f);
 
-        player.SetActive(true);
         directorCam.SetActive(false);
+        player.SetActive(true);
 
         // 오프닝 대사
         putDialogScript.putDialogWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[0]["Content"],
@@ -83,6 +84,11 @@ public class LionDanceDirector : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         screaming.Play(); // 윗층 비명소리 재생
+
+        yield return new WaitForSeconds(3f);
+
+        putDialogScript.putDialog((string)GameManager.instance.textFileManager.dialog[4]["Content"], 3f);
+        StartCoroutine(lionDanceColliderTrigger.BalconyTimerCoroutine()); // 5초 뒤에 발코니로 괴물 침입
     }
 
 
@@ -98,6 +104,6 @@ public class LionDanceDirector : MonoBehaviour
     {
         fadeInOutScript.FadeIn(fadeInOutImage);
         yield return new WaitForSeconds(2f);
-        LoadSceneScript.LoadScene("02_ArtGallery");
+        LoadSceneScript.SuccessLoadScene("02_ArtGallery");
     }
 }

@@ -8,13 +8,11 @@ using TMPro;
 public class MainMenuSceneManager : MonoBehaviour
 {
     public GameObject menuUI;
+    public TMP_Dropdown resolution;
+    public Toggle isFullScreen;
     public Scrollbar mouseSens;
     public TMP_Dropdown language;
     public TextMeshProUGUI[] uiTexts;
-
-    //public int width;
-    //public int height;
-    //public bool fullScreen;
 
     WaitForSeconds wait = new WaitForSeconds(0.01f);
     public FadeInOutScript fadeInOutScript;
@@ -22,8 +20,11 @@ public class MainMenuSceneManager : MonoBehaviour
 
     public GameObject settingUI; // 설정 UI
 
+
     void Start()
     {
+        Cursor.visible = true;
+
         // 메뉴UI 활성화
         menuUI.SetActive(true);
 
@@ -35,10 +36,9 @@ public class MainMenuSceneManager : MonoBehaviour
         ReloadText();
 
         // 해상도 받아오고 해상도 새로고침
-        //width = GameManager.instance.saveManager.settingData.width; 
-        //height = GameManager.instance.saveManager.settingData.height;
-        //fullScreen = GameManager.instance.saveManager.settingData.fullScreen;
-        //Screen.SetResolution(width, height, fullScreen);
+        resolution.value = GameManager.instance.saveManager.settingData.resolution;
+        isFullScreen.isOn = GameManager.instance.saveManager.settingData.isFullScreen;
+        Screen.SetResolution(GameManager.instance.saveManager.settingData.width, GameManager.instance.saveManager.settingData.height, isFullScreen.isOn);
     }
 
     void Update()
@@ -70,10 +70,9 @@ public class MainMenuSceneManager : MonoBehaviour
         ReloadText();
 
         // 해상도 보내고 해상도 새로고침
-        //GameManager.instance.saveManager.settingData.width = width;
-        //GameManager.instance.saveManager.settingData.height = height;
-        //GameManager.instance.saveManager.settingData.fullScreen = fullScreen;
-        //Screen.SetResolution(width, height, fullScreen);
+        GameManager.instance.saveManager.SetResolution(resolution.value);
+        GameManager.instance.saveManager.settingData.isFullScreen = isFullScreen.isOn;
+        Screen.SetResolution(GameManager.instance.saveManager.settingData.width, GameManager.instance.saveManager.settingData.height, isFullScreen.isOn);
 
         // 보낸 데이터로 설정 파일 저장
         GameManager.instance.saveManager.SaveSettingData();
@@ -89,6 +88,10 @@ public class MainMenuSceneManager : MonoBehaviour
 
         // 언어 받아오기(적용 안 눌렀으면 바꾸기 전으로)
         language.value = GameManager.instance.saveManager.settingData.language;
+
+        // 해상도 받아오기(적용 안 눌렀으면 바꾸기 전으로)
+        resolution.value = GameManager.instance.saveManager.settingData.resolution;
+        isFullScreen.isOn = GameManager.instance.saveManager.settingData.isFullScreen;
     }
 
     // 언어 변경된 텍스트 새로고침

@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class LionDanceSceneManager : MonoBehaviour
 
 {
+    public TMP_Dropdown resolution;
+    public Toggle isFullScreen;
     public Scrollbar mouseSens; // 마우스 감도 스크롤바
     public TMP_Dropdown language; // 설정창 언어 드롭다운
     public TextMeshProUGUI[] uiTexts; // UI 텍스트 목록
@@ -22,12 +24,10 @@ public class LionDanceSceneManager : MonoBehaviour
     public GameObject pauseUI; // 일시정지 UI
     public bool isPausing; // 일시정지 상태인지
 
-    //public int width;
-    //public int height;
-    //public bool fullScreen;
 
     void Start()
     {
+        Cursor.visible = false;
         fogMat.color = new Color(1f, 1f, 1f, (255f / 255f)); // 연기 초기화
 
         // 오프닝 시작
@@ -42,10 +42,9 @@ public class LionDanceSceneManager : MonoBehaviour
         ReloadText();
 
         // 해상도 받아오고 해상도 새로고침
-        //width = GameManager.instance.saveManager.settingData.width;
-        //height = GameManager.instance.saveManager.settingData.height;
-        //fullScreen = GameManager.instance.saveManager.settingData.fullScreen;
-        //Screen.SetResolution(width, height, fullScreen);
+        resolution.value = GameManager.instance.saveManager.settingData.resolution;
+        isFullScreen.isOn = GameManager.instance.saveManager.settingData.isFullScreen;
+        Screen.SetResolution(GameManager.instance.saveManager.settingData.width, GameManager.instance.saveManager.settingData.height, isFullScreen.isOn);
     }
 
     void Update()
@@ -58,6 +57,7 @@ public class LionDanceSceneManager : MonoBehaviour
     {
         if (!isPausing && Input.GetKeyDown(KeyCode.Escape)) // 일시정지
         {
+            Cursor.visible = true;
             isPausing = true;
             Time.timeScale = 0f;
             playerController.enabled = false;
@@ -80,6 +80,7 @@ public class LionDanceSceneManager : MonoBehaviour
     // 돌아가기 버튼
     public void PressReturnButton()
     {
+        Cursor.visible = false;
         isPausing = false;
         Time.timeScale = 1f;
         putDialogScript.enabled = true;
@@ -103,10 +104,9 @@ public class LionDanceSceneManager : MonoBehaviour
         ReloadText();
 
         // 해상도 보내고 해상도 새로고침
-        //GameManager.instance.saveManager.settingData.width = width;
-        //GameManager.instance.saveManager.settingData.height = height;
-        //GameManager.instance.saveManager.settingData.fullScreen = fullScreen;
-        //Screen.SetResolution(width, height, fullScreen);
+        GameManager.instance.saveManager.SetResolution(resolution.value);
+        GameManager.instance.saveManager.settingData.isFullScreen = isFullScreen.isOn;
+        Screen.SetResolution(GameManager.instance.saveManager.settingData.width, GameManager.instance.saveManager.settingData.height, isFullScreen.isOn);
 
         // 보낸 데이터로 설정 파일 저장
         GameManager.instance.saveManager.SaveSettingData();
@@ -122,6 +122,10 @@ public class LionDanceSceneManager : MonoBehaviour
 
         // 언어 받아오기(적용 안 눌렀으면 바꾸기 전으로)
         language.value = GameManager.instance.saveManager.settingData.language;
+
+        // 해상도 받아오기(적용 안 눌렀으면 바꾸기 전으로)
+        resolution.value = GameManager.instance.saveManager.settingData.resolution;
+        isFullScreen.isOn = GameManager.instance.saveManager.settingData.isFullScreen;
     }
 
     // 나가기 버튼
