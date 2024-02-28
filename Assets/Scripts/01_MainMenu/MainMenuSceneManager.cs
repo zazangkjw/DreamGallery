@@ -4,15 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Audio;
 
 public class MainMenuSceneManager : MonoBehaviour
 {
     public GameObject menuUI;
     public TMP_Dropdown resolution;
     public Toggle isFullScreen;
-    public Scrollbar mouseSens;
+    public Slider mouseSens;
     public TMP_Dropdown language;
     public TextMeshProUGUI[] uiTexts;
+    public Slider volume;
+    public AudioMixer audioMixer;
 
     WaitForSeconds wait = new WaitForSeconds(0.01f);
     public FadeInOutScript fadeInOutScript;
@@ -39,6 +42,17 @@ public class MainMenuSceneManager : MonoBehaviour
         resolution.value = GameManager.instance.saveManager.settingData.resolution;
         isFullScreen.isOn = GameManager.instance.saveManager.settingData.isFullScreen;
         Screen.SetResolution(GameManager.instance.saveManager.settingData.width, GameManager.instance.saveManager.settingData.height, isFullScreen.isOn);
+
+        // 볼륨 받아오고 볼륨 새로고침
+        volume.value = GameManager.instance.saveManager.settingData.volume;
+        if(volume.value == -40f)
+        {
+            audioMixer.SetFloat("Master", -80f);
+        }
+        else
+        {
+            audioMixer.SetFloat("Master", volume.value);
+        }
     }
 
     void Update()
@@ -74,6 +88,17 @@ public class MainMenuSceneManager : MonoBehaviour
         GameManager.instance.saveManager.settingData.isFullScreen = isFullScreen.isOn;
         Screen.SetResolution(GameManager.instance.saveManager.settingData.width, GameManager.instance.saveManager.settingData.height, isFullScreen.isOn);
 
+        // 볼륨 보내고 볼륨 새로고침
+        GameManager.instance.saveManager.settingData.volume = volume.value;
+        if (volume.value == -40f)
+        {
+            audioMixer.SetFloat("Master", -80f);
+        }
+        else
+        {
+            audioMixer.SetFloat("Master", volume.value);
+        }
+
         // 보낸 데이터로 설정 파일 저장
         GameManager.instance.saveManager.SaveSettingData();
     }
@@ -92,6 +117,9 @@ public class MainMenuSceneManager : MonoBehaviour
         // 해상도 받아오기(적용 안 눌렀으면 바꾸기 전으로)
         resolution.value = GameManager.instance.saveManager.settingData.resolution;
         isFullScreen.isOn = GameManager.instance.saveManager.settingData.isFullScreen;
+
+        // 볼륨 받아오기(적용 안 눌렀으면 바꾸기 전으로)
+        volume.value = GameManager.instance.saveManager.settingData.volume;
     }
 
     // 언어 변경된 텍스트 새로고침
@@ -108,6 +136,7 @@ public class MainMenuSceneManager : MonoBehaviour
         uiTexts[8].text = GameManager.instance.textFileManager.ui[11];
         uiTexts[9].text = GameManager.instance.textFileManager.ui[12];
         uiTexts[10].text = GameManager.instance.textFileManager.ui[13];
+        uiTexts[11].text = GameManager.instance.textFileManager.ui[18];
     }
 
     // 게임 종료

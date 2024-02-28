@@ -24,7 +24,6 @@ public class LionDanceRaycast : MonoBehaviour
     public PlayerController playerController;
     public Camera playerCam;
     public GameObject player;
-    WaitForSeconds wait = new WaitForSeconds(0.005f);
     public Material fogMat;
 
     void Start()
@@ -78,7 +77,7 @@ public class LionDanceRaycast : MonoBehaviour
                             lionDanceColliderTrigger.step = 1;
                             mouseText.enabled = false;
                             putDialogScript.putDialog((string)GameManager.instance.textFileManager.dialog[2]["Content"], 3f); // 부엌으로 돌아가자는 대사 출력
-                            StartCoroutine(FogOutCoroutine());
+                            lionDanceSceneManager.FogOut();
                         }
                     }
                 }
@@ -136,16 +135,6 @@ public class LionDanceRaycast : MonoBehaviour
         else
         {
             mouseText.enabled = false; // 텍스트 없어짐
-        }
-    }
-
-    // 연기 사라지는 코루틴
-    IEnumerator FogOutCoroutine()
-    {
-        while (fogMat.color.a > (75f / 255f))
-        {
-            fogMat.color = new Color(1f, 1f, 1f, fogMat.color.a - ((2.55f / 255f) * 20f * Time.deltaTime));
-            yield return wait;
         }
     }
 }

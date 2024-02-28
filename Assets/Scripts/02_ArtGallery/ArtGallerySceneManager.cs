@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,9 +10,11 @@ public class ArtGallerySceneManager : MonoBehaviour
 {
     public TMP_Dropdown resolution;
     public Toggle isFullScreen;
-    public Scrollbar mouseSens; // 마우스 감도 스크롤바
+    public Slider mouseSens; // 마우스 감도 스크롤바
     public TMP_Dropdown language; // 설정창 언어 드롭다운
     public TextMeshProUGUI[] uiTexts; // UI 텍스트 목록
+    public Slider volume;
+    public AudioMixer audioMixer;
 
     public PlayerController playerController; // 플레이어 컨트롤러 스크립트
     public ArtGalleryDirector ArtGalleryDirector; // 이 씬의 컷씬이 담겨있는 스크립트
@@ -43,6 +46,17 @@ public class ArtGallerySceneManager : MonoBehaviour
         resolution.value = GameManager.instance.saveManager.settingData.resolution;
         isFullScreen.isOn = GameManager.instance.saveManager.settingData.isFullScreen;
         Screen.SetResolution(GameManager.instance.saveManager.settingData.width, GameManager.instance.saveManager.settingData.height, isFullScreen.isOn);
+
+        // 볼륨 받아오고 볼륨 새로고침
+        volume.value = GameManager.instance.saveManager.settingData.volume;
+        if (volume.value == -40f)
+        {
+            audioMixer.SetFloat("Master", -80f);
+        }
+        else
+        {
+            audioMixer.SetFloat("Master", volume.value);
+        }
     }
 
     void Update()
@@ -107,6 +121,17 @@ public class ArtGallerySceneManager : MonoBehaviour
         GameManager.instance.saveManager.settingData.isFullScreen = isFullScreen.isOn;
         Screen.SetResolution(GameManager.instance.saveManager.settingData.width, GameManager.instance.saveManager.settingData.height, isFullScreen.isOn);
 
+        // 볼륨 보내고 볼륨 새로고침
+        GameManager.instance.saveManager.settingData.volume = volume.value;
+        if (volume.value == -40f)
+        {
+            audioMixer.SetFloat("Master", -80f);
+        }
+        else
+        {
+            audioMixer.SetFloat("Master", volume.value);
+        }
+
         // 보낸 데이터로 설정 파일 저장
         GameManager.instance.saveManager.SaveSettingData();
     }
@@ -125,6 +150,9 @@ public class ArtGallerySceneManager : MonoBehaviour
         // 해상도 받아오기(적용 안 눌렀으면 바꾸기 전으로)
         resolution.value = GameManager.instance.saveManager.settingData.resolution;
         isFullScreen.isOn = GameManager.instance.saveManager.settingData.isFullScreen;
+
+        // 볼륨 받아오기(적용 안 눌렀으면 바꾸기 전으로)
+        volume.value = GameManager.instance.saveManager.settingData.volume;
     }
 
     // 나가기 버튼
@@ -147,5 +175,6 @@ public class ArtGallerySceneManager : MonoBehaviour
         uiTexts[7].text = GameManager.instance.textFileManager.ui[11];
         uiTexts[8].text = GameManager.instance.textFileManager.ui[12];
         uiTexts[9].text = GameManager.instance.textFileManager.ui[13];
+        uiTexts[10].text = GameManager.instance.textFileManager.ui[18];
     }
 }

@@ -42,6 +42,18 @@ public class PutDialogScript : MonoBehaviour
         textStacks[0] = text;
         if (!isClickMode)
         {
+            dialogText.text = textStacks[textNum];
+            dialogText.enabled = true;
+            timer = time;
+        }
+    }
+
+    // 대사 넣기(타이머형, 텍스트 하나 씩 출력)
+    public void putDialogPrint(string text, float time)
+    {
+        textStacks[0] = text;
+        if (!isClickMode)
+        {
             TextPrint();
             dialogText.enabled = true;
             timer = time;
@@ -78,6 +90,21 @@ public class PutDialogScript : MonoBehaviour
         }
         isClickMode = true;
         TextPrint();
+        dialogText.enabled = true;
+        dialogArrow.enabled = true;
+        playerController.enabled = false;
+    }
+
+    // 대사 넣기(클릭형, 텍스트 하나 씩 출력)
+    public void putDialogPrintWithClick(string[] text)
+    {
+        textStacks.Clear();
+        for (int i = 0; i < text.Length; i++)
+        {
+            textStacks.Add(text[i]);
+        }
+        isClickMode = true;
+        dialogText.text = textStacks[textNum];
         dialogText.enabled = true;
         dialogArrow.enabled = true;
         playerController.enabled = false;
