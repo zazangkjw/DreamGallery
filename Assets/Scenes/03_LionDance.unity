@@ -389,6 +389,7 @@ MonoBehaviour:
   lionMonsterAnimator: {fileID: 782420762}
   lionMonsterCol: {fileID: 1312614574}
   lionDanceDirector: {fileID: 503553077}
+  dogAnimator: {fileID: 1455368587}
   ColliderTriggers:
   - {fileID: 1757443645}
   - {fileID: 1301097189}
@@ -1601,6 +1602,7 @@ Transform:
   - {fileID: 1851573373}
   - {fileID: 1343073608}
   - {fileID: 782420763}
+  - {fileID: 1455368585}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &147550046
@@ -2406,6 +2408,7 @@ MonoBehaviour:
   playerCam: {fileID: 252867719}
   player: {fileID: 25794966}
   fogMat: {fileID: 2100000, guid: 644e572b2a267324bb0b1b1a4afe53c9, type: 2}
+  dogAnimationScript: {fileID: 1455368588}
 --- !u!1 &272079290
 GameObject:
   m_ObjectHideFlags: 0
@@ -2678,6 +2681,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280139914}
   m_CullTransparentMesh: 1
+--- !u!1 &284670509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7828916553098095944, guid: 96a00bee936218e40acc8c1de70962c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1455368584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &301235221
 GameObject:
   m_ObjectHideFlags: 0
@@ -10405,6 +10414,131 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1453491445}
   m_CullTransparentMesh: 1
+--- !u!1001 &1455368584
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 128601418}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 96a00bee936218e40acc8c1de70962c2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 96a00bee936218e40acc8c1de70962c2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 96a00bee936218e40acc8c1de70962c2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 96a00bee936218e40acc8c1de70962c2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 96a00bee936218e40acc8c1de70962c2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 96a00bee936218e40acc8c1de70962c2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 96a00bee936218e40acc8c1de70962c2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 96a00bee936218e40acc8c1de70962c2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 96a00bee936218e40acc8c1de70962c2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 96a00bee936218e40acc8c1de70962c2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 96a00bee936218e40acc8c1de70962c2,
+        type: 3}
+      propertyPath: m_Name
+      value: Dog
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 96a00bee936218e40acc8c1de70962c2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1455368587}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 96a00bee936218e40acc8c1de70962c2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1455368588}
+  m_SourcePrefab: {fileID: 100100000, guid: 96a00bee936218e40acc8c1de70962c2, type: 3}
+--- !u!4 &1455368585 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 96a00bee936218e40acc8c1de70962c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1455368584}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1455368586 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 96a00bee936218e40acc8c1de70962c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1455368584}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1455368587
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455368586}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a7e0d2d48b163f64490d6869936f33eb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1455368588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455368586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be666bba7585254c8028a07791176a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dogAnim: {fileID: 1455368587}
+  player: {fileID: 25794966}
+  root: {fileID: 284670509}
+  isLookPlayer: 0
 --- !u!1 &1456844567
 GameObject:
   m_ObjectHideFlags: 0

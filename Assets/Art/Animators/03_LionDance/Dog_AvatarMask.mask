@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Dog_AvatarMask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature_Dog
+    m_Weight: 0
+  - m_Path: Armature_Dog/Root
+    m_Weight: 0
+  - m_Path: Armature_Dog/Root/Waist
+    m_Weight: 0
+  - m_Path: Armature_Dog/Root/Waist/Body
+    m_Weight: 0
+  - m_Path: Armature_Dog/Root/Waist/Body/LegF_L
+    m_Weight: 1
+  - m_Path: Armature_Dog/Root/Waist/Body/LegF_L/LegF_L.001
+    m_Weight: 0
+  - m_Path: Armature_Dog/Root/Waist/Body/LegF_L/LegF_L.001/LegF_L.002
+    m_Weight: 0
+  - m_Path: Armature_Dog/Root/Waist/Body/LegF_R
+    m_Weight: 1
+  - m_Path: Armature_Dog/Root/Waist/Body/LegF_R/LegF_R.001
+    m_Weight: 0
+  - m_Path: Armature_Dog/Root/Waist/Body/LegF_R/LegF_R.001/LegF_R.002
+    m_Weight: 0
+  - m_Path: Armature_Dog/Root/Waist/Body/Neck
+    m_Weight: 0
+  - m_Path: Armature_Dog/Root/Waist/Body/Neck/Head
+    m_Weight: 0
+  - m_Path: Armature_Dog/Root/Waist/LegB_L
+    m_Weight: 1
+  - m_Path: Armature_Dog/Root/Waist/LegB_L/LegB_L.001
+    m_Weight: 0
+  - m_Path: Armature_Dog/Root/Waist/LegB_L/LegB_L.001/LegB_L.002
+    m_Weight: 0
+  - m_Path: Armature_Dog/Root/Waist/LegB_R
+    m_Weight: 1
+  - m_Path: Armature_Dog/Root/Waist/LegB_R/LegB_R.001
+    m_Weight: 0
+  - m_Path: Armature_Dog/Root/Waist/LegB_R/LegB_R.001/LegB_R.002
+    m_Weight: 0
+  - m_Path: Dog
+    m_Weight: 0

@@ -12,6 +12,7 @@ public class LionDanceColliderTrigger : MonoBehaviour
     public Animator lionMonsterAnimator;
     public Collider lionMonsterCol;
     public LionDanceDirector lionDanceDirector;
+    public Animator dogAnimator;
     public Collider[] ColliderTriggers; // 트리거 콜라이더들
     public PutDialogScript putDialogScript;
 
@@ -73,6 +74,8 @@ public class LionDanceColliderTrigger : MonoBehaviour
                     ColliderTriggers[4].enabled = true;
                     ColliderTriggers[5].enabled = true;
 
+                    dogAnimator.Play("Balcony");
+
                     Debug.Log("괴물 발소리 재생. 발코니 쪽에서 이상한 소리 난다는 대사 출력");
                 }
                 break;
@@ -109,6 +112,8 @@ public class LionDanceColliderTrigger : MonoBehaviour
                     step = 5;
                     StartCoroutine(MyRoomTimerCoroutine()); // 10초 뒤에 내 방으로 괴물 침입
 
+                    dogAnimator.Play("LookMyRoom");
+
                     Debug.Log("발코니 문 닫기");
                 }
                 break;
@@ -141,6 +146,8 @@ public class LionDanceColliderTrigger : MonoBehaviour
                     step = 7;
                     StartCoroutine(SisRoomTimerCoroutine()); // 5초 뒤에 누나 방으로 괴물 침입
 
+                    dogAnimator.Play("LookSisRoom");
+
                     Debug.Log("내 방 문 닫히는 애니메이션 재생");
                 }
                 break;
@@ -172,6 +179,8 @@ public class LionDanceColliderTrigger : MonoBehaviour
                     sisRoomDoor.GetComponent<AudioSource>().Play();
                     StartCoroutine(KitchenTimerCoroutine()); // 부엌 창문으로 괴물이 들어오는 카운트다운 시작
                     step = 9;
+
+                    dogAnimator.Play("Kitchen");
 
                     Debug.Log("누나 방 문 닫히는 애니메이션 재생. 부엌 창문으로 괴물이 들어오는 카운트다운 시작");
                 }
@@ -235,6 +244,7 @@ public class LionDanceColliderTrigger : MonoBehaviour
         {
             step = 11;
             lionMonsterAnimator.Play("Kitchen_All"); // 괴물이 부엌 창문으로 들어와 집을 돌아다니는 애니메이션 재생
+            dogAnimator.Play("Desk");
             Debug.Log("괴물이 부엌 창문으로 들어와 집을 돌아다니는 애니메이션 재생");
         }
     }
