@@ -25,7 +25,6 @@ public class LionDanceRaycast : MonoBehaviour
     public Camera playerCam;
     public GameObject player;
     public Material fogMat;
-    public DogAnimationScript dogAnimationScript;
 
     void Start()
     {
@@ -79,7 +78,6 @@ public class LionDanceRaycast : MonoBehaviour
                             mouseText.enabled = false;
                             putDialogScript.putDialog((string)GameManager.instance.textFileManager.dialog[2]["Content"], 3f); // 부엌으로 돌아가자는 대사 출력
                             lionDanceSceneManager.FogOut();
-                            dogAnimationScript.disableLookPlayer();
                         }
                     }
                 }

@@ -13,6 +13,7 @@ public class LionDanceColliderTrigger : MonoBehaviour
     public Collider lionMonsterCol;
     public LionDanceDirector lionDanceDirector;
     public Animator dogAnimator;
+    public DogAnimationScript dogAnimationScript;
     public Collider[] ColliderTriggers; // 트리거 콜라이더들
     public PutDialogScript putDialogScript;
 
@@ -74,6 +75,7 @@ public class LionDanceColliderTrigger : MonoBehaviour
                     ColliderTriggers[4].enabled = true;
                     ColliderTriggers[5].enabled = true;
 
+                    dogAnimationScript.disableLookPlayer();
                     dogAnimator.Play("Balcony");
 
                     Debug.Log("괴물 발소리 재생. 발코니 쪽에서 이상한 소리 난다는 대사 출력");

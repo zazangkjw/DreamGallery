@@ -337,7 +337,7 @@ MonoBehaviour:
   crouchSpeed: 1.5
   applySpeed: 0
   jumpForce: 3
-  crouchPosY: 0
+  crouchPosY: -0.3
   standCollider: {fileID: 582284167}
   crouchCollider: {fileID: 1440248827}
   lookSensitivity: 0.5
@@ -390,6 +390,7 @@ MonoBehaviour:
   lionMonsterCol: {fileID: 1312614574}
   lionDanceDirector: {fileID: 503553077}
   dogAnimator: {fileID: 1455368587}
+  dogAnimationScript: {fileID: 1455368588}
   ColliderTriggers:
   - {fileID: 1757443645}
   - {fileID: 1301097189}
@@ -2408,7 +2409,6 @@ MonoBehaviour:
   playerCam: {fileID: 252867719}
   player: {fileID: 25794966}
   fogMat: {fileID: 2100000, guid: 644e572b2a267324bb0b1b1a4afe53c9, type: 2}
-  dogAnimationScript: {fileID: 1455368588}
 --- !u!1 &272079290
 GameObject:
   m_ObjectHideFlags: 0
@@ -10249,9 +10249,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.25
-  m_Height: 0.8305664
+  m_Height: 0.6549339
   m_Direction: 1
-  m_Center: {x: 0, y: -0.41471672, z: 0}
+  m_Center: {x: 0, y: -0.50253296, z: 0}
 --- !u!4 &1440248828
 Transform:
   m_ObjectHideFlags: 0
@@ -10538,6 +10538,7 @@ MonoBehaviour:
   dogAnim: {fileID: 1455368587}
   player: {fileID: 25794966}
   root: {fileID: 284670509}
+  originalRotation: {x: 0, y: 0, z: 0}
   isLookPlayer: 0
 --- !u!1 &1456844567
 GameObject:
@@ -13007,7 +13008,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2005937263}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2021029055300667026, guid: 2c906d44e40a82e49a379b9639b8e95b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1964867437}
   m_SourcePrefab: {fileID: 100100000, guid: 2c906d44e40a82e49a379b9639b8e95b, type: 3}
 --- !u!1 &1622393917
 GameObject:
@@ -15821,6 +15826,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962008226}
   m_CullTransparentMesh: 1
+--- !u!1 &1964867433 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2021029055300667026, guid: 2c906d44e40a82e49a379b9639b8e95b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1614397287}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1964867437
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964867433}
+  m_Material: {fileID: 13400000, guid: 18a6c6c30096f4d4a8a4a1441417d666, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.9641819, y: 0.1025524, z: 1.6323547}
+  m_Center: {x: 0, y: 0.2672107, z: -0.000000011823655}
 --- !u!1 &2005937262
 GameObject:
   m_ObjectHideFlags: 0
