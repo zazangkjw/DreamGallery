@@ -76,7 +76,7 @@ public class LionDanceRaycast : MonoBehaviour
                             lionMonsterAnimator.Play("Walking", 1);
                             lionDanceColliderTrigger.step = 1;
                             mouseText.enabled = false;
-                            putDialogScript.putDialog((string)GameManager.instance.textFileManager.dialog[2]["Content"], 3f); // 부엌으로 돌아가자는 대사 출력
+                            putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[2]["Content"], 3f); // 부엌으로 돌아가자는 대사 출력
                             lionDanceSceneManager.FogOut();
                         }
                     }

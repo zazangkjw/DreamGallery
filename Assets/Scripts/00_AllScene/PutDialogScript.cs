@@ -89,7 +89,7 @@ public class PutDialogScript : MonoBehaviour
             textStacks.Add(text[i]);
         }
         isClickMode = true;
-        TextPrint();
+        dialogText.text = textStacks[textNum];
         dialogText.enabled = true;
         dialogArrow.enabled = true;
         playerController.enabled = false;
@@ -104,7 +104,7 @@ public class PutDialogScript : MonoBehaviour
             textStacks.Add(text[i]);
         }
         isClickMode = true;
-        dialogText.text = textStacks[textNum];
+        TextPrint();
         dialogText.enabled = true;
         dialogArrow.enabled = true;
         playerController.enabled = false;

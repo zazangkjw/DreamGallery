@@ -38,11 +38,16 @@ public class DogAnimationScript : MonoBehaviour
         isLookPlayer = false;
     }
 
+    public void enableLookPlayer()
+    {
+        isLookPlayer = true;
+    }
+
     void LookPlayer()
     {
         if (isLookPlayer)
         {
-            root.transform.rotation = Quaternion.LookRotation(new Vector3(-(player.transform.position.x - root.transform.position.x), root.transform.position.y, -(player.transform.position.z - root.transform.position.z)));
+            root.transform.rotation = Quaternion.Lerp(root.transform.rotation, Quaternion.LookRotation(new Vector3(-(player.transform.position.x - root.transform.position.x), root.transform.position.y, -(player.transform.position.z - root.transform.position.z))), 0.05f);
         }
     }
 }

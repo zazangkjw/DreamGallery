@@ -67,7 +67,7 @@ public class LionDanceColliderTrigger : MonoBehaviour
                 if (other == ColliderTriggers[(int)Triggers.kitchen]) // 부엌 트리거에 닿았을 때
                 {
                     // 괴물 발소리 재생
-                    putDialogScript.putDialog((string)GameManager.instance.textFileManager.dialog[3]["Content"], 3f); // 발코니 쪽에서 이상한 소리 난다는 대사 출력
+                    putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[3]["Content"], 3f); // 발코니 쪽에서 이상한 소리 난다는 대사 출력
                     step = 2;
                     ColliderTriggers[1].enabled = true;
                     ColliderTriggers[2].enabled = true;
@@ -246,7 +246,9 @@ public class LionDanceColliderTrigger : MonoBehaviour
         {
             step = 11;
             lionMonsterAnimator.Play("Kitchen_All"); // 괴물이 부엌 창문으로 들어와 집을 돌아다니는 애니메이션 재생
+            StartCoroutine(SurviveTimerCoroutine(10f)); // 일정 시간 버티면 생존 엔딩
             dogAnimator.Play("Desk");
+            dogAnimationScript.enableLookPlayer();
             Debug.Log("괴물이 부엌 창문으로 들어와 집을 돌아다니는 애니메이션 재생");
         }
     }
