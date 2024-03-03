@@ -87,14 +87,15 @@ public class LionDanceDirector : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[4]["Content"], 3f);
-        StartCoroutine(lionDanceColliderTrigger.BalconyTimerCoroutine()); // 5초 뒤에 발코니로 괴물 침입
+        putDialogScript.putDialog((string)GameManager.instance.textFileManager.dialog[4]["Content"], 3f);
+        StartCoroutine(lionDanceColliderTrigger.BalconyTimerCoroutine()); // 대사 끝나고 5초 뒤에 발코니로 괴물 침입
     }
 
 
 
 
     // 아트갤러리로 복귀
+
     public void BackToArtGallery()
     {
         StartCoroutine(BackToArtGalleryCoroutine());
