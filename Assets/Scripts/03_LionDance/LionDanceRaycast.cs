@@ -24,7 +24,6 @@ public class LionDanceRaycast : MonoBehaviour
     public PlayerController playerController;
     public Camera playerCam;
     public GameObject player;
-    WaitForSeconds wait = new WaitForSeconds(0.005f);
     public Material fogMat;
 
     void Start()
@@ -76,8 +75,9 @@ public class LionDanceRaycast : MonoBehaviour
                         {
                             lionMonsterAnimator.Play("Walking", 1);
                             lionDanceColliderTrigger.step = 1;
-                            putDialogScript.putDialog((string)GameManager.instance.textFileManager.dialog[1]["Content"], 3f); // 부엌으로 돌아가자는 대사 출력
-                            StartCoroutine(FogOutCoroutine());
+                            mouseText.enabled = false;
+                            putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[2]["Content"], 3f); // 부엌으로 돌아가자는 대사 출력
+                            lionDanceSceneManager.FogOut();
                         }
                     }
                 }
@@ -119,6 +119,7 @@ public class LionDanceRaycast : MonoBehaviour
                         hitObject.GetComponent<GetComponentScript>().animator.SetBool("Active", false);
                         hitObject.GetComponent<AudioSource>().Play();
                         lionDanceColliderTrigger.step = 10;
+                        mouseText.enabled = false;
                         Debug.Log("부엌 창문 닫음");
 
                         lionMonsterAnimator.Play("ClimbDown"); // 괴물이 부엌 창문 밖에서 아래층으로 내려가는 애니메이션 재생
@@ -134,16 +135,6 @@ public class LionDanceRaycast : MonoBehaviour
         else
         {
             mouseText.enabled = false; // 텍스트 없어짐
-        }
-    }
-
-    // 연기 사라지는 코루틴
-    IEnumerator FogOutCoroutine()
-    {
-        while (fogMat.color.a > 0f)
-        {
-            fogMat.color = new Color(1f, 1f, 1f, fogMat.color.a - ((2.55f / 255f) * 20f * Time.deltaTime));
-            yield return wait;
         }
     }
 }

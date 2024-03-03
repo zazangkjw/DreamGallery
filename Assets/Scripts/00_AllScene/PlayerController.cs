@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     private bool isRun = false;
     private bool isCrouch = false;
     private bool isGround = true;
+    private bool isAbove = false;
+    private bool isTryStand = false;
 
     // 앉았을 때 얼마나 앉을지 결정하는 변수
     [SerializeField]
@@ -50,6 +52,7 @@ public class PlayerController : MonoBehaviour
     private float _moveDirZ;
 
     public RaycastHit hitInfo;
+    public RaycastHit hitInfo2;
 
     void Start()
     {
@@ -69,6 +72,7 @@ public class PlayerController : MonoBehaviour
         CameraRotation();
         CharacterRotation();
         TryMove();
+        CheckAbove();
     }
 
     void FixedUpdate()
@@ -81,18 +85,26 @@ public class PlayerController : MonoBehaviour
     {
         if (!isRun)
         {
-            if (Input.GetKey(KeyCode.LeftControl) & isGround)
+            if (Input.GetKey(KeyCode.LeftControl) && isGround)
             {
+                isTryStand = false;
                 isCrouch = true;
                 Crouch();
             }
             else if (Input.GetKeyUp(KeyCode.LeftControl))
             {
+
+                isTryStand = true;
+            }
+
+            if(isTryStand && !isAbove)
+            {
+                isTryStand = false;
                 isCrouch = false;
                 Crouch();
             }
 
-            if (!isGround & isCrouch) // 공중에서는 앉기가 풀림
+            if (!isGround && isCrouch) // 공중에서는 앉기가 풀림
             {
                 isCrouch = false;
                 Crouch();
@@ -142,12 +154,27 @@ public class PlayerController : MonoBehaviour
         theCamera.transform.localPosition = new Vector3(0, applyCrouchPosY, 0);
     }
 
+    // 머리 위에 물체가 있으면 못 일어남
+    void CheckAbove()
+    {
+        Debug.DrawRay(transform.position - transform.up * 0.7f, transform.up * 1.6f, Color.blue);
+
+        if (Physics.Raycast(transform.position - transform.up * 0.7f, transform.up, out hitInfo, 1.6f))
+        {
+            isAbove = true;
+        }
+        else
+        {
+            isAbove = false;
+        }
+    }
+
     // 지면 체크
     private void IsGround()
     {
-        Debug.DrawRay(transform.position - transform.up * 0.1f, -transform.up * 0.8f, Color.red);
+        Debug.DrawRay(transform.position - transform.up * 0.7f, -transform.up * 0.3f, Color.red);
 
-        if(Physics.Raycast(transform.position - transform.up * 0.1f, -transform.up, out hitInfo, 0.8f))
+        if(Physics.Raycast(transform.position - transform.up * 0.7f, -transform.up, out hitInfo, 0.3f))
         {
             isGround = true;
             jumpVelocity = _velocity;
@@ -288,7 +315,7 @@ public class PlayerController : MonoBehaviour
     private void CharacterRotation()
     {
         float _yRotation = Input.GetAxisRaw("Mouse X");
-        Vector3 _characterRotationY = new Vector3(0f, _yRotation, 0f) * lookSensitivity * 10f;
+        Vector3 _characterRotationY = new Vector3(0f, _yRotation, 0f) * lookSensitivity * 0.1f;
         myRigid.MoveRotation(myRigid.rotation * Quaternion.Euler(_characterRotationY));
     }
 
@@ -296,7 +323,7 @@ public class PlayerController : MonoBehaviour
     private void CameraRotation()
     {
         float _xRotation = Input.GetAxisRaw("Mouse Y");
-        float _cameraRotationX = _xRotation * lookSensitivity * 10f;
+        float _cameraRotationX = _xRotation * lookSensitivity * 0.1f;
         currentCameraRotationX -= _cameraRotationX;
         currentCameraRotationX = Mathf.Clamp(currentCameraRotationX, -cameraRotationLimit, cameraRotationLimit);
 

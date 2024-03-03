@@ -19,7 +19,8 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: Event Footstep has a time (0.040000) outside the clip's
+      valid range (0.166667..1.133333). It will never be fired
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -37,7 +38,7 @@ ModelImporter:
       takeName: Scene
       internalID: -623603649343465320
       firstFrame: 0
-      lastFrame: 2150
+      lastFrame: 1750
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -181,8 +182,8 @@ ModelImporter:
       name: SisRoom
       takeName: Scene
       internalID: -7685416327518905642
-      firstFrame: 1780
-      lastFrame: 1875
+      firstFrame: 1430
+      lastFrame: 1525
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -210,8 +211,8 @@ ModelImporter:
       name: ClimbDown
       takeName: Scene
       internalID: -7528102460371188311
-      firstFrame: 860
-      lastFrame: 980
+      firstFrame: 830
+      lastFrame: 950
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -268,8 +269,8 @@ ModelImporter:
       name: Kitchen_All
       takeName: Scene
       internalID: -6545883061796769282
-      firstFrame: 990
-      lastFrame: 1106
+      firstFrame: 1540
+      lastFrame: 1721
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -297,8 +298,8 @@ ModelImporter:
       name: MyRoom_All
       takeName: Scene
       internalID: 4419572467542519676
-      firstFrame: 1120
-      lastFrame: 1389
+      firstFrame: 960
+      lastFrame: 1229
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -326,8 +327,8 @@ ModelImporter:
       name: SisRoom_All
       takeName: Scene
       internalID: 6718882168854523491
-      firstFrame: 1470
-      lastFrame: 1646
+      firstFrame: 1240
+      lastFrame: 1416
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

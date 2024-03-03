@@ -38,6 +38,10 @@ public class ArtGalleryDirector : MonoBehaviour
             ExitVR(); // 꿈에서 나왔다면, VR에서 나오는 컷신 실행
             isFromDream = false;
         }
+        else
+        {
+            fadeInOutScript.FadeOut(fadeInOutImage);
+        }
     }
 
 
