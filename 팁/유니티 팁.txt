@@ -1,0 +1,1586 @@
+
+<기타>
+*프로젝트 옮기려면 export하거나 에셋, 프로젝트세팅 폴더만 복사. urp면 새 프로젝트 urp로 만들고 패키지 import(Assets 안에 있는 거 다 지우고 받기. 다른 사람꺼 받아올 때는 다른 사람꺼 폴더만 체크해서 받기)
+
+*클래스와 스크립트 이름이 같아야 함
+
+*UI 기능(Text) 사용하려면 using UnityEngine.UI; 써야함
+
+*void Start(){} //실행과 동시에 딱 한 번 실행
+*void Update(){} //프레임마다 반복 실행. 초당 60프레임이면 0.016초 정도마다 반복
+*void FixedUpdate(){} //0.02초마다 반복 실행, 함수 호출 간격이 일정하기 때문에 물리계산을 여기서 하면 좋다
+
+*Debug.Log(); //콘솔창에 출력
+
+*Time.deltaTime: 이전 프레임에서 다음 프레임으로 넘어가는데 걸린 시간. 초당 60프레임이면 0.016초 정도. 속도 같은 거에 곱하면 프레임이 달라져도 일정한 속도를 낼 수 있음
+*Time.unscaledDeltaTime: timeScale 영향 안 받음
+*Time.timeScale: 델타타임 속도 조절
+
+*인스펙터 창은 자물쇠 아이콘을 누르면 다른 오브젝트 인스펙터로 안바뀌게 할 수 있음
+
+*ezgif.com 움짤 만들기 사이트. 불필요한 시간 다 짜르고 600px에 20프레임 레이트, optimize 35로 압축
+
+*블렌더 파일이 크다면 저장할 때 오른쪽 위 톱니 눌러서 압축 체크하기
+
+-----------------------------------------------------------------------
+
+<접근 제한자>
+*public 모든 곳에서 접근 가능
+*private 클래스 내부에서만 접근 가능, 제한자를 쓰지 않으면 private이 기본 설정
+*protected 외부에서 접근 불가, 하지만 파생 클래스(자식 클래스)에서는 접근 가능
+
+-----------------------------------------------------------------------
+
+<데이터 형식(자료형)>
+*자료형 [] //자료형으로 된 배열
+*int //정수
+*float //실수
+*bool //참거짓
+*char //문자형
+*string //문자열. (변수명.ToString())으로 숫자를 문자열로 바꿀 수 있음
+*void //함수에 사용
+*var //변수의 자료형을 자동으로 저장. 무조건 지역 변수. 초기화 한 자료형으로 고정되어 다른 자료형은 넣지 못함
+*GameObject 변수명; //지정한 오브젝트를 변수명으로 접근 가능
+*다른_스크립트_이름 변수명; //지정한 오브젝트의 스크립트에 접근 가능. (변수명.gameObject)로 해당 오브젝트까지 접근 가능
+*Text 변수명; //텍스트
+-----------------------------------------------------------------------
+
+<변수>
+*[SerializeField] private 변수를 유니티 내에서 직접 보고 수정할 수 있게 해줌. 변수마다 각각 써줘야 함
+
+*지역변수: 함수 내부에 선언, 함수 내부에서만 사용 가능, 초기값 써야 함
+*전역변수: 함수 외부에 선언, 클래스 내 전체 사용 가능, 초기값 안 써도 0으로 기본 설정
+
+static //한 곳에서 바뀌면 해당 스크립트가 있는 다른 오브젝트들도 모두 바뀜. 공유자원. 많이 쓰면 메모리 낭비
+
+abstract //현재 클래스에서는 미완성으로 남기고 자식 클래스로 완성해야 함. 미완성 클래스는 컴포넌트로 추가 불가능
+
+*myRigid = GetComponent<Rigidbody>(); //오브젝트의 Rigidbody를 myRigid로 접근 가능. 다른 컴포넌트들도 가능
+
+-----------------------------------------------------------------------
+
+<다른 오브젝트에 접근하는 방법>
+1. (public GameObject 변수명;)을 하고 유니티 내에서 다른 오브젝트를 집어넣는다. private이면 [SerializeField] 사용
+2. (public 다른_스크립트_이름 변수명;)을 하고 유니티 내에서 해당 스크립트를 가지고 있는 오브젝트(혹은 그 오브젝트 인스펙터에 있는 해당 스크립트)를 현재 오브젝트-인스펙터-스크립트-변수명에 집어넣는다. private이면 [SerializeField] 사용
+3. Find 기능을 쓴다
+
+*GameObject 변수명 = FindObjectOfType<컴포넌트나 스크립트)>(); //오브젝트형(혹은 컴포넌트의 형)으로 검색. 가장 처음 나타난 오브젝트를 GameObject로 반환
+*GameObject 변수명 = FindObjectsOfType<컴포넌트나 스크립트)>(); //오브젝트형(혹은 컴포넌트의 형)으로 검색. 나타난 오브젝트들을 GameObject[] 형태로 반환
+*GameObject 변수명 = GameObject.Find("다른_오브젝트_이름"); //오브젝트 이름으로 찾기. 이름이 같을 경우 가장 처음 검색된 Object 반환. 성능을 많이 잡아먹음
+*GameObject 변수명 = GameObject.FindWithTag("오브젝트_태그"); //태그로 찾기. 이름이 같을 경우 가장 처음 검색된 Object 반환. 이름보다 태그로 찾는게 더 빠름
+*GameObject 변수명 = GameObject.FindGameObjectsWithTag("오브젝트_태그"); //같은 태그를 가진 오브젝트들을 GameObject[] 형태로 반환
+*처음의 GameObject를 컴포넌트나 스크립트로 쓰면 거기에 접근 가능
+
+*gameObject.SetActive(true/false); //현재 오브젝트를 껐다 켤 수 있음
+*변수명.gameObject.SetActive(true/false); //다른 오브젝트를 껐다 켤 수 있음
+
+-----------------------------------------------------------------------
+
+<함수>
+*void A(){}
+//함수 생성. 조건문을 써서 업데이트에 A()를 넣거나, 함수에 다른 함수 실행 코드를 넣어 사용.
+
+*void A(string a, int b){}
+//함수 생성. 다른 곳에서 A("가나다", 1);으로 실행하면 함수 내부의 a와 b에 각각 값이 들어간 채로 함수가 실행됨.
+
+*return; //값을 함수에 반환
+
+-----------------------------------------------------------------------
+
+<반복문>
+*while(){}
+
+*if(){}, else if(){}, else{}
+
+*for(int i = 0; i < 변수; i++){} //for 쓰고 탭 두 번 누르면 기본형 자동으로 써짐
+
+*switch(변수) //변수의 값과 맞는 case 실행. 아무것도 해당 안되면 default 실행
+{
+    case 값1:
+        break;
+
+    case 값2:
+        break;
+
+    case 값3:
+        break;
+
+    default:
+        break;
+}
+
+*break; //루틴을 멈추고 빠져나감
+*goto 값2; //해당 case로 점프
+*continue; //이후의 코드를 실행하지 않고 다음 반복으로 넘어감
+
+*같음 연산자 ==
+*작거나 같음 연산자 <=
+*크거나 같음 연산자 >=
+*부정 연산자 ! (변수 앞에 쓴다)
+*나머지 연산자 % (나머지만 구함)
+*OR 연산자 || (쉬프트+역슬래시)
+*AND 연산자 && (여러개 쓰면 모든 조건을 동시에 충족해야 실행됨)
+*증감 연산자 ++-- (변수 앞에 쓰면 증감 후에 계산. 뒤에 쓰면 계산 후에 증감)
+*복합 할당 +=, -=, *=, /=, %= (연산자로 계산하고 그 값을 다시 앞에 집어넣음)
+
+-----------------------------------------------------------------------
+
+<위치, 회전, 크기>
+*월드포지션: 월드의 0, 0, 0을 기준으로 한 좌표
+*로컬포지션: 부모 객체의 위치를 0, 0, 0이라 했을 때 좌표. 부모 객체가 없다면 월드포지션과 같음
+
+*transform //오브젝트에 있는 Transform 항목
+*transform.translate(new Vector3(1, 2, 1)); //로컬포지션이 1, 2, 1 증가. 오브젝트 방향 영향 받음
+*transform.translate(new Vector3(1, 2, 1), Space.World); //로컬 이동을 월드 이동으로 바꿈
+*A가 B를 바라보는 방향은 ((B포지션-A포지션).normalized). 로테이션 값은 Quaternion.LookRotation((B포지션-A포지션).normalized)
+*transform.right //로컬방향 정하기. 오른쪽 방향. -붙이면 왼쪽 방향. (1, 0, 0)
+*transform.forward //로컬방향 정하기. 앞쪽 방향, -붙이면 뒤쪽 방향 (0, 0, 1)
+*transform.up //로컬방향 정하기. 위쪽 방향, -붙이면 아래쪽 방향 (0, 1, 0)
+*transform.position.x //오브젝트의 월드포지션 x. 수정하려면 Vector3 값을 position에 넣어야 함
+*transform.localPosition.x //오브젝트의 로컬포지션 x. 수정하려면 Vector3 값을 localPosition에 넣어야 함
+
+*transform.position.x과 transform.localPosition.x은 직접적으로 수정 불가. 수정하려면 Vector3 값을 각각 position과 localPosition에 넣어야 함
+예시)
+//transform.position.x = 1; //이런거랑
+//transform.position.y -= Time.deltaTime; //이런게 안된다는 소리
+Vector3 pos = transfrom.position; //트랜스폼 포지션 값을 벡터로 받고
+pos.y -= Time.deltaTime; //그 벡터에 원하는 값을 넣고
+transform.position = pos; //트랜스폼 포지션에 벡터값을 넣어야 수정됨
+
+*Vector2(x,y) //2차원 좌표
+*Vector3(x,y,z) //3차원 좌표
+*Vector3 a = new Vector3(1, 2, 3); //3차원 좌표(위치, 회전, 크기에 사용 가능)를 가진 a 생성. 값을 넣을 때마다 앞에 new를 씀
+*Vector3.Set(x, y, z); //xyz 설정
+*Vector3.zero //0, 0, 0 좌표값
+*Vector3.magnitude //0, 0, 0부터 a좌표까지의 직선 길이(a.magnitude)
+*Vector3.normalized //0, 0, 0에서 해당 좌표 방향으로 직선 길이가 1인 좌표값. 방향 정할 때 사용
+*(목적지-기준점).normalized //0, 0, 0이 아닌 좌표가 기준일 경우
+*Vector3.up/down/forward/back/left/right //월드방향 정하기. 오브젝트의 Rotate를 변경하여도 월드방향은 바뀌지 않는다. (0, 1, 0), (0, 0, -1) 이런 형식임
+
+*transform.rotation //쿼터니언 값임
+*transform.localEulerAngles //오일러 값. Rotate를 xyz로 표시. 인스펙터의 Transfrom 항목의 Rotate는 이 형식
+*Quaternion //쿼터니언. Rotate를 xyzw로 표시. 직관적으로 이해하기 힘듦
+*Quaternion.Euler(new Vector3(x, y, z)) //오일러 값을 쿼터니언 값으로 바꿔줌
+*Quaternion.LookRotation(방향) //방향을 바라보는 로테이션 값. RaycastHit.normal을 넣으면 normal 정면 방향이 들어감
+*Rigidbody.rotation //리지드바디.로테이션은 쿼터니언 값
+*Rigidbody.MoveRotation(쿼터니언 값) //오브젝트 즉각 회전에 사용. 쿼터니언 값만 가능
+
+*Mathf.round(반올림할 수)
+*Mathf.Abs(절댓값을 반환할 수)
+*값 = Mathf.Clamp(값+추가, 최소, 최대); //[값+추가]의 최소 최대를 제한함. 만약 10이면 3을, 2는 2를, 1은 1을 반환
+*시작점 = Mathf.Lerp(시작점, 도착점, 0.3f); //시작점에서 도착점까지 30% 증가. 반복문으로 30%씩 늘어나는 부드러운 움직임 가능
+
+-----------------------------------------------------------------------
+
+<입력 받기>
+*Input.GetKey(KeyCode.LeftControl) //키가 처음 눌렸을 때
+*Input.GetKeyDown(KeyCode.LeftControl) //키가 눌리고 있을 때
+*Input.GetKeyUp(KeyCode.LeftControl) //키에서 뗐을 때
+*Input.GetButton("Jump") //유니티의 Edit -> Project Setting -> Input에 있는 입력 키를 사용. 수정  가능
+*Input.GetAxis("Horizontal") //키보드의 수평 움직임(좌우키)을 -1f ~ 1f로 받음. 부드러운 움직임에 사용
+*Input.GetAxisRaw("Vertical") //키보드의 수직 움직임(상하키)을 -1, 0, 1로 받음. 즉각적인 움직임에 사용
+*"Mouse X" "Mouse Y" //마우스 움직임
+
+-----------------------------------------------------------------------
+
+<코루틴>
+*IEnumerator MyCoroutine(){} //코루틴은 Update()처럼 프레임마다 반복되지만 필요할 때만 쓰는게 가능. 중간에 대기시간이 필요할 때 사용 
+*yield return null; //얼마나 대기할 것인가. 코루틴에는 yield return이 필수
+*yield return new WaitForSeconds(0.2f); //중간에 넣으면 코루틴을 0.2초간 멈춘 후 실행
+*WaitForSeconds 변수명 = new WaitForSeconds(0.2f);으로 캐싱하면 가비지 줄어듦
+*StartCoroutine(MyCoroutine()); //코루틴 실행
+*StopCoroutine(myCoroutine); //특정 코루틴 정지. Stop에는 MyCoroutine()을 못 넣음. 그 전에 IEnumerator myCoroutine;을 쓰고 myCoroutine = MyCoroutine();을 해야 함. 아니면 Coroutine myCoroutine;을 쓰고 myCoroutine = StartCoroutine(MyCoroutine());을 써야 함. 할당과 동시에 코루틴 실행
+*StopAllCoroutine(); //모든 코루틴 정지
+
+-----------------------------------------------------------------------
+
+<Raycast 레이캐스트>
+*RaycastHit 변수명; //레이저 충돌 정보를 넣을 변수. 보통 변수명으로 hitInfo를 씀
+*if(Physics.Raycast(transform.position, transform.forward, out hitInfo, MaxDistance, int layerMask)) //레이저가 지정한 layer에 닿으면 true를 반환하고 hitInfo에 레이저가 닿은 물체 정보를 넣음
+*Debug.DrawRay(transform.position, transform.forward * MaxDistance, Color.blue, 0.3f); //씬에서만 보이는 레이저 선을 0.3초간 그려줌
+*hitInfo.collider.gameObject.name == "Key"
+*Random.Range(최소, 최대) //랜덤
+
+-----------------------------------------------------------------------
+
+<Layer 레이어>
+*GameObject.layer = int; //레이어 변경
+
+LayerMask 는 32 비트의 int형
+0000000000000000000000010000000 8번 레이어 (1 << 8)
+0000000000000000000000000000100 3번 레이어 (1 << 3)
+LayerMask mask = LayerMask.GetMask("Layer1", "Layer2");
+
+*String으로 LayerMask 얻기 
+    LayerMask mask = LayerMask.GetMask("Layer1");
+
+*Inspector에서 선택하기 
+    LayerMask groundLayer;
+
+*숫자 
+    // 8번 과 9번 layer만 충돌 가능
+    LayerMask groundLayer = 1<<8 | 1<<9; //LayerMask 대신 int 가능
+
+    // 8번 제외한 모든 layer와 충돌
+    LayerMask groundLayer = ~(1<<8)
+    LayerMask groundLayer = ~groundLayer
+
+-----------------------------------------------------------------------
+
+<오브젝트 복제 생성 및 파괴>
+*GameObject 복제품_변수명 = Instantiate(복제할 객체, 생성 위치, 복제된 객체가 바라보는 방향)
+*RaycastHit.point //레이캐스트 맞은 위치
+*RaycastHit.normal //맞은 객체의 노말벡터(법선벡터)
+*Destroy(복제품_변수명, 몇 초 뒤 파괴);
+*hitInfo.transform.GetComponent<MeshRenderer>().material.color = Color.red;
+
+*예시)
+GameObject prefab; //복제할 객체. prefab에 현재 씬에 있는 오브젝트나 Prefab을 넣음
+GameObject clone = Instantiate(prefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal)); //생성 (복제오브젝트, 위치, 방향)
+Destroy(clone, 2f); //2초 뒤 파괴
+
+-----------------------------------------------------------------------
+
+<중력, gravity>
+*Edit > Project setting > physics에서 변경. 기본 9.81(전체 변경)
+*Physics.gravity = new Vector3(0,-10f,0); 스크립트에서 변경(전체 변경)
+*Constant Force 컴포넌트 추가하고 Force 벡터 값에 원하는 중력값 기입(해당 오브젝트만 변경)
+*(해당 오브젝트만 변경)
+float forceGravity = 50f;
+    private void FixedUpdate()
+      {
+          rigidbody.AddForce(Vector3.down * forceGravity);
+      }
+
+-----------------------------------------------------------------------
+
+<Rigidbody, 리지드바디>
+*물리엔진이 적용됨(중력, 무게 등). 보통 이동하는 물체에 적용함
+*Mass: 무게. 무겁다고 더 빨리 떨어지진 않음
+*Drag: 공기저항. 0.001금속 10깃털
+*Angular Drag: 회전 공기저항
+*Use Gravity: 체크 해제 하면 중력의 영향을 받지 않음. 이 객체를 이동시키려면 따로 코드를 작성해야 함.
+*Is Kinematic: 체크 하면 외부에서 가해지는 물리적 힘에 반응하지 않음
+*Interpolate: 이동 사이 추가 계산. Interpolate이 가장 좋지만 성능에 영향을 줌. Extrapolate 추천
+*Collision Detection: 이동하다가 충돌 시 벽이 뚫리는 현상 완화. Continuous 추천
+*Constraints-Freeze Position, Freeze Rotation: 체크 하면 고정됨. 중력 때문에 쓰러지는 것을 막아 줄 수 있음.
+
+*transform.position = Vector3 (Rigidbody.position이 성능에 좋음); //순간이동
+*Rigidbody.MovePosition(Vector3); //포지션으로 이동. 리지드바디 보간(rigidbody interpolation)이 활성화 돼 있으면, 매 프레임 렌더링 사이에서도 자연스러운 이동을 가질 수 있다
+*Rigidbody.MoveRotation(Vector3); //로테이션 회전. 쿼터니언 값만 가능
+*Rigidbody.velocity = Vector3; //무게와 관성을 무시하고 입력받은 속도로 이동
+*Rigidbody.AddForce(Vector3, ForceMode); //미는 힘
+
+*연속적인 힘
+ -자동차의 엑셀을 밟아서 가속을 넣듯이 가속을 추가해주는 방식
+ -이미 굴러가고 있는 중에 사용하기 적합
+ -무게 적용 ForceMode.Force //ForceMode 안쓰면 이게 기본값
+ -무게 무시 ForceMode.Acceleration
+
+*순간적인 힘
+ -마치 뒤에서 누가 밀듯이 순간적으로 속도를 주는 방식
+ -정지 상태에서 이동을 시작하려 할 때 적합
+ -무게 적용 ForceMode.Impulse
+ -무게 무시 ForceMode.VelocityChange
+
+-----------------------------------------------------------------------
+
+<Collider>
+*충돌체크용 컴포넌트
+*충돌체크 하려는 오브젝트 모두에 Collider가 있어야 함
+*Is Trigger: 체크 하면 트리거가 되어 관통이 됨
+*Material: Physic Material을 생성하고 넣으면 마찰력과 탄성력을 조절 가능. 벽에 적용하고 마찰력을 0으로 하면 벽타기 현상 없어짐. 경사면에 적용 시 쭉 미끄러짐
+-Dynamic Friction: 이동하고 있는 물체의 마찰력
+-Static Friction: 멈춰 있는 물체간의 마찰력. 첫 이동 시 적용
+-Bounciness: 탄성력. 1이면 에너지 손실 없이 통통 튐
+-Friction Combine: 두 물체간의 마찰력 적용값을 결정
+-Bounce Combine: 두 물체간의 탄성력 적용값을 결정
+
+*OnTrigger: 관통O, 물리적 계산은 하지 않고 충돌만 감지. 예)아이템 먹기
+*두 오브젝트 중 하나는 Collider의 Is Trigger가 true. 보통 움직이지 않는 오브젝트에 부여
+*두 오브젝트 중 하나는 Rigidbody가 있어야 함. 보통 움직이는 오브젝트에 부여
+*void OnTriggerEnter(Collider 변수명) //Trigger에 들어갔을 때
+*void OnTriggerStay(Collider 변수명) //Trigger안에 있을 때
+*void OnTriggerExit(Collider 변수명) //Trigger를 벗어날 때
+
+*OnCollision: 관통X, 물리적 계산과 충돌을 함께 감지. 예)대포를 쏴서 목표를 맞추면 부서질 때
+*한 오브젝트에는 Rigidbody가 있어야 함. 한 오브젝트는 is kinematic이 꺼져있어야 함
+*Is Trigger, Is Kinematic 비활성화
+*void OnCollisionEnter(Collision 변수명) //Collision에 충돌했을 때
+*void OnCollisionStay(Collision 변수명) //Collision과 충돌하는 중일 때
+*void OnCollisionExit(Collision 변수명) //Collision과 충돌에서 벗어났을 때
+
+*예시)
+void OnTriggerEnter(Collider other)
+{
+    if(other.gameObject(transform).tag == "Enemy")
+    {
+        // 충돌체 파괴
+        Destroy(col.gameObject);
+        // 총알도 파괴
+        Destroy(gameObject);
+    }
+}
+
+void OnCollisionEnter(Collision other)
+{
+	if (other.collider.tag == "Plunger")
+	{
+		isPlungerJump = true;
+		//myRigid.velocity = Vector3.zero;
+		myRigid.AddForce(Vector3.up * jumpHeight * 0.45f, ForceMode.Impulse);
+	}
+}
+
+-----------------------------------------------------------------------
+
+<Dictionary(추가 검색 삭제)>
+Dictionary<Key데이터형, Value데이터형> myDictionary = new Dictionary<Key데이터형, Value데이터형>()
+{
+    {Key0, Value0},
+    {Key1, Value1}
+};
+//초기값 안넣어도 됨
+
+*myDictionary.Add(Key0, Value0); //추가
+
+-----------------------------------------------------------------------
+
+<애니메이션>
+*유니티에서 변칙적인 이동을 갖는 물체(캐릭터)는 전체 씬과 따로 모션 애니메이팅, blend 폴더에 저장, 유니티에 따로 fbx로 임포트
+*씬에서 고정된 이동을 갖는 물체(캐릭터)는 씬 내에서 애니메이팅, 씬과 함께 blend 저장, 다른 씬이나 유니티에 쓰려면 애니메이팅 한 오브젝트만 따로 fbx 저장해서 임포트
+*블렌더에서 fbx 저장 시 Apply Scale = FBX Units Scale, apply transfrom 체크(돌아간 child는 유니티에서 부모인 empty 돌리기), leaf 체크 해제, 4개 중 key all bones만 체크
+*크기 조절은 아마튜어 사이즈, 크기 애니메이션은 루트 본 사이즈, 유니티에서 이동은 아마튜어
+*export 하면 키프레임 0부터 시작
+*skinned mesh renderer 컴포넌트에 있는 Bounds가 카메라에서 벗어나면 오브젝트가 화면에서 사라짐. Edit Bounds로 카메라에 보이도록 조절하거나, Update When Offscreen을 체크해서 자동으로 늘어나게 만들어야 함. 아마튜어로 애니메이션을 준 오브젝트가 이에 해당. 보통 bone이 여러개면 발생함
+
+*Has Exit Time: 체크하면 해당 애니메이션이 끝까지 실행 후 종료
+*Exit Time: 해당 애니메이션의 종료 시점(1이면 끝까지 실행 후 종료)
+*Fixed Duration: 체크하면 Exit Time 값이 "시간", 체크 해제하면 "%비율"
+*Transition Duration(s): 이전 모션에서 다음 모션으로 갈 때 서서히 바뀔지 즉각 바뀔지를 설정
+*Transition Offset: 다음 모션을 어느 부분부터 실행할지를 설정
+
+*public Animator 변수명; //Animator 넣고 변수명으로 접근
+*변수명.SetTrigger("Animator_Parameters_Trigger_이름") //트리거 활성화. 자동으로 다시 꺼짐
+*변수명.ResetTrigger("Animator_Parameters_Trigger_이름") //트리거 비활성화
+*변수명.SetBool("Animator_Parameters_Bool_이름", true or false) //true나 false로 바꿔줌
+
+Animator.enabled = true/false; // 애니매이션 컴포넌트 활성/비활성
+Animator.Rebind(); // 애니매이션 재실행
+
+*뱀, 지렁이 같은 움직임 내는 법 Damped Transform(쉬움) https://learn.unity.com/tutorial/using-animation-rigging-damped-transform
+
+*Pose-Animation-Bake Action(애니메이션 굽기)
+Visual Keying: 화면에 보이는 최종 결과 그대로 굽기. constraints가 적용된 상태로 굽는 것
+Clear Constraints: 베이크 후에 constraints(follow path, ik 등) 없애기
+Overwrite Current Action: 굽는 프레임 범위 밖에 있는 키를 그대로 놔둠. 예를 들어서, 프레임 10부터 20까지 구울 때, 체크하면 그 외의 프레임에 있는 키가 없어지지 않음
+Bake Data: Pose는 뼈에, Object는 오브젝트에 키 적용. 유니티로 가져오려면 Pose로 뼈에 키를 적용해야 함
+
+-----------------------------------------------------------------------
+
+<오디오 Audio>
+*AudioListener 컴포넌트는 소리를 듣는 기능. MainCamera에 기본적으로 붙어 있음
+*오디오 클립은 Resources 폴더나 StreamingAssetsPath 폴더에 저장
+*원하는 오브젝트에 Audio-AudioSource 컴포넌트 추가. AudioClip에 sample 드래그 드랍
+*오디오 클립이 바뀌면 전에 나오던 소리가 끊김. 그래서 빈 오브젝트들을 만들어서 AudioSource를 각각 넣으면 낄끔하게 나옴. 오디오 파일을 하이어라키에 끌어 넣으면 AudioSource 컴포넌트가 있는 오브젝트가 만들어짐
+*https://freesound.org/    무료 사운드. Licenses의 creative commons 0가 저작권 무료
+*https://mp3cut.net/ko/    오디오 자르기
+
+*
+AudioSource.isPlaying : 음악이 지금 재생되고 있으면 참, 아니면 거짓
+AudioSource.Pause() : 음악 일시 정지
+AudioSource.Stop() : 음악 정지
+AudioSource.Play() : 음악 재생 
+*
+AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+AudioClip audioJump = (AudioClip)Resources.Load("jump", typeof(AudioClip));
+public AudioClip audioAttack;
+audioSource.clip = audioJump
+
+-----------------------------------------------------------------------
+
+<오브젝트 색, 투명도 변경>
+public GameObject maze_Main;
+public Material maze_Main2;
+maze_Main.GetComponent<Renderer>().material = maze_Main2; //매테리얼 변경
+
+*GetComponent<MeshRenderer>().material.color = Color.red;
+
+*gameObject.renderer.material.color로 접근
+
+*예시)
+Renderer flashColor;
+flashColor.material.color = new Color(R, G, B, A);
+
+*RGBA값은 0~1을 기준으로 들어감. 255를 기준으로 넣으려면 "0~255"/255f로 바꿔줘야함
+
+-----------------------------------------------------------------------
+
+<페이드 인(fade in), 페이드 아웃(fade out)>
+*캔버스-페이드인아웃 패널 오브젝트에 넣기
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class FadeInOutPanel : MonoBehaviour
+{
+    Image fadeOutPanel;
+    WaitForSeconds wait = new WaitForSeconds(0.01f);
+
+    void Start()
+    {
+        fadeOutPanel = gameObject.GetComponent<Image>();
+    }
+
+    // 페이드 아웃
+    public void StartFadeOut()
+    {
+        StartCoroutine(FadeOutCoroutine());
+    }
+
+    IEnumerator FadeOutCoroutine()
+    {
+        for(int i = 0; i < 100; i++)
+        {
+            if(fadeOutPanel.color.a <= 1f)
+            {
+                fadeOutPanel.color = new Color(0f, 0f, 0f, fadeOutPanel.color.a + (2.55f / 255f));
+                yield return wait;
+            }
+            else
+            {
+                break;
+            }
+        }
+        fadeOutPanel.color = new Color(0f, 0f, 0f, 1f);
+    }
+
+
+
+
+    // 페이드 인 //
+    public void StartFadeIn()
+    {
+        StartCoroutine(FadeInCoroutine());
+    }
+
+    IEnumerator FadeInCoroutine()
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            if (fadeOutPanel.color.a >= 0f)
+            {
+                fadeOutPanel.color = new Color(0f, 0f, 0f, fadeOutPanel.color.a - (2.55f / 255f));
+                yield return wait;
+            }
+            else
+            {
+                break;
+            }
+        }
+        fadeOutPanel.color = new Color(0f, 0f, 0f, 0f);
+    }
+}
+
+-----------------------------------------------------------------------
+
+<이펙트, 파티클>
+https://notyu.tistory.com/59
+
+ParticleSystem 변수명;
+변수명.Play();
+변수명.Stop();
+
+-----------------------------------------------------------------------
+
+<씬 전환>
+File > Build Settings에 Project의 scene을 드래그 앤 드롭
+using UnityEngine.SceneManagement; 
+SceneManager.LoadScene("SampleScene");
+
+-----------------------------------------------------------------------
+
+<스크립트, 컴포넌트 온오프>
+gameObject.GetComponent<스크립트나 컴포넌트명>().enabled = true/false;
+
+-----------------------------------------------------------------------
+
+<FPS 표시 및 제한>
+*Edit-Project Settings-Quality-V Sync Count를 Don't Sync로 바꿔야 프레임이 고정됨(수직동기화)
+*GamaManager 오브젝트에 넣어서 싱글톤 효과 받기(공용 스크립트)
+
+*첫 번째 방법
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class FPS_Limit : MonoBehaviour
+{
+    int fps;
+    public int fpsLimit;
+    public Text FPS_Text;
+
+    void Update()
+    {
+        
+    }
+
+    IEnumerator FPSCoroutine() {
+        while (true)
+        {
+            fps = (int)(1 / Time.deltaTime);
+            Debug.Log(1 / Time.deltaTime);
+            FPS_Text.text = (fps + "fps");
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+
+
+    void Start()
+    {
+        Application.targetFrameRate = fpsLimit;
+        StartCoroutine(FPSCoroutine());
+    }
+}
+
+
+
+
+*두 번째 방법
+using UnityEngine;
+using System.Collections;
+
+public class FPS_Limit : MonoBehaviour
+{
+
+    float deltaTime = 0.0f;
+
+    public int fpsLimit;
+
+    void Update()
+    {
+        deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
+    }
+
+    void OnGUI()
+    {
+        int w = Screen.width, h = Screen.height;
+
+        GUIStyle style = new GUIStyle();
+
+        Rect rect = new Rect(0, 0, w, h * 2 / 100);
+        style.alignment = TextAnchor.UpperLeft;
+        style.fontSize = h * 2 / 100;
+        style.normal.textColor = new Color(0.0f, 0.0f, 0.5f, 1.0f);
+        // float msec = deltaTime * 1000.0f;
+        float fps = 1.0f / deltaTime;
+        // string text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
+        string text = (Math.Round(fps) + "fps");
+        GUI.Label(rect, text, style);
+    }
+
+    void Start()
+    {
+        setLimit();
+    }
+
+    public void setLimit()
+    {
+        Application.targetFrameRate = fpsLimit;
+    }
+}
+
+
+
+
+*최종
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class FPS_Limit : MonoBehaviour
+{
+    /*
+    int fps;
+    public int fpsLimit;
+    public Text FPS_Text;
+
+    IEnumerator FPSCoroutine() {
+        while (true)
+        {
+            fps = (int)(1 / Time.deltaTime);
+            // Debug.Log(1 / Time.deltaTime);
+            FPS_Text.text = (fps + "fps");
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+    void Start()
+    {
+        Application.targetFrameRate = fpsLimit;
+        StartCoroutine(FPSCoroutine());
+    }
+    */
+
+    bool active = true;
+
+    float deltaTime = 0.0f;
+
+    public int fpsLimit;
+
+    void Update()
+    {
+        deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
+    }
+
+    void OnGUI()
+    {
+        if (active)
+        {
+            int w = Screen.width, h = Screen.height;
+
+            GUIStyle style = new GUIStyle();
+
+            Rect rect = new Rect(0, 0, w, h * 2 / 100);
+            style.alignment = TextAnchor.UpperLeft;
+            style.fontSize = h * 2 / 100;
+            style.normal.textColor = new Color(0.0f, 0.0f, 0.5f, 1.0f);
+            // float msec = deltaTime * 1000.0f;
+            float fps = 1.0f / deltaTime;
+            // string text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
+            string text = (Math.Round(fps) + "fps");
+            GUI.Label(rect, text, style);
+        }
+    }
+
+    void Start()
+    {
+        setLimit();
+    }
+
+    public void setLimit()
+    {
+        Application.targetFrameRate = fpsLimit;
+    }
+
+    public void setActive(bool b)
+    {
+        active = b;
+    }
+}
+
+-----------------------------------------------------------------------
+
+<라이트맵 Bake 모드 종류>
+*라이트맵 관련 요소: 직접광, 간접광, 그림자
+*동적 오브젝트에 간접광을 비추려면 라이트프로브를 사용
+
+*baked indirect
+베이크: 간접광
+실시간: 직접광, 그림자
+실시간에 간접광을 추가한 거라서 비용이 더 비쌈
+
+*substractive
+베이크: 직접광, 간접광, 그림자
+실시간: x
+그림자를 미리 굽기 때문에 동적 오브젝트의 그림자와 색이 다름
+
+*shadowmask
+베이크: 간접광, 그림자
+실시간: 직접광
+맵이 크면 그림자 해상도가 떨어짐
+
+*distance shadowmask(보통 이거 사용)
+베이크: 간접광, 멀리 있는 그림자
+실시간: 직접광, 가까운 그림자
+가까우면 실시간 그림자라 그림자 해상도 문제가 없음
+
+*realtime(상황에 따라 사용)
+베이크: x
+실시간: 직접광, 그림자
+간접광이 없어서 안 예쁘지만, 플레이 중 라이트 변화가 클 때 적절함(방의 불을 끄고 키는 경우)
+
+-----------------------------------------------------------------------
+
+<라이트맵 베이킹, 라이팅>
+*유니티 조명 사용 전략 https://docs.unity3d.com/kr/2017.4/Manual/BestPracticeMakingBelievableVisuals3.html
+
+*안 움직이는 오브젝트 Static 체크(체크 해야 라이트맵 베이크 가능-)
+ -Contribute GI
+ -Occluder Static
+ -Occludee Static
+ -Batching Static
+ -Reflection Probe Static
+
+*라이트 종류
+ -Realtime: 실시간. 성능 많이 잡아먹고 라이트와 그림자 퀄리티가 안좋음. Specular 표현가능(Metalic이 정상적으로 표현됨)
+ -Mixed: Static은 베이크로, 움직이는 오브젝트는 실시간으로 그려줌 
+ -Bake: 라이트과 그림자를 텍스쳐처럼 적용시켜줌(간접광 표현 가능). Specular 표현 불가능(Metalic이 그냥 까맣게 나옴)
+
+*라이트 설정
+ -모바일, 저사양 기기는 Distance Shadowmap + light probe, 사양 괜찮으면 그냥 realtime 쓴다고 함
+ -밝기가 고정인 장소: 해당 장소 static 체크-Area light 포함-mixed(baked면 Shadowmask 못 씀)-Shadowmask(정적 오브젝트에 스펙큘라 하이라이트 적용됨)-라이트 프로브=동적 오브젝트의 그림자 있고 간접광도 받음(Area light는 동적 오브젝트 실시간 그림자랑 라이트 없음)
+ -밝기가 변하는 장소: 해당 장소 static 해제-Area light 제외-realtime=동적 오브젝트는 그림자랑 라이트를 받지만 간접광은 없음(라이트 프로브 적용 안 됨)
+ -예시: 불 꺼진 방-Point light realtime, 불 항상 켜있는 복도-Area light mixed Shadowmask 라이트 프로브(그림자 없음), 낮 고정인 야외-Directional light mixed Shadowmask 라이트 프로브(그림자 있음)
+ -포인트 라이트는 서로 안 겹치는 Range까지 늘리고 그 다음 Intensity 올리기. 서로 겹치면 밝기랑 광원이 이상해짐
+ -라이트의 Render Mode는 Important
+ -Realtime Global Illumination 끄기
+ -Lighting Mode는 Shadowmask(Edit-Project Settings-Quality-Shadowmask Mode-Distance Shadowmask 말고 그냥 Shadowmask)
+ -Distance Shadowmask는 가까우면 실시간 그림자(정적 오브젝트 포함), 멀면 쉐도우마스크로 그려진다(동적 오브젝트는 그림자 안 그려짐)
+ -움직이는 오브젝트는 Light Probe 사용. 라이트 프로브를 적용받지 않을 오브젝트는 Mesh Renderer의 Light Probes를 Off로 바꾼다
+ -라이트 프로브는 그림자의 가장자리나 색이 변하는 구간에 배치하고 평면적으로 배치하지 않는다
+ -Light Mapper는 Enlighten(구식)보다 Progrssive(신식)가 좋다고 함
+ -Indirect Resolution(간접광)은 Lightmap Resolution의 1/10(Enlighten만 설정 가능)
+ -Lightmap Resolution은 라이트맵 얼마나 채워지는지 보면서 조절. 올리면 그림자 퀄리티 높아짐
+ -Lightmap Padding은 라이트맵의 오브젝트 사이 간격(기본값 2 사용)
+ -Lightmap Size는 4096(씬당 1~3장에 다 들어가는 게 좋음). 이후에 Project 항목에서 Max Size를 512~2048로 줄여서 쓰기
+ -Lightmap Compression(압축)은 용량을 줄여주지만 퀄리티 떨어지기 때문에 None
+ -Ambient Occlusion 켜기
+ -Max Distance 1
+ -Indirect Contribution 1(기본값 1)
+ -Direct Contribution 1(기본값 0)
+ -Directional Mode는 노말맵 없으면 Non-Directional, 있으면 Directional
+ -Albedo Boost(기본값 1이 물리적으로 정확)
+ -Indirect Intensity(간접광 강도. 기본값 1)
+ -여러 오브젝트를 합치지 말고 오브젝트당 한 개의 머터리얼만 사용하는 게 좋음. 여러 오브젝트를 하나로 묶어버리면 라이트맵 UV에서 오브젝트한테 할당되는 크기가 작아져서 이상해질 수 있음
+ -중요하지 않은 오브젝트나 단순히 크기만 커진 오브젝트는 Mesh Renderer에서 Scale In Lightmap 수치를 줄이면 좋다
+ -mixed 라이트로 구울 때 라이트의 그림자 생성이 켜져있어야 이후에도 리얼타임 조명, 그림자 효과가 작동
+
+*오브젝트 라이트맵 UV 설정
+ -Edit-project Setting-player-Static Batching 체크
+ -Material 옵션 하단에 Enable GPU Instancing 체크(같은 머터리얼끼리 묶어줘서 배칭 줄어듦)
+ -오버래핑 시 블렌더에서 가져온 fbx 파일 클릭 - 하단의 Generate Lightmap UVs 체크 - Margin Method를 조정한다
+ -오브젝트 UV 폈으면 Generate Lightmap UVs 끄기(오브젝트 내에서 UV가 서로 겹치면 안 됨. 그래서 똑같은 오브젝트가 여러개면 서로 따로 separate 해야 함). UV간 간격을 띄워야 함(smart unwrap margin 0.5)
+
+*오브젝트 텍스쳐맵
+ -diffuse와 normal(이미지 속성에서 normal로 사용 체크)
+ -노말맵 써야 해서 텍스쳐 아틀라스 안 함
+ -2048 UV맵에 고화질 텍스쳐(2048 추천) 넣고 유니티에서 max size 낮추기
+ -블렌더 프로젝트 폴더 안에 "Scene_001_이름" 폴더 생성 후 해당 씬에 사용되는 모든 텍스쳐를 집어넣기
+ -재사용할 만한 오브젝트는 "모델링파일" 폴더의 "fbx" 폴더에 텍스쳐와 함께 저장. 사용 시 블렌더에서 fbx 임포트 후 텍스쳐만 씬 폴더에 복사하기
+ -유니티 임포트:
+  1) 애니메이션이 있는 오브젝트를 제외한 모든 오브젝트 유니티 폴더에 fbx 저장
+  2) 애니메이션이 있는 오브젝트는 따로 fbx 저장
+  3) 블렌더에서 fbx 저장 시 apply transfrom 체크(돌아간 child는 유니티에서 부모인 empty 돌리기), leaf 체크 해제, 4개 중 key all bones만 체크
+  4) 블렌더 씬 폴더 안의 텍스쳐를 모두 복사해서 유니티 폴더에 붙여넣기(유니티 내에서 다시 메테리얼 생성 후 텍스처 적용. fbx는 텍스쳐를 못 가져옴)
+
+*Shadowmask 모드
+ -정적-정적 섀도우마스크
+ -정적-동적 라이트 프로브
+ -동적-동적 실시간
+ -동적-정적 실시간
+
+-----------------------------------------------------------------------
+
+<쉐이더(셰이더)>
+*렌더링 파이프라인
+  -Built in: 기본. 포워드 렌더링, 디퍼드 렌더링(고사양)
+  -URP(추천): 성능, 품질 업그레이드. 모바일, 콘솔, pc 최적화
+  -HDRP: 고사양 기기용
+*모바일: URP, 실시간 라이트 pixel light count 0이나 1로 개수 조절, Cutout보다 Transparent 사용, 그림자는 없거나 적게, 라이트맵 베이크, 라이트 프로브, 실시간 GI 끄기
+*pc: URP나 HDRP, Transparent보다 Cutout 사용, 섀도우 마스크(아니면 실시간 그림자 아예 없애거나 그림자 끄고 메쉬 없는 간단한 오브젝트 만들어서 위에서 아래로 쏘는 라이트로 그림자 넣기, 라이트맵 베이크, 조명이 바뀌거나 손전등 같은 거 쓰려면 실시간 라이트, URP는 라이트 연산 적음)
+
+*Edit-Project Settings-Graphics-Scriptable Render Pipeline Settings 눌러서 렌더링 품질 설정 가능
+*Create-Rendering-URP Asset(with Universal Renderer) 눌러서 생성 가능
+
+*포스트 프로세싱: 카메라 필터 같은 기능. 오브젝트 쉐이더와 같이 쓰면 멋있어짐. URP에서 Global Volume 만들어서 사용 가능. Tonemapping ACES 하면 영화같음. Bloom 하면 빛이 이쁨
+*쉐이더: 오브젝트에 쉐이더 적용. 빌트인, URP, HDRP는 적용 시 각자의 쉐이더만 사용 가능
+  -툰 쉐이더 만들기
+    1)에셋스토어 URP OToon + 아웃라인/외곽선(https://github.com/Brackeys/Efaround/blob/master/Efaround%20Unity%20Project/Assets/Standard%20Assets/Effects/ToonShading/Shaders/ToonBasic.shader)으로 툰 쉐이더 가능
+    2)https://bloodstrawberry.tistory.com/707 클릭 시 아웃라인 보이게 하기(기본, 선택 아웃라인 메테리얼 2개 사용)
+    3)클릭 시 외곽선이 나타날 오브젝트에 넣을 스크립트 코드
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class sss : MonoBehaviour
+{
+    [SerializeField]
+    Material outlineIdle;
+    [SerializeField]
+    Material outlineSelect;
+
+    [SerializeField]
+    Renderer[] renderers;
+    List<Material> materialList = new List<Material>();
+
+    private void OnMouseDown()
+    {
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            materialList.Clear();
+            materialList.AddRange(renderers[i].sharedMaterials);
+            materialList.Remove(outlineIdle);
+            materialList.Add(outlineSelect);
+
+            renderers[i].materials = materialList.ToArray();
+        }
+    }
+
+    private void OnMouseUp()
+    {
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            materialList.Clear();
+            materialList.AddRange(renderers[i].sharedMaterials);
+            materialList.Remove(outlineSelect);
+            materialList.Add(outlineIdle);
+
+            renderers[i].materials = materialList.ToArray();
+        }
+    }
+
+    void Start()
+    {
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            //renderers = this.GetComponent<Renderer>();
+
+            materialList.Clear();
+            materialList.AddRange(renderers[i].sharedMaterials);
+            materialList.Add(outlineIdle);
+
+            renderers[i].materials = materialList.ToArray();
+
+            //outline = new Material(Shader.Find("Custom/Outline Fill"));
+        }
+    }
+}
+
+-----------------------------------------------------------------------
+
+<싱글톤, singleton>
+*GamaManager 오브젝트에 넣어서 싱글톤 적용(공용 스크립트)
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class GameManager : MonoBehaviour
+{
+    // 싱글톤 //
+    // instance라는 변수를 static으로 선언을 하여 다른 오브젝트 안의 스크립트에서도 instance를 불러올 수 있게 합니다 
+
+    public static GameManager instance = null;
+
+    private void Awake()
+    {
+        if (instance == null) //instance가 null. 즉, 시스템상에 존재하고 있지 않을때
+        {
+            instance = this; // 내자신을 instance로 넣어줍니다.
+            DontDestroyOnLoad(gameObject); // OnLoad(씬이 로드 되었을때) 자신을 파괴하지 않고 유지
+        }
+        else
+        {
+            if (instance != this) // instance가 내가 아니라면 이미 instance가 하나 존재하고 있다는 의미
+            {
+                Destroy(this.gameObject); // 둘 이상 존재하면 안되는 객체이니 방금 AWake된 자신을 삭제
+            }
+        }
+    }
+    // 싱글톤 //
+
+    // GamaManager 오브젝트에 있는 다른 스크립트들
+    public FPS_Limit fps_Limit;
+    public SaveManager saveManager;
+    public TextFileManager textFileManager;
+}
+
+
+
+-----------------------------------------------------------------------
+
+<여러 경로들의 차이>
+*Application.dataPath: Assets 폴더를 뜻함. 빌드에 포함되는 폴더는 Resources랑 StreamingAssetsPath 등등. 파일이 해당 폴더에 있는 게 아니면 빌드에 포함되지 않음
+*Resource.Load: Resources 폴더를 뜻함. 근데 이상한 파일 하나에 싹 다 합쳐져서 저장되기 때문에 내용을 바꾸기 어려움
+*Application.streamingAssetsPath: StreamingAssetsPath 폴더를 뜻함. 빌드 하면 파일이 그대로 포함되고 읽기 쓰기가 되지만, 아이폰은 읽기만 가능. 대사를 여기에 저장하면 될 듯
+*Application.persistentDataPath: 사용자의 특정 경로 폴더에 저장함. 모든 기기에서 읽기 쓰기 가능. 세이브 파일 넣으면 될 듯. C:\Users\<user>\AppData\LocalLow\<company name>
+
+-----------------------------------------------------------------------
+
+<UI Camera, 카메라 스태킹, camera stacking, camera overlay>
+ui camera(포스트 프로세싱 체크 해제)를 오버레이로 쓰고, 메인 카메라의 카메라 스태킹에 추가
+캔버스는 ui 카메라 기준으로 하기
+
+-----------------------------------------------------------------------
+
+<대사 csv 파일, UI 텍스트 파일 읽기, 언어 변경>
+*엑셀로 CSV 파일을 열었을 때 한글이 깨진다면, 해당 CSV 파일을 메모장으로 열고 다른 이름으로 저장->인코딩을 Ansi로 바꿔서 저장. 내용 수정 이후 UTF-8로 바꿔야 유니티에서 한글 나옴
+
+
+
+
+*CSVReader 스크립트는 오브젝트에 넣지 않음(공용 static 스크립트)
+using UnityEngine;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using System.IO;
+
+public class CSVReader
+{
+    static string SPLIT_RE = @",(?=(?:[^""]*""[^""]*"")*(?![^""]*""))";
+    static string LINE_SPLIT_RE = @"\r\n|\n\r|\n|\r";
+    static char[] TRIM_CHARS = { '\"' };
+
+    public static List<Dictionary<string, object>> Read(string file)
+    {
+        var list = new List<Dictionary<string, object>>();
+        StringReader data = new StringReader(File.ReadAllText(Application.streamingAssetsPath + file));
+        //TextAsset data = Resources.Load(file) as TextAsset;
+
+        //var lines = Regex.Split(data.ToString(), LINE_SPLIT_RE);
+        var lines = Regex.Split(data.ReadToEnd(), LINE_SPLIT_RE);
+
+        if (lines.Length <= 1) return list;
+
+        var header = Regex.Split(lines[0], SPLIT_RE);
+        for (var i = 1; i < lines.Length; i++)
+        {
+
+            var values = Regex.Split(lines[i], SPLIT_RE);
+            if (values.Length == 0 || values[0] == "") continue;
+
+            var entry = new Dictionary<string, object>();
+            for (var j = 0; j < header.Length && j < values.Length; j++)
+            {
+                string value = values[j];
+                value = value.TrimStart(TRIM_CHARS).TrimEnd(TRIM_CHARS).Replace("\\", "");
+                object finalvalue = value;
+                int n;
+                float f;
+                if (int.TryParse(value, out n))
+                {
+                    finalvalue = n;
+                }
+                else if (float.TryParse(value, out f))
+                {
+                    finalvalue = f;
+                }
+                entry[header[j]] = finalvalue;
+            }
+            list.Add(entry);
+        }
+        return list;
+    }
+}
+
+
+
+
+*TextFileManager 스크립트는 언어 설정, 파일에서 읽어온 대사 및 UI 텍스트 저장. GameManager-TextFileManager 오브젝트에 넣기
+using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
+
+
+public class TextFileManager : MonoBehaviour
+{
+    // CSV 파일 대사가 저장되는 리스트
+    public List<Dictionary<string, object>> dialog; 
+    string DialogFileName;
+    
+    // UI 텍스트가 저장되는 리스트
+    public List<string> ui; // 전체 UI 문자열
+    string UIFileName;
+    string readLine;
+    StringReader stringReader;
+
+    // 대사, UI 텍스트 파일 읽어오기
+    public void Reload(int language)
+    {
+        switch (language)
+        {
+            case 0:
+                DialogFileName = "/Dialog_Text_KR.csv";
+                UIFileName = "/UI_Text_KR.txt";
+                break;
+
+            case 1:
+                DialogFileName = "/Dialog_Text_US.csv";
+                UIFileName = "/UI_Text_US.txt";
+                break;
+
+            default:
+                break;
+        }
+
+        // 대사 파일 읽어오기
+        dialog = CSVReader.Read(DialogFileName); 
+        
+        // UI 파일 읽어오기
+        stringReader = new StringReader(File.ReadAllText(Application.streamingAssetsPath + UIFileName));
+        ui.Clear();
+        for (int i = 0; i < 10000; i++)
+        {
+            readLine = stringReader.ReadLine();
+            if (readLine == null || readLine == string.Empty)
+            {
+                break;
+            }
+            ui.Add(readLine);
+        }
+    }
+}
+
+
+
+
+*DialogTimer는 씬매니저 오브젝트에 넣기. 대사 넣기와 사라지는 타이머 기능을 함
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class DialogTimer : MonoBehaviour
+{
+    // 대사 사라지는 타이머, 대사 넣기 
+    public Text dialogTexts;
+    float timer; // 대사 사라지는 타이머
+
+    void Update()
+    {
+        TextDelay();
+    }
+
+    // 다른 스크립트에서 대사 넣기 
+    public void putDialog(string text, float time)
+    {
+        timer = time;
+        dialogTexts.text = text;
+    }
+
+    // 대사 사라지는 타이머
+    void TextDelay()
+    {
+        if (timer > 0)
+        {
+            timer = timer - Time.deltaTime;
+        }
+
+        if (timer <= 0)
+        {
+            timer = 0;
+            dialogTexts.text = "";
+        }
+    }
+}
+
+-----------------------------------------------------------------------
+
+<json 파일로 데이터 저장 및 불러오기>
+*처음에 만든 예시
+using System;
+using System.Collections.Generic;
+using System.IO;
+using Unity.VisualScripting;
+using UnityEngine;
+
+[Serializable] // 객체를 바이트 형태로 변환하는 직렬화를 할 수 있게 함. 통신할 때는 문자열로 직렬화하여 주고 받는 것이 안전. 직렬화 해야 json으로 바꿀 수 있는 듯
+public class Data
+{
+    public int m_nLevel;
+    public Vector3 m_vecPositon;
+    public List<QQ> qlist = new List<QQ>();
+    //public QQ[] qlist = new QQ[10];
+
+    public void printData()
+    {
+        Debug.Log("Level : " + m_nLevel);
+        Debug.Log("Position : " + m_vecPositon);
+    }
+}
+
+[Serializable]
+public class QQ
+{
+    public int a;
+    public int b;
+    public int c;
+}
+
+public class JsonTest : MonoBehaviour
+{
+    public Data data;
+    public Data data2;
+    // Start is called before the first frame update
+    void Start()
+    {
+        data = new Data();
+        data.m_nLevel = 5;
+        data.m_vecPositon = new Vector3(1.4f, 2.6f, 3.8f);
+
+        data.qlist.Insert(0, new QQ());
+        data.qlist[0].a = 1;
+        data.qlist[0].b = 2;
+        data.qlist[0].c = 3;
+        /*
+        data.qlist[0] = new QQ();
+        */
+
+        // json 파일로 저장. ToJson은 json 포맷으로 직렬화하기
+        File.WriteAllText(Application.persistentDataPath + "/TestTest.json", JsonUtility.ToJson(data));
+   
+        // json 파일 읽어오기. FromJson은 다시 오브젝트로 전환하기
+        data2 = JsonUtility.FromJson<Data>(File.ReadAllText(Application.persistentDataPath + "/TestTest.json"));
+    
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
+
+
+
+
+*실제 사용 스크립트 코드
+*GameManager-SaveManager에 넣기
+using System;
+using System.IO;
+using UnityEngine;
+
+[Serializable] // 객체를 바이트 형태로 변환하는 직렬화를 할 수 있게 함. 통신할 때는 문자열로 직렬화하여 주고 받는 것이 안전. 직렬화 해야 json으로 바꿀 수 있는 듯
+public class SettingData
+{
+    public int language;
+    public float mouseSens;
+    //public int width; // 화면 너비
+    //public int height; // 화면 높이
+    //public bool fullScreen; // 전체 화면
+}
+
+public class SaveManager : MonoBehaviour
+{
+    void Start()
+    {
+        // 처음 게임 켰을 때 언어는 한글, 기본 감도가 0.5f이고, 설정 파일이 존재하면 받아오기
+        settingData.language = 0;
+        settingData.mouseSens = 0.5f;
+        //settingData.width = 1920;
+        //settingData.height = 1080;
+        //settingData.fullScreen = true;
+        ReloadSettingData();
+        GameManager.instance.textFileManager.Reload(settingData.language);
+    }
+
+    ////////////////////////////
+    ///// 유저 데이터 저장 /////
+    ////////////////////////////
+
+
+
+
+
+
+    ////////////////////////////
+    ///// 설정 데이터 저장 /////
+    ////////////////////////////
+    public SettingData settingData = new SettingData();
+
+    // 적용 버튼 OnClick()에 넣음. 데이터 저장하기
+    public void SaveSettingData()
+    {
+
+        // json 파일로 저장. ToJson은 json 포맷으로 직렬화하기
+        File.WriteAllText(Application.persistentDataPath + "/SettingData.json", JsonUtility.ToJson(settingData));
+    }
+
+    // 게임 시작 시 데이터 읽어오기
+    public void ReloadSettingData()
+    {
+        // json 파일 읽어오기. FromJson은 다시 오브젝트로 전환하기
+        if (File.Exists(Application.persistentDataPath + "/SettingData.json"))
+        {
+            settingData = JsonUtility.FromJson<SettingData>(File.ReadAllText(Application.persistentDataPath + "/SettingData.json"));  
+        }
+    }
+}
+
+
+
+-----------------------------------------------------------------------
+
+<플레이어 스탯 스크립터블 오브젝트>
+*플레이어 스크립트에 넣을 스크립터블 오브젝트를 만드는 스크립트. Asset-Create 맨 밑에 메뉴가 생성됨
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "PlayerStatSO", menuName = "Scriptable Object/PlayerStat", order = int.MaxValue)]
+public class PlayerStatScriptableObject : ScriptableObject
+{
+    public float mouseSens;
+
+    public void SetMouseSens()
+    {
+        mouseSens = GameManager.instance.mouseSensitiveScrollbar.value * 300f;
+    }
+}
+
+-----------------------------------------------------------------------
+
+<플레이어 컨트롤러, 이동 스크립트>
+*(공용 스크립트)
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{
+    // 플레이어 이동속도
+    public float walkSpeed;
+    public float runSpeed;
+    public float crouchSpeed;
+    public float applySpeed;
+    public float jumpForce;
+
+    // 상태 변수
+    private bool isWalk = false;
+    private bool isRun = false;
+    private bool isCrouch = false;
+    private bool isGround = true;
+
+    // 앉았을 때 얼마나 앉을지 결정하는 변수
+    [SerializeField]
+    private float crouchPosY;
+    private float originPosY;
+    private float applyCrouchPosY;
+
+    // 땅 착지 여부
+    public CapsuleCollider standCollider;
+    public CapsuleCollider crouchCollider;
+
+    // 마우스 감도
+    public float lookSensitivity;
+
+    // 카메라 한계
+    [SerializeField]
+    private float cameraRotationLimit;
+    private float currentCameraRotationX = 0;
+
+    // 필요한 컴포넌트
+    [SerializeField]
+    private Camera theCamera;
+    public Rigidbody myRigid;
+    //[SerializeField]
+    //private Animator animator;
+
+    private float _moveDirX;
+    private float _moveDirZ;
+
+    public RaycastHit hitInfo;
+
+    void Start()
+    {
+        // 초기화
+        applySpeed = walkSpeed;
+        originPosY = theCamera.transform.localPosition.y;
+        applyCrouchPosY = originPosY;
+    }
+
+    void Update()
+    {
+        IsGround();
+        TryJump();
+        TryRun();
+        TryCrouch();
+        //Walking();
+        CameraRotation();
+        CharacterRotation();
+        TryMove();
+    }
+
+    void FixedUpdate()
+    {
+        Move();
+    }
+
+    // 앉기 시도
+    private void TryCrouch()
+    {
+        if (!isRun)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                isCrouch = true;
+                Crouch();
+            }
+            if (Input.GetKeyUp(KeyCode.LeftControl))
+            {
+                isCrouch = false;
+                Crouch();
+            }
+        }
+    }
+
+    // 앉기 동작
+    private void Crouch()
+    {
+        if (isCrouch)
+        {
+            applySpeed = crouchSpeed;
+            applyCrouchPosY = crouchPosY;
+            standCollider.enabled = false;
+            crouchCollider.enabled = true;
+        }
+        else
+        {
+            applySpeed = walkSpeed;
+            applyCrouchPosY = originPosY;
+            standCollider.enabled = true;
+            crouchCollider.enabled = false;
+        }
+
+        StartCoroutine(CrouchCoroutine());
+        //animator.SetBool("Crouching", isCrouch);
+    }
+
+    // 부드러운 앉기 동작
+    IEnumerator CrouchCoroutine()
+    {
+        float _posY = theCamera.transform.localPosition.y;
+        int count = 0;
+
+        while (_posY != applyCrouchPosY)
+        {
+            count++;
+            _posY = Mathf.Lerp(_posY, applyCrouchPosY, 0.3f);
+            theCamera.transform.localPosition = new Vector3(0, _posY, 0f);
+            if (count > 15)
+            {
+                break;
+            }
+            yield return null; 
+        }
+        theCamera.transform.localPosition = new Vector3(0, applyCrouchPosY, 0);
+    }
+
+    // 지면 체크
+    private void IsGround()
+    {
+        isGround = Physics.Raycast(transform.position - transform.up * 0.1f, -transform.up, out hitInfo, 3.5f);
+        Debug.DrawRay(transform.position - transform.up * 0.1f, -transform.up * 3.5f, Color.red);
+    }
+
+    // 점프 시도
+    private void TryJump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && isGround == true)
+        {
+            Jump();
+        }
+    }
+
+    // 점프 동작
+    private void Jump()
+    {
+        myRigid.velocity = transform.up * jumpForce;
+    }
+
+
+    // 달리기 시도
+    private void TryRun()
+    {
+        if (Input.GetKey(KeyCode.LeftShift) && isWalk)
+        {
+            Running();
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift) || !isWalk)
+        {
+            RunningCancel();
+        }
+    }
+
+    // 달리기 동작
+    private void Running()
+    {
+        if (!isCrouch)
+        {
+            isRun = true;
+            applySpeed = runSpeed;
+            //animator.SetBool("Running", true);
+        }
+    }
+
+    // 달리기 취소
+    private void RunningCancel()
+    {
+        isRun = false;
+        if(isCrouch == true)
+        {
+            applySpeed = crouchSpeed;
+        }
+        else
+        {
+            applySpeed = walkSpeed;
+        }
+        
+        //animator.SetBool("Running", false);
+    }
+
+    /*
+    // 애니메이션
+    private void Walking()
+    {
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            animator.SetBool("WalkingF", true);
+        }
+        else if (Input.GetKeyUp(KeyCode.W))
+        {
+            animator.SetBool("WalkingF", false);
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            animator.SetBool("WalkingB", true);
+        }
+        else if (Input.GetKeyUp(KeyCode.S))
+        {
+            animator.SetBool("WalkingB", false);
+        }
+    }
+    */
+
+    private void TryMove()
+    {
+        _moveDirX = Input.GetAxisRaw("Horizontal"); // -1 0 1이 나옴
+        _moveDirZ = Input.GetAxisRaw("Vertical"); // -1 0 1이 나옴
+    }
+
+
+    // 플레이어 이동
+    private void Move()
+    {
+        Vector3 _moveHorizontal = transform.right * _moveDirX;
+        Vector3 _moveVertical = transform.forward * _moveDirZ;
+
+        Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * applySpeed; // normalized 벡터 길이를 1로 변화
+
+        myRigid.MovePosition(transform.position + _velocity * Time.deltaTime);  // Time.deltaTime의 값은 약 0.016이다.
+
+        MoveCheck(_velocity);
+    }
+
+    private void MoveCheck(Vector3 _velocity) //(float MoveXZ)
+    {
+        if (!isCrouch && isGround)
+        {
+            if (_velocity.magnitude >= 0.1f) { isWalk = true; } // Vector3.magnitude 0,0,0부터 좌표까지 거리
+            else if (_velocity.magnitude < 0.1f) { isWalk = false; }
+
+        }
+    }
+
+    // 좌우 캐릭터 회전
+    private void CharacterRotation()
+    {
+        float _yRotation = Input.GetAxisRaw("Mouse X");
+        Vector3 _characterRotationY = new Vector3(0f, _yRotation, 0f) * lookSensitivity * 300f * Time.deltaTime;
+        myRigid.MoveRotation(myRigid.rotation * Quaternion.Euler(_characterRotationY));
+    }
+
+    // 상하 카메라 회전
+    private void CameraRotation()
+    {
+        float _xRotation = Input.GetAxisRaw("Mouse Y");
+        float _cameraRotationX = _xRotation * lookSensitivity * 300f * Time.deltaTime;
+        currentCameraRotationX -= _cameraRotationX;
+        currentCameraRotationX = Mathf.Clamp(currentCameraRotationX, -cameraRotationLimit, cameraRotationLimit);
+
+        theCamera.transform.localEulerAngles = new Vector3(currentCameraRotationX, 0f, 0f);
+    }
+}
+
+-----------------------------------------------------------------------
+
+<팁, 자연스러운 이동>
+*유니티 최적화 https://mentum.tistory.com/538
+*쉐이더 기초(한글) https://celestialbody.tistory.com/5
+*쉐이더 튜토리얼(영어) https://www.ronja-tutorials.com/
+*마둠파 테크니컬 아트 연구소 https://blog.naver.com/mnpshino
+*라이팅 PDF 글 https://illu.tistory.com/m/1178
+*라이트맵 굽기 및 유니티 최적화 https://dawnhillfrog.tistory.com/5
+*유니티 조명 사용 전략 https://docs.unity3d.com/kr/2017.4/Manual/BestPracticeMakingBelievableVisuals3.html
+*유니티로 취업 못한다는 틀린 말임 https://gall.dcinside.com/mgallery/board/view/?id=game_dev&no=91225
+*유니티 물리엔진으로 움직임 구현하기 https://gall.dcinside.com/mgallery/board/view/?id=game_dev&no=19943
+*소소하게 써보는 나만의 유니티 최적화, 팁 https://gall.dcinside.com/mgallery/board/view/?id=game_dev&no=37808
+*모바일 최적화 https://rito15.github.io/posts/unity-mobile-optimization/
+
+*키 입력은 Update, 이동 계산은 FixedUpdate로 해야 벽뚫 현상 완화
+*벽뚫 관련 글(Edit -> Project Settings -> Physics -> Default Max Depenetration Velocity을 1000으로 올림)
+https://forum.unity.com/threads/what-are-the-necessary-settings-to-prevent-objects-passing-through-each-other-at-high-speeds.384519/
+*Rigidbody에 Drag 0, Angular 0, Extrapolate, Continuous, Constraints의 Freeze Rotation XYZ 모두 체크
+*몸통 Collider랑 벽 Collider에 각각 다른 Physic Material을 주고 마찰력 변경(Friction 2개 0으로, 플레이어는 0, 0, 0, friction combine, bounce combine을 maximum. 벽은 0, 0, 0. 땅은 1, 1, 0)
+*Mesh Collider는 벽뚫 현상이 심해서 다른 Collider 여러개로 만들면 좋음
+*이동은 Rigidbody.MovePosition 추천. AddForce는 관성 있어서 미끄러지는 표현 가능. velocity 수정은 유니티에서 비추천함
+*점프는 Rigidbody.MovePosition이나 Rigidbody.velocity를 써야 2단점프 구현 쉬움
+*플레이어 크기가 달라져도 속도는 똑같아서 어색할 수 있음
+*(안 해도 됨)Collider가 달린 움직이는 물체는 Rigidbody 달아 놓아야 움직일 때 성능 덜 먹음. 안 움직이는 물체는 Static 체크
+*게임오브젝트 하나당 콜라이더도 하나. 콜라이더 여러개 필요하면 자식오브젝트 만들어서 콜라이더 넣기
+*NullReferenceException 오류: 변수에 값이 지정되어 있지 않아서 나오는 오류. if(변수명 != null){실행할 코드}로 해결. Edit-Project Settings-Script Execution Order에서 스크립트 순서를 바꿔서도 해결 가능
+
+*플레이어는 모든 씬에서 동일한 사이즈(이동속도, 점프력 때문)
+*블렌더에서 position 빼고 Apply 하기
+*유니티에서는 전체 조정 할 때만 부모객체 만들어서 조정(부모객체 지우지 않기)
+*내부 오브젝트는 블렌더에서 조정하기
+*오브젝트 자체에 콜라이더를 적용하든, 자식 empty 오브젝트 만들어서 적용하든 아무렇게나 상황에 맞게 하면 됨
+*스크립트나 애니메이션은 오브젝트 위치에 부모객체 만들어서 적용하기
+
+*폴더 정리
+  -Art(각 폴더 하위에 각 씬 폴더 만들기)
+    -Animators: 애니메이터, 애니메이션 클립
+    -Materials: 메테리얼
+    -Models: 모델링 파일
+    -Prefabs: 프리팹
+    -Shaders: 셰이더
+    -Textures: 오브젝트 텍스처
+  -Downloads: 다운받은 에셋
+  -Scenes: 씬, 라이트맵(각 씬 폴더 만들기)
+  -Scripts: 스크립트(각 씬 폴더 만들기)
+  -Settings: 렌더링 세팅
+  -StreamingAssets: 빌드에 포함되는 폴더. 대사, UI 텍스트, 각종 언어 텍스트 등 읽기, 교체가 가능한 파일들(각 씬 폴더 만들기)
+  -Resources: 빌드에 포함되는 폴더. 이상한 파일 하나로 합쳐서 저장됨. 오디오, 비디오 등 읽기만 하는 파일들(각 씬 폴더 만들기)
+
+*최종:
+-----블렌더-----
+-동일한 맵에 있는 오브젝트면 블렌더에서는 그냥 한 파일(blend)로 만들기. 맵 이름 폴더 만들고 그 안에 blend랑 Textures 폴더 생성(UV map이랑 텍스처 저장)
+-2048 uv맵(smart uv)에 포토샵에서 고화질 이미지 넣고 png로 저장해서 유니티에서 max size 1024로 압축. 유니티에 텍스쳐 이미지만 가져와서 메테리얼 생성 후 이미지 적용. fbx는 각 오브젝트 따로따로 가져오기
+-uv맵 피는 거는 겹쳐도 상관 없고 디테일이 필요한 면만 크게 해도 됨. 라이트맵은 쓸거면 자동 generate 체크.
+-블렌더에서 만든 fbx(Apply Scale = FBX Units Scale, apply transfrom 체크(돌아간 child는 유니티에서 부모인 empty 돌리기), leaf 체크 해제, 4개 중 key all bones만 체크)파일은 유니티 프로젝트 Models 폴더에 바로 저장. 텍스처 파일도 유니티 Textures 폴더로 복사
+-임포트한 오브젝트가 이상하게 보이면 해당 오브젝트의 Material Properties-Settings-Show Backface 체크 해제, Object Data Properties-Normals-Auto Smooth 체크 해제
+-부모 오브젝트는 empty만 사용. 오브젝트를 다른 오브젝트 밑에 자식으로 넣지 않기(애니메이팅 곤란해지고 유니티에 가져오면 회전 이상해짐)
+-오브젝트마다 Object-Set Origin-Origin to Geometry 해주고, location은 놔두고 rotation이랑 scale만 apply 하기
+-Mesh-Clean Up-Make Planar Faces 써서 사각형 면들 평평하게 만들기
+
+-----유니티-----
+-Edit-project Setting-player-Static Batching 체크
+-Material 옵션 하단에 Enable GPU Instancing 체크(같은 머터리얼끼리 묶어줘서 배칭 줄어듦)
+-카메라 시야각 Horizontal 103 = Vertical 71
+-Windows-Rendering-Lighting-Environment에서 환경 라이트 색 및 그림자 색 설정 가능. 둘 다 검정 사용
+-리얼라이트나 Mixed(Distance Shadowmap) 사용(라이트의 Render Mode는 Important). 오브젝트 하나에 비출 수 있는 라이트 개수(최대 8)가 정해져 있음. Hard Shadows 사용.
+-투명 메테리얼은 메테리얼에서 Surface Type = Transparent, Blending Mode = Alpha
+-Global Volume에서 Tonemappaing ACES/Bloom Threshold 1, Intensity 10, Scatter 0.7 사용
+-라이트맵 굽는 시간 줄이려면 gpu로 하고, lightmap resolution 1부터 결과가 어색하지 않을 때까지 올리기. 올린 결과가 라이트맵 한 장에 다 들어갈 수 있게 max lightmap size 조절. progressive updates는 중간중간에 결과를 보여줌. realtime global illumination 체크 해제. baked lightmaps는 해당 씬에서 구운 라이트맵 데이터만 들어감. 
+-UI Canvas는 Canvas Scaler-UI Scale Mode = Scale With Screen Size, match width or height(1920X1080) = Height 1을 해야 화면 크기가 바껴도 UI 크기가 같이 조절됨. 사이즈는 건들지 말고 width height로 크기 맞추기
+
+*포토샵:
+스페이스바 or h: 화면 이동
+Alt+휠: 확대 축소
+Ctrl+d: 선택 취소
+Ctrl+a: 레이어 전체 선택
+q: 선택 해제
+Ctrl+t: 이미지 변형 후 엔터. Ctrl 누르고 하면 개별 점 변형
+Ctrl+레이어 클릭: 그림 있는 범위 선택
+Ctrl+e: 아래 레이어와 병합
+
+필요한 레이어만 보이게 하고 png 저장

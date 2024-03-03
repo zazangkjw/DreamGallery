@@ -3,7 +3,7 @@ using System.IO;
 using UnityEngine;
 
 [Serializable] // 객체를 바이트 형태로 변환하는 직렬화를 할 수 있게 함. 통신할 때는 문자열로 직렬화하여 주고 받는 것이 안전. 직렬화 해야 json으로 바꿀 수 있는 듯
-public class SettingData
+public struct SettingData
 {
     public int language; // 언어
     public float mouseSens; // 마우스 감도
@@ -42,7 +42,7 @@ public class SaveManager : MonoBehaviour
     ////////////////////////////
     ///// 설정 데이터 저장 /////
     ////////////////////////////
-    public SettingData settingData = new SettingData();
+    public SettingData settingData;
 
     // 적용 버튼 OnClick()에 넣음. 데이터 저장하기
     public void SaveSettingData()

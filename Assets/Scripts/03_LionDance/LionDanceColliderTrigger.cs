@@ -100,6 +100,7 @@ public class LionDanceColliderTrigger : MonoBehaviour
                     lionMonsterAnimator.Play("Balcony_All"); // 괴물이 발코니 창문으로 들어와 집을 돌아다니는 애니메이션 재생
                     StartCoroutine(SurviveTimerCoroutine(11f)); // 일정 시간 버티면 생존 엔딩
                     SetActiveFalseColliderTriggers();
+                    dogAnimationScript.StopBarking();
 
                     Debug.Log("괴물이 발코니 창문으로 들어와 집을 돌아다니는 애니메이션 재생. 일정 시간 버티면 생존 엔딩");
                 }
@@ -127,6 +128,7 @@ public class LionDanceColliderTrigger : MonoBehaviour
                     lionMonsterAnimator.Play("MyRoom_All"); // 괴물이 내 방 창문으로 들어와 집을 돌아다니는 애니메이션 재생
                     StartCoroutine(SurviveTimerCoroutine(12f)); // 일정 시간 버티면 생존 엔딩
                     SetActiveFalseColliderTriggers();
+                    dogAnimationScript.StopBarking();
 
                     Debug.Log("괴물이 내 방 창문으로 들어와 집을 돌아다니는 애니메이션 재생. 일정 시간 버티면 생존 엔딩");
                 }
@@ -161,6 +163,7 @@ public class LionDanceColliderTrigger : MonoBehaviour
                     lionMonsterAnimator.Play("SisRoom_All"); // 괴물이 누나 방 창문으로 들어와 집을 돌아다니는 애니메이션 재생
                     StartCoroutine(SurviveTimerCoroutine(11f)); // 일정 시간 버티면 생존 엔딩
                     SetActiveFalseColliderTriggers();
+                    dogAnimationScript.StopBarking();
 
                     Debug.Log("괴물이 누나 방 창문으로 들어와 집을 돌아다니는 애니메이션 재생. 일정 시간 버티면 생존 엔딩");
                 }
