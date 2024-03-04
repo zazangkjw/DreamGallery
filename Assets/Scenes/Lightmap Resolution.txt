@@ -1,3 +1,0 @@
-01_MainMenu = 
-02_ArtGallery = 
-03_LionDance = 75

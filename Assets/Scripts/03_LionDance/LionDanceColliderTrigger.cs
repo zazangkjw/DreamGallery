@@ -15,7 +15,6 @@ public class LionDanceColliderTrigger : MonoBehaviour
     public Animator dogAnimator;
     public DogAnimationScript dogAnimationScript;
     public Collider[] ColliderTriggers; // 트리거 콜라이더들
-    public PutDialogScript putDialogScript;
 
     enum Triggers
     {

@@ -1493,7 +1493,7 @@ GameObject:
   - component: {fileID: 1977119904}
   - component: {fileID: 1977119905}
   m_Layer: 0
-  m_Name: VhsNoise
+  m_Name: VhsStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1525,7 +1525,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 279774693434689347, guid: cd8bd5d3d09c1ab4fa93086d582ce4a3,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 75c7626b00b03d841aa35c4867a8f5ee, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c7e75b09c4ffb624f90c4f361501992c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
