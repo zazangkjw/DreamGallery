@@ -135,12 +135,11 @@ public class LoadSceneScript : MonoBehaviour
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(nextScene);
         asyncLoad.allowSceneActivation = false;
 
-        endSound.Play();
-
         yield return new WaitForSeconds(1f);
 
         endText.enabled = true;
-        
+        endSound.Play();
+
         yield return new WaitForSeconds(2f);
 
         while (!asyncLoad.isDone)
@@ -152,7 +151,6 @@ public class LoadSceneScript : MonoBehaviour
             else
             {
                 endText.enabled = false;
-                endSound.Stop();
                 System.GC.Collect();
                 yield return new WaitForSeconds(1f);
                 asyncLoad.allowSceneActivation = true;
