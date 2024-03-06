@@ -1520,7 +1520,7 @@ public class PlayerController : MonoBehaviour
 *벽뚫 관련 글(Edit -> Project Settings -> Physics -> Default Max Depenetration Velocity을 1000으로 올림)
 https://forum.unity.com/threads/what-are-the-necessary-settings-to-prevent-objects-passing-through-each-other-at-high-speeds.384519/
 *Rigidbody에 Drag 0, Angular 0, Extrapolate, Continuous, Constraints의 Freeze Rotation XYZ 모두 체크
-*몸통 Collider랑 벽 Collider에 각각 다른 Physic Material을 주고 마찰력 변경(Friction 2개 0으로, 플레이어는 0, 0, 0, friction combine, bounce combine을 maximum. 벽은 0, 0, 0. 땅은 1, 1, 0)
+*몸통 콜라이더 friction 0, 발 콜라이더 friction 1
 *Mesh Collider는 벽뚫 현상이 심해서 다른 Collider 여러개로 만들면 좋음
 *이동은 Rigidbody.MovePosition 추천. AddForce는 관성 있어서 미끄러지는 표현 가능. velocity 수정은 유니티에서 비추천함
 *점프는 Rigidbody.MovePosition이나 Rigidbody.velocity를 써야 2단점프 구현 쉬움
