@@ -12,6 +12,7 @@ public class LionDanceColliderTrigger : MonoBehaviour
     public Animator lionMonsterAnimator;
     public Collider lionMonsterCol;
     public LionDanceDirector lionDanceDirector;
+    public AudioSource monsterLaughing;
     public Animator dogAnimator;
     public DogAnimationScript dogAnimationScript;
     public Collider[] ColliderTriggers; // 트리거 콜라이더들
@@ -65,7 +66,6 @@ public class LionDanceColliderTrigger : MonoBehaviour
             case 1: // 부엌 가기
                 if (other == ColliderTriggers[(int)Triggers.kitchen]) // 부엌 트리거에 닿았을 때
                 {
-                    // 괴물 발소리 재생
                     step = 2;
                     ColliderTriggers[1].enabled = true;
                     ColliderTriggers[2].enabled = true;
