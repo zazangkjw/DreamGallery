@@ -45,7 +45,6 @@ public class ArtGallerySceneManager : MonoBehaviour
         // 해상도 받아오고 해상도 새로고침
         resolution.value = GameManager.instance.saveManager.settingData.resolution;
         isFullScreen.isOn = GameManager.instance.saveManager.settingData.isFullScreen;
-        Screen.SetResolution(GameManager.instance.saveManager.settingData.width, GameManager.instance.saveManager.settingData.height, isFullScreen.isOn);
 
         // 볼륨 받아오고 볼륨 새로고침
         volume.value = GameManager.instance.saveManager.settingData.volume;

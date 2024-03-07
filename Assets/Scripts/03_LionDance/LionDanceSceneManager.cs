@@ -49,7 +49,6 @@ public class LionDanceSceneManager : MonoBehaviour
         // 해상도 받아오고 해상도 새로고침
         resolution.value = GameManager.instance.saveManager.settingData.resolution;
         isFullScreen.isOn = GameManager.instance.saveManager.settingData.isFullScreen;
-        Screen.SetResolution(GameManager.instance.saveManager.settingData.width, GameManager.instance.saveManager.settingData.height, isFullScreen.isOn);
 
         // 볼륨 받아오고 볼륨 새로고침
         volume.value = GameManager.instance.saveManager.settingData.volume;
@@ -189,7 +188,7 @@ public class LionDanceSceneManager : MonoBehaviour
 
     IEnumerator FogOutCoroutine()
     {
-        while (fogMat.color.a > (75f / 255f))
+        while (fogMat.color.a > (0f / 255f))
         {
             fogMat.color = new Color(1f, 1f, 1f, fogMat.color.a - ((2.55f / 255f) * 10f * Time.deltaTime));
             yield return wait;
