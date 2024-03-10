@@ -28,6 +28,7 @@ public class SaveManager : MonoBehaviour
         settingData.volume = 0f;
         ReloadSettingData();
         GameManager.instance.textFileManager.Reload(settingData.language);
+        Screen.SetResolution(settingData.width, settingData.height, settingData.isFullScreen);
     }
 
     ////////////////////////////
