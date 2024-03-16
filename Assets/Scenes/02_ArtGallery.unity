@@ -330,7 +330,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 57f61c1efd98b4c408d0a919f999b88b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.325
+      value: 0.82
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 57f61c1efd98b4c408d0a919f999b88b,
         type: 3}
@@ -340,12 +340,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 57f61c1efd98b4c408d0a919f999b88b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.694
+      value: 2.45
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 57f61c1efd98b4c408d0a919f999b88b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 57f61c1efd98b4c408d0a919f999b88b,
         type: 3}
@@ -355,7 +355,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 57f61c1efd98b4c408d0a919f999b88b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 57f61c1efd98b4c408d0a919f999b88b,
         type: 3}
@@ -370,7 +370,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 57f61c1efd98b4c408d0a919f999b88b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 57f61c1efd98b4c408d0a919f999b88b,
         type: 3}
@@ -463,9 +463,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a909af89f62aa4e47a67dd31a8699859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 2.5
-  runSpeed: 5
-  crouchSpeed: 1.5
+  walkSpeed: 0.075
+  runSpeed: 0.125
+  crouchSpeed: 0.025
   applySpeed: 0
   jumpForce: 3.5
   crouchPosY: -0.3
