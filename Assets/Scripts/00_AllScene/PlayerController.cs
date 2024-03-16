@@ -282,7 +282,7 @@ public class PlayerController : MonoBehaviour
 
         if (isGround) // 땅에서는 속도 그대로 움직임
         {
-            myRigid.MovePosition(transform.position + _velocity * Time.deltaTime);  // Time.deltaTime의 값은 60프레임 기준 약 0.016이다.
+            myRigid.MovePosition(transform.position + _velocity);  // Time.deltaTime의 값은 60프레임 기준 약 0.016이다.
         }
         else // 공중에서는 선형 보간을 통해 방향과 속도가 서서히 바뀜
         {
@@ -295,7 +295,7 @@ public class PlayerController : MonoBehaviour
                 jumpVelocity = Vector3.Lerp(jumpVelocity, Vector3.zero, 0.1f); // 이동하지 않으면 속도가 점점 줄어듦
             }
             
-            myRigid.MovePosition(transform.position + jumpVelocity * Time.deltaTime);
+            myRigid.MovePosition(transform.position + jumpVelocity);
         }
 
         MoveCheck(_velocity);
@@ -305,8 +305,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!isCrouch)
         {
-            if (_velocity.magnitude >= 0.1f) { isWalk = true; } // Vector3.magnitude 0,0,0부터 좌표까지 거리
-            else if (_velocity.magnitude < 0.1f) { isWalk = false; }
+            if (_velocity.magnitude >= 0.01f) { isWalk = true; } // Vector3.magnitude 0,0,0부터 좌표까지 거리
+            else if (_velocity.magnitude < 0.01f) { isWalk = false; }
 
         }
     }

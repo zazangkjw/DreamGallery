@@ -81,6 +81,10 @@ public class LionDanceRaycast : MonoBehaviour
                         }
                     }
                 }
+                else
+                {
+                    mouseText.enabled = false; // 텍스트 없어짐
+                }
             }
 
             // step 3일 때. 발코니 창문 닫기
@@ -102,6 +106,10 @@ public class LionDanceRaycast : MonoBehaviour
 
                         Debug.Log("발코니 창문 닫음");
                     }
+                }
+                else
+                {
+                    mouseText.enabled = false; // 텍스트 없어짐
                 }
             }
 
@@ -127,6 +135,10 @@ public class LionDanceRaycast : MonoBehaviour
 
                         StartCoroutine(lionDanceColliderTrigger.SurviveTimerCoroutine(5f));
                     }
+                }
+                else
+                {
+                    mouseText.enabled = false; // 텍스트 없어짐
                 }
             }
         }
