@@ -792,7 +792,8 @@ public class FPS_Limit : MonoBehaviour
 *포스트 프로세싱: 카메라 필터 같은 기능. 오브젝트 쉐이더와 같이 쓰면 멋있어짐. URP에서 Global Volume 만들어서 사용 가능. Tonemapping ACES 하면 영화같음. Bloom 하면 빛이 이쁨
 *쉐이더: 오브젝트에 쉐이더 적용. 빌트인, URP, HDRP는 적용 시 각자의 쉐이더만 사용 가능
   -툰 쉐이더 만들기
-    1)에셋스토어 URP OToon + 아웃라인/외곽선(https://github.com/Brackeys/Efaround/blob/master/Efaround%20Unity%20Project/Assets/Standard%20Assets/Effects/ToonShading/Shaders/ToonBasic.shader)으로 툰 쉐이더 가능
+    1)에셋스토어 URP OToon + 아웃라인/외곽선(에셋 없어져서 이제 불가능)
+(https://github.com/Brackeys/Efaround/blob/master/Efaround%20Unity%20Project/Assets/Standard%20Assets/Effects/ToonShading/Shaders/ToonBasic.shader)으로 툰 쉐이더 가능
     2)https://bloodstrawberry.tistory.com/707 클릭 시 아웃라인 보이게 하기(기본, 선택 아웃라인 메테리얼 2개 사용)
     3)클릭 시 외곽선이 나타날 오브젝트에 넣을 스크립트 코드
 using System.Collections;

@@ -1,21 +1,23 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class LionDanceColliderTrigger : MonoBehaviour
 {
     public GameObject balconyDoor;
     public GameObject myRoomDoor;
     public GameObject sisRoomDoor;
+    public GameObject balconyWindow;
+    public GameObject kitchenWindow;
     public Animator lionMonsterAnimator;
     public Collider lionMonsterCol;
     public LionDanceDirector lionDanceDirector;
+    public LionDanceRaycast lionDanceRaycast;
     public AudioSource monsterLaughing;
     public Animator dogAnimator;
     public DogAnimationScript dogAnimationScript;
     public Collider[] ColliderTriggers; // 트리거 콜라이더들
+    public TextMeshProUGUI mouseText;
 
     enum Triggers
     {
@@ -203,6 +205,8 @@ public class LionDanceColliderTrigger : MonoBehaviour
         yield return new WaitForSeconds(8f);
         if (step == 3)
         {
+            mouseText.enabled = false;
+            balconyDoor.GetComponent<Outline>().enabled = false; // 외곽선 끄기
             step = 11;
             lionMonsterAnimator.Play("Balcony_All"); // 괴물이 발코니로 들어와 집을 돌아다니는 애니메이션 재생
             StartCoroutine(SurviveTimerCoroutine(11f)); // 일정 시간 버티면 생존 엔딩
@@ -248,6 +252,8 @@ public class LionDanceColliderTrigger : MonoBehaviour
         yield return new WaitForSeconds(6f);
         if (step == 9)
         {
+            mouseText.enabled = false;
+            kitchenWindow.GetComponent<Outline>().enabled = false; // 외곽선 끄기
             step = 11;
             lionMonsterAnimator.Play("Kitchen_All"); // 괴물이 부엌 창문으로 들어와 집을 돌아다니는 애니메이션 재생
             StartCoroutine(SurviveTimerCoroutine(10f)); // 일정 시간 버티면 생존 엔딩

@@ -10,6 +10,7 @@ public class ArtGalleryRaycast : MonoBehaviour
 {
     public RaycastHit hitInfo;
     public GameObject hitObject;
+    public GameObject preObject;
 
     public TextMeshProUGUI mouseText;
     public PutDialogScript putDialogScript;
@@ -37,35 +38,50 @@ public class ArtGalleryRaycast : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.forward, out hitInfo, 1.5f) && !artGallerySceneManager.isPausing && !putDialogScript.isClickMode)
         {
             hitObject = hitInfo.collider.gameObject;
-            CheckDreamObject();
         }
-
-        // 허공일 때
         else
         {
-            mouseText.enabled = false; // 텍스트 없어짐
+            hitObject = null;
         }
+
+        CheckObject();
     }
 
-    // 꿈 오브젝트 체크 메소드
-    private void CheckDreamObject()
-    {
-        if (hitObject == dreamObjects[0])
+    // 레이캐스트 오브젝트 체크 메소드
+    private void CheckObject()
+    { 
+        if (hitObject == dreamObjects[0]) // 꿈 오브젝트일 떄
         {
+            if (preObject != hitObject && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
+            {
+                preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
+                preObject = null;
+            }
+
+            preObject = hitObject;
+            preObject.GetComponent<Outline>().enabled = true; // 외곽선 켜기
+
             mouseText.text = GameManager.instance.textFileManager.ui[15]; // "꿈 속으로 들어가기" 텍스트 나옴
             mouseText.enabled = true;
 
             if (Input.GetKeyDown(KeyCode.E))
             {
+                preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
+                preObject = null;
+
                 ArtGalleryDirector.selectedDream = ArtGalleryDirector.Dreams.LionDance;
                 artGalleryDirector.LookVR();
             }
         }
-
-        // 허공일 때
         else
         {
-            mouseText.enabled = false; // 텍스트 없어짐
+            mouseText.enabled = false;
+
+            if (preObject != null)
+            {
+                preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
+                preObject = null;
+            }
         }
     }
 }
