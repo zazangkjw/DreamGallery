@@ -463,8 +463,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a909af89f62aa4e47a67dd31a8699859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 0.075
-  runSpeed: 0.125
+  walkSpeed: 0.05
+  runSpeed: 0.1
   crouchSpeed: 0.025
   applySpeed: 0
   jumpForce: 3.5
@@ -1321,7 +1321,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 58.715508
+    FieldOfView: 70.5328
     OrthographicSize: 5
     NearClipPlane: 0.01
     FarClipPlane: 1000
@@ -3801,7 +3801,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 58.715508
+    FieldOfView: 70.5328
     OrthographicSize: 5
     NearClipPlane: 0.01
     FarClipPlane: 1000
@@ -5378,7 +5378,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 58.715508
+    FieldOfView: 70.5328
     OrthographicSize: 5
     NearClipPlane: 0.01
     FarClipPlane: 1000
@@ -7910,7 +7910,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 58.715508
+    FieldOfView: 70.5328
     OrthographicSize: 5
     NearClipPlane: 0.01
     FarClipPlane: 1000
@@ -10242,7 +10242,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 58.715508
+  field of view: 70.5328
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -11712,6 +11712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitObject: {fileID: 0}
+  preObject: {fileID: 0}
   mouseText: {fileID: 1782199513}
   putDialogScript: {fileID: 1335499233}
   artGallerySceneManager: {fileID: 1335499232}
@@ -11804,7 +11805,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 58.715508
+  field of view: 70.5328
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -13189,6 +13190,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 763664267}
+    - targetCorrespondingSourceObject: {fileID: 1649713897742148439, guid: 480f8d12d146ff744b9c65d9c636b98e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1663061037}
     - targetCorrespondingSourceObject: {fileID: 2018835795332307285, guid: 480f8d12d146ff744b9c65d9c636b98e,
         type: 3}
       insertIndex: -1
@@ -13284,6 +13289,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1663061031}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1663061037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763664263}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.12300229, g: 1, b: 0, a: 1}
+  outlineWidth: 5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1708143724
 GameObject:
   m_ObjectHideFlags: 0
@@ -13737,7 +13760,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 1631670718}
   m_Lens:
-    FieldOfView: 58.715508
+    FieldOfView: 70.5328
     OrthographicSize: 5
     NearClipPlane: 0.01
     FarClipPlane: 1000
@@ -15595,7 +15618,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 1631670718}
   m_Lens:
-    FieldOfView: 58.715508
+    FieldOfView: 70.5328
     OrthographicSize: 5
     NearClipPlane: 0.01
     FarClipPlane: 1000
