@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ActiveObject
   - DoorAndWindow
+  - Platform
   layers:
   - Default
   - TransparentFX
