@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Playables;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -32,6 +33,8 @@ public class LionDanceSceneManager : MonoBehaviour
 
     void Start()
     {
+        GameManager.instance.urpRenderer.rendererFeatures[0].SetActive(false); // SSAO 끄기. 컷신 카메라가 프라이팬과 가까워서 이상하게 나오기 때문에 컷신 동안 비활성화
+
         Cursor.visible = false;
         fogMat.color = new Color(1f, 1f, 1f, (255f / 255f)); // 연기 초기화
 

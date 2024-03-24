@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -32,6 +33,8 @@ public class ArtGallerySceneManager : MonoBehaviour
 
     void Start()
     {
+        GameManager.instance.urpRenderer.rendererFeatures[0].SetActive(true);
+
         Cursor.visible = false;
 
         // 마우스 감도 받아오고 플레이어에게 적용

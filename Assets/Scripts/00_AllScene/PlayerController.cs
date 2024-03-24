@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private bool isGround = true;
     private bool isAbove = false;
     private bool isTryStand = false;
+    private bool isSetDragToZero = false;
 
     // 앉았을 때 얼마나 앉을지 결정하는 변수
     [SerializeField]
@@ -73,12 +74,16 @@ public class PlayerController : MonoBehaviour
         CharacterRotation();
         TryMove();
         CheckAbove();
+        ChangeDrag();
     }
 
     void FixedUpdate()
     {
         Move();
     }
+
+
+
 
     // 앉기 시도
     private void TryCrouch()
@@ -149,12 +154,15 @@ public class PlayerController : MonoBehaviour
             {
                 break;
             }
-            yield return null;
+            yield return new WaitForSeconds(0.016f);
         }
         theCamera.transform.localPosition = new Vector3(0, applyCrouchPosY, 0);
     }
 
-    // 머리 위에 물체가 있으면 못 일어남
+
+
+
+    // 머리 위 체크. 머리 위에 물체가 있으면 못 일어남
     void CheckAbove()
     {
         Debug.DrawRay(transform.position - transform.up * 0.7f, transform.up * 1.6f, Color.blue);
@@ -177,7 +185,7 @@ public class PlayerController : MonoBehaviour
         if(Physics.Raycast(transform.position - transform.up * 0.7f, -transform.up, out hitInfo, 0.3f))
         {
             isGround = true;
-            jumpVelocity = _velocity;
+            jumpVelocity = _velocity; // 점프하면 점프 직전의 이동 속도를 공중에서의 속도에도 적용
         }
         else
         {
@@ -185,11 +193,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+
+
     // 점프 시도
     private void TryJump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGround == true)
         {
+            StartCoroutine(SetDragToZero());
             Jump();
         }
     }
@@ -199,6 +211,32 @@ public class PlayerController : MonoBehaviour
     {
         myRigid.velocity = transform.up * jumpForce;
     }
+
+    // 플레이어 rigidbody의 drag 바꾸기. drag(공기 저항)가 0이면 밀렸을 때 안 멈추고 계속 미끄러지는 현상이 있음
+    private void ChangeDrag()
+    {
+        if (isGround && !isSetDragToZero) // 땅이면 drag 10
+        {
+            myRigid.drag = 10;
+        }
+        else if (!isGround && !isSetDragToZero) // 공중이면 drag 0
+        {
+            myRigid.drag = 0;
+        }
+    }
+
+    // 점프키를 누르고 0.1초 동안은 drag를 0으로 유지. 이게 없으면 점프하자마자 땅이 감지되고 drag가 10이 되어서 점프를 못 함
+    IEnumerator SetDragToZero()
+    {
+        isSetDragToZero = true;
+        myRigid.drag = 0;
+
+        yield return new WaitForSeconds(0.1f); // 점프 후 0.1초 동안은 drag가 0이고, 이후에 땅에 닿으면 다시 10으로 변환
+
+        isSetDragToZero = false;
+    }
+
+
 
 
     // 달리기 시도
@@ -241,6 +279,9 @@ public class PlayerController : MonoBehaviour
         //animator.SetBool("Running", false);
     }
 
+
+
+
     /*
     // 애니메이션
     private void Walking()
@@ -265,14 +306,16 @@ public class PlayerController : MonoBehaviour
     }
     */
 
+
+
+
+    // 플레이어 이동
     private void TryMove()
     {
         _moveDirX = Input.GetAxisRaw("Horizontal"); // -1 0 1이 나옴
         _moveDirZ = Input.GetAxisRaw("Vertical"); // -1 0 1이 나옴
     }
 
-
-    // 플레이어 이동
     private void Move()
     {
         _moveHorizontal = transform.right * _moveDirX;
@@ -294,7 +337,7 @@ public class PlayerController : MonoBehaviour
             {
                 jumpVelocity = Vector3.Lerp(jumpVelocity, Vector3.zero, 0.1f); // 이동하지 않으면 속도가 점점 줄어듦
             }
-            
+
             myRigid.MovePosition(transform.position + jumpVelocity);
         }
 
@@ -310,6 +353,9 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+
+
+
 
     // 좌우 캐릭터 회전
     private void CharacterRotation()

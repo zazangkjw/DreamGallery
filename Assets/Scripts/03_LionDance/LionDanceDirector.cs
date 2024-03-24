@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class LionDanceDirector : MonoBehaviour
@@ -17,6 +18,9 @@ public class LionDanceDirector : MonoBehaviour
 
     public RawImage fadeInOutImage; // 페이드-인, 아웃 이미지
     public FadeInOutScript fadeInOutScript; // 페이드-인, 아웃 스크립트
+
+    public BlackBar blackBar; // 블랙바 스크립트
+
 
 
 
@@ -35,6 +39,7 @@ public class LionDanceDirector : MonoBehaviour
         directorCam.SetActive(true);
         mouseText.enabled = false;
 
+        blackBar.BlackBarOnImmediately();
         fadeInOutImage.color = new Color(0f, 0f, 0f, 1f);
         fadeInOutScript.FadeOut(fadeInOutImage);
         openingDirector.Play();
@@ -42,12 +47,26 @@ public class LionDanceDirector : MonoBehaviour
 
         yield return new WaitForSeconds(8f);
 
+        GameManager.instance.urpRenderer.rendererFeatures[0].SetActive(true); // SSAO 켜기
+
         directorCam.SetActive(false);
         player.SetActive(true);
 
         // 오프닝 대사
         putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[0]["Content"],
                                                                (string)GameManager.instance.textFileManager.dialog[1]["Content"]});
+
+        yield return new WaitForSeconds(0.1f);
+
+        while (true)
+        {
+            if (!putDialogScript.isClickMode)
+            {
+                blackBar.BlackBarOff();
+                break;
+            }
+            yield return new WaitForSeconds(0.016f);
+        }
     }
 
 
