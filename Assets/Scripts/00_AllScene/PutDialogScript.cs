@@ -150,11 +150,11 @@ public class PutDialogScript : MonoBehaviour
 
             if (isDialogArrowOn)
             {
-                dialogArrow.color = new Color(0f, 0f, 0f, dialogArrow.color.a - ((2.55f / 255f) * 50f * Time.deltaTime));
+                dialogArrow.color = new Color(1f, 1f, 1f, dialogArrow.color.a - ((2.55f / 255f) * 100f * Time.deltaTime));
             }
             else
             {
-                dialogArrow.color = new Color(0f, 0f, 0f, dialogArrow.color.a + ((2.55f / 255f) * 50f * Time.deltaTime));
+                dialogArrow.color = new Color(1f, 1f, 1f, dialogArrow.color.a + ((2.55f / 255f) * 100f * Time.deltaTime));
             }
             
             yield return wait;

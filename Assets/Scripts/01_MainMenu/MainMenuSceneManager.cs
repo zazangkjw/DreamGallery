@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Audio;
+using UnityEngine.Rendering.Universal;
 
 public class MainMenuSceneManager : MonoBehaviour
 {
@@ -26,7 +27,11 @@ public class MainMenuSceneManager : MonoBehaviour
 
     void Start()
     {
+        GameManager.instance.urpRenderer.rendererFeatures[0].SetActive(true);
+
         Cursor.visible = true;
+
+        ArtGalleryDirector.isFromDream = false;
 
         // 메뉴UI 활성화
         menuUI.SetActive(true);

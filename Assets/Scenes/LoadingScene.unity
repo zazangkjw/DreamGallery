@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1aa8b15168547d47b2d5a420f80328e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fpsLimit: 60
+  fpsLimit: 154
 --- !u!4 &28266994
 Transform:
   m_ObjectHideFlags: 0
@@ -1692,6 +1692,7 @@ MonoBehaviour:
   fps_Limit: {fileID: 28266993}
   saveManager: {fileID: 670294199}
   textFileManager: {fileID: 232443679}
+  urpRenderer: {fileID: 11400000, guid: c40be3174f62c4acf8c1216858c64956, type: 2}
 --- !u!4 &2043665318
 Transform:
   m_ObjectHideFlags: 0

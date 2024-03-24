@@ -18,7 +18,7 @@ public class DogAnimationScript : MonoBehaviour
         originalRotation = waist.transform.eulerAngles;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         LookPlayer();
     }

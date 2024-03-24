@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -32,4 +33,7 @@ public class GameManager : MonoBehaviour
     public FPS_Limit fps_Limit;
     public SaveManager saveManager;
     public TextFileManager textFileManager;
+
+    // GamaManager 오브젝트에 있는 객체들
+    public UniversalRendererData urpRenderer; // SSAO 컨트롤용 렌더러
 }
