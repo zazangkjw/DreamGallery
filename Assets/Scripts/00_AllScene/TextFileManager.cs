@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -35,8 +36,8 @@ public class TextFileManager : MonoBehaviour
         }
 
         // 대사 파일 읽어오기
-        dialog = CSVReader.Read(DialogFileName); 
-        
+        dialog = CSVReader.Read(DialogFileName);
+      
         // UI 파일 읽어오기
         stringReader = new StringReader(File.ReadAllText(Application.streamingAssetsPath + UIFileName));
         ui.Clear();

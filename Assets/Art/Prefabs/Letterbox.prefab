@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 581122665627650623}
   - component: {fileID: 1120148342243513186}
   m_Layer: 5
-  m_Name: BlackBar_Down
+  m_Name: Letterbox_Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 5078974094197344669}
   - component: {fileID: 2620876440730489848}
   m_Layer: 5
-  m_Name: BlackBar_Up
+  m_Name: Letterbox_Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 414514257516388275}
   - component: {fileID: 2357741601628705044}
   m_Layer: 5
-  m_Name: BlackBars
+  m_Name: Letterbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,5 +194,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 843bd1bf5458888449c9355bfa19ed77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blackBar_Up: {fileID: 2620876440730489848}
-  blackBar_Down: {fileID: 1120148342243513186}
+  letterbox_Up: {fileID: 2620876440730489848}
+  letterbox_Down: {fileID: 1120148342243513186}

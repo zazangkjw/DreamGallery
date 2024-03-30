@@ -5647,7 +5647,7 @@ MonoBehaviour:
   putDialogScript: {fileID: 1335499233}
   fadeInOutImage: {fileID: 1625502728}
   fadeInOutScript: {fileID: 1335499234}
-  blackBar: {fileID: 1993465987}
+  letterbox: {fileID: 1993465987}
   vrCamPos:
   - {fileID: 1510574558}
   vrPlayerPos:
@@ -9392,7 +9392,7 @@ PrefabInstance:
     - target: {fileID: 7563006867256521793, guid: 1574fcd641fb72f4da5266972536f310,
         type: 3}
       propertyPath: m_Name
-      value: BlackBars
+      value: Letterbox
       objectReference: {fileID: 0}
     - target: {fileID: 8446408510875719431, guid: 1574fcd641fb72f4da5266972536f310,
         type: 3}
@@ -9870,6 +9870,11 @@ PrefabInstance:
     - target: {fileID: 4409219465215256336, guid: e5c9ad3f4c2f62142b077a7006e1ffb4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836859385529375407, guid: e5c9ad3f4c2f62142b077a7006e1ffb4,
+        type: 3}
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6174134846618807026, guid: e5c9ad3f4c2f62142b077a7006e1ffb4,
