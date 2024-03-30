@@ -1,12 +1,15 @@
-일반 조명:
-mixed light(indirect multiplier 1, 베이크-간접광o 그림자o)
+일반 세팅:
+mixed light(indirect multiplier 1)
 light probe
 shadowmask
 
-불 꺼지고 켜지는 조명:
-mixed light(indirect multiplier 0, 베이크-간접광x 그림자o)
-light probe
-shadowmask
+
+불이 꺼지고 켜지는 장면:
+라이트맵 교체
+라이트 프로브 색 변경
+반사 프로브 다시 베이크
+라이트 끄기
+라이트 오브젝트의 이미션 머티리얼 교체
 
 
 Material:

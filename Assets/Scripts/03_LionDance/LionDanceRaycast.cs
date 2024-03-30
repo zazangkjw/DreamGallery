@@ -57,9 +57,9 @@ public class LionDanceRaycast : MonoBehaviour
         // step 0일 때. 문, 창문 다 열기
         if (lionDanceColliderTrigger.step == 0)
         {
-            for (int i = 0; i < doorAndWindow.Length; i++)
+            foreach(GameObject doorWindow in doorAndWindow)
             {
-                if (hitObject == doorAndWindow[i])
+                if (hitObject == doorWindow)
                 {
                     if (preObject != hitObject.GetComponent<GetComponentScript>().mesh && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
                     {

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class FadeInOutScript : MonoBehaviour
 {
-    WaitForSeconds wait = new WaitForSeconds(0.005f);
+    WaitForSeconds wait = new WaitForSeconds(0.016f);
 
     public void FadeIn(RawImage rawImage)
     {
@@ -23,7 +23,7 @@ public class FadeInOutScript : MonoBehaviour
         rawImage.color = new Color(rawImage.color.r, rawImage.color.g, rawImage.color.b, 0f);
         while (rawImage.color.a < 1f)
         {
-            rawImage.color = new Color(rawImage.color.r, rawImage.color.g, rawImage.color.b, rawImage.color.a + ((2.55f / 255f) * 50f * Time.deltaTime));
+            rawImage.color = new Color(rawImage.color.r, rawImage.color.g, rawImage.color.b, rawImage.color.a + (0.0111f));
             yield return wait;
         }
     }
@@ -34,7 +34,7 @@ public class FadeInOutScript : MonoBehaviour
         rawImage.color = new Color(rawImage.color.r, rawImage.color.g, rawImage.color.b, 1f);
         while (rawImage.color.a > 0f)
         {
-            rawImage.color = new Color(rawImage.color.r, rawImage.color.g, rawImage.color.b, rawImage.color.a - ((2.55f / 255f) * 50f * Time.deltaTime));
+            rawImage.color = new Color(rawImage.color.r, rawImage.color.g, rawImage.color.b, rawImage.color.a - (0.0111f));
             yield return wait;
         }
     }

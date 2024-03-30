@@ -19,7 +19,7 @@ public class LionDanceDirector : MonoBehaviour
     public RawImage fadeInOutImage; // 페이드-인, 아웃 이미지
     public FadeInOutScript fadeInOutScript; // 페이드-인, 아웃 스크립트
 
-    public BlackBar blackBar; // 블랙바 스크립트
+    public Letterbox letterbox; // 레터박스 스크립트
 
 
 
@@ -39,13 +39,13 @@ public class LionDanceDirector : MonoBehaviour
         directorCam.SetActive(true);
         mouseText.enabled = false;
 
-        blackBar.BlackBarOnImmediately();
+        letterbox.LetterboxOnImmediately();
         fadeInOutImage.color = new Color(0f, 0f, 0f, 1f);
         fadeInOutScript.FadeOut(fadeInOutImage);
         openingDirector.Play();
         frying.Play();
 
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(12f);
 
         GameManager.instance.urpRenderer.rendererFeatures[0].SetActive(true); // SSAO 켜기
 
@@ -62,7 +62,7 @@ public class LionDanceDirector : MonoBehaviour
         {
             if (!putDialogScript.isClickMode)
             {
-                blackBar.BlackBarOff();
+                letterbox.LetterboxOff();
                 break;
             }
             yield return new WaitForSeconds(0.016f);
