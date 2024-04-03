@@ -193,7 +193,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3
+  m_Intensity: 4
   m_Range: 3
   m_SpotAngle: 38.127117
   m_InnerSpotAngle: 29.929203
@@ -238,7 +238,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 6.04e-43, z: 1.1293e-41, w: 1.7219e-41}
+  m_BoundingSphereOverride: {x: 0, y: -2.36422e-12, z: 4.5904e-41, w: -2.4473482e+30}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -311,7 +311,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3
+  m_Intensity: 4
   m_Range: 3
   m_SpotAngle: 38.127117
   m_InnerSpotAngle: 29.929203
@@ -356,7 +356,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 8e-45, z: 1.9834e-41, w: 1.5067e-41}
+  m_BoundingSphereOverride: {x: -6.4859467e-34, y: NaN, z: 1.561e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -2458,7 +2458,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &514559663
 Transform:
   m_ObjectHideFlags: 0
@@ -4137,7 +4137,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3
+  m_Intensity: 4
   m_Range: 3
   m_SpotAngle: 38.127117
   m_InnerSpotAngle: 29.929203
@@ -4182,7 +4182,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 3.142e-42, z: 2.1537e-41, w: 1.147944e-39}
+  m_BoundingSphereOverride: {x: 0, y: -2.951955e+29, z: 4.93e-43, w: 8e-44}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -9306,7 +9306,7 @@ PrefabInstance:
     - target: {fileID: -6051440034611166208, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -6051440034611166208, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -9581,7 +9581,7 @@ PrefabInstance:
     - target: {fileID: -1659217980365752734, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -1659217980365752734, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -9901,7 +9901,7 @@ PrefabInstance:
     - target: {fileID: 1729659716719569157, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1729659716719569157, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -10051,7 +10051,7 @@ PrefabInstance:
     - target: {fileID: 3147664851315657448, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3147664851315657448, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -10166,7 +10166,7 @@ PrefabInstance:
     - target: {fileID: 4034211253740622162, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4034211253740622162, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -10191,7 +10191,7 @@ PrefabInstance:
     - target: {fileID: 4924987169474562951, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4924987169474562951, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -10232,7 +10232,7 @@ PrefabInstance:
     - target: {fileID: 5055425657383521488, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5055425657383521488, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -11913,7 +11913,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 3e-45, z: 2.2892e-41, w: 0}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 2.17e-43, z: 3.332e-42, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -13426,7 +13426,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3
+  m_Intensity: 4
   m_Range: 3
   m_SpotAngle: 38.127117
   m_InnerSpotAngle: 29.929203
@@ -13471,7 +13471,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 7e-45, z: 1.8723e-41, w: 2.9770772e-37}
+  m_BoundingSphereOverride: {x: 0, y: 6e-44, z: 6.53e-43, w: 3.156e-42}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
