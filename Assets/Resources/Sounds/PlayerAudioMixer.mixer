@@ -48,6 +48,8 @@ AudioMixerController:
     name: BGM
   - guid: da4f330abfdc7d94590168b70596a049
     name: Master
+  - guid: 2dfb397d2c5027b468a89d1e6ae546c0
+    name: Pitch
   - guid: 2ff674585c15da34ea50ec7861ac180b
     name: SFX
   m_AudioMixerGroupViews:

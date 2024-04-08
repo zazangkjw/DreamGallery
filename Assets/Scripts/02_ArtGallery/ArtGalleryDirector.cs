@@ -18,7 +18,7 @@ public class ArtGalleryDirector : MonoBehaviour
     public RawImage fadeInOutImage; // 페이드-인, 아웃 이미지
     public FadeInOutScript fadeInOutScript; // 페이드-인, 아웃 스크립트
 
-    public Letterbox letterbox; // 블랙바 스크립트
+    // public Letterbox letterbox; // 블랙바 스크립트
 
     public GameObject[] vrCamPos; // VR 기기 앞 vr 카메라 포지션 배열
     public GameObject[] vrPlayerPos; // VR 기기 앞 플레이어 포지션 배열
