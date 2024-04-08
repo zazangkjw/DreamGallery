@@ -76,7 +76,7 @@ public class LoadSceneScript : MonoBehaviour
         isLoadingImageOn = true;
         isFailLoadScene = false;
         isSuccessLoadScene = false;
-        SceneManager.LoadScene("LoadingScene");
+        SceneManager.LoadScene("00_LoadingScene");
     }
     public static void LoadScene(string sceneName) // 로딩 이미지가 없는 검은 화면 로딩
     {
@@ -84,7 +84,7 @@ public class LoadSceneScript : MonoBehaviour
         isLoadingImageOn = false;
         isFailLoadScene = false;
         isSuccessLoadScene = false;
-        SceneManager.LoadScene("LoadingScene");
+        SceneManager.LoadScene("00_LoadingScene");
     }
 
     // 로드 씬 코루틴
@@ -125,7 +125,7 @@ public class LoadSceneScript : MonoBehaviour
         isLoadingImageOn = false;
         isFailLoadScene = false;
         isSuccessLoadScene = true;
-        SceneManager.LoadScene("LoadingScene");
+        SceneManager.LoadScene("00_LoadingScene");
     }
 
     // 성공, 영상 종료 로드 씬 코루틴
@@ -169,7 +169,7 @@ public class LoadSceneScript : MonoBehaviour
         isLoadingImageOn = false;
         isFailLoadScene = true;
         isSuccessLoadScene = false;
-        SceneManager.LoadScene("LoadingScene");
+        SceneManager.LoadScene("00_LoadingScene");
     }
 
     // 죽어서 되돌리는 로드 씬 코루틴

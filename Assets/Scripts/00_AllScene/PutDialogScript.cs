@@ -14,6 +14,7 @@ public class PutDialogScript : MonoBehaviour
     float timer; // 대사 사라지는 타이머
     public PlayerController playerController;
 
+    bool isPrintMode;
     public bool isClickMode;
     int textNum;
     WaitForSeconds wait = new WaitForSeconds(0.005f);
@@ -88,6 +89,7 @@ public class PutDialogScript : MonoBehaviour
         {
             textStacks.Add(text[i]);
         }
+        isPrintMode = false;
         isClickMode = true;
         dialogText.text = textStacks[textNum];
         dialogText.enabled = true;
@@ -103,6 +105,7 @@ public class PutDialogScript : MonoBehaviour
         {
             textStacks.Add(text[i]);
         }
+        isPrintMode = true;
         isClickMode = true;
         TextPrint();
         dialogText.enabled = true;
@@ -118,7 +121,14 @@ public class PutDialogScript : MonoBehaviour
             textNum++;
             if (textStacks.Count > textNum)
             {
-                TextPrint();
+                if (isPrintMode)
+                {
+                    TextPrint();
+                }
+                else
+                {
+                    dialogText.text = textStacks[textNum];
+                }
             }
             else
             {

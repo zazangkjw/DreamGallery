@@ -19,7 +19,7 @@ public class LionDanceDirector : MonoBehaviour
     public RawImage fadeInOutImage; // 페이드-인, 아웃 이미지
     public FadeInOutScript fadeInOutScript; // 페이드-인, 아웃 스크립트
 
-    public Letterbox letterbox; // 레터박스 스크립트
+    // public Letterbox letterbox; // 레터박스 스크립트
 
 
 
@@ -38,9 +38,11 @@ public class LionDanceDirector : MonoBehaviour
         player.SetActive(false);
         directorCam.SetActive(true);
         mouseText.enabled = false;
-
-        letterbox.LetterboxOnImmediately();
         fadeInOutImage.color = new Color(0f, 0f, 0f, 1f);
+
+        yield return new WaitForSeconds(2f);
+
+        // letterbox.LetterboxOnImmediately();
         fadeInOutScript.FadeOut(fadeInOutImage);
         openingDirector.Play();
         frying.Play();
@@ -62,7 +64,7 @@ public class LionDanceDirector : MonoBehaviour
         {
             if (!putDialogScript.isClickMode)
             {
-                letterbox.LetterboxOff();
+                // letterbox.LetterboxOff();
                 break;
             }
             yield return new WaitForSeconds(0.016f);
@@ -77,7 +79,6 @@ public class LionDanceDirector : MonoBehaviour
     public GameObject lookMonsterCam1;
     public GameObject lookMonsterCam2;
     public GameObject lookMonsterCam3;
-    public AudioSource heartbeat;
     public AudioSource screaming;
 
     public void LookMonsterDirector()
@@ -87,18 +88,17 @@ public class LionDanceDirector : MonoBehaviour
 
     IEnumerator LookMonsterDirectorCoroutine()
     {
-        player.SetActive(false);
-        directorCam.SetActive(true);
-        mouseText.enabled = false;
+        //player.SetActive(false);
+        //directorCam.SetActive(true);
+        //mouseText.enabled = false;
 
-        lookMonsterDirector.Play();
+        //lookMonsterDirector.Play();
         lionMonsterAnimator.Play("ClimbUp"); // 괴물이 윗층으로 올라가는 애니메이션 재생
-        heartbeat.Play(); // 배경 심장소리 음악 재생
 
         yield return new WaitForSeconds(2.5f);
 
-        player.SetActive(true);
-        directorCam.SetActive(false);
+        //player.SetActive(true);
+        //directorCam.SetActive(false);
 
         yield return new WaitForSeconds(0.5f);
 

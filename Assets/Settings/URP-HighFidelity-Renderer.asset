@@ -303,6 +303,6 @@ MonoBehaviour:
   m_Name: OldMovieFx
   m_EditorClassIdentifier: 
   m_Active: 1
-  _event: 600
+  _event: 0
   _pass: {fileID: 775896017415462315}
   _blitShader: {fileID: 4800000, guid: c17132b1f77d20942aa75f8429c0f8bc, type: 3}

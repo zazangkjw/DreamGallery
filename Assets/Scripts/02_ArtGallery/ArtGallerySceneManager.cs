@@ -74,6 +74,7 @@ public class ArtGallerySceneManager : MonoBehaviour
         {
             Cursor.visible = true;
             isPausing = true;
+            audioMixer.SetFloat("Pitch", 0f);
             Time.timeScale = 0f;
             playerController.enabled = false;
             putDialogScript.enabled = false;
@@ -97,6 +98,7 @@ public class ArtGallerySceneManager : MonoBehaviour
     {
         Cursor.visible = false;
         isPausing = false;
+        audioMixer.SetFloat("Pitch", 1f);
         Time.timeScale = 1f;
         putDialogScript.enabled = true;
         if (!putDialogScript.isClickMode)
@@ -160,6 +162,7 @@ public class ArtGallerySceneManager : MonoBehaviour
     // 나가기 버튼
     public void PressExitButton()
     {
+        audioMixer.SetFloat("Pitch", 1f);
         Time.timeScale = 1f;
         LoadSceneScript.LoadScene("01_MainMenu");
     }
