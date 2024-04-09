@@ -238,7 +238,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: -2.36422e-12, z: 4.5904e-41, w: -2.4473482e+30}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 2.14e-43, z: 4.787e-42, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -356,7 +356,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: -6.4859467e-34, y: NaN, z: 1.561e-41, w: 0}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 1.5e-44, z: 3.935e-42, w: 1.794e-42}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -4187,7 +4187,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: -2.951955e+29, z: 4.93e-43, w: 8e-44}
+  m_BoundingSphereOverride: {x: 0, y: -1.6053491e-33, z: 4.5904e-41, w: -8.241871e+30}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -9108,7 +9108,7 @@ PrefabInstance:
     - target: {fileID: -7262280667690867034, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7262280667690867034, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -9183,7 +9183,7 @@ PrefabInstance:
     - target: {fileID: -6467061035743434601, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -6467061035743434601, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -9218,7 +9218,7 @@ PrefabInstance:
     - target: {fileID: -6241033486949411351, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -6241033486949411351, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -9388,7 +9388,7 @@ PrefabInstance:
     - target: {fileID: -4083440022733588565, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4083440022733588565, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -9398,7 +9398,7 @@ PrefabInstance:
     - target: {fileID: -3890573997990807111, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -3890573997990807111, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -9408,7 +9408,7 @@ PrefabInstance:
     - target: {fileID: -3602935792247728080, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -3602935792247728080, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -9453,7 +9453,7 @@ PrefabInstance:
     - target: {fileID: -2581437528847204547, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -2581437528847204547, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -9488,7 +9488,7 @@ PrefabInstance:
     - target: {fileID: -2351927740559804346, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -2351927740559804346, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -9553,7 +9553,7 @@ PrefabInstance:
     - target: {fileID: -1607878280305225844, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -1607878280305225844, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -9583,7 +9583,7 @@ PrefabInstance:
     - target: {fileID: -1460573415931612398, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -1460573415931612398, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -9593,7 +9593,7 @@ PrefabInstance:
     - target: {fileID: -1395203852532403831, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -1395203852532403831, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -9763,7 +9763,7 @@ PrefabInstance:
     - target: {fileID: -226416712046833247, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -226416712046833247, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -10018,7 +10018,7 @@ PrefabInstance:
     - target: {fileID: 3258007606846328082, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3258007606846328082, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -10113,7 +10113,7 @@ PrefabInstance:
     - target: {fileID: 3979009026068991433, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3979009026068991433, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -10239,7 +10239,7 @@ PrefabInstance:
     - target: {fileID: 5745698283742990334, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5745698283742990334, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -10339,7 +10339,7 @@ PrefabInstance:
     - target: {fileID: 7275993929591738818, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7275993929591738818, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -10354,7 +10354,7 @@ PrefabInstance:
     - target: {fileID: 7740829289724798637, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7740829289724798637, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -10379,7 +10379,7 @@ PrefabInstance:
     - target: {fileID: 7947798960681486583, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_ReceiveGI
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7947798960681486583, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
@@ -11870,7 +11870,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 2.17e-43, z: 3.332e-42, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: -1.6053491e-33, z: 4.5904e-41, w: -2.3497553e+31}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -13428,7 +13428,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 6e-44, z: 6.53e-43, w: 3.156e-42}
+  m_BoundingSphereOverride: {x: 5.2e-43, y: 1.39e-43, z: 0, w: -1.0538651e+31}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
