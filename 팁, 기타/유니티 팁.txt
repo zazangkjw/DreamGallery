@@ -1,5 +1,7 @@
 
 <기타>
+*Unity에서 Edit-Project Settings-Editor-Enter Play Mode Settings-Enter Play Mode Options 체크하기(유니티 에디터에서 Play Mode로 진입하는 속도를 대폭 향상시켜주는 기술, 속도를 향상시키기 위해서 도메인과 씬의 Reload과정을 생략)
+
 *프로젝트 옮기려면 export하거나 에셋, 프로젝트세팅 폴더만 복사. urp면 새 프로젝트 urp로 만들고 패키지 import(Assets 안에 있는 거 다 지우고 받기. 다른 사람꺼 받아올 때는 다른 사람꺼 폴더만 체크해서 받기)
 
 *클래스와 스크립트 이름이 같아야 함

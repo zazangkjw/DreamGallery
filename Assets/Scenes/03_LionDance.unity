@@ -1029,12 +1029,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &284670509 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -7828916553098095944, guid: 96a00bee936218e40acc8c1de70962c2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1455368584}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &301235221 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6127091690355082794, guid: 92e0e60a10099544b920e914b56a9c4d,
@@ -6406,7 +6400,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2090910825}
+  m_Father: {fileID: 1455368585}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1161566817 stripped
 MonoBehaviour:
@@ -8114,7 +8108,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -833120327091989201, guid: 96a00bee936218e40acc8c1de70962c2,
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 96a00bee936218e40acc8c1de70962c2,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1161102273}
@@ -8175,10 +8169,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dogAnim: {fileID: 1455368587}
   player: {fileID: 1610533564}
-  waist: {fileID: 284670509}
+  rootForUnity: {fileID: 1455368589}
   originalRotation: {x: 0, y: 0, z: 0}
   isLookPlayer: 0
   bark: {fileID: 1161102272}
+--- !u!1 &1455368589 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3502155106639530573, guid: 96a00bee936218e40acc8c1de70962c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1455368584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1456844568 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2246734901032744810, guid: 1e8faeb6c906ce440bd9ab54294375c5,
@@ -13692,12 +13692,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!4 &2090910825 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -833120327091989201, guid: 96a00bee936218e40acc8c1de70962c2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1455368584}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2117576492
 GameObject:
   m_ObjectHideFlags: 0

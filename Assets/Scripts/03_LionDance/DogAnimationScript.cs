@@ -6,7 +6,7 @@ public class DogAnimationScript : MonoBehaviour
 {
     public Animator dogAnim;
     public GameObject player;
-    public GameObject waist; // 개의 허리 Bone
+    public GameObject rootForUnity; // 개의 허리 Bone
     public Vector3 originalRotation; // 원래 로테이션값
     public bool isLookPlayer; // 플레이어를 바라볼지
 
@@ -15,7 +15,7 @@ public class DogAnimationScript : MonoBehaviour
     void Start()
     {
         isLookPlayer = true;
-        originalRotation = waist.transform.eulerAngles;
+        originalRotation = rootForUnity.transform.rotation.eulerAngles;
     }
 
     void FixedUpdate()
@@ -58,7 +58,7 @@ public class DogAnimationScript : MonoBehaviour
 
     public void disableLookPlayer() // 개가 플레이어 바라보기 비활성화
     {
-        waist.transform.eulerAngles = originalRotation;
+        rootForUnity.transform.rotation = Quaternion.Euler(originalRotation);
         isLookPlayer = false;
     }
 
@@ -66,7 +66,8 @@ public class DogAnimationScript : MonoBehaviour
     {
         if (isLookPlayer)
         {
-            waist.transform.rotation = Quaternion.Lerp(waist.transform.rotation, Quaternion.LookRotation(new Vector3(-(player.transform.position.x - waist.transform.position.x), waist.transform.position.y, -(player.transform.position.z - waist.transform.position.z))), 0.05f);
+            // rootForUnity.transform.rotation = Quaternion.Lerp(rootForUnity.transform.rotation, Quaternion.LookRotation(new Vector3(-(player.transform.position.x - rootForUnity.transform.position.x), rootForUnity.transform.position.y, -(player.transform.position.z - rootForUnity.transform.position.z))), 0.05f);
+            rootForUnity.transform.rotation = Quaternion.Lerp(rootForUnity.transform.rotation, Quaternion.LookRotation(new Vector3((player.transform.position.x - rootForUnity.transform.position.x), 0, (player.transform.position.z - rootForUnity.transform.position.z))) * Quaternion.Euler(new Vector3(-90f, 180f, 0)), 0.05f);
         }
     }
 }
