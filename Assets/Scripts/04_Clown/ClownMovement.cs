@@ -118,8 +118,8 @@ public class ClownMovement : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.forward, out hitInfoCenter, 10f, layerMask_Wall))
         {
-            clown.MovePosition(hitInfoCenter.point + (-hitInfoCenter.normal * 0.5f));
-            //clown.MoveRotation(hitInfo.transform.rotation);
+            clown.MovePosition(hitInfoCenter.point + (-hitInfoCenter.normal * 0.5f) + (Vector3.down * 1f));
+            clown.rotation = Quaternion.LookRotation(hitInfoCenter.normal) * Quaternion.Euler(new Vector3(0, 90f, 0));
         }
     } 
 }

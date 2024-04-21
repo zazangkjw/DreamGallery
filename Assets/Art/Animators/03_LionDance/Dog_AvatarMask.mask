@@ -15,37 +15,39 @@ AvatarMask:
     m_Weight: 0
   - m_Path: Armature_Dog/Root
     m_Weight: 0
-  - m_Path: Armature_Dog/Root/Waist
+  - m_Path: Armature_Dog/Root/RootForUnity
     m_Weight: 0
-  - m_Path: Armature_Dog/Root/Waist/Body
+  - m_Path: Armature_Dog/Root/RootForUnity/Waist
     m_Weight: 0
-  - m_Path: Armature_Dog/Root/Waist/Body/LegF_L
+  - m_Path: Armature_Dog/Root/RootForUnity/Waist/Body
+    m_Weight: 0
+  - m_Path: Armature_Dog/Root/RootForUnity/Waist/Body/LegF_L
     m_Weight: 1
-  - m_Path: Armature_Dog/Root/Waist/Body/LegF_L/LegF_L.001
+  - m_Path: Armature_Dog/Root/RootForUnity/Waist/Body/LegF_L/LegF_L.001
     m_Weight: 0
-  - m_Path: Armature_Dog/Root/Waist/Body/LegF_L/LegF_L.001/LegF_L.002
+  - m_Path: Armature_Dog/Root/RootForUnity/Waist/Body/LegF_L/LegF_L.001/LegF_L.002
     m_Weight: 0
-  - m_Path: Armature_Dog/Root/Waist/Body/LegF_R
+  - m_Path: Armature_Dog/Root/RootForUnity/Waist/Body/LegF_R
     m_Weight: 1
-  - m_Path: Armature_Dog/Root/Waist/Body/LegF_R/LegF_R.001
+  - m_Path: Armature_Dog/Root/RootForUnity/Waist/Body/LegF_R/LegF_R.001
     m_Weight: 0
-  - m_Path: Armature_Dog/Root/Waist/Body/LegF_R/LegF_R.001/LegF_R.002
+  - m_Path: Armature_Dog/Root/RootForUnity/Waist/Body/LegF_R/LegF_R.001/LegF_R.002
     m_Weight: 0
-  - m_Path: Armature_Dog/Root/Waist/Body/Neck
+  - m_Path: Armature_Dog/Root/RootForUnity/Waist/Body/Neck
     m_Weight: 0
-  - m_Path: Armature_Dog/Root/Waist/Body/Neck/Head
+  - m_Path: Armature_Dog/Root/RootForUnity/Waist/Body/Neck/Head
     m_Weight: 0
-  - m_Path: Armature_Dog/Root/Waist/LegB_L
+  - m_Path: Armature_Dog/Root/RootForUnity/Waist/LegB_L
     m_Weight: 1
-  - m_Path: Armature_Dog/Root/Waist/LegB_L/LegB_L.001
+  - m_Path: Armature_Dog/Root/RootForUnity/Waist/LegB_L/LegB_L.001
     m_Weight: 0
-  - m_Path: Armature_Dog/Root/Waist/LegB_L/LegB_L.001/LegB_L.002
+  - m_Path: Armature_Dog/Root/RootForUnity/Waist/LegB_L/LegB_L.001/LegB_L.002
     m_Weight: 0
-  - m_Path: Armature_Dog/Root/Waist/LegB_R
+  - m_Path: Armature_Dog/Root/RootForUnity/Waist/LegB_R
     m_Weight: 1
-  - m_Path: Armature_Dog/Root/Waist/LegB_R/LegB_R.001
+  - m_Path: Armature_Dog/Root/RootForUnity/Waist/LegB_R/LegB_R.001
     m_Weight: 0
-  - m_Path: Armature_Dog/Root/Waist/LegB_R/LegB_R.001/LegB_R.002
+  - m_Path: Armature_Dog/Root/RootForUnity/Waist/LegB_R/LegB_R.001/LegB_R.002
     m_Weight: 0
   - m_Path: Dog
     m_Weight: 0
