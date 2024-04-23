@@ -50,37 +50,51 @@ public class ArtGalleryRaycast : MonoBehaviour
     // 레이캐스트 오브젝트 체크 메소드
     private void CheckObject()
     { 
-        if (hitObject == dreamObjects[0]) // 꿈 오브젝트일 떄
+        foreach(GameObject col in dreamObjects)
         {
-            if (preObject != hitObject && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
+            if (hitObject == col) // 꿈 오브젝트일 떄
             {
-                preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
-                preObject = null;
+                if (preObject != hitObject && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
+                {
+                    preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
+                    preObject = null;
+                }
+
+                preObject = hitObject;
+                preObject.GetComponent<Outline>().enabled = true; // 외곽선 켜기
+
+                mouseText.text = GameManager.instance.textFileManager.ui[15]; // "꿈 속으로 들어가기" 텍스트 나옴
+                mouseText.enabled = true;
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
+                    preObject = null;
+
+                    // 무슨 꿈을 선택했는지
+                    if (hitObject == dreamObjects[0])
+                    {
+                        ArtGalleryDirector.selectedDream = ArtGalleryDirector.Dreams.LionDance;
+                    }
+                    else if(hitObject == dreamObjects[1])
+                    {
+                        ArtGalleryDirector.selectedDream = ArtGalleryDirector.Dreams.Clown;
+                    }
+
+                    artGalleryDirector.LookVR();
+                }
+
+                break;
             }
-
-            preObject = hitObject;
-            preObject.GetComponent<Outline>().enabled = true; // 외곽선 켜기
-
-            mouseText.text = GameManager.instance.textFileManager.ui[15]; // "꿈 속으로 들어가기" 텍스트 나옴
-            mouseText.enabled = true;
-
-            if (Input.GetKeyDown(KeyCode.E))
+            else
             {
-                preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
-                preObject = null;
+                mouseText.enabled = false;
 
-                ArtGalleryDirector.selectedDream = ArtGalleryDirector.Dreams.LionDance;
-                artGalleryDirector.LookVR();
-            }
-        }
-        else
-        {
-            mouseText.enabled = false;
-
-            if (preObject != null)
-            {
-                preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
-                preObject = null;
+                if (preObject != null)
+                {
+                    preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
+                    preObject = null;
+                }
             }
         }
     }
