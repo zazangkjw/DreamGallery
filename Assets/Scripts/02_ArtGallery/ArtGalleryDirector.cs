@@ -26,7 +26,8 @@ public class ArtGalleryDirector : MonoBehaviour
     public static bool isFromDream; // 꿈에서 다시 아트갤러리로 나온 것인지
     public enum Dreams // 꿈 번호와 씬 이름
     {
-        LionDance
+        LionDance,
+        Clown
     }
     public static Dreams selectedDream;
 
@@ -79,7 +80,9 @@ public class ArtGalleryDirector : MonoBehaviour
             case Dreams.LionDance:
                 LoadSceneScript.LoadScene("03_LionDance");
                 break;
-
+            case Dreams.Clown:
+                LoadSceneScript.LoadScene("04_Clown");
+                break;
             default:
                 break;
         }

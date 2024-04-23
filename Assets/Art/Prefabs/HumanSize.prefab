@@ -457,7 +457,7 @@ MonoBehaviour:
   crouchPosY: -0.3
   standCollider: {fileID: 4377094991589878669}
   crouchCollider: {fileID: 939743644317174623}
-  lookSensitivity: 0.5
+  lookSensitivity: 15
   cameraRotationLimit: 90
   theCamera: {fileID: 8808456680538861695}
   myRigid: {fileID: 939184853154282642}

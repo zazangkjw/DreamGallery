@@ -18,9 +18,9 @@ public class SaveManager : MonoBehaviour
 {
     void Start()
     {
-        // 처음 게임 켰을 때 언어는 한글, 기본 감도가 0.5f이고, 설정 파일이 존재하면 받아오기
+        // 처음 게임 켰을 때 언어는 한글, 기본 감도가 15f이고, 설정 파일이 존재하면 받아오기
         settingData.language = 0;
-        settingData.mouseSens = 5f;
+        settingData.mouseSens = 15f;
         settingData.resolution = 0;
         settingData.width = 1920;
         settingData.height = 1080;
