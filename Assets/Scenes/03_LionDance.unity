@@ -5581,6 +5581,12 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9761446, y: 2.5864303, z: 0.081970334}
   m_Center: {x: 0.05200383, y: 0.00000011920929, z: -0.0021570846}
+--- !u!4 &1047794093 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3851277692995055639, guid: 96a00bee936218e40acc8c1de70962c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1455368584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1059138407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6400,7 +6406,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1455368585}
+  m_Father: {fileID: 1047794093}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1161566817 stripped
 MonoBehaviour:
@@ -8108,7 +8114,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 96a00bee936218e40acc8c1de70962c2,
+    - targetCorrespondingSourceObject: {fileID: -3851277692995055639, guid: 96a00bee936218e40acc8c1de70962c2,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1161102273}
