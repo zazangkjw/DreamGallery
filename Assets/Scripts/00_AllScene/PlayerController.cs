@@ -335,7 +335,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                jumpVelocity = Vector3.Lerp(jumpVelocity, Vector3.zero, 0.1f); // 이동하지 않으면 속도가 점점 줄어듦
+                //jumpVelocity = Vector3.Lerp(jumpVelocity, Vector3.zero, 0.1f); // 이동하지 않으면 속도가 점점 줄어듦
             }
 
             myRigid.MovePosition(transform.position + jumpVelocity);
