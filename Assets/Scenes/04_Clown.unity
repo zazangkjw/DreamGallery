@@ -2557,6 +2557,21 @@ PrefabInstance:
       propertyPath: m_Cameras.Array.data[0]
       value: 
       objectReference: {fileID: 1103086454}
+    - target: {fileID: 1249086182956314288, guid: 744483f0613a8604d9e68249090ab01b,
+        type: 3}
+      propertyPath: runSpeed
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249086182956314288, guid: 744483f0613a8604d9e68249090ab01b,
+        type: 3}
+      propertyPath: walkSpeed
+      value: 0.075
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249086182956314288, guid: 744483f0613a8604d9e68249090ab01b,
+        type: 3}
+      propertyPath: crouchSpeed
+      value: 0.0375
+      objectReference: {fileID: 0}
     - target: {fileID: 6946000859983726810, guid: 744483f0613a8604d9e68249090ab01b,
         type: 3}
       propertyPath: m_Name
@@ -2798,7 +2813,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 2e-44, z: 3.87e-42, w: 4.305e-42}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 8.4e-44, z: 1.5856e-41, w: 1.2197e-41}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -3432,7 +3447,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.7960785, g: 0.7843138, b: 0.7568628, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3477,7 +3492,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 7e-44, z: 4.137e-42, w: 0}
+  m_BoundingSphereOverride: {x: 9.1835e-41, y: 1.8293658e-37, z: 4.070149e-37, w: 1.147945e-39}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
