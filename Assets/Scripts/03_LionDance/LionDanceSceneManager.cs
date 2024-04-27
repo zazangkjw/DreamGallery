@@ -20,7 +20,6 @@ public class LionDanceSceneManager : MonoBehaviour
     public AudioMixer audioMixer;
 
     public Material fogMat; // 안개 매테리얼
-    WaitForSeconds wait = new WaitForSeconds(0.005f);
 
     public PlayerController playerController; // 플레이어 컨트롤러 스크립트
     public LionDanceDirector lionDanceDirector; // 이 씬의 컷씬이 담겨있는 스크립트
@@ -194,10 +193,10 @@ public class LionDanceSceneManager : MonoBehaviour
 
     IEnumerator FogOutCoroutine()
     {
-        while (fogMat.color.a > (0f / 255f))
+        while (fogMat.color.a > 0f)
         {
-            fogMat.color = new Color(1f, 1f, 1f, fogMat.color.a - ((2.55f / 255f) * 10f * Time.deltaTime));
-            yield return wait;
+            fogMat.color = new Color(1f, 1f, 1f, fogMat.color.a - ((1f / 10f) * Time.deltaTime));
+            yield return null;
         }
     }
 }
