@@ -1,3 +1,17 @@
+baked indirect 세팅:
+*realtime = 실시간 직접광, 실시간 그림자, 실시간 gi
+*mixed = 실시간 직접광, 실시간 그림자, 베이크 gi
+*baked = 베이크 직접광, 그림자 x, 베이크 gi
+1. 동적 오브젝트: 라이트 프로브
+2. 정적 오브젝트: contribute gi 체크 +  라이트맵(필요시 라이트프로브)
+3. 땅이나 안 보이는 오브젝트: contribute gi 해제 + Probes Off. 이러면 직접광만 받음
+4. 동적 조명은 realtime
+5. 정적 조명은 mixed
+6. 태양(directional light)은 realtime + indirect multiplier 0
+7. 동적 오브젝트인데도 mixed나 baked 라이트를 가려서 gi를 어둡게 하고 싶다면, static, light probes 체크된 동일한 오브젝트를 놓은 채로 베이크한 후에 비활성화
+8. 정적 오브젝트는 실시간 gi 차단 가능. 동적 오브젝트는 실시간 gi 차단 불가능
+
+
 일반 세팅:
 mixed light(indirect multiplier 1)
 light probe
