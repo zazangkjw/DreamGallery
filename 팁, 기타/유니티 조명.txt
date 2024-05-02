@@ -1,9 +1,9 @@
-baked indirect 세팅:
+realtime gi + shadowmask 세팅:
 *realtime = 실시간 직접광, 실시간 그림자, 실시간 gi
-*mixed = 실시간 직접광, 실시간 그림자, 베이크 gi
-*baked = 베이크 직접광, 그림자 x, 베이크 gi
+*mixed = 실시간 직접광, 베이크 그림자, 베이크 gi
+*baked = 베이크 직접광, 베이크 그림자, 베이크 gi
 1. 동적 오브젝트: 라이트 프로브
-2. 정적 오브젝트: contribute gi 체크 +  라이트맵(필요시 라이트프로브)
+2. 정적 오브젝트: contribute gi 체크 + 라이트맵(필요시 라이트프로브)
 3. 땅이나 안 보이는 오브젝트: contribute gi 해제 + Probes Off. 이러면 직접광만 받음
 4. 동적 조명은 realtime
 5. 정적 조명은 mixed
