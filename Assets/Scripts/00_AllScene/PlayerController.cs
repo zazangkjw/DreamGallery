@@ -165,7 +165,7 @@ public class PlayerController : MonoBehaviour
     // 머리 위 체크. 머리 위에 물체가 있으면 못 일어남
     void CheckAbove()
     {
-        Debug.DrawRay(transform.position - transform.up * 0.7f, transform.up * 1.6f, Color.blue);
+        Debug.DrawRay(transform.position - transform.up * 0.7f, transform.up * 1.65f, Color.blue);
 
         if (Physics.Raycast(transform.position - transform.up * 0.7f, transform.up, out hitInfo, 1.6f))
         {
@@ -180,7 +180,7 @@ public class PlayerController : MonoBehaviour
     // 지면 체크
     private void IsGround()
     {
-        Debug.DrawRay(transform.position - transform.up * 0.7f, -transform.up * 0.3f, Color.red);
+        Debug.DrawRay(transform.position - transform.up * 0.7f, -transform.up * 0.2f, Color.red);
 
         if(Physics.Raycast(transform.position - transform.up * 0.7f, -transform.up, out hitInfo, 0.3f))
         {

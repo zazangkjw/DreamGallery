@@ -8,8 +8,7 @@ realtime gi + shadowmask 세팅:
 4. 동적 조명은 realtime
 5. 정적 조명은 mixed
 6. 태양(directional light)은 realtime + indirect multiplier 0
-7. 동적 오브젝트인데도 mixed나 baked 라이트를 가려서 gi를 어둡게 하고 싶다면, static, light probes 체크된 동일한 오브젝트를 놓은 채로 베이크한 후에 비활성화
-8. 정적 오브젝트는 실시간 gi 차단 가능. 동적 오브젝트는 실시간 gi 차단 불가능
+7. 씬에는 1개의 라이트 프로브만 적용됨
 
 
 일반 세팅:
