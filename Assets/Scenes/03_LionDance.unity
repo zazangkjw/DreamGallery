@@ -3933,12 +3933,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!4 &687045859 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4372262107169634552, guid: 2c906d44e40a82e49a379b9639b8e95b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1614397287}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &698988334
 GameObject:
   m_ObjectHideFlags: 0
@@ -9218,6 +9212,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 87
       objectReference: {fileID: 0}
+    - target: {fileID: -5313767162999600049, guid: 2c906d44e40a82e49a379b9639b8e95b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4b137e66869dd7c43ba79aa6b25583e5, type: 2}
     - target: {fileID: -5277950326391323406, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -10134,6 +10133,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a1c4571032766f44892eacc39c63bca6, type: 2}
+    - target: {fileID: 5299797166627598862, guid: 2c906d44e40a82e49a379b9639b8e95b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 87
+      objectReference: {fileID: 0}
     - target: {fileID: 5486150797741570122, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_Layer
@@ -10447,6 +10451,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2c906d44e40a82e49a379b9639b8e95b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2005937263}
     - targetCorrespondingSourceObject: {fileID: 2838241917085528083, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       insertIndex: -1
@@ -10459,10 +10467,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 474765285}
-    - targetCorrespondingSourceObject: {fileID: 4372262107169634552, guid: 2c906d44e40a82e49a379b9639b8e95b,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2005937263}
     - targetCorrespondingSourceObject: {fileID: 5159476750408310067, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       insertIndex: -1
@@ -13013,7 +13017,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 687045859}
+  m_Father: {fileID: 52028336}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2005937264
 AudioSource:
