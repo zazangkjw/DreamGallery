@@ -19,6 +19,7 @@ public class CircusLight : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(player.transform.position - transform.position), 0.2f);
         rb.MovePosition(Vector3.Lerp(rb.position, new Vector3(player.transform.position.x, rb.position.y, player.transform.position.z), 0.05f));
     }
 }

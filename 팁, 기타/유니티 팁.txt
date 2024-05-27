@@ -351,7 +351,7 @@ Dictionary<Key데이터형, Value데이터형> myDictionary = new Dictionary<Key
 <애니메이션>
 *유니티에서 변칙적인 이동을 갖는 물체(캐릭터)는 전체 씬과 따로 모션 애니메이팅, blend 폴더에 저장, 유니티에 따로 fbx로 임포트
 *씬에서 고정된 이동을 갖는 물체(캐릭터)는 씬 내에서 애니메이팅, 씬과 함께 blend 저장, 다른 씬이나 유니티에 쓰려면 애니메이팅 한 오브젝트만 따로 fbx 저장해서 임포트
-*블렌더에서 fbx 저장 시 Apply Scale = FBX Units Scale, apply transfrom 체크(돌아간 child는 유니티에서 부모인 empty 돌리기), leaf 체크 해제, 4개 중 key all bones만 체크
+*블렌더에서 fbx 저장 시 Apply Scale = FBX Units Scale, apply transfrom 체크(돌아간 child는 유니티에서 부모인 empty 돌리기), leaf 체크 해제, 4개 중 key all bones만 체크, Simplify 0(1이면 비슷한 키 프레임이 삭제되기 때문에 애니메이션이 이상하게 나옴. 참고: https://blender.stackexchange.com/questions/239254/what-does-the-simplify-option-when-exporting-to-fbx)
 *크기 조절은 아마튜어 사이즈, 크기 애니메이션은 루트 본 사이즈, 유니티에서 이동은 아마튜어
 *export 하면 키프레임 0부터 시작
 *skinned mesh renderer 컴포넌트에 있는 Bounds가 카메라에서 벗어나면 오브젝트가 화면에서 사라짐. Edit Bounds로 카메라에 보이도록 조절하거나, Update When Offscreen을 체크해서 자동으로 늘어나게 만들어야 함. 아마튜어로 애니메이션을 준 오브젝트가 이에 해당. 보통 bone이 여러개면 발생함

@@ -12,6 +12,8 @@ public class ClownRaycast : MonoBehaviour
     public TextMeshProUGUI mouseText;
     public PutDialogScript putDialogScript;
 
+    bool isChecking = true;
+
     [SerializeField]
     GameObject player;
 
@@ -28,6 +30,12 @@ public class ClownRaycast : MonoBehaviour
     GameObject elevator_Point_Player;
 
     GameObject button;
+
+    [SerializeField]
+    GameObject unicycle;
+
+    [SerializeField]
+    Animator unicycleAnim;
 
 
 
@@ -65,25 +73,70 @@ public class ClownRaycast : MonoBehaviour
 
     public void CheckObject()
     {
-        for(int i = 0; i < elevatorButtons.Length; i++)
+        isChecking = true;
+
+        // 엘리베이터 버튼
+        if (isChecking)
         {
-            if (hitObject == elevatorButtons[i])
+            foreach (GameObject btn in elevatorButtons)
             {
-                if (preObject != hitObject.GetComponent<GetComponentScript>().mesh && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
+                if (hitObject == btn)
+                {
+                    if (preObject != hitObject.GetComponent<GetComponentScript>().mesh && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
+                    {
+                        preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
+                        preObject = null;
+                    }
+
+                    preObject = hitObject.GetComponent<GetComponentScript>().mesh;
+                    preObject.GetComponent<Outline>().enabled = true; // 외곽선 켜기
+
+                    // E키 입력 시
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        StartCoroutine(ElevatorCoroutine());
+                    }
+
+                    isChecking = false; // 아래의 항목들은 체크하지 않음
+
+                    break;
+                }
+                else
+                {
+                    mouseText.enabled = false; // 텍스트 없어짐
+
+                    if (preObject != null)
+                    {
+                        preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
+                        preObject = null;
+                    }
+                }
+            }
+        }
+
+        // 외발자전거
+        if (isChecking)
+        {
+            if (hitObject == unicycle)
+            {
+                if (preObject != hitObject && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
                 {
                     preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
                     preObject = null;
                 }
 
-                preObject = hitObject.GetComponent<GetComponentScript>().mesh;
+                preObject = hitObject;
                 preObject.GetComponent<Outline>().enabled = true; // 외곽선 켜기
 
                 // E키 입력 시
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    StartCoroutine(ElevatorCoroutine());
+                    unicycleAnim.Play("Go");
+                    hitObject.GetComponent<Collider>().enabled = false; // 버튼 콜라이더 비활성화
+                    hitObject.GetComponent<Outline>().enabled = false; // 버튼 외곽선 비활성화
                 }
-                break;
+
+                isChecking = false; // 아래의 항목들은 체크하지 않음
             }
             else
             {
