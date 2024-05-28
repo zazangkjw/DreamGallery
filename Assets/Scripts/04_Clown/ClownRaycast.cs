@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class ClownRaycast : MonoBehaviour
@@ -14,30 +15,29 @@ public class ClownRaycast : MonoBehaviour
 
     bool isChecking = true;
 
+    public GameObject player;
     [SerializeField]
-    GameObject player;
+    Rigidbody playerRigid;
+    public GameObject Objects;
 
-    [SerializeField]
-    GameObject Objects;
 
     [SerializeField]
     Animator[] elevatorAnims;
-
     [SerializeField]
     GameObject[] elevatorButtons;
-
     [SerializeField]
     GameObject elevator_Point_Player;
+    GameObject elevatorBtn;
 
-    GameObject button;
+    public int life; // 도전 기회
+    public TextMeshProUGUI lifeText;
 
     [SerializeField]
     GameObject unicycle;
-
     [SerializeField]
-    Animator unicycleAnim;
-
-
+    GameObject unicycleSeat;
+    public GameObject successsPlatform;
+    public bool isFallFromUnicycle = false;
 
 
     void Start()
@@ -46,6 +46,8 @@ public class ClownRaycast : MonoBehaviour
         elevatorAnims[0].Play("Open");
         elevatorAnims[1].Play("Open");
         elevatorAnims[3].Play("Open");
+
+        life = 3;
     }
 
     void Update()
@@ -97,7 +99,7 @@ public class ClownRaycast : MonoBehaviour
                         StartCoroutine(ElevatorCoroutine());
                     }
 
-                    isChecking = false; // 아래의 항목들은 체크하지 않음
+                    isChecking = false; // 이후의 항목들은 체크하지 않음
 
                     break;
                 }
@@ -119,24 +121,22 @@ public class ClownRaycast : MonoBehaviour
         {
             if (hitObject == unicycle)
             {
-                if (preObject != hitObject && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
+                if (preObject != hitObject.GetComponent<GetComponentScript>().mesh && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
                 {
                     preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
                     preObject = null;
                 }
 
-                preObject = hitObject;
+                preObject = hitObject.GetComponent<GetComponentScript>().mesh;
                 preObject.GetComponent<Outline>().enabled = true; // 외곽선 켜기
 
                 // E키 입력 시
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    unicycleAnim.Play("Go");
-                    hitObject.GetComponent<Collider>().enabled = false; // 버튼 콜라이더 비활성화
-                    hitObject.GetComponent<Outline>().enabled = false; // 버튼 외곽선 비활성화
+                    StartCoroutine(UnicycleCoroutine());
                 }
 
-                isChecking = false; // 아래의 항목들은 체크하지 않음
+                isChecking = false; // 이후의 항목들은 체크하지 않음
             }
             else
             {
@@ -154,25 +154,84 @@ public class ClownRaycast : MonoBehaviour
     // 엘리베이터 버튼을 눌렀을 때
     IEnumerator ElevatorCoroutine()
     {
-        button = hitObject;
+        life = 3;
+        lifeText.text = life.ToString();
 
-        button.GetComponent<Collider>().enabled = false; // 버튼 콜라이더 비활성화
-        button.GetComponent<Outline>().enabled = false; // 버튼 외곽선 비활성화
-        button.GetComponent<NextElevatorPoint>().thisElevatorAnim.Play("Close");
+        elevatorBtn = hitObject;
 
-        elevator_Point_Player.transform.position = button.GetComponent<NextElevatorPoint>().thisPoint.transform.position; // elevator_Point_Player을 엘리베이터 포인트로 옮기고, 플레이어를 자식으로 넣어서
-        elevator_Point_Player.transform.rotation = button.GetComponent<NextElevatorPoint>().thisPoint.transform.rotation; // 2초 후에 다음 엘리베이터 포인트로 이동 후 자식 해제
+        elevatorBtn.GetComponent<Collider>().enabled = false; // 콜라이더 비활성화
+        preObject.GetComponent<Outline>().enabled = false; // 외곽선 비활성화
+
+        elevatorBtn.GetComponent<NextElevatorPoint>().thisElevatorAnim.Play("Close");
+
+        elevator_Point_Player.transform.position = elevatorBtn.GetComponent<NextElevatorPoint>().thisPoint.transform.position; // elevator_Point_Player을 엘리베이터 포인트로 옮기고, 플레이어를 자식으로 넣어서
+        elevator_Point_Player.transform.rotation = elevatorBtn.GetComponent<NextElevatorPoint>().thisPoint.transform.rotation; // 2초 후에 다음 엘리베이터 포인트로 이동 후 자식 해제
         player.transform.SetParent(elevator_Point_Player.transform);
 
         yield return new WaitForSeconds(2f);
 
-        elevator_Point_Player.transform.position = button.GetComponent<NextElevatorPoint>().nextPoint.transform.position;
-        elevator_Point_Player.transform.rotation = button.GetComponent<NextElevatorPoint>().nextPoint.transform.rotation;
+        elevator_Point_Player.transform.position = elevatorBtn.GetComponent<NextElevatorPoint>().nextPoint.transform.position;
+        elevator_Point_Player.transform.rotation = elevatorBtn.GetComponent<NextElevatorPoint>().nextPoint.transform.rotation;
 
         yield return new WaitForSeconds(2f);
 
-        button.GetComponent<NextElevatorPoint>().nextElevatorAnim.Play("Open");
+        elevatorBtn.GetComponent<NextElevatorPoint>().nextElevatorAnim.Play("Open");
         player.transform.SetParent(Objects.transform);
+    }
+
+    // 외발자전거를 눌렀을 때
+    IEnumerator UnicycleCoroutine()
+    {
+        isFallFromUnicycle = false;
+
+        unicycle = hitObject;
+
+        unicycle.GetComponent<Collider>().enabled = false; // 콜라이더 비활성화
+        preObject.GetComponent<Outline>().enabled = false; // 외곽선 비활성화
+
+        // 외발자전거 탑승
+        player.transform.SetParent(unicycleSeat.transform);
+        player.transform.position = unicycleSeat.transform.position;
+        player.transform.rotation = unicycleSeat.transform.rotation;
+
+        // 앉아있는 상태일 때 일어나게 만들기
+        transform.localPosition = new Vector3(0, player.GetComponent<PlayerController>().originPosY, 0);
+        player.GetComponent<PlayerController>().standCollider.enabled = true;
+        player.GetComponent<PlayerController>().crouchCollider.enabled = false;
+
+        // 컨트롤러 교체
+        player.GetComponent<PlayerController>().enabled = false;
+        player.GetComponent<UnicycleController>().enabled = true;
+        player.GetComponent<UnicycleController>().lookSensitivity = player.GetComponent<PlayerController>().lookSensitivity;
+        player.GetComponent<Rigidbody>().isKinematic = true;
+
+        unicycle.GetComponent<GetComponentScript>().animator.Play("Go");
+        unicycle.GetComponent<GetComponentScript>().animator.Play("WheelTurn", 1);
+        yield return new WaitForSeconds(8f);
+        unicycle.GetComponent<GetComponentScript>().animator.Play("Idle", 1);
+
+
+        // 외발자전거 하차
+        if (!isFallFromUnicycle)
+        {
+            player.transform.SetParent(Objects.transform);
+            player.transform.position = successsPlatform.transform.position + Vector3.up * 3;
+            player.transform.eulerAngles = new Vector3(0f, player.transform.eulerAngles.y, 0f);
+
+            // 컨트롤러 교체
+            player.GetComponent<PlayerController>().enabled = true;
+            player.GetComponent<UnicycleController>().enabled = false;
+            player.GetComponent<Rigidbody>().isKinematic = false;
+        }
+        else if(life > 0)
+        {
+            player.GetComponent<UnicycleController>().bodyForUnity.transform.localEulerAngles = player.GetComponent<UnicycleController>().originRotate;
+            unicycle.GetComponent<GetComponentScript>().animator.Play("Return");
+            unicycle.GetComponent<GetComponentScript>().animator.Play("WheelTurnReverse", 1);
+            yield return new WaitForSeconds(8f);
+            unicycle.GetComponent<GetComponentScript>().animator.Play("Idle", 1);
+            unicycle.GetComponent<Collider>().enabled = true; // 콜라이더 활성화
+        }
     }
 }
     

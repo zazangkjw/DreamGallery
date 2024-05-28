@@ -9,7 +9,7 @@ public class CircusFlash : MonoBehaviour
 
     bool[] flashesNum;
 
-    public float flashDelay = 1f; // 셔터 딜레이
+    public float flashDelay; // 셔터 딜레이
 
     public bool isFlashOn; // 셔터 온/오프
 
@@ -20,6 +20,7 @@ public class CircusFlash : MonoBehaviour
     {
         flashes = new GameObject[transform.childCount];
         flashesNum = new bool[flashes.Length];
+        flashDelay = 0f;
         isFlashOn = false;
 
         // 자식 오브젝트(셔터)들 받아오기

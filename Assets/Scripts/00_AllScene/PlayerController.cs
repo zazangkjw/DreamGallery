@@ -26,13 +26,14 @@ public class PlayerController : MonoBehaviour
 
     // 앉았을 때 얼마나 앉을지 결정하는 변수
     [SerializeField]
-    private float crouchPosY;
-    private float originPosY;
+    public float crouchPosY;
+    public float originPosY;
     private float applyCrouchPosY;
-
-    // 땅 착지 여부
     public CapsuleCollider standCollider;
     public CapsuleCollider crouchCollider;
+
+    // 땅 착지 여부
+    int layerMask_NoTrigger;
 
     // 마우스 감도
     public float lookSensitivity;
@@ -43,8 +44,7 @@ public class PlayerController : MonoBehaviour
     private float currentCameraRotationX = 0;
 
     // 필요한 컴포넌트
-    [SerializeField]
-    private Camera theCamera;
+    public Camera theCamera;
     public Rigidbody myRigid;
     //[SerializeField]
     //private Animator animator;
@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
         applySpeed = walkSpeed;
         originPosY = theCamera.transform.localPosition.y;
         applyCrouchPosY = originPosY;
+        layerMask_NoTrigger = (-1) - LayerMask.GetMask("Trigger");
     }
 
     void Update()
@@ -182,7 +183,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.DrawRay(transform.position - transform.up * 0.7f, -transform.up * 0.2f, Color.red);
 
-        if(Physics.Raycast(transform.position - transform.up * 0.7f, -transform.up, out hitInfo, 0.3f))
+        if(Physics.Raycast(transform.position - transform.up * 0.7f, -transform.up, out hitInfo, 0.3f, layerMask_NoTrigger))
         {
             isGround = true;
             jumpVelocity = _velocity; // 점프하면 점프 직전의 이동 속도를 공중에서의 속도에도 적용
@@ -362,7 +363,7 @@ public class PlayerController : MonoBehaviour
     {
         float _yRotation = Input.GetAxisRaw("Mouse X");
         Vector3 _characterRotationY = new Vector3(0f, _yRotation, 0f) * lookSensitivity * 0.1f;
-        myRigid.MoveRotation(myRigid.rotation * Quaternion.Euler(_characterRotationY));
+        transform.localEulerAngles = transform.localEulerAngles + _characterRotationY;
     }
 
     // 상하 카메라 회전
