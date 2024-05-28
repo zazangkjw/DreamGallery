@@ -45,7 +45,6 @@ public class ClownRaycast : MonoBehaviour
         // 처음에 열려있어야 하는 엘리베이터 문들
         elevatorAnims[0].Play("Open");
         elevatorAnims[1].Play("Open");
-        elevatorAnims[3].Play("Open");
 
         life = 3;
     }
@@ -211,12 +210,13 @@ public class ClownRaycast : MonoBehaviour
         unicycle.GetComponent<GetComponentScript>().animator.Play("Idle", 1);
 
 
-        // 외발자전거 하차
+        // 외발자전거 도전 성공
         if (!isFallFromUnicycle)
         {
             player.transform.SetParent(Objects.transform);
             player.transform.position = successsPlatform.transform.position + Vector3.up * 3;
             player.transform.eulerAngles = new Vector3(0f, player.transform.eulerAngles.y, 0f);
+            elevatorAnims[3].Play("Open");
 
             // 컨트롤러 교체
             player.GetComponent<PlayerController>().enabled = true;
