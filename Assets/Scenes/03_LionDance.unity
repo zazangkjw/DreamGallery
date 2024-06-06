@@ -8490,6 +8490,11 @@ PrefabInstance:
       objectReference: {fileID: 1926120626}
     - target: {fileID: 939184853154282642, guid: 744483f0613a8604d9e68249090ab01b,
         type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 939184853154282642, guid: 744483f0613a8604d9e68249090ab01b,
+        type: 3}
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}

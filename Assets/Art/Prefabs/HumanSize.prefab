@@ -419,7 +419,7 @@ Rigidbody:
   m_GameObject: {fileID: 6946000859983726810}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 10
+  m_Drag: 0
   m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -449,12 +449,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a909af89f62aa4e47a67dd31a8699859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 0.07
-  runSpeed: 0.14
-  crouchSpeed: 0.035
+  walkSpeed: 5
+  runSpeed: 10
+  crouchSpeed: 2.5
   applySpeed: 0
-  jumpForce: 4.5
+  jumpForce: 5
+  stunTimer: 0
   crouchPosY: -0.3
+  originPosY: 0
   standCollider: {fileID: 4377094991589878669}
   crouchCollider: {fileID: 939743644317174623}
   lookSensitivity: 15

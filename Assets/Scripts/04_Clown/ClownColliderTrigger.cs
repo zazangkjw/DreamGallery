@@ -89,16 +89,16 @@ public class ClownColliderTrigger : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            myRigid.velocity = transform.up * 2;
+            myRigid.velocity = new Vector3(myRigid.velocity.x, 2.5f, myRigid.velocity.z);
 
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                myRigid.velocity = transform.up * 4;
+                myRigid.velocity = new Vector3(myRigid.velocity.x, 5f, myRigid.velocity.z);
             }
         }
         else
         {
-            myRigid.velocity = -transform.up * 2;
+            myRigid.velocity = new Vector3(myRigid.velocity.x, -2.5f, myRigid.velocity.z);
         }
     }
 }
