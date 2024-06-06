@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private bool isAbove = false;
     private bool isTryStand = false;
     private bool isSetDragToZero = false;
+    public float stunTimer = 0;
 
     // 앉았을 때 얼마나 앉을지 결정하는 변수
     [SerializeField]
@@ -75,7 +77,14 @@ public class PlayerController : MonoBehaviour
         CharacterRotation();
         TryMove();
         CheckAbove();
-        ChangeDrag();
+        //ChangeDrag();
+        StunTimer();
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            stunTimer = 0.5f;
+            myRigid.AddForce((transform.forward * -10f) + (transform.right * 0f) + (transform.up * 5f), ForceMode.Impulse);
+        }
     }
 
     void FixedUpdate()
@@ -202,7 +211,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGround == true)
         {
-            StartCoroutine(SetDragToZero());
+            //StartCoroutine(SetDragToZero());
             Jump();
         }
     }
@@ -210,7 +219,7 @@ public class PlayerController : MonoBehaviour
     // 점프 동작
     private void Jump()
     {
-        myRigid.velocity = transform.up * jumpForce;
+        myRigid.velocity = new Vector3(myRigid.velocity.x, jumpForce, myRigid.velocity.z);
     }
 
     // 플레이어 rigidbody의 drag 바꾸기. drag(공기 저항)가 0이면 밀렸을 때 안 멈추고 계속 미끄러지는 현상이 있음
@@ -310,6 +319,12 @@ public class PlayerController : MonoBehaviour
 
 
 
+    // 이동 스턴 타이머
+    private void StunTimer()
+    {
+        stunTimer = stunTimer > 0 ? stunTimer - Time.deltaTime : 0;
+    }
+
     // 플레이어 이동
     private void TryMove()
     {
@@ -319,30 +334,39 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        _moveHorizontal = transform.right * _moveDirX;
-        _moveVertical = transform.forward * _moveDirZ;
-
-        _velocity = (_moveHorizontal + _moveVertical).normalized * applySpeed; // normalized 벡터 길이를 1로 변화
-
-        if (isGround) // 땅에서는 속도 그대로 움직임
+        if(stunTimer == 0)
         {
-            myRigid.MovePosition(transform.position + _velocity);  // Time.deltaTime의 값은 60프레임 기준 약 0.016이다.
+            _moveHorizontal = transform.right * _moveDirX;
+            _moveVertical = transform.forward * _moveDirZ;
+
+            _velocity = (_moveHorizontal + _moveVertical).normalized * applySpeed; // normalized 벡터 길이를 1로 변화
+
+            if (isGround) // 땅에서는 속도 그대로 움직임
+            {
+                //myRigid.MovePosition(transform.position + _velocity);
+                myRigid.velocity = new Vector3(_velocity.x, myRigid.velocity.y, _velocity.z);
+            }
+            else // 공중에서는 선형 보간을 통해 방향과 속도가 서서히 바뀜
+            {
+                if (isWalk)
+                {
+                    jumpVelocity = Vector3.Lerp(jumpVelocity, _velocity, 0.1f); // 이동하는 방향으로 속도가 점점 늘어남
+                }
+                else
+                {
+                    jumpVelocity = Vector3.Lerp(jumpVelocity, jumpVelocity.normalized * walkSpeed * 0.5f, 0.1f);
+                }
+
+                //myRigid.MovePosition(transform.position + jumpVelocity);
+                myRigid.velocity = new Vector3(jumpVelocity.x, myRigid.velocity.y, jumpVelocity.z);
+            }
+
+            MoveCheck(_velocity);
         }
-        else // 공중에서는 선형 보간을 통해 방향과 속도가 서서히 바뀜
+        else
         {
-            if (isWalk) 
-            {
-                jumpVelocity = Vector3.Lerp(jumpVelocity, _velocity, 0.1f); // 이동하는 방향으로 속도가 점점 늘어남
-            }
-            else
-            {
-                //jumpVelocity = Vector3.Lerp(jumpVelocity, Vector3.zero, 0.1f); // 이동하지 않으면 속도가 점점 줄어듦
-            }
-
-            myRigid.MovePosition(transform.position + jumpVelocity);
+            jumpVelocity = new Vector3(myRigid.velocity.x, 0, myRigid.velocity.z);
         }
-
-        MoveCheck(_velocity);
     }
 
     private void MoveCheck(Vector3 _velocity) //(float MoveXZ)
