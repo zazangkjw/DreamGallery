@@ -12,6 +12,8 @@ public struct SettingData
     public int height; // 화면 높이
     public bool isFullScreen; // 화면 모드
     public float volume; // 사운드 크기
+    public int fpsLimit; // 프레임 제한
+    public bool isDisplayFps; // 프레임 표시
 }
 
 public class SaveManager : MonoBehaviour
@@ -26,9 +28,13 @@ public class SaveManager : MonoBehaviour
         settingData.height = 1080;
         settingData.isFullScreen = true;
         settingData.volume = 0f;
+        settingData.fpsLimit = 100;
+        settingData.isDisplayFps = false;
         ReloadSettingData();
         GameManager.instance.textFileManager.Reload(settingData.language);
         Screen.SetResolution(settingData.width, settingData.height, settingData.isFullScreen);
+        GameManager.instance.fps_Limit.setLimit();
+        GameManager.instance.fps_Limit.setActive();
     }
 
     ////////////////////////////

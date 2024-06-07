@@ -2354,8 +2354,12 @@ MonoBehaviour:
   - {fileID: 376108701}
   - {fileID: 272079292}
   - {fileID: 1752265184}
+  - {fileID: 856351606}
+  - {fileID: 856351605}
   volume: {fileID: 2009319006}
   audioMixer: {fileID: 24100000, guid: cd8bd5d3d09c1ab4fa93086d582ce4a3, type: 2}
+  fpsLimit: {fileID: 856351604}
+  isDisplayFps: {fileID: 856351603}
   fogMat: {fileID: 2100000, guid: 644e572b2a267324bb0b1b1a4afe53c9, type: 2}
   playerController: {fileID: 1610533565}
   lionDanceDirector: {fileID: 503553077}
@@ -5125,6 +5129,54 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92e0e60a10099544b920e914b56a9c4d, type: 3}
+--- !u!114 &856351603 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3388312107688423950, guid: 92e0e60a10099544b920e914b56a9c4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 856351602}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &856351604 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9098299826772303113, guid: 92e0e60a10099544b920e914b56a9c4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 856351602}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &856351605 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4768703871486369619, guid: 92e0e60a10099544b920e914b56a9c4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 856351602}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &856351606 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6983892521009514731, guid: 92e0e60a10099544b920e914b56a9c4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 856351602}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &874112705 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7194359791116481286, guid: 623882457da55f64cac0e61fb26cb623,
@@ -6450,6 +6502,8 @@ MonoBehaviour:
     height: 0
     isFullScreen: 0
     volume: 0
+    fpsLimit: 0
+    isDisplayFps: 0
 --- !u!4 &1161985590
 Transform:
   m_ObjectHideFlags: 0
@@ -8488,35 +8542,25 @@ PrefabInstance:
       propertyPath: m_Cameras.Array.data[0]
       value: 
       objectReference: {fileID: 1926120626}
-    - target: {fileID: 939184853154282642, guid: 744483f0613a8604d9e68249090ab01b,
-        type: 3}
-      propertyPath: m_Drag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 939184853154282642, guid: 744483f0613a8604d9e68249090ab01b,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1249086182956314288, guid: 744483f0613a8604d9e68249090ab01b,
         type: 3}
       propertyPath: runSpeed
-      value: 0.06
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1249086182956314288, guid: 744483f0613a8604d9e68249090ab01b,
         type: 3}
       propertyPath: jumpForce
-      value: 3.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1249086182956314288, guid: 744483f0613a8604d9e68249090ab01b,
         type: 3}
       propertyPath: walkSpeed
-      value: 0.03
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 1249086182956314288, guid: 744483f0613a8604d9e68249090ab01b,
         type: 3}
       propertyPath: crouchSpeed
-      value: 0.015
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 6946000859983726810, guid: 744483f0613a8604d9e68249090ab01b,
         type: 3}
@@ -13684,7 +13728,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1aa8b15168547d47b2d5a420f80328e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fpsLimit: 154
 --- !u!4 &2117576494
 Transform:
   m_ObjectHideFlags: 0

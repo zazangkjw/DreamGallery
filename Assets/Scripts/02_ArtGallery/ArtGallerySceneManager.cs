@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -16,6 +17,8 @@ public class ArtGallerySceneManager : MonoBehaviour
     public TextMeshProUGUI[] uiTexts; // UI 텍스트 목록
     public Slider volume;
     public AudioMixer audioMixer;
+    public TMP_InputField fpsLimit;
+    public Toggle isDisplayFps;
 
     public PlayerController playerController; // 플레이어 컨트롤러 스크립트
     public ArtGalleryDirector ArtGalleryDirector; // 이 씬의 컷씬이 담겨있는 스크립트
@@ -37,6 +40,10 @@ public class ArtGallerySceneManager : MonoBehaviour
 
         Cursor.visible = false;
 
+        // 프레임 제한 받아오기
+        fpsLimit.text = GameManager.instance.saveManager.settingData.fpsLimit.ToString();
+        isDisplayFps.isOn = GameManager.instance.saveManager.settingData.isDisplayFps;
+
         // 마우스 감도 받아오고 플레이어에게 적용
         mouseSens.value = GameManager.instance.saveManager.settingData.mouseSens;
         playerController.lookSensitivity = mouseSens.value;
@@ -45,7 +52,7 @@ public class ArtGallerySceneManager : MonoBehaviour
         language.value = GameManager.instance.saveManager.settingData.language;
         ReloadText();
 
-        // 해상도 받아오고 해상도 새로고침
+        // 해상도 받아오기
         resolution.value = GameManager.instance.saveManager.settingData.resolution;
         isFullScreen.isOn = GameManager.instance.saveManager.settingData.isFullScreen;
 
@@ -111,6 +118,12 @@ public class ArtGallerySceneManager : MonoBehaviour
     // 설정 적용 버튼
     public void PressApplyButton()
     {
+        // 프레임 제한 보내고 새로고침
+        try { GameManager.instance.saveManager.settingData.fpsLimit = int.Parse(fpsLimit.text); } catch (FormatException) { }
+        GameManager.instance.saveManager.settingData.isDisplayFps = isDisplayFps.isOn;
+        GameManager.instance.fps_Limit.setLimit();
+        GameManager.instance.fps_Limit.setActive();
+
         // 마우스 감도 보내고 플레이어에게 적용
         GameManager.instance.saveManager.settingData.mouseSens = mouseSens.value;
         playerController.lookSensitivity = mouseSens.value;
@@ -144,6 +157,10 @@ public class ArtGallerySceneManager : MonoBehaviour
     public void PressCancelButon()
     {
         settingUI.SetActive(false);
+
+        // 프레임 제한 받아오기(적용 안 눌렀으면 바꾸기 전으로)
+        fpsLimit.text = GameManager.instance.saveManager.settingData.fpsLimit.ToString();
+        isDisplayFps.isOn = GameManager.instance.saveManager.settingData.isDisplayFps;
 
         // 마우스 감도 받아오기(적용 안 눌렀으면 바꾸기 전으로)
         mouseSens.value = GameManager.instance.saveManager.settingData.mouseSens;
@@ -181,5 +198,7 @@ public class ArtGallerySceneManager : MonoBehaviour
         uiTexts[8].text = GameManager.instance.textFileManager.ui[12];
         uiTexts[9].text = GameManager.instance.textFileManager.ui[13];
         uiTexts[10].text = GameManager.instance.textFileManager.ui[18];
+        uiTexts[11].text = GameManager.instance.textFileManager.ui[19];
+        uiTexts[12].text = GameManager.instance.textFileManager.ui[20];
     }
 }

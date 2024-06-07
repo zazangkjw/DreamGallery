@@ -30,13 +30,11 @@ public class FPS_Limit : MonoBehaviour
 
     bool active = true;
 
-    float deltaTime = 0.0f;
-
-    public int fpsLimit;
+    //float deltaTime = 0.0f;
 
     void Update()
     {
-        deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
+        //deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
     }
 
     void OnGUI()
@@ -52,25 +50,25 @@ public class FPS_Limit : MonoBehaviour
             style.fontSize = h * 2 / 100;
             style.normal.textColor = new Color(0.0f, 0.0f, 0.5f, 1.0f);
             // float msec = deltaTime * 1000.0f;
-            float fps = 1.0f / deltaTime;
+            //float fps = 1f / deltaTime;
+            float fps = 1f / Time.unscaledDeltaTime;
             // string text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
-            string text = (Math.Round(fps) + "fps");
-            GUI.Label(rect, text, style);
+            GUI.Label(rect, (Math.Round(fps) + "fps"), style);
         }
     }
 
     void Start()
     {
-        setLimit();
+        
     }
 
     public void setLimit()
     {
-        Application.targetFrameRate = fpsLimit;
+        Application.targetFrameRate = GameManager.instance.saveManager.settingData.fpsLimit;
     }
 
-    public void setActive(bool b)
+    public void setActive()
     {
-        active = b;
+        active = GameManager.instance.saveManager.settingData.isDisplayFps;
     }
 }
