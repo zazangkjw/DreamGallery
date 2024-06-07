@@ -1,23 +1,23 @@
 DREAM GALLERY
-Enter
-Settings
-Quit
-Return
-Settings
-Exit
-Settings
-Resolution
-Mouse Sensitivity
-Language
-Volume
-Apply
-Cancel
-Open/Close
-Enter the dream
+ENTER
+SETTINGS
+QUIT
+RETURN
+SETTINGS
+EXIT
+SETTINGS
+RESOLUTION
+MOUSE SENSITIVITY
+LANGUAGE
+VOLUME
+APPLY
+CANCEL
+OPEN/CLOSE
+ENTER THE DREAM
 REWIND◀◀
 VIDEO END
-Fullscreen
-FPS Limit
-Display FPS
+FULLSCREEN
+FPS LIMIT
+DISPLAY FPS
 BRAVE CHALLENGER
 SUPER COWARD

@@ -48,7 +48,7 @@ public class FPS_Limit : MonoBehaviour
             Rect rect = new Rect(0, 0, w, h * 2 / 100);
             style.alignment = TextAnchor.UpperLeft;
             style.fontSize = h * 2 / 100;
-            style.normal.textColor = new Color(0.0f, 0.0f, 0.5f, 1.0f);
+            style.normal.textColor = new Color(0.0f, 1.0f, 0.0f, 1.0f);
             // float msec = deltaTime * 1000.0f;
             //float fps = 1f / deltaTime;
             float fps = 1f / Time.unscaledDeltaTime;
