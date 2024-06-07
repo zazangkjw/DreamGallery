@@ -22,7 +22,9 @@ public class ClownSceneManager : MonoBehaviour
     public TMP_InputField fpsLimit;
     public Toggle isDisplayFps;
 
+    public ClownRaycast clownRaycast;
     public PlayerController playerController; // 플레이어 컨트롤러 스크립트
+    public UnicycleController unicycleController;
     //public LionDanceDirector lionDanceDirector; // 이 씬의 컷씬이 담겨있는 스크립트
     public PutDialogScript putDialogScript; // 대사 넣는 스크립트
 
@@ -78,6 +80,7 @@ public class ClownSceneManager : MonoBehaviour
             audioMixer.SetFloat("Pitch", 0f);
             Time.timeScale = 0f;
             playerController.enabled = false;
+            unicycleController.enabled = false;
             putDialogScript.enabled = false;
             pauseUI.SetActive(true);
         }
@@ -104,8 +107,16 @@ public class ClownSceneManager : MonoBehaviour
         putDialogScript.enabled = true;
         if (!putDialogScript.isClickMode)
         {
-            playerController.enabled = true;
+            if (!clownRaycast.isOnUnicycle)
+            {
+                playerController.enabled = true;
+            }
+            else if (clownRaycast.isOnUnicycle)
+            {
+                unicycleController.enabled = true;
+            }
         }
+        
         pauseUI.SetActive(false);
     }
 

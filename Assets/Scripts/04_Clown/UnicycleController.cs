@@ -77,7 +77,7 @@ public class UnicycleController : MonoBehaviour
 
             clownRaycast.life--;
             clownRaycast.lifeText.text = clownRaycast.life.ToString();
-            clownRaycast.isFallFromUnicycle = true;
+            clownRaycast.isOnUnicycle = false;
             clownRaycast.player.transform.SetParent(clownRaycast.Objects.transform);
             clownRaycast.player.transform.eulerAngles = new Vector3(0f, clownRaycast.player.transform.eulerAngles.y, 0f);
 

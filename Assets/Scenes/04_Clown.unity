@@ -5680,7 +5680,9 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: cd8bd5d3d09c1ab4fa93086d582ce4a3, type: 2}
   fpsLimit: {fileID: 1447428597}
   isDisplayFps: {fileID: 1447428596}
+  clownRaycast: {fileID: 1172157296}
   playerController: {fileID: 384628156}
+  unicycleController: {fileID: 384628164}
   putDialogScript: {fileID: 807168750}
   settingUI: {fileID: 1447428595}
   pauseUI: {fileID: 99410564}
@@ -15858,7 +15860,7 @@ MonoBehaviour:
   unicycle: {fileID: 142630083}
   unicycleSeat: {fileID: 1486685067}
   successsPlatform: {fileID: 787571025}
-  isFallFromUnicycle: 0
+  isFallFromUnicycle: 1
 --- !u!4 &1172157300 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6899579661481250371, guid: 744483f0613a8604d9e68249090ab01b,

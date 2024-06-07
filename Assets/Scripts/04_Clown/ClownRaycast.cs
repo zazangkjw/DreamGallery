@@ -37,11 +37,13 @@ public class ClownRaycast : MonoBehaviour
     [SerializeField]
     GameObject unicycleSeat;
     public GameObject successsPlatform;
-    public bool isFallFromUnicycle = false;
+    public bool isOnUnicycle;
 
 
     void Start()
     {
+        isOnUnicycle = false;
+
         // 처음에 열려있어야 하는 엘리베이터 문들
         elevatorAnims[0].Play("Open");
         elevatorAnims[1].Play("Open");
@@ -181,7 +183,7 @@ public class ClownRaycast : MonoBehaviour
     // 외발자전거를 눌렀을 때
     IEnumerator UnicycleCoroutine()
     {
-        isFallFromUnicycle = false;
+        isOnUnicycle = true;
 
         unicycle = hitObject;
 
@@ -211,8 +213,10 @@ public class ClownRaycast : MonoBehaviour
 
 
         // 외발자전거 도전 성공
-        if (!isFallFromUnicycle)
+        if (isOnUnicycle)
         {
+            isOnUnicycle = false;
+
             player.transform.SetParent(Objects.transform);
             player.transform.position = successsPlatform.transform.position + Vector3.up * 3;
             player.transform.eulerAngles = new Vector3(0f, player.transform.eulerAngles.y, 0f);
