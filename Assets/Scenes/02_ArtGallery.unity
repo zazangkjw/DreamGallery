@@ -1505,6 +1505,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 17.087952, y: 10.416069, z: 0.27515173}
   m_Center: {x: 22.324768, y: 0.88467115, z: 1.5141671}
+--- !u!114 &176616044 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4163652541338439336, guid: 92e0e60a10099544b920e914b56a9c4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 8204490063170237836}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &181348908
 GameObject:
   m_ObjectHideFlags: 0
@@ -5613,10 +5625,12 @@ MonoBehaviour:
   - {fileID: 1965952348}
   - {fileID: 8204490063170237840}
   - {fileID: 8204490063170237839}
+  - {fileID: 8204490063170237841}
   volume: {fileID: 1876000946}
   audioMixer: {fileID: 24100000, guid: cd8bd5d3d09c1ab4fa93086d582ce4a3, type: 2}
   fpsLimit: {fileID: 8204490063170237838}
   isDisplayFps: {fileID: 8204490063170237837}
+  isVSyncOn: {fileID: 176616044}
   playerController: {fileID: 202267686}
   ArtGalleryDirector: {fileID: 1335499235}
   putDialogScript: {fileID: 1335499233}
@@ -9505,6 +9519,7 @@ MonoBehaviour:
     volume: 0
     fpsLimit: 0
     isDisplayFps: 0
+    vSync: 0
 --- !u!4 &1934919045
 Transform:
   m_ObjectHideFlags: 0
@@ -10136,6 +10151,18 @@ MonoBehaviour:
 --- !u!114 &8204490063170237840 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6983892521009514731, guid: 92e0e60a10099544b920e914b56a9c4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 8204490063170237836}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8204490063170237841 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3855501039806195128, guid: 92e0e60a10099544b920e914b56a9c4d,
     type: 3}
   m_PrefabInstance: {fileID: 8204490063170237836}
   m_PrefabAsset: {fileID: 0}

@@ -2237,6 +2237,7 @@ MonoBehaviour:
     volume: 0
     fpsLimit: 0
     isDisplayFps: 0
+    vSync: 0
 --- !u!4 &422135537
 Transform:
   m_ObjectHideFlags: 0
@@ -4128,6 +4129,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1226085790 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3855501039806195128, guid: 92e0e60a10099544b920e914b56a9c4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1226085787}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1226085791 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4163652541338439336, guid: 92e0e60a10099544b920e914b56a9c4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1226085787}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1236195026
@@ -7641,10 +7666,12 @@ MonoBehaviour:
   - {fileID: 1182991855}
   - {fileID: 1849702954}
   - {fileID: 1815562765}
+  - {fileID: 1226085790}
   volume: {fileID: 118311720}
   audioMixer: {fileID: 24100000, guid: cd8bd5d3d09c1ab4fa93086d582ce4a3, type: 2}
   fpsLimit: {fileID: 1226085789}
   isDisplayFps: {fileID: 1226085788}
+  isVSyncOn: {fileID: 1226085791}
   fadeInOutScript: {fileID: 2109167727}
   fadeInOutImage: {fileID: 921811344}
   settingUI: {fileID: 1823464854}

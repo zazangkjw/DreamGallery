@@ -21,6 +21,7 @@ public class ClownSceneManager : MonoBehaviour
     public AudioMixer audioMixer;
     public TMP_InputField fpsLimit;
     public Toggle isDisplayFps;
+    public Toggle isVSyncOn;
 
     public ClownRaycast clownRaycast;
     public PlayerController playerController; // 플레이어 컨트롤러 스크립트
@@ -40,6 +41,7 @@ public class ClownSceneManager : MonoBehaviour
         // 프레임 제한 받아오기
         fpsLimit.text = GameManager.instance.saveManager.settingData.fpsLimit.ToString();
         isDisplayFps.isOn = GameManager.instance.saveManager.settingData.isDisplayFps;
+        isVSyncOn.isOn = GameManager.instance.saveManager.settingData.vSync == 0 ? false : true;
 
         // 마우스 감도 받아오고 플레이어에게 적용
         mouseSens.value = GameManager.instance.saveManager.settingData.mouseSens;
@@ -128,6 +130,8 @@ public class ClownSceneManager : MonoBehaviour
         GameManager.instance.saveManager.settingData.isDisplayFps = isDisplayFps.isOn;
         GameManager.instance.fps_Limit.setLimit();
         GameManager.instance.fps_Limit.setActive();
+        GameManager.instance.saveManager.settingData.vSync = isVSyncOn.isOn == false ? 0 : 1;
+        QualitySettings.vSyncCount = GameManager.instance.saveManager.settingData.vSync;
 
         // 마우스 감도 보내고 플레이어에게 적용
         GameManager.instance.saveManager.settingData.mouseSens = mouseSens.value;
@@ -166,6 +170,7 @@ public class ClownSceneManager : MonoBehaviour
         // 프레임 제한 받아오기(적용 안 눌렀으면 바꾸기 전으로)
         fpsLimit.text = GameManager.instance.saveManager.settingData.fpsLimit.ToString();
         isDisplayFps.isOn = GameManager.instance.saveManager.settingData.isDisplayFps;
+        isVSyncOn.isOn = GameManager.instance.saveManager.settingData.vSync == 0 ? false : true;
 
         // 마우스 감도 받아오기(적용 안 눌렀으면 바꾸기 전으로)
         mouseSens.value = GameManager.instance.saveManager.settingData.mouseSens;
@@ -207,5 +212,6 @@ public class ClownSceneManager : MonoBehaviour
         uiTexts[12].text = GameManager.instance.textFileManager.ui[20];
         uiTexts[13].text = GameManager.instance.textFileManager.ui[21];
         uiTexts[14].text = GameManager.instance.textFileManager.ui[22];
+        uiTexts[15].text = GameManager.instance.textFileManager.ui[23];
     }
 }

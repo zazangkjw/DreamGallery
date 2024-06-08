@@ -2778,6 +2778,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightsParent: {fileID: 0}
+--- !u!114 &155943489 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4163652541338439336, guid: 92e0e60a10099544b920e914b56a9c4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1447428593}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &184234639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3703,6 +3715,18 @@ MonoBehaviour:
   theCamera: {fileID: 1172157301}
   myRigid: {fileID: 384628161}
   clownRaycast: {fileID: 1172157296}
+--- !u!114 &444112828 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3855501039806195128, guid: 92e0e60a10099544b920e914b56a9c4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1447428593}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &495716349 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7679398613091691645, guid: 92e0e60a10099544b920e914b56a9c4d,
@@ -5676,10 +5700,12 @@ MonoBehaviour:
   - {fileID: 1447428598}
   - {fileID: 123950750}
   - {fileID: 1449068325}
+  - {fileID: 444112828}
   volume: {fileID: 1867834782}
   audioMixer: {fileID: 24100000, guid: cd8bd5d3d09c1ab4fa93086d582ce4a3, type: 2}
   fpsLimit: {fileID: 1447428597}
   isDisplayFps: {fileID: 1447428596}
+  isVSyncOn: {fileID: 155943489}
   clownRaycast: {fileID: 1172157296}
   playerController: {fileID: 384628156}
   unicycleController: {fileID: 384628164}
@@ -6139,6 +6165,7 @@ MonoBehaviour:
     volume: 0
     fpsLimit: 0
     isDisplayFps: 0
+    vSync: 0
 --- !u!4 &862582266
 Transform:
   m_ObjectHideFlags: 0
@@ -15860,7 +15887,7 @@ MonoBehaviour:
   unicycle: {fileID: 142630083}
   unicycleSeat: {fileID: 1486685067}
   successsPlatform: {fileID: 787571025}
-  isFallFromUnicycle: 1
+  isOnUnicycle: 0
 --- !u!4 &1172157300 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6899579661481250371, guid: 744483f0613a8604d9e68249090ab01b,
@@ -17752,6 +17779,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingUI
       objectReference: {fileID: 0}
+    - target: {fileID: 6592919672857682389, guid: 92e0e60a10099544b920e914b56a9c4d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6592919672857682389, guid: 92e0e60a10099544b920e914b56a9c4d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7904204835585212356, guid: 92e0e60a10099544b920e914b56a9c4d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17775,6 +17812,21 @@ PrefabInstance:
     - target: {fileID: 7904204835585212356, guid: 92e0e60a10099544b920e914b56a9c4d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812365245072643214, guid: 92e0e60a10099544b920e914b56a9c4d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812365245072643214, guid: 92e0e60a10099544b920e914b56a9c4d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812365245072643214, guid: 92e0e60a10099544b920e914b56a9c4d,
+        type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

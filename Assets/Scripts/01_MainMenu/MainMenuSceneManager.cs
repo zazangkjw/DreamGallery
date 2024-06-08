@@ -20,6 +20,7 @@ public class MainMenuSceneManager : MonoBehaviour
     public AudioMixer audioMixer;
     public TMP_InputField fpsLimit;
     public Toggle isDisplayFps;
+    public Toggle isVSyncOn;
 
     WaitForSeconds wait = new WaitForSeconds(0.01f);
     public FadeInOutScript fadeInOutScript;
@@ -42,6 +43,7 @@ public class MainMenuSceneManager : MonoBehaviour
         // 프레임 제한 받아오기
         fpsLimit.text = GameManager.instance.saveManager.settingData.fpsLimit.ToString();
         isDisplayFps.isOn = GameManager.instance.saveManager.settingData.isDisplayFps;
+        isVSyncOn.isOn = GameManager.instance.saveManager.settingData.vSync == 0 ? false : true;
 
         // 마우스 감도 받아오기
         mouseSens.value = GameManager.instance.saveManager.settingData.mouseSens;
@@ -91,6 +93,8 @@ public class MainMenuSceneManager : MonoBehaviour
         GameManager.instance.saveManager.settingData.isDisplayFps = isDisplayFps.isOn;
         GameManager.instance.fps_Limit.setLimit();
         GameManager.instance.fps_Limit.setActive();
+        GameManager.instance.saveManager.settingData.vSync = isVSyncOn.isOn == false ? 0 : 1;
+        QualitySettings.vSyncCount = GameManager.instance.saveManager.settingData.vSync;
 
         // 마우스 감도 보내기
         GameManager.instance.saveManager.settingData.mouseSens = mouseSens.value;
@@ -128,6 +132,7 @@ public class MainMenuSceneManager : MonoBehaviour
         // 프레임 제한 받아오기(적용 안 눌렀으면 바꾸기 전으로)
         fpsLimit.text = GameManager.instance.saveManager.settingData.fpsLimit.ToString();
         isDisplayFps.isOn = GameManager.instance.saveManager.settingData.isDisplayFps;
+        isVSyncOn.isOn = GameManager.instance.saveManager.settingData.vSync == 0 ? false : true;
 
         // 마우스 감도 받아오기(적용 안 눌렀으면 바꾸기 전으로)
         mouseSens.value = GameManager.instance.saveManager.settingData.mouseSens;
@@ -160,6 +165,7 @@ public class MainMenuSceneManager : MonoBehaviour
         uiTexts[11].text = GameManager.instance.textFileManager.ui[18];
         uiTexts[12].text = GameManager.instance.textFileManager.ui[19];
         uiTexts[13].text = GameManager.instance.textFileManager.ui[20];
+        uiTexts[14].text = GameManager.instance.textFileManager.ui[23];
     }
 
     // 게임 종료

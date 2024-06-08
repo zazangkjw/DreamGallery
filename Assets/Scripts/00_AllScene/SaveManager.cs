@@ -14,6 +14,7 @@ public struct SettingData
     public float volume; // 사운드 크기
     public int fpsLimit; // 프레임 제한
     public bool isDisplayFps; // 프레임 표시
+    public int vSync; // 수직동기화
 }
 
 public class SaveManager : MonoBehaviour
@@ -23,18 +24,20 @@ public class SaveManager : MonoBehaviour
         // 처음 게임 켰을 때 언어는 한글, 기본 감도가 15f이고, 설정 파일이 존재하면 받아오기
         settingData.language = 0;
         settingData.mouseSens = 15f;
-        settingData.resolution = 0;
+        settingData.resolution = 3;
         settingData.width = 1920;
         settingData.height = 1080;
         settingData.isFullScreen = true;
         settingData.volume = 0f;
         settingData.fpsLimit = 100;
         settingData.isDisplayFps = false;
+        settingData.vSync = 1;
         ReloadSettingData();
         GameManager.instance.textFileManager.Reload(settingData.language);
         Screen.SetResolution(settingData.width, settingData.height, settingData.isFullScreen);
         GameManager.instance.fps_Limit.setLimit();
         GameManager.instance.fps_Limit.setActive();
+        QualitySettings.vSyncCount = settingData.vSync;
     }
 
     ////////////////////////////
@@ -85,12 +88,36 @@ public class SaveManager : MonoBehaviour
         switch (value)
         {
             case 0:
+                settingData.width = 3840;
+                settingData.height = 2160;
+                break;
+            case 1:
+                settingData.width = 3200;
+                settingData.height = 1800;
+                break;
+            case 2:
+                settingData.width = 2560;
+                settingData.height = 1440;
+                break;
+            case 3:
                 settingData.width = 1920;
                 settingData.height = 1080;
                 break;
-            case 1:
+            case 4:
+                settingData.width = 1600;
+                settingData.height = 900;
+                break;
+            case 5:
+                settingData.width = 1366;
+                settingData.height = 768;
+                break;
+            case 6:
                 settingData.width = 1280;
                 settingData.height = 720;
+                break;
+            case 7:
+                settingData.width = 640;
+                settingData.height = 360;
                 break;
             default:
                 break;
