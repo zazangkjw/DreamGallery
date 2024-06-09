@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class NextElevatorPoint : MonoBehaviour
 {
+    public string goTo;
+
     public GameObject thisPoint;
     public Animator thisElevatorAnim;
 

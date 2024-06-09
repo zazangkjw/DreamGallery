@@ -20,7 +20,7 @@ public class ClownRaycast : MonoBehaviour
     Rigidbody playerRigid;
     public GameObject Objects;
 
-
+    // 엘리베이터
     [SerializeField]
     Animator[] elevatorAnims;
     [SerializeField]
@@ -29,9 +29,17 @@ public class ClownRaycast : MonoBehaviour
     GameObject elevator_Point_Player;
     GameObject elevatorBtn;
 
-    public int life; // 도전 기회
+    // AudioSource
+    public AudioSource cheer;
+    public AudioSource clap;
+    public AudioSource booing;
+    public AudioSource yay;
+
+    // 도전 기회
+    public int life;
     public TextMeshProUGUI lifeText;
 
+    // 외줄타기 도전
     [SerializeField]
     GameObject unicycle;
     [SerializeField]
@@ -152,12 +160,12 @@ public class ClownRaycast : MonoBehaviour
         }
     }
 
+
+
+
     // 엘리베이터 버튼을 눌렀을 때
     IEnumerator ElevatorCoroutine()
     {
-        life = 3;
-        lifeText.text = life.ToString();
-
         elevatorBtn = hitObject;
 
         elevatorBtn.GetComponent<Collider>().enabled = false; // 콜라이더 비활성화
@@ -169,16 +177,33 @@ public class ClownRaycast : MonoBehaviour
         elevator_Point_Player.transform.rotation = elevatorBtn.GetComponent<NextElevatorPoint>().thisPoint.transform.rotation; // 2초 후에 다음 엘리베이터 포인트로 이동 후 자식 해제
         player.transform.SetParent(elevator_Point_Player.transform);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
 
         elevator_Point_Player.transform.position = elevatorBtn.GetComponent<NextElevatorPoint>().nextPoint.transform.position;
         elevator_Point_Player.transform.rotation = elevatorBtn.GetComponent<NextElevatorPoint>().nextPoint.transform.rotation;
 
-        yield return new WaitForSeconds(2f);
+        // 추가 기능 //
+        if (elevatorBtn.GetComponent<NextElevatorPoint>().goTo == "Circus")
+        {
+            life = 3;
+            lifeText.text = life.ToString();
+            StartCoroutine(AudioOnOffScript.VolumeCoroutine(cheer, true, 5f));
+        }
+        else
+        {
+            StartCoroutine(AudioOnOffScript.VolumeCoroutine(cheer, false, 5f));
+            StartCoroutine(AudioOnOffScript.VolumeCoroutine(clap, false, 5f));
+        }
+        //-----------//
+
+        yield return new WaitForSeconds(6f);
 
         elevatorBtn.GetComponent<NextElevatorPoint>().nextElevatorAnim.Play("Open");
         player.transform.SetParent(Objects.transform);
     }
+
+
+
 
     // 외발자전거를 눌렀을 때
     IEnumerator UnicycleCoroutine()
@@ -190,15 +215,15 @@ public class ClownRaycast : MonoBehaviour
         unicycle.GetComponent<Collider>().enabled = false; // 콜라이더 비활성화
         preObject.GetComponent<Outline>().enabled = false; // 외곽선 비활성화
 
-        // 외발자전거 탑승
-        player.transform.SetParent(unicycleSeat.transform);
-        player.transform.position = unicycleSeat.transform.position;
-        player.transform.rotation = unicycleSeat.transform.rotation;
-
         // 앉아있는 상태일 때 일어나게 만들기
         transform.localPosition = new Vector3(0, player.GetComponent<PlayerController>().originPosY, 0);
         player.GetComponent<PlayerController>().standCollider.enabled = true;
         player.GetComponent<PlayerController>().crouchCollider.enabled = false;
+
+        // 외발자전거 탑승
+        player.transform.SetParent(unicycleSeat.transform);
+        player.transform.position = unicycleSeat.transform.position;
+        player.transform.rotation = unicycleSeat.transform.rotation;
 
         // 컨트롤러 교체
         player.GetComponent<PlayerController>().enabled = false;
@@ -221,6 +246,8 @@ public class ClownRaycast : MonoBehaviour
             player.transform.position = successsPlatform.transform.position + Vector3.up * 3;
             player.transform.eulerAngles = new Vector3(0f, player.transform.eulerAngles.y, 0f);
             elevatorAnims[3].Play("Open");
+            StartCoroutine(AudioOnOffScript.VolumeCoroutine(clap, true, 2f));
+            yay.Play();
 
             // 컨트롤러 교체
             player.GetComponent<PlayerController>().enabled = true;

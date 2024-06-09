@@ -16,9 +16,8 @@ public class Clown_Chase : MonoBehaviour
     [SerializeField]
     GameObject playerCam; // 플레이어 카메라
 
-
     [SerializeField]
-    GameObject clown; // 미친 광대
+    GameObject clownMesh;
 
     [SerializeField]
     Rigidbody clownRoot; 
@@ -41,7 +40,6 @@ public class Clown_Chase : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         layerMask_Wall = LayerMask.GetMask("Wall"); // layerMask_Wall = 1 << LayerMask.NameToLayer("Wall");
-        clown.GetComponent<Animator>().Play("Climb");
     }
 
     void Update()
@@ -96,31 +94,22 @@ public class Clown_Chase : MonoBehaviour
 
             // 센터 위 아래 이동
             rb.MovePosition(Vector3.Lerp(rb.position, new Vector3(rb.position.x, point.y, rb.position.z), chaseSpeedY));
-            /*if (rb.position.y < point.y)
-            {
-                rb.MovePosition(new Vector3(rb.position.x, rb.position.y + chaseSpeedY, rb.position.z));
-            }
-            else if (rb.position.y > point.y)
-            {
-                rb.MovePosition(new Vector3(rb.position.x, rb.position.y - chaseSpeedY, rb.position.z));
-            }*/
 
             // 센터가 옥상 포인트보다 아래에 있어야만 미친 광대 활성화
             if (rb.position.y < point_Rooftop.position.y - 1)
             {
-                clown.gameObject.SetActive(true);
+                clownMesh.SetActive(true);
                 MoveClown();
             }
             else if(rb.position.y >= point_Rooftop.position.y - 1)
             {
-                clown.gameObject.SetActive(false);
+                clownMesh.SetActive(false);
             }
         }
         else // 추격 상태가 아닐 경우
         {
-            clown.gameObject.SetActive(false);
+            clownMesh.SetActive(false);
             rb.position = point_Rooftop.position;
-            // rb.rotation = Quaternion.Euler(Vector3.forward);
         }
     }
 

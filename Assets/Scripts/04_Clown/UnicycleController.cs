@@ -70,6 +70,7 @@ public class UnicycleController : MonoBehaviour
         balance = balance + balanceDir;
         bodyForUnity.transform.localEulerAngles = bodyForUnity.transform.localEulerAngles + balance;
 
+        // 균형 잡기 실패
         if(bodyForUnity.transform.localEulerAngles.y > 90f && bodyForUnity.transform.localEulerAngles.y < 270f)
         {
             balance = Vector3.zero;
@@ -85,6 +86,13 @@ public class UnicycleController : MonoBehaviour
             clownRaycast.player.GetComponent<PlayerController>().enabled = true;
             clownRaycast.player.GetComponent<UnicycleController>().enabled = false;
             clownRaycast.player.GetComponent<Rigidbody>().isKinematic = false;
+
+            // 실패 효과음
+            clownRaycast.booing.Play();
+            if (clownRaycast.life <= 0)
+            {
+                clownRaycast.cheer.Stop();
+            }
         }
     }
 
