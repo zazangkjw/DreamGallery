@@ -215,11 +215,6 @@ public class ClownRaycast : MonoBehaviour
         unicycle.GetComponent<Collider>().enabled = false; // 콜라이더 비활성화
         preObject.GetComponent<Outline>().enabled = false; // 외곽선 비활성화
 
-        // 앉아있는 상태일 때 일어나게 만들기
-        transform.localPosition = new Vector3(0, player.GetComponent<PlayerController>().originPosY, 0);
-        player.GetComponent<PlayerController>().standCollider.enabled = true;
-        player.GetComponent<PlayerController>().crouchCollider.enabled = false;
-
         // 외발자전거 탑승
         player.transform.SetParent(unicycleSeat.transform);
         player.transform.position = unicycleSeat.transform.position;
@@ -230,6 +225,9 @@ public class ClownRaycast : MonoBehaviour
         player.GetComponent<UnicycleController>().enabled = true;
         player.GetComponent<UnicycleController>().lookSensitivity = player.GetComponent<PlayerController>().lookSensitivity;
         player.GetComponent<Rigidbody>().isKinematic = true;
+
+        // 앉아있는 상태일 때 일어나게 만들기
+        StartCoroutine(player.GetComponent<UnicycleController>().StandUpCoroutine());
 
         unicycle.GetComponent<GetComponentScript>().animator.Play("Go");
         unicycle.GetComponent<GetComponentScript>().animator.Play("WheelTurn", 1);

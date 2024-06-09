@@ -123,4 +123,30 @@ public class UnicycleController : MonoBehaviour
     {
         currentCameraRotationX = x;
     }
+
+
+
+
+    // 일어나기
+    public IEnumerator StandUpCoroutine()
+    {
+        standCollider.enabled = true;
+        crouchCollider.enabled = false;
+
+        float _posY = theCamera.transform.localPosition.y;
+        int count = 0;
+
+        while (_posY != playerController.originPosY)
+        {
+            count++;
+            _posY = Mathf.Lerp(_posY, playerController.originPosY, 0.3f);
+            theCamera.transform.localPosition = new Vector3(0, _posY, 0f);
+            if (count > 15)
+            {
+                break;
+            }
+            yield return new WaitForSeconds(0.016f);
+        }
+        theCamera.transform.localPosition = new Vector3(0, playerController.originPosY, 0);
+    }
 }
