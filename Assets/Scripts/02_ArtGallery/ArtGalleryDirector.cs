@@ -13,6 +13,7 @@ public class ArtGalleryDirector : MonoBehaviour
     public GameObject playerCam;
     public GameObject directorCam;
     public TextMeshProUGUI mouseText;
+    public RawImage crosshair;
     public PutDialogScript putDialogScript;
 
     public RawImage fadeInOutImage; // 페이드-인, 아웃 이미지
@@ -64,6 +65,7 @@ public class ArtGalleryDirector : MonoBehaviour
         player.SetActive(false);
         directorCam.SetActive(true);
         mouseText.enabled = false;
+        crosshair.enabled = false;
 
         lookVRCam.transform.position = vrCamPos[(int)selectedDream].transform.position;
         lookVRCam.transform.rotation = vrCamPos[(int)selectedDream].transform.rotation;
@@ -105,6 +107,7 @@ public class ArtGalleryDirector : MonoBehaviour
         player.SetActive(false);
         directorCam.SetActive(true);
         mouseText.enabled = false;
+        crosshair.enabled = false;
 
         exitVRCam.transform.position = vrCamPos[(int)selectedDream].transform.position;
         exitVRCam.transform.rotation = vrCamPos[(int)selectedDream].transform.rotation;
@@ -117,5 +120,6 @@ public class ArtGalleryDirector : MonoBehaviour
 
         player.SetActive(true);
         directorCam.SetActive(false);
+        crosshair.enabled = true;
     }
 }

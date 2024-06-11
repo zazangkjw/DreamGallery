@@ -24,6 +24,11 @@ public class ClownColliderTrigger : MonoBehaviour
 
     Rigidbody myRigid;
 
+    [SerializeField]
+    ClownRaycast clownRaycast;
+
+    public bool[] isSuccess = new bool[1];
+
 
 
 
@@ -39,15 +44,26 @@ public class ClownColliderTrigger : MonoBehaviour
         if (other == trigger_SafeZone)
         {
             clown_Chase.isSafe = true;
+
+        }
+
+        // 추격 시작 트리거에 들어가면 플래시 OFF
+        if (other == trigger_Chase)
+        {
             circusFlash.isFlashOn = false;
         }
 
         // 서커스 도전 성공 트리거
-        foreach (Collider c in triggers_CircusSuccess)
+        for(int i = 0; i < triggers_CircusSuccess.Length; i++)
         {
-            if (other == c)
+            if (!isSuccess[i] && other == triggers_CircusSuccess[i])
             {
+                isSuccess[i] = true;
                 circusFlash.isFlashOn = true;
+                StartCoroutine(AudioOnOffScript.VolumeCoroutine(clownRaycast.applause, true, 2f, 0.5f));
+                clownRaycast.yay.Play();
+                clownRaycast.circusSong.Stop();
+                clownRaycast.elevatorAnims[3].Play("Open");
             }
         }
     }

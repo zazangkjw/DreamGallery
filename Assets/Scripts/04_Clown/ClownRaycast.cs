@@ -21,8 +21,7 @@ public class ClownRaycast : MonoBehaviour
     public GameObject Objects;
 
     // 엘리베이터
-    [SerializeField]
-    Animator[] elevatorAnims;
+    public Animator[] elevatorAnims;
     [SerializeField]
     GameObject[] elevatorButtons;
     [SerializeField]
@@ -30,8 +29,8 @@ public class ClownRaycast : MonoBehaviour
     GameObject elevatorBtn;
 
     // AudioSource
-    public AudioSource cheer;
-    public AudioSource clap;
+    public AudioSource circusSong;
+    public AudioSource applause;
     public AudioSource booing;
     public AudioSource yay;
 
@@ -40,17 +39,15 @@ public class ClownRaycast : MonoBehaviour
     public TextMeshProUGUI lifeText;
 
     // 외줄타기 도전
-    [SerializeField]
-    GameObject unicycle;
-    [SerializeField]
-    GameObject unicycleSeat;
+    public GameObject unicycle;
+    public GameObject unicycleSeat;
     public GameObject successsPlatform;
-    public bool isOnUnicycle;
+    public bool isRidingUnicycle;
 
 
     void Start()
     {
-        isOnUnicycle = false;
+        isRidingUnicycle = false;
 
         // 처음에 열려있어야 하는 엘리베이터 문들
         elevatorAnims[0].Play("Open");
@@ -62,6 +59,7 @@ public class ClownRaycast : MonoBehaviour
     void Update()
     {
         ShootRaycast();
+        UnicycleIdle();
     }
 
     // 카메라에서 레이캐스트 쏘기
@@ -187,12 +185,12 @@ public class ClownRaycast : MonoBehaviour
         {
             life = 3;
             lifeText.text = life.ToString();
-            StartCoroutine(AudioOnOffScript.VolumeCoroutine(cheer, true, 5f));
+            StartCoroutine(AudioOnOffScript.VolumeCoroutine(circusSong, true, 5f, 0.5f));
         }
         else
         {
-            StartCoroutine(AudioOnOffScript.VolumeCoroutine(cheer, false, 5f));
-            StartCoroutine(AudioOnOffScript.VolumeCoroutine(clap, false, 5f));
+            StartCoroutine(AudioOnOffScript.VolumeCoroutine(circusSong, false, 5f));
+            StartCoroutine(AudioOnOffScript.VolumeCoroutine(applause, false, 5f));
         }
         //-----------//
 
@@ -208,7 +206,7 @@ public class ClownRaycast : MonoBehaviour
     // 외발자전거를 눌렀을 때
     IEnumerator UnicycleCoroutine()
     {
-        isOnUnicycle = true;
+        isRidingUnicycle = true;
 
         unicycle = hitObject;
 
@@ -231,35 +229,15 @@ public class ClownRaycast : MonoBehaviour
 
         unicycle.GetComponent<GetComponentScript>().animator.Play("Go");
         unicycle.GetComponent<GetComponentScript>().animator.Play("WheelTurn", 1);
-        yield return new WaitForSeconds(8f);
-        unicycle.GetComponent<GetComponentScript>().animator.Play("Idle", 1);
+        yield return null;
+    }
 
-
-        // 외발자전거 도전 성공
-        if (isOnUnicycle)
+    // 외발자전거 멈추면 바퀴도 멈추기
+    void UnicycleIdle()
+    {
+        if (unicycle.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
         {
-            isOnUnicycle = false;
-
-            player.transform.SetParent(Objects.transform);
-            player.transform.position = successsPlatform.transform.position + Vector3.up * 3;
-            player.transform.eulerAngles = new Vector3(0f, player.transform.eulerAngles.y, 0f);
-            elevatorAnims[3].Play("Open");
-            StartCoroutine(AudioOnOffScript.VolumeCoroutine(clap, true, 2f));
-            yay.Play();
-
-            // 컨트롤러 교체
-            player.GetComponent<PlayerController>().enabled = true;
-            player.GetComponent<UnicycleController>().enabled = false;
-            player.GetComponent<Rigidbody>().isKinematic = false;
-        }
-        else if(life > 0)
-        {
-            player.GetComponent<UnicycleController>().bodyForUnity.transform.localEulerAngles = player.GetComponent<UnicycleController>().originRotate;
-            unicycle.GetComponent<GetComponentScript>().animator.Play("Return");
-            unicycle.GetComponent<GetComponentScript>().animator.Play("WheelTurnReverse", 1);
-            yield return new WaitForSeconds(8f);
             unicycle.GetComponent<GetComponentScript>().animator.Play("Idle", 1);
-            unicycle.GetComponent<Collider>().enabled = true; // 콜라이더 활성화
         }
     }
 }

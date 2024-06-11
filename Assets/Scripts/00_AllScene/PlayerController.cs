@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private bool isAbove = false;
     private bool isTryStand = false;
     private bool isSetDragToZero = false;
-    public float stunTimer = 0;
+    public float knockbackTimer = 0;
 
     // 앉았을 때 얼마나 앉을지 결정하는 변수
     [SerializeField]
@@ -78,11 +78,11 @@ public class PlayerController : MonoBehaviour
         TryMove();
         CheckAbove();
         //ChangeDrag();
-        StunTimer();
+        KnockbackTimer();
 
         if (Input.GetKeyDown(KeyCode.H))
         {
-            stunTimer = 0.5f;
+            knockbackTimer = 0.5f;
             myRigid.AddForce((transform.forward * -10f) + (transform.right * 0f) + (transform.up * 5f), ForceMode.Impulse);
         }
     }
@@ -320,9 +320,9 @@ public class PlayerController : MonoBehaviour
 
 
     // 이동 스턴 타이머
-    private void StunTimer()
+    private void KnockbackTimer()
     {
-        stunTimer = stunTimer > 0 ? stunTimer - Time.deltaTime : 0;
+        knockbackTimer = knockbackTimer > 0 ? knockbackTimer - Time.deltaTime : 0;
     }
 
     // 플레이어 이동
@@ -334,7 +334,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if(stunTimer == 0)
+        if(knockbackTimer == 0)
         {
             _moveHorizontal = transform.right * _moveDirX;
             _moveVertical = transform.forward * _moveDirZ;

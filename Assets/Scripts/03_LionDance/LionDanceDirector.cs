@@ -14,6 +14,7 @@ public class LionDanceDirector : MonoBehaviour
     public GameObject player;
     public GameObject directorCam;
     public TextMeshProUGUI mouseText;
+    public RawImage crosshair;
     public PutDialogScript putDialogScript;
 
     public RawImage fadeInOutImage; // 페이드-인, 아웃 이미지
@@ -38,6 +39,7 @@ public class LionDanceDirector : MonoBehaviour
         player.SetActive(false);
         directorCam.SetActive(true);
         mouseText.enabled = false;
+        crosshair.enabled = false;
         fadeInOutImage.color = new Color(0f, 0f, 0f, 1f);
 
         yield return new WaitForSeconds(2f);
@@ -53,6 +55,7 @@ public class LionDanceDirector : MonoBehaviour
 
         directorCam.SetActive(false);
         player.SetActive(true);
+        crosshair.enabled = true;
 
         // 오프닝 대사
         putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[0]["Content"],

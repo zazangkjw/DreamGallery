@@ -23,7 +23,6 @@ public class ClownSceneManager : MonoBehaviour
     public Toggle isDisplayFps;
     public Toggle isVSyncOn;
 
-    public ClownRaycast clownRaycast;
     public PlayerController playerController; // 플레이어 컨트롤러 스크립트
     public UnicycleController unicycleController;
     //public LionDanceDirector lionDanceDirector; // 이 씬의 컷씬이 담겨있는 스크립트
@@ -32,6 +31,10 @@ public class ClownSceneManager : MonoBehaviour
     public GameObject settingUI; // 설정 UI
     public GameObject pauseUI; // 일시정지 UI
     public bool isPausing; // 일시정지 상태인지
+
+    public ClownRaycast clownRaycast;
+
+
 
 
     void Start()
@@ -109,11 +112,11 @@ public class ClownSceneManager : MonoBehaviour
         putDialogScript.enabled = true;
         if (!putDialogScript.isClickMode)
         {
-            if (!clownRaycast.isOnUnicycle)
+            if (!clownRaycast.isRidingUnicycle)
             {
                 playerController.enabled = true;
             }
-            else if (clownRaycast.isOnUnicycle)
+            else if (clownRaycast.isRidingUnicycle)
             {
                 unicycleController.enabled = true;
             }
