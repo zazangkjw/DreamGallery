@@ -43,6 +43,7 @@ public class ClownRaycast : MonoBehaviour
     public GameObject unicycleSeat;
     public GameObject successsPlatform;
     public bool isRidingUnicycle;
+    public GameObject unicycleClown;
 
 
     void Start()
@@ -229,6 +230,8 @@ public class ClownRaycast : MonoBehaviour
 
         unicycle.GetComponent<GetComponentScript>().animator.Play("Go");
         unicycle.GetComponent<GetComponentScript>().animator.Play("WheelTurn", 1);
+        unicycleClown.GetComponent<GetComponentScript>().animator.Play("Go", 0, 0.005f);
+        unicycleClown.GetComponent<GetComponentScript>().animator.Play("WheelTurn", 1);
         yield return null;
     }
 
@@ -238,6 +241,11 @@ public class ClownRaycast : MonoBehaviour
         if (unicycle.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
         {
             unicycle.GetComponent<GetComponentScript>().animator.Play("Idle", 1);
+        }
+
+        if (unicycleClown.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        {
+            unicycleClown.GetComponent<GetComponentScript>().animator.Play("Idle", 1);
         }
     }
 }

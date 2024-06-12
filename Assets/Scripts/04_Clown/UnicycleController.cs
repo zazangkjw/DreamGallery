@@ -77,15 +77,18 @@ public class UnicycleController : MonoBehaviour
         bodyForUnity.transform.localEulerAngles = bodyForUnity.transform.localEulerAngles + balance;
 
         // 균형 잡기 성공
-        if (clownRaycast.unicycle.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+        if (clownRaycast.unicycle.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.98f)
         {
             clownRaycast.isRidingUnicycle = false;
 
             transform.SetParent(clownRaycast.Objects.transform);
             transform.position = clownRaycast.successsPlatform.transform.position + Vector3.up * 3;
             transform.eulerAngles = new Vector3(0f, clownRaycast.unicycleSeat.transform.eulerAngles.y, 0f);
-            playerController.SetCurrentCameraRotationX(currentCameraRotationX);
+            playerController.SetCurrentCameraRotationX(60f);
             playerController.knockbackTimer = 0.5f;
+
+            clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.Play("Return", 0, 1f - clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+            clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.Play("WheelTurnReverse", 1);
 
             // 컨트롤러 교체
             playerController.enabled = true;
@@ -123,6 +126,8 @@ public class UnicycleController : MonoBehaviour
                 bodyForUnity.transform.localEulerAngles = originRotate;
                 clownRaycast.unicycle.GetComponent<GetComponentScript>().animator.Play("Return", 0, 1f - clownRaycast.unicycle.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
                 clownRaycast.unicycle.GetComponent<GetComponentScript>().animator.Play("WheelTurnReverse", 1);
+                clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.Play("Return", 0, 1f - clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+                clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.Play("WheelTurnReverse", 1);
                 clownRaycast.unicycle.GetComponent<Collider>().enabled = true; // 콜라이더 활성화
             }
         }
