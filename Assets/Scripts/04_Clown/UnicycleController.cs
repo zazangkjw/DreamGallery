@@ -77,7 +77,7 @@ public class UnicycleController : MonoBehaviour
         bodyForUnity.transform.localEulerAngles = bodyForUnity.transform.localEulerAngles + balance;
 
         // 균형 잡기 성공
-        if (clownRaycast.unicycle.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.98f)
+        if (clownRaycast.unicycle.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
         {
             clownRaycast.isRidingUnicycle = false;
 

@@ -230,7 +230,7 @@ public class ClownRaycast : MonoBehaviour
 
         unicycle.GetComponent<GetComponentScript>().animator.Play("Go");
         unicycle.GetComponent<GetComponentScript>().animator.Play("WheelTurn", 1);
-        unicycleClown.GetComponent<GetComponentScript>().animator.Play("Go", 0, 0.005f);
+        unicycleClown.GetComponent<GetComponentScript>().animator.Play("Go", 0, 0.0075f);
         unicycleClown.GetComponent<GetComponentScript>().animator.Play("WheelTurn", 1);
         yield return null;
     }

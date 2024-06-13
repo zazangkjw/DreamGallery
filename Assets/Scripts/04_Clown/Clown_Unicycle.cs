@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Clown_Rooftop : MonoBehaviour
+public class Clown_Unicycle : MonoBehaviour
 {
     [SerializeField]
     GameObject playerCam; // 플레이어 카메라
@@ -14,7 +14,7 @@ public class Clown_Rooftop : MonoBehaviour
 
     void Start()
     {
-        GetComponent<Animator>().Play("Breathe");
+        //GetComponent<Animator>().Play("Breathe");
     }
 
     // Update is called once per frame

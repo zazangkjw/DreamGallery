@@ -56,7 +56,7 @@ public class ClownColliderTrigger : MonoBehaviour
         // 서커스 도전 성공 트리거
         for(int i = 0; i < triggers_CircusSuccess.Length; i++)
         {
-            if (!isSuccess[i] && other == triggers_CircusSuccess[i])
+            if (!isSuccess[i] && other == triggers_CircusSuccess[i] && clownRaycast.life > 0)
             {
                 isSuccess[i] = true;
                 circusFlash.isFlashOn = true;
