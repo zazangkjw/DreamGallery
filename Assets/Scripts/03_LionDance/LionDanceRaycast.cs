@@ -37,9 +37,9 @@ public class LionDanceRaycast : MonoBehaviour
     // 카메라에서 레이캐스트 쏘기
     public void ShootRaycast()
     {
-        Debug.DrawRay(transform.position, transform.forward * 1.5f, Color.red);
+        Debug.DrawRay(transform.position, transform.forward * 2f, Color.red);
 
-        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, 1.5f) && !lionDanceSceneManager.isPausing && !putDialogScript.isClickMode)
+        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, 2f) && !lionDanceSceneManager.isPausing && !putDialogScript.isClickMode)
         {
             hitObject = hitInfo.collider.gameObject;
         }

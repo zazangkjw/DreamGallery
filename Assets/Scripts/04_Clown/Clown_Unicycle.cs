@@ -14,7 +14,7 @@ public class Clown_Unicycle : MonoBehaviour
 
     void Start()
     {
-        //GetComponent<Animator>().Play("Breathe");
+        GetComponent<Animator>().Play("Breathe");
     }
 
     // Update is called once per frame

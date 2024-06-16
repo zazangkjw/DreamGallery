@@ -11,9 +11,9 @@ public class ArtGalleryRaycast : MonoBehaviour
     public RaycastHit hitInfo;
     public GameObject hitObject;
     public GameObject preObject;
-
     public TextMeshProUGUI mouseText;
     public PutDialogScript putDialogScript;
+    bool isChecking = true;
 
     public ArtGallerySceneManager artGallerySceneManager;
     public ArtGalleryDirector artGalleryDirector;
@@ -33,9 +33,9 @@ public class ArtGalleryRaycast : MonoBehaviour
     // 카메라에서 레이캐스트 쏘기
     private void ShootRaycast()
     {
-        Debug.DrawRay(transform.position, transform.forward * 1.5f, Color.red);
+        Debug.DrawRay(transform.position, transform.forward * 2f, Color.red);
 
-        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, 1.5f) && !artGallerySceneManager.isPausing && !putDialogScript.isClickMode)
+        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, 2f) && !artGallerySceneManager.isPausing && !putDialogScript.isClickMode)
         {
             hitObject = hitInfo.collider.gameObject;
         }
@@ -49,8 +49,13 @@ public class ArtGalleryRaycast : MonoBehaviour
 
     // 레이캐스트 오브젝트 체크 메소드
     private void CheckObject()
-    { 
-        foreach(GameObject col in dreamObjects)
+    {
+        isChecking = true;
+
+        // 꿈 오브젝트
+        if (isChecking)
+        { }
+            foreach (GameObject col in dreamObjects)
         {
             if (hitObject == col) // 꿈 오브젝트일 떄
             {
@@ -83,6 +88,8 @@ public class ArtGalleryRaycast : MonoBehaviour
 
                     artGalleryDirector.LookVR();
                 }
+
+                isChecking = false; // 이후의 항목들은 체크하지 않음
 
                 break;
             }

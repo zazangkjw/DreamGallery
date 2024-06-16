@@ -40,25 +40,27 @@ public class PutDialogScript : MonoBehaviour
     // 대사 넣기(타이머형)
     public void putDialog(string text, float time)
     {
-        textStacks[0] = text;
+        textStacks.Add(text);
         if (!isClickMode)
         {
             dialogText.text = textStacks[textNum];
             dialogText.enabled = true;
             timer = time;
         }
+        textStacks.Clear();
     }
 
-    // 대사 넣기(타이머형, 텍스트 하나 씩 출력)
+    // 대사 넣기(타이머형, 텍스트 하나씩 출력)
     public void putDialogPrint(string text, float time)
     {
-        textStacks[0] = text;
+        textStacks.Add(text);
         if (!isClickMode)
         {
             TextPrint();
             dialogText.enabled = true;
             timer = time;
         }
+        textStacks.Clear();
     }
 
     // 타이머형 대사
@@ -84,33 +86,43 @@ public class PutDialogScript : MonoBehaviour
     // 대사 넣기(클릭형)
     public void putDialogWithClick(string[] text)
     {
-        textStacks.Clear();
         for (int i = 0; i < text.Length; i++)
         {
             textStacks.Add(text[i]);
         }
-        isPrintMode = false;
-        isClickMode = true;
-        dialogText.text = textStacks[textNum];
-        dialogText.enabled = true;
-        dialogArrow.enabled = true;
-        playerController.enabled = false;
+
+        // 클릭형 대사가 출력 중이지 않을 때
+        if (!isClickMode)
+        {
+            isPrintMode = false;
+            isClickMode = true;
+            dialogText.text = textStacks[textNum];
+            dialogText.enabled = true;
+            dialogArrow.enabled = true;
+            if (!playerController.myRigid.isKinematic) { playerController.myRigid.velocity = Vector3.zero; }
+            playerController.enabled = false;
+        }
     }
 
-    // 대사 넣기(클릭형, 텍스트 하나 씩 출력)
+    // 대사 넣기(클릭형, 텍스트 하나씩 출력)
     public void putDialogPrintWithClick(string[] text)
     {
-        textStacks.Clear();
         for (int i = 0; i < text.Length; i++)
         {
             textStacks.Add(text[i]);
         }
-        isPrintMode = true;
-        isClickMode = true;
-        TextPrint();
-        dialogText.enabled = true;
-        dialogArrow.enabled = true;
-        playerController.enabled = false;
+
+        // 클릭형 대사가 출력 중이지 않을 때
+        if (!isClickMode)
+        {
+            isPrintMode = true;
+            isClickMode = true;
+            TextPrint();
+            dialogText.enabled = true;
+            dialogArrow.enabled = true;
+            if (!playerController.myRigid.isKinematic) { playerController.myRigid.velocity = Vector3.zero; }
+            playerController.enabled = false;
+        }
     }
 
     // 클릭형 대사
@@ -132,6 +144,7 @@ public class PutDialogScript : MonoBehaviour
             }
             else
             {
+                textStacks.Clear();
                 textNum = 0;
                 isClickMode = false;
                 dialogText.enabled = false;

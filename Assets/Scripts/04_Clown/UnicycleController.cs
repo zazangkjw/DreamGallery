@@ -24,6 +24,7 @@ public class UnicycleController : MonoBehaviour
     public Vector3 originRotate;
     Vector3 balance;
     Vector3 balanceDir;
+    public bool isBalancing;
 
     // 필요한 컴포넌트
     [SerializeField]
@@ -63,72 +64,91 @@ public class UnicycleController : MonoBehaviour
     // 균형 잡기
     private void Balance()
     {
-        // 균형 잡기
-        if (Input.GetKey(KeyCode.A))
+        if (isBalancing)
         {
-            balanceDir = Vector3.up * 0.1f;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            balanceDir = -Vector3.up * 0.1f;
-        }
-
-        balance = balance + balanceDir;
-        bodyForUnity.transform.localEulerAngles = bodyForUnity.transform.localEulerAngles + balance;
-
-        // 균형 잡기 성공
-        if (clownRaycast.unicycle.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
-        {
-            clownRaycast.isRidingUnicycle = false;
-
-            transform.SetParent(clownRaycast.Objects.transform);
-            transform.position = clownRaycast.successsPlatform.transform.position + Vector3.up * 3;
-            transform.eulerAngles = new Vector3(0f, clownRaycast.unicycleSeat.transform.eulerAngles.y, 0f);
-            playerController.SetCurrentCameraRotationX(60f);
-            playerController.knockbackTimer = 0.5f;
-
-            clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.Play("Return", 0, 1f - clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
-            clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.Play("WheelTurnReverse", 1);
-
-            // 컨트롤러 교체
-            playerController.enabled = true;
-            enabled = false;
-            myRigid.isKinematic = false;
-        }
-
-        // 균형 잡기 실패
-        if(bodyForUnity.transform.localEulerAngles.y > 90f && bodyForUnity.transform.localEulerAngles.y < 270f)
-        {
-            balance = Vector3.zero;
-            balanceDir = Vector3.up * 0.02f;
-
-            clownRaycast.life--;
-            clownRaycast.lifeText.text = clownRaycast.life.ToString();
-            clownRaycast.isRidingUnicycle = false;
-            transform.SetParent(clownRaycast.Objects.transform);
-            transform.eulerAngles = new Vector3(0f, clownRaycast.unicycleSeat.transform.eulerAngles.y, 0f);
-            playerController.SetCurrentCameraRotationX(currentCameraRotationX);
-
-            // 컨트롤러 교체
-            playerController.enabled = true;
-            enabled = false;
-            myRigid.isKinematic = false;
-
-            // 실패 효과음
-            clownRaycast.booing.Play();
-            if (clownRaycast.life <= 0)
+            // 균형 잡기
+            if (Input.GetKey(KeyCode.A))
             {
-                clownRaycast.circusSong.Stop();
-                clownRaycast.circusSong.volume = 0f;
+                balanceDir = Vector3.up * 0.1f;
             }
-            else if (clownRaycast.life > 0)
+            else if (Input.GetKey(KeyCode.D))
             {
-                bodyForUnity.transform.localEulerAngles = originRotate;
-                clownRaycast.unicycle.GetComponent<GetComponentScript>().animator.Play("Return", 0, 1f - clownRaycast.unicycle.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
-                clownRaycast.unicycle.GetComponent<GetComponentScript>().animator.Play("WheelTurnReverse", 1);
+                balanceDir = -Vector3.up * 0.1f;
+            }
+
+            balance = balance + balanceDir;
+            bodyForUnity.transform.localEulerAngles = bodyForUnity.transform.localEulerAngles + balance;
+
+            // 균형 잡기 성공
+            if (clownRaycast.unicycle.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+            {
+                isBalancing = false;
+                clownRaycast.isRidingUnicycle = false;
+
+                transform.SetParent(clownRaycast.Objects.transform);
+                transform.position = clownRaycast.successsPlatform.transform.position + Vector3.up * 3;
+                transform.eulerAngles = new Vector3(0f, clownRaycast.unicycleSeat.transform.eulerAngles.y, 0f);
+                playerController.SetCurrentCameraRotationX(60f);
+                playerController.knockbackTimer = 0.5f;
+
                 clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.Play("Return", 0, 1f - clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
                 clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.Play("WheelTurnReverse", 1);
-                clownRaycast.unicycle.GetComponent<Collider>().enabled = true; // 콜라이더 활성화
+
+                clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[16]["Content"], 5f); // "잘했어요! 관객들도 좋아하네요"
+
+                // 컨트롤러 교체
+                playerController.enabled = true;
+                enabled = false;
+                myRigid.isKinematic = false;
+            }
+
+            // 균형 잡기 실패
+            if (bodyForUnity.transform.localEulerAngles.y > 90f && bodyForUnity.transform.localEulerAngles.y < 270f)
+            {
+                isBalancing = false;
+                balance = Vector3.zero;
+                balanceDir = Vector3.up * 0.02f;
+
+                clownRaycast.life--;
+                clownRaycast.lifeText.text = clownRaycast.life.ToString();
+                clownRaycast.isRidingUnicycle = false;
+                transform.SetParent(clownRaycast.Objects.transform);
+                transform.eulerAngles = new Vector3(0f, clownRaycast.unicycleSeat.transform.eulerAngles.y, 0f);
+                playerController.SetCurrentCameraRotationX(currentCameraRotationX);
+
+                // 컨트롤러 교체
+                playerController.enabled = true;
+                enabled = false;
+                myRigid.isKinematic = false;
+
+                // 실패 효과음
+                clownRaycast.booing.Play();
+                if (clownRaycast.life <= 0)
+                {
+                    clownRaycast.circusSong.Stop();
+                    clownRaycast.circusSong.volume = 0f;
+                    clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[17]["Content"], 5f); // "관객들이 화났어요"
+                }
+                else if (clownRaycast.life > 0)
+                {
+                    bodyForUnity.transform.localEulerAngles = originRotate;
+                    clownRaycast.unicycle.GetComponent<GetComponentScript>().animator.Play("Return", 0, 1f - clownRaycast.unicycle.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+                    clownRaycast.unicycle.GetComponent<GetComponentScript>().animator.Play("WheelTurnReverse", 1);
+                    clownRaycast.bikeWheel.Play();
+                    clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.Play("Return", 0, 1f - clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+                    clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.Play("WheelTurnReverse", 1);
+                    clownRaycast.bikeWheelClown.Play();
+                    clownRaycast.unicycle.GetComponent<Collider>().enabled = true; // 콜라이더 활성화
+
+                    if (clownRaycast.life == 2)
+                    {
+                        clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[13]["Content"], 5f); // "이게 어려우신가요?"
+                    }
+                    else if (clownRaycast.life == 1)
+                    {
+                        clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[14]["Content"], 5f); // "일부러 그러시나요?"
+                    }
+                }
             }
         }
     }

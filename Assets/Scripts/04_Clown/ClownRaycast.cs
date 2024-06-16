@@ -12,13 +12,16 @@ public class ClownRaycast : MonoBehaviour
     public GameObject preObject;
     public TextMeshProUGUI mouseText;
     public PutDialogScript putDialogScript;
-
     bool isChecking = true;
 
     public GameObject player;
     [SerializeField]
     Rigidbody playerRigid;
     public GameObject Objects;
+
+    public ClownSceneManager clownSceneManager;
+    public RawImage fadeInOutImage; // 페이드-인, 아웃 이미지
+    public FadeInOutScript fadeInOutScript; // 페이드-인, 아웃 스크립트
 
     // 엘리베이터
     public Animator[] elevatorAnims;
@@ -33,8 +36,11 @@ public class ClownRaycast : MonoBehaviour
     public AudioSource applause;
     public AudioSource booing;
     public AudioSource yay;
+    public AudioSource bikeWheel;
+    public AudioSource bikeWheelClown;
 
     // 도전 기회
+    public int life_max = 3;
     public int life;
     public TextMeshProUGUI lifeText;
 
@@ -44,17 +50,21 @@ public class ClownRaycast : MonoBehaviour
     public GameObject successsPlatform;
     public bool isRidingUnicycle;
     public GameObject unicycleClown;
+    public GameObject rope;
+    public GameObject rope_fake;
 
 
     void Start()
     {
         isRidingUnicycle = false;
+        rope.SetActive(false);
+        rope_fake.SetActive(true);
 
         // 처음에 열려있어야 하는 엘리베이터 문들
         elevatorAnims[0].Play("Open");
         elevatorAnims[1].Play("Open");
 
-        life = 3;
+        life = life_max;
     }
 
     void Update()
@@ -66,9 +76,9 @@ public class ClownRaycast : MonoBehaviour
     // 카메라에서 레이캐스트 쏘기
     public void ShootRaycast()
     {
-        Debug.DrawRay(transform.position, transform.forward * 1.5f, Color.red);
+        Debug.DrawRay(transform.position, transform.forward * 2f, Color.red);
 
-        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, 1.5f))
+        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, 2f) && !clownSceneManager.isPausing && !putDialogScript.isClickMode)
         {
             hitObject = hitInfo.collider.gameObject;
         }
@@ -107,7 +117,7 @@ public class ClownRaycast : MonoBehaviour
                         StartCoroutine(ElevatorCoroutine());
                     }
 
-                    isChecking = false; // 이후의 항목들은 체크하지 않음
+                    isChecking = false; // 이후의 항목들은 체크하지 않음 (예: 외발자전거)
 
                     break;
                 }
@@ -137,6 +147,9 @@ public class ClownRaycast : MonoBehaviour
 
                 preObject = hitObject.GetComponent<GetComponentScript>().mesh;
                 preObject.GetComponent<Outline>().enabled = true; // 외곽선 켜기
+
+                mouseText.text = GameManager.instance.textFileManager.ui[24]; // "대화하기" 텍스트 나옴
+                mouseText.enabled = true;
 
                 // E키 입력 시
                 if (Input.GetKeyDown(KeyCode.E))
@@ -184,7 +197,7 @@ public class ClownRaycast : MonoBehaviour
         // 추가 기능 //
         if (elevatorBtn.GetComponent<NextElevatorPoint>().goTo == "Circus")
         {
-            life = 3;
+            life = life_max;
             lifeText.text = life.ToString();
             StartCoroutine(AudioOnOffScript.VolumeCoroutine(circusSong, true, 5f, 0.5f));
         }
@@ -214,25 +227,75 @@ public class ClownRaycast : MonoBehaviour
         unicycle.GetComponent<Collider>().enabled = false; // 콜라이더 비활성화
         preObject.GetComponent<Outline>().enabled = false; // 외곽선 비활성화
 
+
+        // 대화
+        if (life == life_max)
+        {
+            putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[4]["Content"], // "당신의 용감함을 증명할 수 있는 첫 번째 도전입니다"
+                                                                   (string)GameManager.instance.textFileManager.dialog[5]["Content"], // "이 외발자전거로 외줄을 건너서 반대편 타워까지 가세요"
+                                                                   (string)GameManager.instance.textFileManager.dialog[6]["Content"], // "자전거는 알아서 앞으로 가니까 좌우로 균형만 잘 잡아주시면 됩니다"
+                                                                   (string)GameManager.instance.textFileManager.dialog[7]["Content"] }); // "만약 중간에 떨어진다면 다시 여기로 와 주세요"
+        }
+
+        if(life > 1)
+        {
+            putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[8]["Content"] + life + (string)GameManager.instance.textFileManager.dialog[9]["Content"] }); // "남은 도전 기회는 n번입니다"
+        }
+        else if(life == 1)
+        {
+            putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[15]["Content"] }); // "마지막 기회입니다. 이번에도 실패하면 관객들이 분노할 거예요"
+        }
+
+        putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[10]["Content"] }); // "제 뒤를 잘 따라오세요"
+        
+        yield return new WaitUntil(() => putDialogScript.isClickMode == false);
+        player.GetComponent<PlayerController>().enabled = false;
+        fadeInOutScript.FadeIn(fadeInOutImage, 1f);
+        yield return new WaitForSeconds(2f);
+
         // 외발자전거 탑승
         player.transform.SetParent(unicycleSeat.transform);
         player.transform.position = unicycleSeat.transform.position;
         player.transform.rotation = unicycleSeat.transform.rotation;
-
-        // 컨트롤러 교체
+        transform.localEulerAngles = Vector3.zero;
         player.GetComponent<PlayerController>().enabled = false;
-        player.GetComponent<UnicycleController>().enabled = true;
-        player.GetComponent<UnicycleController>().lookSensitivity = player.GetComponent<PlayerController>().lookSensitivity;
         player.GetComponent<Rigidbody>().isKinematic = true;
 
-        // 앉아있는 상태일 때 일어나게 만들기
-        StartCoroutine(player.GetComponent<UnicycleController>().StandUpCoroutine());
+        // 외발자전거 컨트롤러 활성화
+        player.GetComponent<UnicycleController>().enabled = true;
+        player.GetComponent<UnicycleController>().lookSensitivity = player.GetComponent<PlayerController>().lookSensitivity;
+        StartCoroutine(player.GetComponent<UnicycleController>().StandUpCoroutine()); // 앉아있는 상태일 때 일어나게 만들기
 
+        // 광대 위치 조정
+        unicycleClown.GetComponent<GetComponentScript>().animator.Play("Go", 0, 0.016f);
+        unicycleClown.GetComponent<GetComponentScript>().animator.speed = 0f;
+
+        fadeInOutScript.FadeOut(fadeInOutImage, 1f);
+        yield return new WaitForSeconds(2f);
+
+        // 가짜 외줄 사라지고 진짜 외줄 나타남
+        if(life == life_max)
+        {
+            yield return new WaitForSeconds(2f);
+            putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[11]["Content"], 3f); // "잠시만요"
+            yield return new WaitForSeconds(6f);
+            rope.SetActive(true);
+            rope_fake.SetActive(false);
+            yield return new WaitForSeconds(3f);
+            putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[12]["Content"], 3f); // "너무 쉬울까봐 조금 수정했어요. 이제 출발합니다"
+            yield return new WaitForSeconds(3f);
+        }
+
+        // 광대 출발
+        unicycleClown.GetComponent<GetComponentScript>().animator.speed = 1f;
+        unicycleClown.GetComponent<GetComponentScript>().animator.Play("WheelTurn", 1);
+        bikeWheelClown.Play();
+
+        // 플레이어 출발
         unicycle.GetComponent<GetComponentScript>().animator.Play("Go");
         unicycle.GetComponent<GetComponentScript>().animator.Play("WheelTurn", 1);
-        unicycleClown.GetComponent<GetComponentScript>().animator.Play("Go", 0, 0.0075f);
-        unicycleClown.GetComponent<GetComponentScript>().animator.Play("WheelTurn", 1);
-        yield return null;
+        bikeWheel.Play();
+        player.GetComponent<UnicycleController>().isBalancing = true;
     }
 
     // 외발자전거 멈추면 바퀴도 멈추기
@@ -241,11 +304,13 @@ public class ClownRaycast : MonoBehaviour
         if (unicycle.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
         {
             unicycle.GetComponent<GetComponentScript>().animator.Play("Idle", 1);
+            bikeWheel.Stop();
         }
 
         if (unicycleClown.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
         {
             unicycleClown.GetComponent<GetComponentScript>().animator.Play("Idle", 1);
+            bikeWheelClown.Stop();
         }
     }
 }
