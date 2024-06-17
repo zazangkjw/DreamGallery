@@ -94,7 +94,7 @@ public class UnicycleController : MonoBehaviour
                 clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.Play("Return", 0, 1f - clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
                 clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.Play("WheelTurnReverse", 1);
 
-                clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[16]["Content"], 5f); // "잘했어요! 관객들도 좋아하네요"
+                clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[16]["Content"], 5f); // "잘했어요!"
 
                 // 컨트롤러 교체
                 playerController.enabled = true;
@@ -127,7 +127,7 @@ public class UnicycleController : MonoBehaviour
                 {
                     clownRaycast.circusSong.Stop();
                     clownRaycast.circusSong.volume = 0f;
-                    clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[17]["Content"], 5f); // "관객들이 화났어요"
+                    clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[17]["Content"], 5f); // "당신 때문에 관객들이 실망했어요"
                 }
                 else if (clownRaycast.life > 0)
                 {
@@ -142,7 +142,7 @@ public class UnicycleController : MonoBehaviour
 
                     if (clownRaycast.life == 2)
                     {
-                        clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[13]["Content"], 5f); // "이게 어려우신가요?"
+                        clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[13]["Content"], 5f); // "이게 어려우세요?"
                     }
                     else if (clownRaycast.life == 1)
                     {

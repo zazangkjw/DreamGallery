@@ -2392,7 +2392,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 5
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -2918,7 +2918,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 5
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -4029,6 +4029,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1258968234320088024, guid: 92e0e60a10099544b920e914b56a9c4d,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258968234320088024, guid: 92e0e60a10099544b920e914b56a9c4d,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2109167726}
@@ -4044,6 +4049,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1549288577972764371, guid: 92e0e60a10099544b920e914b56a9c4d,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549288577972764371, guid: 92e0e60a10099544b920e914b56a9c4d,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2109167726}
@@ -4055,7 +4065,7 @@ PrefabInstance:
     - target: {fileID: 2126541181675624305, guid: 92e0e60a10099544b920e914b56a9c4d,
         type: 3}
       propertyPath: m_text
-      value: 1920 x 1080
+      value: 3840 x 2160
       objectReference: {fileID: 0}
     - target: {fileID: 4940730648670016062, guid: 92e0e60a10099544b920e914b56a9c4d,
         type: 3}
@@ -6633,7 +6643,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 5
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -7646,7 +7656,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d632b6a0f07c4264b94b7d6d36b9b2dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuUI: {fileID: 645711155}
   resolution: {fileID: 379377919}
   isFullScreen: {fileID: 1699848746}
   mouseSens: {fileID: 1017447945}
@@ -7672,9 +7681,14 @@ MonoBehaviour:
   fpsLimit: {fileID: 1226085789}
   isDisplayFps: {fileID: 1226085788}
   isVSyncOn: {fileID: 1226085791}
+  playerController: {fileID: 0}
+  putDialogScript: {fileID: 0}
+  settingUI: {fileID: 1823464854}
+  pauseUI: {fileID: 0}
+  isPausing: 0
+  menuUI: {fileID: 645711155}
   fadeInOutScript: {fileID: 2109167727}
   fadeInOutImage: {fileID: 921811344}
-  settingUI: {fileID: 1823464854}
 --- !u!114 &2109167727
 MonoBehaviour:
   m_ObjectHideFlags: 0

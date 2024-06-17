@@ -231,9 +231,9 @@ public class ClownRaycast : MonoBehaviour
         // 대화
         if (life == life_max)
         {
-            putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[4]["Content"], // "당신의 용감함을 증명할 수 있는 첫 번째 도전입니다"
+            putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[4]["Content"], // "첫 번째 도전입니다"
                                                                    (string)GameManager.instance.textFileManager.dialog[5]["Content"], // "이 외발자전거로 외줄을 건너서 반대편 타워까지 가세요"
-                                                                   (string)GameManager.instance.textFileManager.dialog[6]["Content"], // "자전거는 알아서 앞으로 가니까 좌우로 균형만 잘 잡아주시면 됩니다"
+                                                                   (string)GameManager.instance.textFileManager.dialog[6]["Content"], // "자전거는 자동으로 앞으로 갑니다. 그러니 좌우로 균형만 잘 잡아주세요"
                                                                    (string)GameManager.instance.textFileManager.dialog[7]["Content"] }); // "만약 중간에 떨어진다면 다시 여기로 와 주세요"
         }
 
@@ -250,6 +250,7 @@ public class ClownRaycast : MonoBehaviour
         
         yield return new WaitUntil(() => putDialogScript.isClickMode == false);
         player.GetComponent<PlayerController>().enabled = false;
+        player.GetComponent<Rigidbody>().isKinematic = true;
         fadeInOutScript.FadeIn(fadeInOutImage, 1f);
         yield return new WaitForSeconds(2f);
 
@@ -258,8 +259,6 @@ public class ClownRaycast : MonoBehaviour
         player.transform.position = unicycleSeat.transform.position;
         player.transform.rotation = unicycleSeat.transform.rotation;
         transform.localEulerAngles = Vector3.zero;
-        player.GetComponent<PlayerController>().enabled = false;
-        player.GetComponent<Rigidbody>().isKinematic = true;
 
         // 외발자전거 컨트롤러 활성화
         player.GetComponent<UnicycleController>().enabled = true;
@@ -267,7 +266,7 @@ public class ClownRaycast : MonoBehaviour
         StartCoroutine(player.GetComponent<UnicycleController>().StandUpCoroutine()); // 앉아있는 상태일 때 일어나게 만들기
 
         // 광대 위치 조정
-        unicycleClown.GetComponent<GetComponentScript>().animator.Play("Go", 0, 0.016f);
+        unicycleClown.GetComponent<GetComponentScript>().animator.Play("Go", 0, 0.0175f);
         unicycleClown.GetComponent<GetComponentScript>().animator.speed = 0f;
 
         fadeInOutScript.FadeOut(fadeInOutImage, 1f);
@@ -283,7 +282,7 @@ public class ClownRaycast : MonoBehaviour
             rope_fake.SetActive(false);
             yield return new WaitForSeconds(3f);
             putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[12]["Content"], 3f); // "너무 쉬울까봐 조금 수정했어요. 이제 출발합니다"
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(5f);
         }
 
         // 광대 출발

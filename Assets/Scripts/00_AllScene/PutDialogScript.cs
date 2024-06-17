@@ -56,9 +56,9 @@ public class PutDialogScript : MonoBehaviour
         textStacks.Add(text);
         if (!isClickMode)
         {
-            TextPrint();
+            timer = 100f;
+            TextPrint(time);
             dialogText.enabled = true;
-            timer = time;
         }
         textStacks.Clear();
     }
@@ -101,6 +101,7 @@ public class PutDialogScript : MonoBehaviour
             dialogArrow.enabled = true;
             if (!playerController.myRigid.isKinematic) { playerController.myRigid.velocity = Vector3.zero; }
             playerController.enabled = false;
+            playerController.myRigid.isKinematic = true;
         }
     }
 
@@ -122,6 +123,7 @@ public class PutDialogScript : MonoBehaviour
             dialogArrow.enabled = true;
             if (!playerController.myRigid.isKinematic) { playerController.myRigid.velocity = Vector3.zero; }
             playerController.enabled = false;
+            playerController.myRigid.isKinematic = true;
         }
     }
 
@@ -150,6 +152,7 @@ public class PutDialogScript : MonoBehaviour
                 dialogText.enabled = false;
                 dialogArrow.enabled = false;
                 playerController.enabled = true;
+                playerController.myRigid.isKinematic = false;
             }
         }
     }
@@ -160,26 +163,28 @@ public class PutDialogScript : MonoBehaviour
     // 대사 화살표 반짝거림
     IEnumerator DialogArrow()
     {
-        while (true && dialogArrow) 
-        { 
-            if(dialogArrow.color.a <= 0)
+        while (true)
+        {
+            if (isClickMode)
             {
-                isDialogArrowOn = false;
-            }
-            else if(dialogArrow.color.a >= 1)
-            {
-                isDialogArrowOn = true;
-            }
+                if (dialogArrow.color.a <= 0)
+                {
+                    isDialogArrowOn = false;
+                }
+                else if (dialogArrow.color.a >= 1)
+                {
+                    isDialogArrowOn = true;
+                }
 
-            if (isDialogArrowOn)
-            {
-                dialogArrow.color = new Color(1f, 1f, 1f, dialogArrow.color.a - ((2.55f / 255f) * 100f * Time.deltaTime));
+                if (isDialogArrowOn)
+                {
+                    dialogArrow.color = new Color(1f, 1f, 1f, dialogArrow.color.a - ((2.55f / 255f) * 100f * Time.deltaTime));
+                }
+                else
+                {
+                    dialogArrow.color = new Color(1f, 1f, 1f, dialogArrow.color.a + ((2.55f / 255f) * 100f * Time.deltaTime));
+                }  
             }
-            else
-            {
-                dialogArrow.color = new Color(1f, 1f, 1f, dialogArrow.color.a + ((2.55f / 255f) * 100f * Time.deltaTime));
-            }
-            
             yield return wait;
         }
     }
@@ -197,6 +202,15 @@ public class PutDialogScript : MonoBehaviour
         textPrintCoroutine = StartCoroutine(TextPrintCoroutine(textStacks[textNum]));
     }
 
+    void TextPrint(float time)
+    {
+        if (textPrintCoroutine != null)
+        {
+            StopCoroutine(textPrintCoroutine);
+        }
+        textPrintCoroutine = StartCoroutine(TextPrintCoroutine(textStacks[textNum], time));
+    }
+
     IEnumerator TextPrintCoroutine(string text)
     {
         dialogText.text = "";
@@ -206,5 +220,18 @@ public class PutDialogScript : MonoBehaviour
             dialogText.text += text[i];
             yield return wait2;
         }
+    }
+
+    IEnumerator TextPrintCoroutine(string text, float time)
+    {
+        dialogText.text = "";
+
+        for (int i = 0; i < text.Length; i++)
+        {
+            dialogText.text += text[i];
+            yield return wait2;
+        }
+
+        timer = time;
     }
 }
