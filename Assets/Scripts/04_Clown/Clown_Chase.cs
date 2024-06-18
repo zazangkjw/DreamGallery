@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Clown_Chase : MonoBehaviour
 {
     Rigidbody rb; // 센터 리지드바디
-    float chaseSpeedX = 0.02f;
-    float chaseSpeedY = 0.01f;
+    float chaseSpeedX = 0.02f; // 0.02f
+    float chaseSpeedY = 0.01f; // 0.01f
 
 
     [SerializeField]
@@ -20,7 +21,10 @@ public class Clown_Chase : MonoBehaviour
     GameObject clownMesh;
 
     [SerializeField]
-    Rigidbody clownRoot; 
+    Rigidbody clownRoot;
+
+    [SerializeField]
+    GameObject clownRootForUnity;
 
     [SerializeField]
     GameObject clownHead;
@@ -113,6 +117,8 @@ public class Clown_Chase : MonoBehaviour
         }
     }
 
+    //public float a, b, c;
+
     // 미친 광대 움직임
     void MoveClown()
     {
@@ -120,9 +126,18 @@ public class Clown_Chase : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.forward, out hitInfoCenter, 20f, layerMask_Wall))
         {
-            clownRoot.MovePosition(hitInfoCenter.point + (-hitInfoCenter.normal * 0.55f) + (Vector3.down * 1.1f));
-            clownRoot.rotation = Quaternion.LookRotation(hitInfoCenter.normal) * Quaternion.Euler(new Vector3(0, 90f, 90f));
-            clownHead.transform.rotation = Quaternion.LookRotation(playerCam.transform.position - clownHead.transform.position) * Quaternion.Euler(new Vector3(0f, 90f, 0f));        
+            clownRoot.MovePosition(hitInfoCenter.point + (-hitInfoCenter.normal * 0.55f) + (Vector3.down * 0.95f));
+            clownRoot.rotation = Quaternion.LookRotation(hitInfoCenter.normal) * Quaternion.Euler(new Vector3(0f, 90f, 90f));
+            //clownRootForUnity.transform.rotation = Quaternion.LookRotation(playerCam.transform.position - clownRootForUnity.transform.position);// 몸이 플레이어 방향으로 회전
+            //clownRootForUnity.transform.localEulerAngles = new Vector3(0, clownRootForUnity.transform.localEulerAngles.y, 0); // 몸이 플레이어 방향으로 회전
+            clownHead.transform.rotation = Quaternion.LookRotation(playerCam.transform.position - clownHead.transform.position) * Quaternion.Euler(new Vector3(0f, 90f, 0f));
+
+            // 테스트
+            /*clownRoot.MovePosition(hitInfoCenter.point);
+            clownRoot.rotation = Quaternion.LookRotation(hitInfoCenter.normal) * Quaternion.Euler(new Vector3(0f, 90f, -90f));
+            clownRootForUnity.transform.rotation = Quaternion.LookRotation(playerCam.transform.position - clownRootForUnity.transform.position);// 몸이 플레이어 방향으로 회전
+            clownRootForUnity.transform.localEulerAngles = new Vector3(0, clownRootForUnity.transform.localEulerAngles.y, 0) + Quaternion.Euler(new Vector3(0f, 90f, 0f)).eulerAngles; // 몸이 플레이어 방향으로 회전
+            clownHead.transform.rotation = Quaternion.LookRotation(playerCam.transform.position - clownHead.transform.position) * Quaternion.Euler(new Vector3(0f, 90f, 0f));*/
         }
     } 
 }
