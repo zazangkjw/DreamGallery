@@ -146,7 +146,7 @@ public class UnicycleController : MonoBehaviour
                     }
                     else if (clownRaycast.life == 1)
                     {
-                        clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[14]["Content"], 5f); // "일부러 그러시나요?"
+                        clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[14]["Content"], 5f); // "일부러 그러세요?"
                     }
                 }
             }

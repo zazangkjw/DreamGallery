@@ -14,6 +14,7 @@ Library: D:\KJW\Unity\Project\Capstone\Temp\BurstOutput\Data\Plugins\x86_64\lib_
 --assembly-defines=Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary;
 --assembly-defines=Unity.RenderPipelines.Core.Runtime;
 --assembly-defines=Unity.RenderPipelines.Universal.Runtime;
+--assembly-defines=Unity.AI.Navigation;
 --assembly-defines=Unity.Burst;
 --assembly-defines=OldMovieFx.Runtime;
 --assembly-defines=Unity.VisualScripting.Core;
@@ -76,6 +77,7 @@ Library: D:\KJW\Unity\Project\Capstone\Temp\BurstOutput\Data\Plugins\x86_64\lib_
 --assembly-defines=Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary;
 --assembly-defines=Unity.RenderPipelines.Core.Runtime;
 --assembly-defines=Unity.RenderPipelines.Universal.Runtime;
+--assembly-defines=Unity.AI.Navigation;
 --assembly-defines=Unity.Burst;
 --assembly-defines=OldMovieFx.Runtime;
 --assembly-defines=Unity.VisualScripting.Core;
@@ -136,6 +138,7 @@ Library: D:\KJW\Unity\Project\Capstone\Temp\BurstOutput\Data\Plugins\x86_64\lib_
 --assembly-defines=Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary;
 --assembly-defines=Unity.RenderPipelines.Core.Runtime;
 --assembly-defines=Unity.RenderPipelines.Universal.Runtime;
+--assembly-defines=Unity.AI.Navigation;
 --assembly-defines=Unity.Burst;
 --assembly-defines=OldMovieFx.Runtime;
 --assembly-defines=Unity.VisualScripting.Core;
@@ -202,6 +205,7 @@ Library: D:\KJW\Unity\Project\Capstone\Temp\BurstOutput\Data\Plugins\x86_64\lib_
 --assembly-defines=Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary;
 --assembly-defines=Unity.RenderPipelines.Core.Runtime;
 --assembly-defines=Unity.RenderPipelines.Universal.Runtime;
+--assembly-defines=Unity.AI.Navigation;
 --assembly-defines=Unity.Burst;
 --assembly-defines=OldMovieFx.Runtime;
 --assembly-defines=Unity.VisualScripting.Core;

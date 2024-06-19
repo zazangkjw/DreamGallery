@@ -265,9 +265,11 @@ public class ClownRaycast : MonoBehaviour
         player.GetComponent<UnicycleController>().lookSensitivity = player.GetComponent<PlayerController>().lookSensitivity;
         StartCoroutine(player.GetComponent<UnicycleController>().StandUpCoroutine()); // 앉아있는 상태일 때 일어나게 만들기
 
-        // 광대 위치 조정
-        unicycleClown.GetComponent<GetComponentScript>().animator.Play("Go", 0, 0.0175f);
+        // 위치 조정
+        unicycleClown.GetComponent<GetComponentScript>().animator.Play("Go", 0, 0.02f);
         unicycleClown.GetComponent<GetComponentScript>().animator.speed = 0f;
+        unicycle.GetComponent<GetComponentScript>().animator.Play("Go", 0, 0.01f);
+        unicycle.GetComponent<GetComponentScript>().animator.speed = 0f;
 
         fadeInOutScript.FadeOut(fadeInOutImage, 1f);
         yield return new WaitForSeconds(2f);
@@ -291,7 +293,7 @@ public class ClownRaycast : MonoBehaviour
         bikeWheelClown.Play();
 
         // 플레이어 출발
-        unicycle.GetComponent<GetComponentScript>().animator.Play("Go");
+        unicycle.GetComponent<GetComponentScript>().animator.speed = 1f;
         unicycle.GetComponent<GetComponentScript>().animator.Play("WheelTurn", 1);
         bikeWheel.Play();
         player.GetComponent<UnicycleController>().isBalancing = true;

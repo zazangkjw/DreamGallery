@@ -375,7 +375,6 @@ public class PlayerController : MonoBehaviour
         {
             if (_velocity.magnitude >= 0.01f) { isWalk = true; } // Vector3.magnitude 0,0,0부터 좌표까지 거리
             else if (_velocity.magnitude < 0.01f) { isWalk = false; }
-
         }
     }
 
