@@ -122,13 +122,13 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 70.5328
+  field of view: 58.715508
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 31
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -395,7 +395,7 @@ MonoBehaviour:
   crouchSpeed: 2.5
   applySpeed: 0
   jumpForce: 5
-  stunTimer: 0
+  knockbackTimer: 0
   crouchPosY: -0.3
   originPosY: 0
   standCollider: {fileID: 4377094991589878669}

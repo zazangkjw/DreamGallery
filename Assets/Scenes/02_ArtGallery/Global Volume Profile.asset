@@ -56,6 +56,40 @@ MonoBehaviour:
   scale:
     m_OverrideState: 1
     m_Value: 1
+--- !u!114 &-1283182376676132035
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df4e1e32f0469e42859a646219b6408, type: 3}
+  m_Name: ScreenSpaceReflections
+  m_EditorClassIdentifier: 
+  active: 0
+  enabled:
+    m_OverrideState: 1
+    m_Value: 1
+  downsample:
+    m_OverrideState: 1
+    m_Value: 2
+  samples:
+    m_OverrideState: 1
+    m_Value: 8
+  steps:
+    m_OverrideState: 1
+    m_Value: 125
+  stepSize:
+    m_OverrideState: 1
+    m_Value: 0.01
+  thickness:
+    m_OverrideState: 1
+    m_Value: 0.1
+  minSmoothness:
+    m_OverrideState: 1
+    m_Value: 0.35
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +110,7 @@ MonoBehaviour:
   - {fileID: 1765089060441086268}
   - {fileID: 7262314642511622723}
   - {fileID: -6902136393293619374}
+  - {fileID: -1283182376676132035}
 --- !u!114 &588738977437315455
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -197,19 +232,19 @@ MonoBehaviour:
     m_Value: 1
   gaussianStart:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 0
   gaussianEnd:
     m_OverrideState: 1
-    m_Value: 50
+    m_Value: 0
   gaussianMaxRadius:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 1.5
   highQualitySampling:
     m_OverrideState: 0
     m_Value: 0
   focusDistance:
     m_OverrideState: 0
-    m_Value: 10
+    m_Value: 0.61
   aperture:
     m_OverrideState: 0
     m_Value: 5.6
@@ -239,8 +274,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   postExposure:
-    m_OverrideState: 1
-    m_Value: 1
+    m_OverrideState: 0
+    m_Value: 0.5
   contrast:
     m_OverrideState: 0
     m_Value: 0
