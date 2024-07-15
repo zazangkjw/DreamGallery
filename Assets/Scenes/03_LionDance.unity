@@ -238,7 +238,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 4e-44, z: 2.152e-42, w: 1.3197048e-37}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -356,7 +356,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: -6.131318e-37}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 6.95e-43, z: 6.311e-42, w: 4.1613e-41}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -683,6 +683,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5151583128729203478, guid: 15fbdb4ad8e717f419004d5d4ddfaa57,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 15fbdb4ad8e717f419004d5d4ddfaa57,
         type: 3}
@@ -4327,7 +4332,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 1e-44, z: 1.7721e-41, w: 0}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 7e-45, z: 9.42e-42, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -7676,7 +7681,7 @@ PrefabInstance:
     - target: {fileID: -8708103925281285817, guid: 5b9169413f7ca124097313da114709ad,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b9169413f7ca124097313da114709ad,
         type: 3}
@@ -8059,6 +8064,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: DoorAndWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194359791116481286, guid: 623882457da55f64cac0e61fb26cb623,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8700,6 +8710,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: DoorAndWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010759028645075673, guid: 5f3fa470a98eed448bbc1ae436e0cdbe,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11494,6 +11509,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: DoorAndWindow
       objectReference: {fileID: 0}
+    - target: {fileID: 7046132833472426067, guid: bb42eb1b44269a04b99814b01db58700,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 7814295741569162347, guid: bb42eb1b44269a04b99814b01db58700,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -11636,6 +11656,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: DoorAndWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: -3073368411968429422, guid: 398a04237f82444498822109728c472d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 398a04237f82444498822109728c472d,
         type: 3}
@@ -11800,6 +11825,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: DoorAndWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: -7033483231231376307, guid: 46bf3533f8e45044f86015ec09119078,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 46bf3533f8e45044f86015ec09119078,
         type: 3}
@@ -12080,6 +12110,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Balcony_Window
+      objectReference: {fileID: 0}
+    - target: {fileID: 5533787176199571200, guid: f71cba73f4e5ce140a56db769daf71ff,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12400,6 +12435,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 16cadc3117716e74e9ed090321a83059, type: 2}
+    - target: {fileID: 5140649769660074864, guid: 193949a48a75f9a458c337b93cd94f63,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12520,6 +12560,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6317287810166386223, guid: 80fba9888d529a340a1470625b2e3c95,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: -1728616750584546345, guid: 80fba9888d529a340a1470625b2e3c95,
         type: 3}
@@ -13746,7 +13791,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 1.7e-44, z: 2.416e-42, w: 0}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 4.8e-44, z: 1.142e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

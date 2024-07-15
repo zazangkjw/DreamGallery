@@ -1,0 +1,16 @@
+fbx
+
+애니메이션:
+<활성화 목록>
+Selected Object
+Apply Scalings = FBX Units Scale
+Apply Unit
+Use Space Transform
+Apply Transform
+Apply Modifiers
+Key All Bones
+Simplify 0.00
+
+오브젝트:
+<활성화 목록 위와 동일>
+Bake Animation 해제
