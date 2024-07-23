@@ -6,23 +6,55 @@ using UnityEngine.UI;
 
 public class DefaultSceneManager : MonoBehaviour
 {
-    public TMP_Dropdown resolution;
-    public Toggle isFullScreen;
-    public Slider mouseSens; // 마우스 감도 스크롤바
-    public TMP_Dropdown language; // 설정창 언어 드롭다운
-    public TextMeshProUGUI[] uiTexts; // UI 텍스트 목록
-    public Slider volume;
-    public AudioMixer audioMixer;
-    public TMP_InputField fpsLimit;
-    public Toggle isDisplayFps;
-    public Toggle isVSyncOn;
-
     public PlayerController playerController; // 플레이어 컨트롤러 스크립트
     public PutDialogScript putDialogScript; // 대사 넣는 스크립트
+    public AudioMixer audioMixer;
 
     public GameObject settingUI; // 설정 UI
     public GameObject pauseUI; // 일시정지 UI
     public bool isPausing; // 일시정지 상태인지
+
+    public TMP_Dropdown resolution;
+    public Toggle isFullScreen;
+    public Slider mouseSens; // 마우스 감도 스크롤바
+    public TMP_Dropdown language; // 설정창 언어 드롭다운
+    public Slider volume;
+    public TMP_InputField fpsLimit;
+    public Toggle isDisplayFps;
+    public Toggle isVSyncOn;
+    public TextMeshProUGUI[] uiTexts; // UI 텍스트 목록
+
+
+    public void Reset()
+    {
+        settingUI = GameObject.Find("SettingUI");
+        pauseUI = GameObject.Find("PauseUI");
+
+        resolution = GameObject.Find("ResolutionDropdown").GetComponent<TMP_Dropdown>();
+        isFullScreen = GameObject.Find("FullScreenToggle").GetComponent<Toggle>();
+        mouseSens = GameObject.Find("MouseSensitiveSlider").GetComponent<Slider>(); // 마우스 감도 스크롤바
+        language = GameObject.Find("LanguageDropdown").GetComponent<TMP_Dropdown>(); // 설정창 언어 드롭다운
+        volume = GameObject.Find("VolumeSlider").GetComponent<Slider>();
+        fpsLimit = GameObject.Find("FPSLimitInputField").GetComponent<TMP_InputField>();
+        isDisplayFps = GameObject.Find("FPSDisplayToggle").GetComponent<Toggle>();
+        isVSyncOn = GameObject.Find("VSyncToggle").GetComponent<Toggle>();
+
+        uiTexts = new TextMeshProUGUI[100];
+        uiTexts[0] = GameObject.Find("ReturnText").GetComponent<TextMeshProUGUI>();
+        uiTexts[1] = GameObject.Find("SettingText").GetComponent<TextMeshProUGUI>();
+        uiTexts[2] = GameObject.Find("ExitText").GetComponent<TextMeshProUGUI>();
+        uiTexts[3] = GameObject.Find("SettingTitleText").GetComponent<TextMeshProUGUI>();
+        uiTexts[4] = GameObject.Find("ResolutionText").GetComponent<TextMeshProUGUI>();
+        uiTexts[5] = GameObject.Find("MouseSensitiveText").GetComponent<TextMeshProUGUI>();
+        uiTexts[6] = GameObject.Find("LanguageText").GetComponent<TextMeshProUGUI>();
+        uiTexts[7] = GameObject.Find("VolumeText").GetComponent<TextMeshProUGUI>();
+        uiTexts[8] = GameObject.Find("ApplyText").GetComponent<TextMeshProUGUI>();
+        uiTexts[9] = GameObject.Find("CancelText").GetComponent<TextMeshProUGUI>();
+        uiTexts[10] = GameObject.Find("FullScreenText").GetComponent<TextMeshProUGUI>();
+        uiTexts[11] = GameObject.Find("FPSLimitText").GetComponent<TextMeshProUGUI>();
+        uiTexts[12] = GameObject.Find("FPSDisplayText").GetComponent<TextMeshProUGUI>();
+        uiTexts[13] = GameObject.Find("VSyncText").GetComponent<TextMeshProUGUI>();
+    }
 
     // Start에 넣기
     public void WhenStart()

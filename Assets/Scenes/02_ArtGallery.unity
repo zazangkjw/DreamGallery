@@ -5572,10 +5572,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7995fea72ed57a047830e749fa0b301b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resolution: {fileID: 1933149378}
-  isFullScreen: {fileID: 1793909502}
-  mouseSens: {fileID: 75638476}
-  language: {fileID: 332584720}
+  playerController: {fileID: 202267686}
+  putDialogScript: {fileID: 1335499233}
+  audioMixer: {fileID: 24100000, guid: cd8bd5d3d09c1ab4fa93086d582ce4a3, type: 2}
+  ui: {fileID: 1472442363}
   uiTexts:
   - {fileID: 521079007}
   - {fileID: 238594147}
@@ -5591,13 +5591,14 @@ MonoBehaviour:
   - {fileID: 8204490063170237840}
   - {fileID: 8204490063170237839}
   - {fileID: 8204490063170237841}
+  resolution: {fileID: 1933149378}
+  isFullScreen: {fileID: 1793909502}
+  mouseSens: {fileID: 75638476}
+  language: {fileID: 332584720}
   volume: {fileID: 1876000946}
-  audioMixer: {fileID: 24100000, guid: cd8bd5d3d09c1ab4fa93086d582ce4a3, type: 2}
   fpsLimit: {fileID: 8204490063170237838}
   isDisplayFps: {fileID: 8204490063170237837}
   isVSyncOn: {fileID: 176616044}
-  playerController: {fileID: 202267686}
-  putDialogScript: {fileID: 1335499233}
   settingUI: {fileID: 61959644}
   pauseUI: {fileID: 915297575}
   isPausing: 0
@@ -8046,6 +8047,11 @@ PrefabInstance:
     - target: {fileID: 2395193991971008917, guid: 480f8d12d146ff744b9c65d9c636b98e,
         type: 3}
       propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2395193991971008917, guid: 480f8d12d146ff744b9c65d9c636b98e,
+        type: 3}
+      propertyPath: m_LightProbeUsage
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2395193991971008917, guid: 480f8d12d146ff744b9c65d9c636b98e,
