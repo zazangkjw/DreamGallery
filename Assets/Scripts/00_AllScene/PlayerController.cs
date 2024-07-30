@@ -5,6 +5,8 @@ using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
+    public int team;
+
     // 플레이어 이동속도
     public float walkSpeed;
     public float runSpeed;

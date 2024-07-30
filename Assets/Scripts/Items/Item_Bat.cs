@@ -3,21 +3,18 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Bat : MonoBehaviour
+public class Item_Bat : Item
 {
-    public Animator handAnim;
+    
 
-    bool isCanceled; // 차징 준비 완료
-    float chargeTimer; // 차징 시간
-
-    WaitForSeconds delay = new WaitForSeconds(0.1f);
-
-
-
+    void Update()
+    {
+        
+    }
 
     private void OnEnable()
     {
-        handAnim.SetBool("isObject", true);
+        handAnim.Play("Bat_Up");
         StartCoroutine(BatCoroutine());
     }
 
@@ -26,7 +23,7 @@ public class Bat : MonoBehaviour
 
     IEnumerator BatCoroutine()
     {
-        yield return delay; // 다음 애니메이션으로 전환될 때까지 대기하는 짧은 시간(무기 드는 시간동안 대기)
+        // 다음 애니메이션으로 전환될 때까지 대기(무기 드는 모션 -> idle 모션)
         while (handAnim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
         {
             yield return null;
@@ -37,28 +34,38 @@ public class Bat : MonoBehaviour
             // 클릭
             if (Input.GetMouseButtonDown(0))
             {
-                isCanceled = false;
+                handAnim.SetBool("isCanceled", false);
                 chargeTimer = 0;
             }
 
             // 클릭 유지
-            if (Input.GetMouseButton(0) && !isCanceled && !handAnim.GetBool("isSwing"))
+            if (Input.GetMouseButton(0) && !handAnim.GetBool("isCanceled") && !handAnim.GetBool("isChargeAttack"))
             {
                 handAnim.SetBool("isCharging", true);
                 chargeTimer += Time.deltaTime;
+
+                if(chargeTimer >= 0.2f && handAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                {
+                    handAnim.SetBool("isCharged", true);
+                }
             }
 
             // 클릭 떼기
-            if (Input.GetMouseButtonUp(0) && !isCanceled)
+            if (Input.GetMouseButtonUp(0) && handAnim.GetBool("isCharging"))
             {
                 // 차지 공격
-                if (chargeTimer >= 0.2f && handAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                if (handAnim.GetBool("isCharged"))
                 {
-                    handAnim.SetBool("isSwing", true);
+                    handAnim.SetBool("isChargeAttack", true);
+                    foreach(Collider col in cols)
+                    {
+                        col.enabled = true;
+                    }
                     
                     // 스윙 모션 끝날 때까지 대기
-                    yield return delay; // 다음 애니메이션으로 전환될 때까지 대기하는 짧은 시간
+                    yield return delay; // 다음 애니메이션으로 전환될 때까지 대기하는 짧은 시간(차지드 모션 -> 차지어택 모션)
                     handAnim.SetBool("isCharging", false);
+                    handAnim.SetBool("isCharged", false);
                     while (true)
                     {
                         if(handAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
@@ -68,7 +75,11 @@ public class Bat : MonoBehaviour
                         yield return null;
                     }
 
-                    handAnim.SetBool("isSwing", false);
+                    handAnim.SetBool("isChargeAttack", false);
+                    foreach (Collider col in cols)
+                    {
+                        col.enabled = false;
+                    }
                 }
                 else
                 {
@@ -79,8 +90,9 @@ public class Bat : MonoBehaviour
             // 우클릭으로 차징 취소
             if (Input.GetMouseButtonDown(1))
             {
-                isCanceled = true;
+                handAnim.SetBool("isCanceled", true);
                 handAnim.SetBool("isCharging", false);
+                handAnim.SetBool("isCharged", false);
             }
 
             yield return null;
