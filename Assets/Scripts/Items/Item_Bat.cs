@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Item_Bat : Item
@@ -74,7 +73,7 @@ public class Item_Bat : Item
                         }
                         yield return null;
                     }
-
+                    
                     handAnim.SetBool("isChargeAttack", false);
                     foreach (Collider col in cols)
                     {

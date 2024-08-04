@@ -13,12 +13,12 @@ public class ReflectAttack : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Æ¨°Ü³»±â
-        if (other.gameObject.tag == "RangedAttack")
+        if (other.gameObject.tag == "Bullet")
         {
-            if (other.gameObject.GetComponent<Item>().team != item.team)
+            if (other.gameObject.GetComponent<Bullet>().team != item.team)
             {
-                other.gameObject.GetComponent<Item>().team = item.team;
-                other.gameObject.GetComponent<Item>().myRigid.MovePosition(playerCam.transform.position + (playerCam.transform.forward));
+                other.gameObject.GetComponent<Bullet>().team = item.team;
+                other.gameObject.GetComponent<Bullet>().myRigid.MovePosition(playerCam.transform.position + (playerCam.transform.forward));
                 other.gameObject.transform.rotation = Quaternion.LookRotation(playerCam.transform.forward);
             }
         }
