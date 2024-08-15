@@ -6823,10 +6823,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c3cd5fb6fbc9b4469b7a60d12f4d3b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 384628156}
+  putDialogScript: {fileID: 807168750}
+  audioMixer: {fileID: 24100000, guid: cd8bd5d3d09c1ab4fa93086d582ce4a3, type: 2}
+  settingUI: {fileID: 1447428595}
+  pauseUI: {fileID: 99410564}
+  isPausing: 0
   resolution: {fileID: 940124030}
   isFullScreen: {fileID: 1093371122}
   mouseSens: {fileID: 79386419}
   language: {fileID: 1267552599}
+  volume: {fileID: 1867834782}
+  fpsLimit: {fileID: 1447428597}
+  isDisplayFps: {fileID: 1447428596}
+  isVSyncOn: {fileID: 155943489}
   uiTexts:
   - {fileID: 1371476370}
   - {fileID: 1061358396}
@@ -6844,16 +6854,6 @@ MonoBehaviour:
   - {fileID: 123950750}
   - {fileID: 1449068325}
   - {fileID: 444112828}
-  volume: {fileID: 1867834782}
-  audioMixer: {fileID: 24100000, guid: cd8bd5d3d09c1ab4fa93086d582ce4a3, type: 2}
-  fpsLimit: {fileID: 1447428597}
-  isDisplayFps: {fileID: 1447428596}
-  isVSyncOn: {fileID: 155943489}
-  playerController: {fileID: 384628156}
-  putDialogScript: {fileID: 807168750}
-  settingUI: {fileID: 1447428595}
-  pauseUI: {fileID: 99410564}
-  isPausing: 0
   unicycleController: {fileID: 384628164}
   clownRaycast: {fileID: 1172157296}
 --- !u!1 &810793161
