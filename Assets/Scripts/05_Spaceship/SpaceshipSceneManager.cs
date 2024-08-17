@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class SpaceshipSceneManager : DefaultSceneManager
 {
+    public SpaceshipDirector spaceshipDirector; // 이 씬의 컷씬이 담겨있는 스크립트
 
 
 
@@ -9,6 +10,8 @@ public class SpaceshipSceneManager : DefaultSceneManager
     void Start()
     {
         WhenStart();
+
+        spaceshipDirector.OpeningDirector();
     }
 
     void Update()
