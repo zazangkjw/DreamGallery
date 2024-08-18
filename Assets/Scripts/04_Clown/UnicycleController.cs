@@ -85,7 +85,7 @@ public class UnicycleController : MonoBehaviour
                 isBalancing = false;
                 clownRaycast.isRidingUnicycle = false;
 
-                transform.SetParent(clownRaycast.Objects.transform);
+                transform.SetParent(clownRaycast.Armatures.transform);
                 transform.position = clownRaycast.successsPlatform.transform.position + Vector3.up * 3;
                 transform.eulerAngles = new Vector3(0f, clownRaycast.unicycleSeat.transform.eulerAngles.y, 0f);
                 playerController.SetCurrentCameraRotationX(60f);
@@ -112,7 +112,7 @@ public class UnicycleController : MonoBehaviour
                 clownRaycast.life--;
                 clownRaycast.lifeText.text = clownRaycast.life.ToString();
                 clownRaycast.isRidingUnicycle = false;
-                transform.SetParent(clownRaycast.Objects.transform);
+                transform.SetParent(clownRaycast.Armatures.transform);
                 transform.eulerAngles = new Vector3(0f, clownRaycast.unicycleSeat.transform.eulerAngles.y, 0f);
                 playerController.SetCurrentCameraRotationX(currentCameraRotationX);
 

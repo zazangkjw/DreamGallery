@@ -17,7 +17,7 @@ public class ClownRaycast : MonoBehaviour
     public GameObject player;
     [SerializeField]
     Rigidbody playerRigid;
-    public GameObject Objects;
+    public GameObject Armatures;
 
     public ClownSceneManager clownSceneManager;
     public RawImage fadeInOutImage; // 페이드-인, 아웃 이미지
@@ -186,7 +186,7 @@ public class ClownRaycast : MonoBehaviour
         elevatorBtn.GetComponent<NextElevatorPoint>().thisElevatorAnim.Play("Close");
 
         elevator_Point_Player.transform.position = elevatorBtn.GetComponent<NextElevatorPoint>().thisPoint.transform.position; // elevator_Point_Player을 엘리베이터 포인트로 옮기고, 플레이어를 자식으로 넣어서
-        elevator_Point_Player.transform.rotation = elevatorBtn.GetComponent<NextElevatorPoint>().thisPoint.transform.rotation; // 2초 후에 다음 엘리베이터 포인트로 이동 후 자식 해제
+        elevator_Point_Player.transform.rotation = elevatorBtn.GetComponent<NextElevatorPoint>().thisPoint.transform.rotation; // n초 후에 다음 엘리베이터 포인트로 이동 후 자식 해제
         player.transform.SetParent(elevator_Point_Player.transform);
 
         yield return new WaitForSeconds(3f);
@@ -211,7 +211,7 @@ public class ClownRaycast : MonoBehaviour
         yield return new WaitForSeconds(6f);
 
         elevatorBtn.GetComponent<NextElevatorPoint>().nextElevatorAnim.Play("Open");
-        player.transform.SetParent(Objects.transform);
+        player.transform.SetParent(Armatures.transform);
     }
 
 

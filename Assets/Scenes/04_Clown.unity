@@ -149,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763577}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3782,7 +3782,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 576282355}
+    m_TransformParent: {fileID: 1437023369}
     m_Modifications:
     - target: {fileID: 1249086182956314288, guid: 744483f0613a8604d9e68249090ab01b,
         type: 3}
@@ -3827,7 +3827,7 @@ PrefabInstance:
     - target: {fileID: 7723381267031593568, guid: 744483f0613a8604d9e68249090ab01b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7723381267031593568, guid: 744483f0613a8604d9e68249090ab01b,
         type: 3}
@@ -3837,7 +3837,7 @@ PrefabInstance:
     - target: {fileID: 7723381267031593568, guid: 744483f0613a8604d9e68249090ab01b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7723381267031593568, guid: 744483f0613a8604d9e68249090ab01b,
         type: 3}
@@ -4628,7 +4628,6 @@ Transform:
   - {fileID: 1300511392}
   - {fileID: 1685562479}
   - {fileID: 763578}
-  - {fileID: 384628153}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &605222533
@@ -17545,7 +17544,7 @@ MonoBehaviour:
   putDialogScript: {fileID: 807168750}
   player: {fileID: 384628154}
   playerRigid: {fileID: 384628161}
-  Objects: {fileID: 576282354}
+  Objects: {fileID: 1437023368}
   clownSceneManager: {fileID: 807168753}
   fadeInOutImage: {fileID: 303166225}
   fadeInOutScript: {fileID: 807168751}
@@ -19927,6 +19926,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 384628153}
   - {fileID: 1217227617}
   - {fileID: 742855430}
   - {fileID: 1941422219}
@@ -20828,7 +20828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 3
   m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: -1
+  m_AdditionalLightsShadowResolutionTier: 2
   m_LightLayerMask: 1
   m_RenderingLayers: 1
   m_CustomShadowLayers: 0
@@ -38406,6 +38406,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7037102076134418934, guid: 3ca8667f02ef59f4b9640ba31b33073f,
+        type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7147752294682015160, guid: 3ca8667f02ef59f4b9640ba31b33073f,
         type: 3}

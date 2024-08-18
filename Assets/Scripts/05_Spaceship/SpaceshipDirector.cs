@@ -25,6 +25,7 @@ public class SpaceshipDirector : MonoBehaviour
     public AudioSource vibration;
     public AudioSource piano2;
     public Man001HeadTracking man001HeadTracking;
+    public Animator elevatorAnim;
 
     public void OpeningDirector()
     {
@@ -64,6 +65,10 @@ public class SpaceshipDirector : MonoBehaviour
         directorCam.SetActive(false);
         player.SetActive(true);
         crosshair.enabled = true;
+
+        yield return new WaitForSeconds(5f);
+
+        elevatorAnim.Play("Open");
     }
 
 
