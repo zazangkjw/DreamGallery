@@ -80,7 +80,7 @@ public class UnicycleController : MonoBehaviour
             bodyForUnity.transform.localEulerAngles = bodyForUnity.transform.localEulerAngles + balance;
 
             // 균형 잡기 성공
-            if (clownRaycast.unicycle.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+            if (clownRaycast.unicycle_current.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
             {
                 isBalancing = false;
                 clownRaycast.isRidingUnicycle = false;
@@ -132,13 +132,13 @@ public class UnicycleController : MonoBehaviour
                 else if (clownRaycast.life > 0)
                 {
                     bodyForUnity.transform.localEulerAngles = originRotate;
-                    clownRaycast.unicycle.GetComponent<GetComponentScript>().animator.Play("Return", 0, 1f - clownRaycast.unicycle.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
-                    clownRaycast.unicycle.GetComponent<GetComponentScript>().animator.Play("WheelTurnReverse", 1);
+                    clownRaycast.unicycle_current.GetComponent<GetComponentScript>().animator.Play("Return", 0, 1f - clownRaycast.unicycle_current.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+                    clownRaycast.unicycle_current.GetComponent<GetComponentScript>().animator.Play("WheelTurnReverse", 1);
                     clownRaycast.bikeWheel.Play();
                     clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.Play("Return", 0, 1f - clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
                     clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.Play("WheelTurnReverse", 1);
                     clownRaycast.bikeWheelClown.Play();
-                    clownRaycast.unicycle.GetComponent<Collider>().enabled = true; // 콜라이더 활성화
+                    clownRaycast.unicycle_current.GetComponent<Collider>().enabled = true; // 콜라이더 활성화
 
                     if (clownRaycast.life == 2)
                     {

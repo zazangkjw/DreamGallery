@@ -60,7 +60,6 @@ public class SpaceshipDirector : MonoBehaviour
         yield return new WaitForSeconds(4f);
 
         fadeInOutScript.FadeOut(fadeInOutImage);
-        man001HeadTracking.isLooking = true;
 
         directorCam.SetActive(false);
         player.SetActive(true);

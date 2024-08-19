@@ -8701,7 +8701,7 @@ PrefabInstance:
     - target: {fileID: 2314863958492052059, guid: 4f6f1cdda0791f54da3fddcecea69d0e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.116
       objectReference: {fileID: 0}
     - target: {fileID: 2314863958492052059, guid: 4f6f1cdda0791f54da3fddcecea69d0e,
         type: 3}
@@ -17544,7 +17544,7 @@ MonoBehaviour:
   putDialogScript: {fileID: 807168750}
   player: {fileID: 384628154}
   playerRigid: {fileID: 384628161}
-  Objects: {fileID: 1437023368}
+  Armatures: {fileID: 1437023368}
   clownSceneManager: {fileID: 807168753}
   fadeInOutImage: {fileID: 303166225}
   fadeInOutScript: {fileID: 807168751}
@@ -17554,10 +17554,10 @@ MonoBehaviour:
   - {fileID: 1781822586}
   - {fileID: 1132753437}
   - {fileID: 2146931360}
-  elevatorButtons:
+  elevatorBtns_check:
+  - {fileID: 1132753439}
   - {fileID: 379341932}
   - {fileID: 1988139447}
-  - {fileID: 1132753439}
   elevator_Point_Player: {fileID: 763577}
   circusSong: {fileID: 1861512421}
   applause: {fileID: 1990106110}
@@ -17568,7 +17568,8 @@ MonoBehaviour:
   life_max: 3
   life: 0
   lifeText: {fileID: 256260486}
-  unicycle: {fileID: 142630083}
+  unicycle_check: {fileID: 142630083}
+  unicycle_current: {fileID: 0}
   unicycleSeat: {fileID: 1486685067}
   successsPlatform: {fileID: 1300511396}
   isRidingUnicycle: 0

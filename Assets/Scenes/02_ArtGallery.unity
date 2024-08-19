@@ -3186,6 +3186,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1904432987}
     m_Modifications:
+    - target: {fileID: 1494347409574128503, guid: 744483f0613a8604d9e68249090ab01b,
+        type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6946000859983726810, guid: 744483f0613a8604d9e68249090ab01b,
         type: 3}
       propertyPath: m_Name
@@ -3239,6 +3244,26 @@ PrefabInstance:
     - target: {fileID: 7723381267031593568, guid: 744483f0613a8604d9e68249090ab01b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808456680538861695, guid: 744483f0613a8604d9e68249090ab01b,
+        type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808456680538861695, guid: 744483f0613a8604d9e68249090ab01b,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808456680538861695, guid: 744483f0613a8604d9e68249090ab01b,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808456680538861695, guid: 744483f0613a8604d9e68249090ab01b,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6115,7 +6140,7 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
-  m_Antialiasing: 1
+  m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
