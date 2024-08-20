@@ -110,10 +110,9 @@ public class SpaceshipRaycast : MonoBehaviour
         // 대화
         if (true)
         {
-            putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[4]["Content"], // "첫 번째 도전입니다"
-                                                                   (string)GameManager.instance.textFileManager.dialog[5]["Content"], // "이 외발자전거로 외줄을 건너서 반대편 타워까지 가세요"
-                                                                   (string)GameManager.instance.textFileManager.dialog[6]["Content"], // "자전거는 자동으로 앞으로 갑니다. 그러니 좌우로 균형만 잘 잡아주세요"
-                                                                   (string)GameManager.instance.textFileManager.dialog[7]["Content"] }); // "만약 중간에 떨어진다면 다시 여기로 와 주세요"
+            putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[19]["Content"], // "이 물고기 인간이 우리 방으로 가는 길을 막아버렸어"
+                                                                   (string)GameManager.instance.textFileManager.dialog[20]["Content"], // "아까부터 계속되는 진동에 겁을 먹은 것 같아"
+                                                                   (string)GameManager.instance.textFileManager.dialog[21]["Content"]}); // "아래층에 대체 무슨 일이 벌어진 거지?"
         }
 
         yield return new WaitUntil(() => putDialogScript.isClickMode == false);

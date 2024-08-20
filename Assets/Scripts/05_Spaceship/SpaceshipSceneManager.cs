@@ -11,7 +11,7 @@ public class SpaceshipSceneManager : DefaultSceneManager
     {
         WhenStart();
 
-        spaceshipDirector.OpeningDirector();
+        //spaceshipDirector.OpeningDirector();
     }
 
     void Update()
