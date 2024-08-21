@@ -105,7 +105,7 @@ public class SpaceshipRaycast : MonoBehaviour
         // 필요하면 "GameObject man001_this = hitObject" 생성해서 사용
 
         preObject.GetComponent<Outline>().enabled = false; // 외곽선 비활성화
-        man001_check.GetComponent<Man001HeadTracking>().isLooking = true;
+        man001_check.GetComponent<HeadTracking>().isLooking = true;
 
         // 대화
         if (true)
@@ -117,6 +117,6 @@ public class SpaceshipRaycast : MonoBehaviour
 
         yield return new WaitUntil(() => putDialogScript.isClickMode == false);
 
-        man001_check.GetComponent<Man001HeadTracking>().isLooking = false;
+        man001_check.GetComponent<HeadTracking>().isLooking = false;
     }
 }

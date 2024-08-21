@@ -24,7 +24,7 @@ public class SpaceshipDirector : MonoBehaviour
     public PlayableDirector openingDirector;
     public AudioSource vibration;
     public AudioSource piano2;
-    public Man001HeadTracking man001HeadTracking;
+    public HeadTracking man001HeadTracking;
     public Animator elevatorAnim;
 
     public void OpeningDirector()
