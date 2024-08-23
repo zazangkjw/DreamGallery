@@ -5,6 +5,5 @@ using UnityEngine;
 public class GetComponentScript : MonoBehaviour
 {
     public Animator animator;
-
-    public GameObject mesh;
+    public Outline outline;
 }

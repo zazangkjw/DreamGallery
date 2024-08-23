@@ -61,14 +61,13 @@ public class LionDanceRaycast : MonoBehaviour
             {
                 if (hitObject == doorWindow)
                 {
-                    if (preObject != hitObject.GetComponent<GetComponentScript>().mesh && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
+                    if (preObject != hitObject && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
                     {
-                        preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
-                        preObject = null;
+                        preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
                     }
 
-                    preObject = hitObject.GetComponent<GetComponentScript>().mesh;
-                    preObject.GetComponent<Outline>().enabled = true; // 외곽선 켜기
+                    preObject = hitObject;
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = true; // 외곽선 켜기
 
                     mouseText.text = GameManager.instance.textFileManager.ui[14]; // "열기/닫기" 텍스트 나옴
                     mouseText.enabled = true;
@@ -95,7 +94,7 @@ public class LionDanceRaycast : MonoBehaviour
                             lionMonsterAnimator.Play("Walking", 1);
                             lionDanceColliderTrigger.step = 1;
                             mouseText.enabled = false;
-                            preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
+                            preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
                             preObject = null;
                             putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[2]["Content"], 3f); // 부엌으로 돌아가자는 대사 출력
                             lionDanceSceneManager.FogOut();
@@ -109,7 +108,7 @@ public class LionDanceRaycast : MonoBehaviour
 
                     if (preObject != null)
                     {
-                        preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
+                        preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
                         preObject = null;
                     }
                 }
@@ -121,14 +120,13 @@ public class LionDanceRaycast : MonoBehaviour
         {
             if (hitObject == balconyWindow)
             {
-                if (preObject != hitObject.GetComponent<GetComponentScript>().mesh && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
+                if (preObject != hitObject && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
                 {
-                    preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
-                    preObject = null;
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
                 }
 
-                preObject = hitObject.GetComponent<GetComponentScript>().mesh;
-                preObject.GetComponent<Outline>().enabled = true; // 외곽선 켜기
+                preObject = hitObject;
+                preObject.GetComponent<GetComponentScript>().outline.enabled = true; // 외곽선 켜기
 
                 mouseText.text = GameManager.instance.textFileManager.ui[14]; // "열기/닫기" 텍스트 나옴
                 mouseText.enabled = true;
@@ -139,7 +137,7 @@ public class LionDanceRaycast : MonoBehaviour
                     balconyWindow.GetComponent<GetComponentScript>().animator.SetBool("Active", false);
                     balconyWindow.GetComponent<AudioSource>().Play();
                     mouseText.enabled = false;
-                    preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
                     preObject = null;
                     lionMonsterAnimator.Play("Balcony");
                     lionDanceColliderTrigger.step = 4;
@@ -153,7 +151,7 @@ public class LionDanceRaycast : MonoBehaviour
 
                 if (preObject != null)
                 {
-                    preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
                     preObject = null;
                 }
             }
@@ -164,13 +162,12 @@ public class LionDanceRaycast : MonoBehaviour
         {
             if (hitObject == kitchenBalconyWindow1 || hitObject == kitchenBalconyWindow2)
             {
-                if (preObject != hitObject.GetComponent<GetComponentScript>().mesh && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
+                if (preObject != hitObject && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
                 {
-                    preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
-                    preObject = null;
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
                 }
 
-                preObject = hitObject.GetComponent<GetComponentScript>().mesh;
+                preObject = hitObject;
                 preObject.GetComponent<Outline>().enabled = true; // 외곽선 켜기
 
                 mouseText.text = GameManager.instance.textFileManager.ui[14]; // "열기/닫기" 텍스트 나옴
@@ -183,7 +180,7 @@ public class LionDanceRaycast : MonoBehaviour
                     hitObject.GetComponent<AudioSource>().Play();
                     lionDanceColliderTrigger.step = 10;
                     mouseText.enabled = false;
-                    preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
                     preObject = null;
 
                     Debug.Log("부엌 창문 닫음");
@@ -200,7 +197,7 @@ public class LionDanceRaycast : MonoBehaviour
 
                 if (preObject != null)
                 {
-                    preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
                     preObject = null;
                 }
             }

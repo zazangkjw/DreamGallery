@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3995012111735855236}
   - component: {fileID: 8554980366912098887}
   - component: {fileID: 1494347409574128503}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HandCam
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -32,7 +32,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 424793711579566110}
-  - {fileID: 1683496733919710380}
   m_Father: {fileID: 6899579661481250371}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &8554980366912098887
@@ -130,59 +129,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!1 &301512717825459874
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7687743479665744558}
-  - component: {fileID: 6925999524423129000}
-  m_Layer: 0
-  m_Name: Collider_Bat
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &7687743479665744558
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 301512717825459874}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1683496733919710380}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6925999524423129000
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 301512717825459874}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0.5}
 --- !u!1 &1921341482022590890
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4061908400470564846}
   - component: {fileID: 939743644317174623}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Human_Col_Crouch
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -250,7 +196,7 @@ GameObject:
   - component: {fileID: 8808456680538861695}
   - component: {fileID: 6352444458596408388}
   - component: {fileID: 523642653159833128}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerCam
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -387,7 +333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1925074263292048727}
   - component: {fileID: 4377094991589878669}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Human_Col_Stand
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -432,38 +378,6 @@ CapsuleCollider:
   m_Height: 1.7476687
   m_Direction: 1
   m_Center: {x: 0, y: 0.04653001, z: 0}
---- !u!1 &8887337451633004861
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1683496733919710380}
-  m_Layer: 0
-  m_Name: WeaponColliders
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1683496733919710380
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8887337451633004861}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7687743479665744558}
-  m_Father: {fileID: 3995012111735855236}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &175520385007646709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -815,6 +729,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HumanSize
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 57f61c1efd98b4c408d0a919f999b88b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

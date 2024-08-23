@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Item_Bat : Item
 {
-    
-
     void Update()
     {
         
     }
 
-    private void OnEnable()
+    private new void OnEnable()
     {
+        base.OnEnable();
+
         handAnim.Play("Bat_Up");
-        StartCoroutine(BatCoroutine());
+        StartCoroutine(coroutine = BatCoroutine());
     }
 
 
@@ -22,15 +22,9 @@ public class Item_Bat : Item
 
     IEnumerator BatCoroutine()
     {
-        // 다음 애니메이션으로 전환될 때까지 대기(무기 드는 모션 -> idle 모션)
-        while (handAnim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
-        {
-            yield return null;
-        }
-
         while (true)
         {
-            if (!putDialogScript.isClickMode) // 클릭형 대사 나오는 동안 기능 비활성화
+            if (!putDialogScript.isClickMode && handAnim.GetBool("isReady")) // 클릭형 대사 나오는 동안 기능 비활성화
             {
                 // 클릭
                 if (Input.GetMouseButtonDown(0))
@@ -57,6 +51,7 @@ public class Item_Bat : Item
                     // 차지 공격
                     if (handAnim.GetBool("isCharged"))
                     {
+                        chargeTimer = 0;
                         handAnim.SetBool("isChargeAttack", true);
                         foreach (Collider col in cols)
                         {
@@ -91,11 +86,23 @@ public class Item_Bat : Item
                 // 우클릭으로 차징 취소
                 if (Input.GetMouseButtonDown(1))
                 {
+                    chargeTimer = 0;
                     handAnim.SetBool("isCanceled", true);
                     handAnim.SetBool("isCharging", false);
                     handAnim.SetBool("isCharged", false);
                 }
             }
+            else
+            {
+                // 다음 애니메이션으로 전환될 때까지 대기(무기 드는 모션 -> idle 모션)
+                while (handAnim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
+                {
+                    if(handAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.95f) { handAnim.SetBool("isReady", true); break; }
+                    
+                    yield return null;
+                }
+            }
+
             yield return null;
         }
     }

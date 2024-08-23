@@ -91,7 +91,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Hand_Idle
+      name: Empty_Idle
       takeName: Scene
       internalID: 5690475035124461754
       firstFrame: 20

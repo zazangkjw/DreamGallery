@@ -103,14 +103,16 @@ public class ClownRaycast : MonoBehaviour
             {
                 if (hitObject == btn)
                 {
-                    if (preObject != hitObject.GetComponent<GetComponentScript>().mesh && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
+                    if (preObject != hitObject && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
                     {
-                        preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
-                        preObject = null;
+                        preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
                     }
 
-                    preObject = hitObject.GetComponent<GetComponentScript>().mesh;
-                    preObject.GetComponent<Outline>().enabled = true; // 외곽선 켜기
+                    preObject = hitObject;
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = true; // 외곽선 켜기
+
+                    mouseText.text = GameManager.instance.textFileManager.ui[24]; // "대화하기" 텍스트 나옴
+                    mouseText.enabled = true;
 
                     // E키 입력 시
                     if (Input.GetKeyDown(KeyCode.E))
@@ -118,7 +120,7 @@ public class ClownRaycast : MonoBehaviour
                         StartCoroutine(ElevatorCoroutine());
                     }
 
-                    isChecking = false; // 이후의 항목들은 체크하지 않음 (예: 외발자전거)
+                    isChecking = false; // 이후의 항목들은 체크하지 않음
 
                     break;
                 }
@@ -128,7 +130,7 @@ public class ClownRaycast : MonoBehaviour
 
                     if (preObject != null)
                     {
-                        preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
+                        preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
                         preObject = null;
                     }
                 }
@@ -140,14 +142,13 @@ public class ClownRaycast : MonoBehaviour
         {
             if (hitObject == unicycle_check)
             {
-                if (preObject != hitObject.GetComponent<GetComponentScript>().mesh && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
+                if (preObject != hitObject && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
                 {
-                    preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
-                    preObject = null;
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
                 }
 
-                preObject = hitObject.GetComponent<GetComponentScript>().mesh;
-                preObject.GetComponent<Outline>().enabled = true; // 외곽선 켜기
+                preObject = hitObject;
+                preObject.GetComponent<GetComponentScript>().outline.enabled = true; // 외곽선 켜기
 
                 mouseText.text = GameManager.instance.textFileManager.ui[24]; // "대화하기" 텍스트 나옴
                 mouseText.enabled = true;
@@ -155,7 +156,7 @@ public class ClownRaycast : MonoBehaviour
                 // E키 입력 시
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    StartCoroutine(UnicycleCoroutine());
+                    StartCoroutine(ElevatorCoroutine());
                 }
 
                 isChecking = false; // 이후의 항목들은 체크하지 않음
@@ -166,7 +167,7 @@ public class ClownRaycast : MonoBehaviour
 
                 if (preObject != null)
                 {
-                    preObject.GetComponent<Outline>().enabled = false; // 외곽선 끄기
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
                     preObject = null;
                 }
             }
@@ -182,7 +183,7 @@ public class ClownRaycast : MonoBehaviour
         elevatorBtn_current = hitObject;
 
         elevatorBtn_current.GetComponent<Collider>().enabled = false; // 콜라이더 비활성화
-        preObject.GetComponent<Outline>().enabled = false; // 외곽선 비활성화
+        preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 비활성화
 
         elevatorBtn_current.GetComponent<NextElevatorPoint>().thisElevatorAnim.Play("Close");
 
@@ -226,7 +227,7 @@ public class ClownRaycast : MonoBehaviour
         unicycle_current = hitObject;
 
         unicycle_current.GetComponent<Collider>().enabled = false; // 콜라이더 비활성화
-        preObject.GetComponent<Outline>().enabled = false; // 외곽선 비활성화
+        preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 비활성화
 
 
         // 대화
