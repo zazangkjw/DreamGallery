@@ -111,7 +111,7 @@ public class ClownRaycast : MonoBehaviour
                     preObject = hitObject;
                     preObject.GetComponent<GetComponentScript>().outline.enabled = true; // 외곽선 켜기
 
-                    mouseText.text = GameManager.instance.textFileManager.ui[24]; // "대화하기" 텍스트 나옴
+                    // mouseText.text = GameManager.instance.textFileManager.ui[24]; // "대화하기" 텍스트 나옴
                     mouseText.enabled = true;
 
                     // E키 입력 시
@@ -156,7 +156,7 @@ public class ClownRaycast : MonoBehaviour
                 // E키 입력 시
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    StartCoroutine(ElevatorCoroutine());
+                    StartCoroutine(UnicycleCoroutine());
                 }
 
                 isChecking = false; // 이후의 항목들은 체크하지 않음

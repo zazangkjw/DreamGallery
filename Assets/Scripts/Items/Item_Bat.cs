@@ -14,7 +14,7 @@ public class Item_Bat : Item
         base.OnEnable();
 
         handAnim.Play("Bat_Up");
-        StartCoroutine(coroutine = BatCoroutine());
+        StartCoroutine(BatCoroutine());
     }
 
 
@@ -24,25 +24,20 @@ public class Item_Bat : Item
     {
         while (true)
         {
-            if (!putDialogScript.isClickMode && handAnim.GetBool("isReady")) // 클릭형 대사 나오는 동안 기능 비활성화
+            if (!putDialogScript.isClickMode && handAnim.GetBool("isReady") && defaultRaycast.currentItem == this) // 클릭형 대사 나오는 동안 기능 비활성화
             {
                 // 클릭
                 if (Input.GetMouseButtonDown(0))
                 {
                     handAnim.SetBool("isCanceled", false);
-                    chargeTimer = 0;
+                    handAnim.SetFloat("ChargeTimer", 0f);
                 }
 
                 // 클릭 유지
-                if (Input.GetMouseButton(0) && !handAnim.GetBool("isCanceled") && !handAnim.GetBool("isChargeAttack"))
+                if (Input.GetMouseButton(0) && !handAnim.GetBool("isCanceled") && !handAnim.GetBool("isChargeAttack") && !handAnim.GetBool("isChargeAttackEnd"))
                 {
                     handAnim.SetBool("isCharging", true);
-                    chargeTimer += Time.deltaTime;
-
-                    if (chargeTimer >= 0.2f && handAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-                    {
-                        handAnim.SetBool("isCharged", true);
-                    }
+                    handAnim.SetFloat("ChargeTimer", handAnim.GetFloat("ChargeTimer") + Time.deltaTime); 
                 }
 
                 // 클릭 떼기
@@ -51,55 +46,36 @@ public class Item_Bat : Item
                     // 차지 공격
                     if (handAnim.GetBool("isCharged"))
                     {
-                        chargeTimer = 0;
+                        handAnim.SetFloat("ChargeTimer", 0f);
                         handAnim.SetBool("isChargeAttack", true);
                         foreach (Collider col in cols)
                         {
                             col.enabled = true;
                         }
-
-                        // 스윙 모션 끝날 때까지 대기
-                        yield return delay; // 다음 애니메이션으로 전환될 때까지 대기하는 짧은 시간(차지드 모션 -> 차지어택 모션)
-                        handAnim.SetBool("isCharging", false);
-                        handAnim.SetBool("isCharged", false);
-                        while (true)
-                        {
-                            if (handAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-                            {
-                                break;
-                            }
-                            yield return null;
-                        }
-
-                        handAnim.SetBool("isChargeAttack", false);
-                        foreach (Collider col in cols)
-                        {
-                            col.enabled = false;
-                        }
                     }
                     else
                     {
+                        handAnim.SetFloat("ChargeTimer", 0f);
                         handAnim.SetBool("isCharging", false);
+                    }
+                }
+
+                // 차지어택 끝나면 콜라이더 비활성화
+                if (!handAnim.GetBool("isChargeAttack"))
+                {
+                    foreach (Collider col in cols)
+                    {
+                        col.enabled = false;
                     }
                 }
 
                 // 우클릭으로 차징 취소
                 if (Input.GetMouseButtonDown(1))
                 {
-                    chargeTimer = 0;
+                    handAnim.SetFloat("ChargeTimer", 0f);
                     handAnim.SetBool("isCanceled", true);
                     handAnim.SetBool("isCharging", false);
                     handAnim.SetBool("isCharged", false);
-                }
-            }
-            else
-            {
-                // 다음 애니메이션으로 전환될 때까지 대기(무기 드는 모션 -> idle 모션)
-                while (handAnim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
-                {
-                    if(handAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.95f) { handAnim.SetBool("isReady", true); break; }
-                    
-                    yield return null;
                 }
             }
 

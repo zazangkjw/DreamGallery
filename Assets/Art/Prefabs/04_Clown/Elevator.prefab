@@ -410,7 +410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4085710459130003758}
-  outline: {fileID: 0}
+  outline: {fileID: 4994289349647168082}
 --- !u!114 &2132167589650777262
 MonoBehaviour:
   m_ObjectHideFlags: 0

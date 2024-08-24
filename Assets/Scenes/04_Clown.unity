@@ -2469,6 +2469,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 102853119}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &106530969 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1048529733246369287, guid: 34f5cca362240dc47bac8e64bf4deb63,
+    type: 3}
+  m_PrefabInstance: {fileID: 1615288965}
+  m_PrefabAsset: {fileID: 0}
 --- !u!65 &112384309
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2814,7 +2820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 774995753}
-  mesh: {fileID: 988041458}
+  outline: {fileID: 1734803028}
 --- !u!1 &150531702
 GameObject:
   m_ObjectHideFlags: 0
@@ -8246,12 +8252,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1021272636}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1021272638 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -3329269594072550751, guid: 7d664d09796131342b26f9002f941c56,
-    type: 3}
-  m_PrefabInstance: {fileID: 1021272636}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1021272639 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1586887373907148213, guid: 7d664d09796131342b26f9002f941c56,
@@ -8283,7 +8283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1021272643}
-  mesh: {fileID: 1021272638}
+  outline: {fileID: 0}
 --- !u!95 &1021272643
 Animator:
   serializedVersion: 5
@@ -21370,6 +21370,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1615288969}
+    - targetCorrespondingSourceObject: {fileID: -1048529733246369287, guid: 34f5cca362240dc47bac8e64bf4deb63,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1734803028}
   m_SourcePrefab: {fileID: 100100000, guid: 34f5cca362240dc47bac8e64bf4deb63, type: 3}
 --- !u!4 &1615288966 stripped
 Transform:
@@ -27480,6 +27484,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1615288965}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1734803028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106530969}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.12300229, g: 1, b: 0, a: 1}
+  outlineWidth: 0
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1781060720
 GameObject:
   m_ObjectHideFlags: 0

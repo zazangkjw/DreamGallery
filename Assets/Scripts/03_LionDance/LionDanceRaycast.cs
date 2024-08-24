@@ -168,7 +168,7 @@ public class LionDanceRaycast : MonoBehaviour
                 }
 
                 preObject = hitObject;
-                preObject.GetComponent<Outline>().enabled = true; // ¿Ü°û¼± ÄÑ±â
+                preObject.GetComponent<GetComponentScript>().outline.enabled = true; // ¿Ü°û¼± ÄÑ±â
 
                 mouseText.text = GameManager.instance.textFileManager.ui[14]; // "¿­±â/´Ý±â" ÅØ½ºÆ® ³ª¿È
                 mouseText.enabled = true;
