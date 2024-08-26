@@ -21,6 +21,7 @@ public class DefaultRaycast : MonoBehaviour
     public GameObject preObject;
     public TextMeshProUGUI mouseText;
     public PutDialogScript putDialogScript;
+    public WaitForSeconds dialogDelay = new WaitForSeconds(3f);
     protected bool isChecking = true;
 
     public DefaultSceneManager defaultSceneManager;
@@ -153,27 +154,34 @@ public class DefaultRaycast : MonoBehaviour
     {
         // 필요하면 "GameObject man001_this = hitObject" 생성해서 사용
 
-        for (int i = 1; i < inventory.Count; i++)
+        if (preObject.GetComponent<Item>().isObtainable)
         {
-            if (inventory[i] == empty)
+            for (int i = 1; i < inventory.Count; i++)
             {
-                preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 비활성화
+                if (inventory[i] == empty)
+                {
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 비활성화
 
-                preObject.SetActive(false);
-                preObject.transform.SetParent(handObject.transform);
-                preObject.transform.localPosition = Vector3.zero;
-                preObject.transform.localRotation = Quaternion.identity;
-                preObject.GetComponent<Rigidbody>().useGravity = false;
-                preObject.GetComponent<Rigidbody>().isKinematic = true;
-                preObject.GetComponent<GetComponentScript>().outline.gameObject.layer = LayerMask.NameToLayer("Hand");
-                preObject.GetComponent<Collider>().enabled = false;
+                    preObject.SetActive(false);
+                    preObject.transform.SetParent(handObject.transform);
+                    preObject.transform.localPosition = Vector3.zero;
+                    preObject.transform.localRotation = Quaternion.identity;
+                    preObject.GetComponent<Rigidbody>().useGravity = false;
+                    preObject.GetComponent<Rigidbody>().isKinematic = true;
+                    preObject.GetComponent<GetComponentScript>().outline.gameObject.layer = LayerMask.NameToLayer("Hand");
+                    preObject.GetComponent<Collider>().enabled = false;
 
-                inventory[i] = preObject.GetComponent<Item>();
-                inventory[i].GetComponent<Item>().enabled = true;
-                break;
+                    inventory[i] = preObject.GetComponent<Item>();
+                    inventory[i].GetComponent<Item>().enabled = true;
+                    break;
+                }
             }
         }
-
+        else
+        {
+            // 획득 불가능
+        }
+        
         yield return null;
     }
 }

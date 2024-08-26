@@ -10,6 +10,7 @@ public class Item : MonoBehaviour
     public DefaultRaycast defaultRaycast;
     public Animator handAnim;
     public Collider[] cols;
+    public bool isObtainable = true; // È¹µæ °¡´ÉÇÑÁö
 
     protected WaitForSeconds delay = new WaitForSeconds(0.2f);
 

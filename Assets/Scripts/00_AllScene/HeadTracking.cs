@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class HeadTracking : MonoBehaviour
 {
-    [SerializeField]
-    GameObject playerCam; // 플레이어 카메라
+    public GameObject target; // 타겟
 
     [SerializeField]
     GameObject head;
 
+    public Vector3 correction;
+    public float lookSpeed = 0.1f;
     public bool isLooking;
 
     void Start()
@@ -25,18 +26,18 @@ public class HeadTracking : MonoBehaviour
 
     void FixedUpdate()
     {
-        LookPlayer();
+        LookTarget();
     }
 
-    void LookPlayer()
+    void LookTarget()
     {
         if (isLooking)
         {
-            head.transform.rotation = Quaternion.Lerp(head.transform.rotation, Quaternion.LookRotation(playerCam.transform.position - head.transform.position) * Quaternion.Euler(new Vector3(0f, 90f, 0f)), 0.1f);
+            head.transform.rotation = Quaternion.Lerp(head.transform.rotation, Quaternion.LookRotation(target.transform.position - head.transform.position) * Quaternion.Euler(correction), lookSpeed);
         }
         else
         {
-            head.transform.localRotation = Quaternion.Lerp(head.transform.localRotation, Quaternion.identity, 0.1f);
+            head.transform.localRotation = Quaternion.Lerp(head.transform.localRotation, Quaternion.identity, lookSpeed);
         }
     }
 }

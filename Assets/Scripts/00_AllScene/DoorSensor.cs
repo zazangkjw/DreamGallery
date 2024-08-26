@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DoorSensor : MonoBehaviour
 {
+    public bool isDetected;
     public bool isLock;
     Animator animator;
 
@@ -14,17 +15,27 @@ public class DoorSensor : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player" && !isLock)
+        if (other.gameObject.tag == "Player")
         {
-            animator.SetBool("Active", true);
+            isDetected = true;
+
+            if (!isLock)
+            {
+                animator.SetBool("Active", true);
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player" && !isLock)
+        if (other.gameObject.tag == "Player")
         {
-            animator.SetBool("Active", false);
+            isDetected = false;
+
+            if (!isLock)
+            {
+                animator.SetBool("Active", false);
+            }
         }
     }
 }
