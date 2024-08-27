@@ -5,10 +5,12 @@ using UnityEngine;
 public class LightFlickering : MonoBehaviour
 {
     Light flickeringLight;
+    float intensity;
 
     void Start()
     {
         flickeringLight = GetComponent<Light>();
+        intensity = flickeringLight.intensity;
         StartCoroutine(FlickeringCoroutine());
     }
 
@@ -17,7 +19,7 @@ public class LightFlickering : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(0.1f);
-            flickeringLight.intensity = Random.Range(3f, 4f);
+            flickeringLight.intensity = Random.Range(intensity - 1f, intensity);
         }
     }
 }
