@@ -33,7 +33,7 @@ public class LightOnOff : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "NPC")
         {
             StartCoroutine(LightOn());
             if(myMesh != null) { myMesh.materials = emissionOnMats;  }
@@ -42,7 +42,7 @@ public class LightOnOff : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "NPC")
         {
             StartCoroutine(LightOff());
             if (myMesh != null) { myMesh.materials = emissionOffMats; }

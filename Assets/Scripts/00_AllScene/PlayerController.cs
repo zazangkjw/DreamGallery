@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public int team;
 
     // 플레이어 이동속도
+    public float masterSpeed = 1f;
     public float walkSpeed;
     public float runSpeed;
     public float crouchSpeed;
@@ -341,7 +342,7 @@ public class PlayerController : MonoBehaviour
             _moveHorizontal = transform.right * _moveDirX;
             _moveVertical = transform.forward * _moveDirZ;
 
-            _velocity = (_moveHorizontal + _moveVertical).normalized * applySpeed; // normalized 벡터 길이를 1로 변화
+            _velocity = (_moveHorizontal + _moveVertical).normalized * (applySpeed * masterSpeed); // normalized 벡터 길이를 1로 변화
 
             if (isGround) // 땅에서는 속도 그대로 움직임
             {
