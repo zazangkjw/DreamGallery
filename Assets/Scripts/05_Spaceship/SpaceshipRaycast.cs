@@ -12,6 +12,7 @@ public class SpaceshipRaycast : DefaultRaycast
     public GameObject man001_check; // man001(ÆÈÂ¯ ³¤ »ç¶÷) Ã¼Å©¿ë
     public GameObject guard001_check; bool isInteractable_guard001 = true; // guard001 Ã¼Å©¿ë
     public GameObject guard_check; // guard Ã¼Å©¿ë
+    public DoorSensor doorSensor;
 
 
 
@@ -223,6 +224,10 @@ public class SpaceshipRaycast : DefaultRaycast
             guard001_check.GetComponent<Collider>().enabled = false;
             guard001_check.GetComponent<GetComponentScript>().animator.Play("FallDown");
             guard_check.GetComponent<GetComponentScript>().animator.Play("FallDown");
+
+            yield return dialogDelay;
+
+            doorSensor.isLock = false;
         }
         else
         {
