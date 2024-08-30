@@ -40,12 +40,12 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 38658325012768345}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.64705884, b: 0, a: 1}
-  m_Intensity: 4
+  m_Intensity: 5
   m_Range: 3
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -188,6 +188,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 618362225031098389}
   m_SourcePrefab: {fileID: 100100000, guid: 7063fa0e9ee71ca408e8e0c51089e9d8, type: 3}
+--- !u!23 &6988567671878074695 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 7063fa0e9ee71ca408e8e0c51089e9d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 8592292926626782659}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8122045776521968168 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7063fa0e9ee71ca408e8e0c51089e9d8,
@@ -233,6 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db90defbca992c5468d84ee4f6366fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seconds: 0
   myLight: {fileID: 8470234447223667740}
   emissionOnMats:
   - {fileID: 2100000, guid: fdf359f4ca624f340899f00675284867, type: 2}
@@ -240,3 +247,4 @@ MonoBehaviour:
   emissionOffMats:
   - {fileID: 2100000, guid: fdf359f4ca624f340899f00675284867, type: 2}
   - {fileID: 2100000, guid: 7ce1e053a7371ba41b525f084ec7cf22, type: 2}
+  myMesh: {fileID: 6988567671878074695}

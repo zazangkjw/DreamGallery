@@ -28,7 +28,6 @@ public class LightOnOff : MonoBehaviour
     {
         maxIntensity = myLight.intensity;
         myLight.intensity = 0f;
-        myMesh = GetComponent<MeshRenderer>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -52,6 +51,7 @@ public class LightOnOff : MonoBehaviour
     IEnumerator LightOn()
     {
         flag_on = true;
+        seconds = seconds == 0 ? 0.01f : seconds;
 
         while (myLight.intensity < maxIntensity)
         {
@@ -76,6 +76,7 @@ public class LightOnOff : MonoBehaviour
     IEnumerator LightOff()
     {
         flag_on = false;
+        seconds = seconds == 0 ? 0.01f : seconds;
 
         while (myLight.intensity > 0)
         {

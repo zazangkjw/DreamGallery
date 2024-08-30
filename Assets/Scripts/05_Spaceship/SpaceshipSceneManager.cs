@@ -4,14 +4,18 @@ public class SpaceshipSceneManager : DefaultSceneManager
 {
     public SpaceshipDirector spaceshipDirector; // 이 씬의 컷씬이 담겨있는 스크립트
 
-
+    public static bool isIntro = true;
 
 
     void Start()
     {
         WhenStart();
 
-        //spaceshipDirector.OpeningDirector();
+        if (isIntro) 
+        { 
+            spaceshipDirector.OpeningDirector(); 
+            isIntro = false; 
+        }
     }
 
     void Update()
