@@ -27,7 +27,8 @@ public class ArtGalleryDirector : MonoBehaviour
     public enum Dreams // ²Þ ¹øÈ£¿Í ¾À ÀÌ¸§
     {
         LionDance,
-        Clown
+        Clown,
+        Spaceship
     }
     public static Dreams selectedDream;
 
@@ -83,6 +84,9 @@ public class ArtGalleryDirector : MonoBehaviour
                 break;
             case Dreams.Clown:
                 LoadSceneScript.LoadScene("04_Clown");
+                break;
+            case Dreams.Spaceship:
+                LoadSceneScript.LoadScene("05_Spaceship");
                 break;
             default:
                 break;

@@ -16,7 +16,10 @@ EditorBuildSettings:
     guid: 97efd59c1998f734a90a900f0db8b229
   - enabled: 1
     path: Assets/Scenes/04_Clown.unity
-    guid: 11e4056c0847aad498d2b3c02cd8f896
+    guid: 55ab8053a61d8fd41b7b4d617296ec54
+  - enabled: 1
+    path: Assets/Scenes/05_Spaceship.unity
+    guid: 20c70c2e78a359245b9b60cf2f110806
   - enabled: 1
     path: Assets/Scenes/00_LoadingScene.unity
     guid: 38bd3b11fd0b47f4b8f512bf340e1552

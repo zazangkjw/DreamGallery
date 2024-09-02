@@ -105,6 +105,10 @@ public class ArtGalleryRaycast : MonoBehaviour
         {
             ArtGalleryDirector.selectedDream = ArtGalleryDirector.Dreams.Clown;
         }
+        else if (hitObject == dreamObjects[2])
+        {
+            ArtGalleryDirector.selectedDream = ArtGalleryDirector.Dreams.Spaceship;
+        }
 
         artGalleryDirector.LookVR();
 

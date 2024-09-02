@@ -26,6 +26,9 @@ public class SpaceshipDirector : MonoBehaviour
     public AudioSource piano2;
     public HeadTracking man001HeadTracking;
     public Animator elevatorAnim;
+    public Animator fishManAnim;
+    public Animator manAnim;
+    public Animator man001Anim;
 
     public void OpeningDirector()
     {
@@ -49,7 +52,13 @@ public class SpaceshipDirector : MonoBehaviour
 
         piano2.Play();
 
-        yield return new WaitForSeconds(13f);
+        yield return new WaitForSeconds(4f);
+
+        fishManAnim.Play("Opening");
+        manAnim.Play("Opening");
+        man001Anim.Play("Opening");
+
+        yield return new WaitForSeconds(9f);
 
         putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[18]["Content"], 10f);
 
@@ -59,6 +68,8 @@ public class SpaceshipDirector : MonoBehaviour
 
         yield return new WaitForSeconds(4f);
 
+        fishManAnim.Play("Lip", 1);
+        man001Anim.Play("Idle");
         fadeInOutScript.FadeOut(fadeInOutImage);
 
         directorCam.SetActive(false);
