@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class LightOnOffBreath : MonoBehaviour
 {
@@ -23,14 +24,12 @@ public class LightOnOffBreath : MonoBehaviour
 
     bool flag_on;
 
-    WaitForSeconds delay = new WaitForSeconds(0.01f);
-    WaitForSeconds delayForStop;
+
+
 
     void Start()
     {
-        delayForStop = new WaitForSeconds(secondsForStop);
         maxIntensity = myLight.intensity;
-        myLight.intensity = 0f;
         myMesh = GetComponent<MeshRenderer>();
         StartCoroutine(LightBreath());
     }
@@ -41,25 +40,25 @@ public class LightOnOffBreath : MonoBehaviour
         {
             if (myLight.intensity >= maxIntensity)
             {
-                yield return delayForStop;
+                yield return new WaitForSeconds(secondsForStop);
                 flag_on = false;
             }
             else if (myLight.intensity <= 0)
             {
-                yield return delayForStop;
+                yield return new WaitForSeconds(secondsForStop);
                 flag_on = true;
             }
 
             if (flag_on)
             {
-                myLight.intensity += maxIntensity * (0.01f / seconds);
+                myLight.intensity += maxIntensity * (1f / seconds) * Time.deltaTime;
             }
             else
             {
-                myLight.intensity -= maxIntensity * (0.01f / seconds);
+                myLight.intensity -= maxIntensity * (1f / seconds) * Time.deltaTime;
             }
 
-            yield return delay;
+            yield return null;
         }
     }
 }

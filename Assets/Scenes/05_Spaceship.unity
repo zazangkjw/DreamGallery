@@ -1063,7 +1063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seconds: 2
-  secondsForStop: 1
+  secondsForStop: 2
   myLight: {fileID: 130807436}
   emissionOnMats: []
   emissionOffMats: []
@@ -1835,7 +1835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db90defbca992c5468d84ee4f6366fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seconds: 1
+  seconds: 2
   myLight: {fileID: 243227063}
   emissionOnMats: []
   emissionOffMats: []
@@ -3775,7 +3775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seconds: 2
-  secondsForStop: 1
+  secondsForStop: 2
   myLight: {fileID: 749904225}
   emissionOnMats: []
   emissionOffMats: []
@@ -4298,6 +4298,7 @@ MonoBehaviour:
   - {fileID: 605173954}
   - {fileID: 1780684904}
   spaceshipDirector: {fileID: 807168754}
+  isIntro: 0
 --- !u!114 &807168754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5685,7 +5686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db90defbca992c5468d84ee4f6366fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seconds: 1
+  seconds: 2
   myLight: {fileID: 984439515}
   emissionOnMats: []
   emissionOffMats: []
@@ -7467,7 +7468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seconds: 2
-  secondsForStop: 1
+  secondsForStop: 2
   myLight: {fileID: 1471631809}
   emissionOnMats: []
   emissionOffMats: []
@@ -8692,7 +8693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seconds: 2
-  secondsForStop: 1
+  secondsForStop: 2
   myLight: {fileID: 1720912827}
   emissionOnMats: []
   emissionOffMats: []

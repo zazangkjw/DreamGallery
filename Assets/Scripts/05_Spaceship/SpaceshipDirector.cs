@@ -17,7 +17,9 @@ public class SpaceshipDirector : MonoBehaviour
     public RawImage fadeInOutImage; // 페이드-인, 아웃 이미지
     public FadeInOutScript fadeInOutScript; // 페이드-인, 아웃 스크립트
 
+    public bool isCutscene;
 
+    public IEnumerator coroutine;
 
 
     // 오프닝 컷신
@@ -32,7 +34,9 @@ public class SpaceshipDirector : MonoBehaviour
 
     public void OpeningDirector()
     {
-        StartCoroutine(OpeningDirectorCoroutine());
+        if (coroutine != null) { StopCoroutine(coroutine); }
+        coroutine = OpeningDirectorCoroutine();
+        StartCoroutine(coroutine);
     }
 
     IEnumerator OpeningDirectorCoroutine()

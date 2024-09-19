@@ -24,6 +24,8 @@ public class LightOnOff : MonoBehaviour
 
     WaitForSeconds delay = new WaitForSeconds(0.01f);
 
+    IEnumerator coroutine;
+
     void Start()
     {
         maxIntensity = myLight.intensity;
@@ -34,7 +36,9 @@ public class LightOnOff : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "NPC")
         {
-            StartCoroutine(LightOn());
+            if(coroutine != null) { StopCoroutine(coroutine); }
+            coroutine = LightOn();
+            StartCoroutine(coroutine);
             if(myMesh != null) { myMesh.materials = emissionOnMats;  }
         }
     }
@@ -43,25 +47,20 @@ public class LightOnOff : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "NPC")
         {
-            StartCoroutine(LightOff());
+            if (coroutine != null) { StopCoroutine(coroutine); }
+            coroutine = LightOff();
+            StartCoroutine(coroutine);
             if (myMesh != null) { myMesh.materials = emissionOffMats; }
         }
     }
 
     IEnumerator LightOn()
     {
-        flag_on = true;
         seconds = seconds == 0 ? 0.01f : seconds;
 
         while (myLight.intensity < maxIntensity)
         {
-
-            if (!flag_on)
-            {
-                break;
-            }
-
-            myLight.intensity += maxIntensity * (0.01f / seconds);
+            myLight.intensity += maxIntensity * (1f / seconds) * Time.deltaTime;
 
             if (myLight.intensity > maxIntensity)
             {
@@ -69,24 +68,17 @@ public class LightOnOff : MonoBehaviour
                 break;
             }
 
-            yield return delay;
+            yield return null;
         }
     }
 
     IEnumerator LightOff()
     {
-        flag_on = false;
         seconds = seconds == 0 ? 0.01f : seconds;
 
         while (myLight.intensity > 0)
         {
-            
-            if (flag_on)
-            {
-                break;
-            }
-            
-            myLight.intensity -= maxIntensity * (0.01f / seconds);
+            myLight.intensity -= maxIntensity * (1f / seconds) * Time.deltaTime;
 
             if(myLight.intensity < 0)
             {
@@ -94,7 +86,7 @@ public class LightOnOff : MonoBehaviour
                 break;
             }
 
-            yield return delay;
+            yield return null;
         }
     }
 }
