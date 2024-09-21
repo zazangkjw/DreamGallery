@@ -1,20 +1,21 @@
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class SpaceshipSceneManager : DefaultSceneManager
 {
-    public SpaceshipDirector spaceshipDirector; // ÀÌ ¾ÀÀÇ ÄÆ¾ÀÀÌ ´ã°ÜÀÖ´Â ½ºÅ©¸³Æ®
+    public PlayableDirector openingDirector; // ¿ÀÇÁ´× ÄÆ¾À µð·ºÅÍ
 
-    public bool isIntro = true;
-
+    static public bool isIntro = true;
+    
 
     void Start()
     {
         WhenStart();
 
         if (isIntro) 
-        { 
-            spaceshipDirector.OpeningDirector(); 
-            isIntro = false; 
+        {
+            openingDirector.Play(); 
+            isIntro = false;
         }
     }
 
@@ -43,5 +44,14 @@ public class SpaceshipSceneManager : DefaultSceneManager
         uiTexts[11].text = GameManager.instance.textFileManager.ui[19];
         uiTexts[12].text = GameManager.instance.textFileManager.ui[20];
         uiTexts[13].text = GameManager.instance.textFileManager.ui[23];
+        uiTexts[14].text = GameManager.instance.textFileManager.ui[25];
+    }
+
+    public override void PressExitButton()
+    {
+        isIntro = true;
+        audioMixer.SetFloat("Pitch", 1f);
+        Time.timeScale = 1f;
+        LoadSceneScript.LoadScene("02_ArtGallery");
     }
 }

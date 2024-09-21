@@ -50,5 +50,6 @@ public class ArtGallerySceneManager : DefaultSceneManager
         uiTexts[11].text = GameManager.instance.textFileManager.ui[19];
         uiTexts[12].text = GameManager.instance.textFileManager.ui[20];
         uiTexts[13].text = GameManager.instance.textFileManager.ui[23];
+        uiTexts[14].text = GameManager.instance.textFileManager.ui[25];
     }
 }

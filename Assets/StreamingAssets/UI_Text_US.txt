@@ -23,3 +23,4 @@ BRAVE CHALLENGER
 SUPER COWARD
 VSYNC
 Talk
+Keep Press Spacebar to Skip

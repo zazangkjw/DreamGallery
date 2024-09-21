@@ -18,10 +18,10 @@ public class FadeInOutScript : MonoBehaviour
     }
     IEnumerator FadeInCoroutine(RawImage rawImage, float time)
     {
-        rawImage.color = new Color(rawImage.color.r, rawImage.color.g, rawImage.color.b, 0f);
-        while (rawImage.color.a < 1f)
+        rawImage.color = new Color(rawImage.color.r, rawImage.color.g, rawImage.color.b, 1f);
+        while (rawImage.color.a > 0f)
         {
-            rawImage.color = new Color(rawImage.color.r, rawImage.color.g, rawImage.color.b, rawImage.color.a + ((1f / time) * Time.deltaTime));
+            rawImage.color = new Color(rawImage.color.r, rawImage.color.g, rawImage.color.b, rawImage.color.a - ((1f / time) * Time.deltaTime));
             yield return null;
         }
     }
@@ -42,10 +42,10 @@ public class FadeInOutScript : MonoBehaviour
     }
     IEnumerator FadeOutCoroutine(RawImage rawImage, float time)
     {
-        rawImage.color = new Color(rawImage.color.r, rawImage.color.g, rawImage.color.b, 1f);
-        while (rawImage.color.a > 0f)
+        rawImage.color = new Color(rawImage.color.r, rawImage.color.g, rawImage.color.b, 0f);
+        while (rawImage.color.a < 1f)
         {
-            rawImage.color = new Color(rawImage.color.r, rawImage.color.g, rawImage.color.b, rawImage.color.a - ((1f / time) * Time.deltaTime));
+            rawImage.color = new Color(rawImage.color.r, rawImage.color.g, rawImage.color.b, rawImage.color.a + ((1f / time) * Time.deltaTime));
             yield return null;
         }
     }

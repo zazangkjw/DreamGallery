@@ -45,7 +45,7 @@ public class LionDanceDirector : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         // letterbox.LetterboxOnImmediately();
-        fadeInOutScript.FadeOut(fadeInOutImage);
+        fadeInOutScript.FadeIn(fadeInOutImage);
         openingDirector.Play();
         frying.Play();
 
@@ -125,7 +125,7 @@ public class LionDanceDirector : MonoBehaviour
 
     public IEnumerator BackToArtGalleryCoroutine()
     {
-        fadeInOutScript.FadeIn(fadeInOutImage);
+        fadeInOutScript.FadeOut(fadeInOutImage);
         yield return new WaitForSeconds(2f);
         LoadSceneScript.SuccessLoadScene("02_ArtGallery");
     }

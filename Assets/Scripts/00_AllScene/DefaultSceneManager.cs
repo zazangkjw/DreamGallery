@@ -54,6 +54,7 @@ public class DefaultSceneManager : MonoBehaviour
         uiTexts[11] = GameObject.Find("FPSLimitText").GetComponent<TextMeshProUGUI>();
         uiTexts[12] = GameObject.Find("FPSDisplayText").GetComponent<TextMeshProUGUI>();
         uiTexts[13] = GameObject.Find("VSyncText").GetComponent<TextMeshProUGUI>();
+        uiTexts[14] = GameObject.Find("SkipText").GetComponent<TextMeshProUGUI>();
     }
 
     // Start¿¡ ³Ö±â

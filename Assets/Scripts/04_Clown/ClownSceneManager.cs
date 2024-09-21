@@ -97,5 +97,6 @@ public class ClownSceneManager : DefaultSceneManager
         uiTexts[13].text = GameManager.instance.textFileManager.ui[21];
         uiTexts[14].text = GameManager.instance.textFileManager.ui[22];
         uiTexts[15].text = GameManager.instance.textFileManager.ui[23];
+        uiTexts[16].text = GameManager.instance.textFileManager.ui[25];
     }
 }

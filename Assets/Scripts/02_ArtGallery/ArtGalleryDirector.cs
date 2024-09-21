@@ -44,7 +44,7 @@ public class ArtGalleryDirector : MonoBehaviour
         }
         else
         {
-            fadeInOutScript.FadeOut(fadeInOutImage);
+            fadeInOutScript.FadeIn(fadeInOutImage);
         }
     }
 
@@ -72,7 +72,7 @@ public class ArtGalleryDirector : MonoBehaviour
 
         LookVRDirector.Play();
         yield return new WaitForSeconds(0.5f);
-        fadeInOutScript.FadeIn(fadeInOutImage);
+        fadeInOutScript.FadeOut(fadeInOutImage);
         yield return new WaitForSeconds(2f);
 
         isFromDream = true;
@@ -118,7 +118,7 @@ public class ArtGalleryDirector : MonoBehaviour
         player.transform.rotation = vrPlayerPos[(int)selectedDream].transform.rotation;
 
         ExitVRDirector.Play();
-        fadeInOutScript.FadeOut(fadeInOutImage);
+        fadeInOutScript.FadeIn(fadeInOutImage);
         yield return new WaitForSeconds(2.5f);
 
         player.SetActive(true);

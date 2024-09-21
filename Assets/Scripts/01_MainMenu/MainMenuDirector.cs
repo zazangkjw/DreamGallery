@@ -37,7 +37,7 @@ public class MainMenuDirector : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        fadeInOutScript.FadeIn(fadeInOutImage);
+        fadeInOutScript.FadeOut(fadeInOutImage);
 
         yield return new WaitForSeconds(2.5f);
 
