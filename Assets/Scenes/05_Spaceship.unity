@@ -523,12 +523,13 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 210861f6b3edc984f8a8e436bf6f9e6f, type: 2}
     - {fileID: 11400000, guid: 9d8190c352e2f404aa7ae4cae48c73bf, type: 2}
     - {fileID: 11400000, guid: bd9e5b55132b1a14f97004437c86c7a9, type: 2}
+    - {fileID: 11400000, guid: 9fe3586318b6a72418ba7095e0ca911b, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 53204365}
-          m_TargetAssemblyTypeName: Opening_Timeline_SignalScript, Assembly-CSharp
-          m_MethodName: FadeInOutImageBlack
+          m_TargetAssemblyTypeName: Signal, Assembly-CSharp
+          m_MethodName: Black
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -579,7 +580,7 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
-          m_CallState: 1
+          m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 53204365}
@@ -590,6 +591,20 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 53204365}
+          m_TargetAssemblyTypeName: Signal, Assembly-CSharp
+          m_MethodName: Dialog
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 18
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -8473,9 +8488,7 @@ PrefabInstance:
     - target: {fileID: 5075895563467201633, guid: 2c3987c813eed304883288c700c3d29b,
         type: 3}
       propertyPath: m_text
-      value: '
-
-'
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8378848053276427561, guid: 2c3987c813eed304883288c700c3d29b,
         type: 3}

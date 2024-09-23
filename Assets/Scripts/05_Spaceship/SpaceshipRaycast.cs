@@ -49,7 +49,7 @@ public class SpaceshipRaycast : DefaultRaycast
                     preObject = hitObject;
                     preObject.GetComponent<GetComponentScript>().outline.enabled = true; // 외곽선 켜기
 
-                    mouseText.text = GameManager.instance.textFileManager.ui[24]; // "대화하기" 텍스트 나옴
+                    mouseText.text = GameManager.instance.textFileManager.ui[26]; // "줍기" 텍스트 나옴
                     mouseText.enabled = true;
 
                     // E키 입력 시
@@ -124,7 +124,14 @@ public class SpaceshipRaycast : DefaultRaycast
                 preObject = hitObject;
                 preObject.GetComponent<GetComponentScript>().outline.enabled = true; // 외곽선 켜기
 
-                mouseText.text = GameManager.instance.textFileManager.ui[24]; // "대화하기" 텍스트 나옴
+                if (currentItem.itemName.Equals("Gift"))
+                {
+                    mouseText.text = GameManager.instance.textFileManager.ui[27]; // "선물하기" 텍스트 나옴
+                }
+                else
+                {
+                    mouseText.text = GameManager.instance.textFileManager.ui[24]; // "대화하기" 텍스트 나옴
+                }
                 mouseText.enabled = true;
 
                 // E키 입력 시
@@ -198,11 +205,11 @@ public class SpaceshipRaycast : DefaultRaycast
             // 대사
             guard_check.GetComponent<GetComponentScript>().animator.SetBool("Able", false);
             guard_check.GetComponent<HeadTracking>().isLooking = true;
-            putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[19]["Content"], 3f); // "아래층에 대체 무슨 일이 벌어진 거지?"
+            putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[24]["Content"], 3f); // "아! 선물을 주셔서 정말 감사합니다"
             yield return dialogDelay;
             GameObject playerCam = guard001_check.GetComponent<HeadTracking>().target;
             guard001_check.GetComponent<HeadTracking>().target = gift.gameObject;
-            putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[20]["Content"], 3f); // "아래층에 대체 무슨 일이 벌어진 거지?"
+            putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[25]["Content"], 3f); // "빨리 안에 뭐가 들어 있는지 보고 싶어요!"
             yield return dialogDelay;
 
             gift.GetComponent<GetComponentScript>().animator.Play("Surprise"); 
@@ -218,7 +225,7 @@ public class SpaceshipRaycast : DefaultRaycast
             yield return dialogDelay;
             guard_check.GetComponent<HeadTracking>().isLooking = false;
             guard001_check.GetComponent<HeadTracking>().isLooking = false;
-            putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[21]["Content"], 3f); // "아래층에 대체 무슨 일이 벌어진 거지?"
+            putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[26]["Content"], 3f); // "으아악!"
 
             // 경비 넘어짐
             guard001_check.GetComponent<Collider>().enabled = false;
@@ -232,9 +239,8 @@ public class SpaceshipRaycast : DefaultRaycast
         else
         {
             // 대화
-            putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[19]["Content"], // "이 물고기 인간이 우리 방으로 가는 길을 막아버렸어"
-                                                                   (string)GameManager.instance.textFileManager.dialog[20]["Content"], // "아까부터 계속되는 진동에 겁을 먹은 것 같아"
-                                                                   (string)GameManager.instance.textFileManager.dialog[21]["Content"]}); // "아래층에 대체 무슨 일이 벌어진 거지?"
+            putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[22]["Content"], // "이 문 너머는 출입 금지 구역입니다"
+                                                                   (string)GameManager.instance.textFileManager.dialog[23]["Content"]}); // "돌아가주세요"
 
             yield return new WaitUntil(() => putDialogScript.isClickMode == false);
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -52,7 +53,17 @@ public class Signal : MonoBehaviour
         }
     }
 
-    public void FadeInOutImageBlack()
+    public void SSAO_ON()
+    {
+        GameManager.instance.urpRenderer.rendererFeatures[0].SetActive(true);
+    }
+
+    public void SSAO_OFF()
+    {
+        GameManager.instance.urpRenderer.rendererFeatures[0].SetActive(false);
+    }
+
+    public void Black()
     {
         fadeInOutImage.color = new Color(0f, 0f, 0f, 1f);
     }
@@ -75,5 +86,15 @@ public class Signal : MonoBehaviour
     public void Dialog(int num)
     {
         putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[num]["Content"], 3f);
+    }
+
+    public void DialogClick(string str)
+    {
+        string[] nums = str.Split(' ');
+        for(int i = 0; i < nums.Length; i++)
+        {
+            putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[int.Parse(nums[i])]["Content"]});
+        }
+        
     }
 }

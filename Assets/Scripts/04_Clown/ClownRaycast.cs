@@ -187,33 +187,48 @@ public class ClownRaycast : MonoBehaviour
 
         elevatorBtn_current.GetComponent<NextElevatorPoint>().thisElevatorAnim.Play("Close");
 
-        elevator_Point_Player.transform.position = elevatorBtn_current.GetComponent<NextElevatorPoint>().thisPoint.transform.position; // elevator_Point_Player을 엘리베이터 포인트로 옮기고, 플레이어를 자식으로 넣어서
-        elevator_Point_Player.transform.rotation = elevatorBtn_current.GetComponent<NextElevatorPoint>().thisPoint.transform.rotation; // n초 후에 다음 엘리베이터 포인트로 이동 후 자식 해제
-        player.transform.SetParent(elevator_Point_Player.transform);
+        
 
-        yield return new WaitForSeconds(3f);
 
-        elevator_Point_Player.transform.position = elevatorBtn_current.GetComponent<NextElevatorPoint>().nextPoint.transform.position;
-        elevator_Point_Player.transform.rotation = elevatorBtn_current.GetComponent<NextElevatorPoint>().nextPoint.transform.rotation;
-
-        // 추가 기능 //
-        if (elevatorBtn_current.GetComponent<NextElevatorPoint>().goTo == "Circus")
+        // 탈출 엘리베이터
+        if(elevatorBtn_current.GetComponent<NextElevatorPoint>().goTo == "Exit")
         {
-            life = life_max;
-            lifeText.text = life.ToString();
-            StartCoroutine(AudioOnOffScript.VolumeCoroutine(circusSong, true, 5f, 0.5f));
+            StartCoroutine(AudioOnOffScript.VolumeCoroutine(circusSong, false, 7f));
+            StartCoroutine(AudioOnOffScript.VolumeCoroutine(applause, false, 7f));
+
+            yield return new WaitForSeconds(2f);
+
+            // 아트갤러리로 복귀
+            fadeInOutScript.FadeOut(fadeInOutImage);
+            yield return new WaitForSeconds(2f);
+            LoadSceneScript.SuccessLoadScene("02_ArtGallery");
         }
-        else
+        else // 그 외 엘리베이터
         {
-            StartCoroutine(AudioOnOffScript.VolumeCoroutine(circusSong, false, 5f));
-            StartCoroutine(AudioOnOffScript.VolumeCoroutine(applause, false, 5f));
+            elevator_Point_Player.transform.position = elevatorBtn_current.GetComponent<NextElevatorPoint>().thisPoint.transform.position; // elevator_Point_Player을 엘리베이터 포인트로 옮기고, 플레이어를 자식으로 넣어서
+            elevator_Point_Player.transform.rotation = elevatorBtn_current.GetComponent<NextElevatorPoint>().thisPoint.transform.rotation; // n초 후에 다음 엘리베이터 포인트로 이동 후 자식 해제
+            player.transform.SetParent(elevator_Point_Player.transform);
+
+            yield return new WaitForSeconds(3f);
+
+            elevator_Point_Player.transform.position = elevatorBtn_current.GetComponent<NextElevatorPoint>().nextPoint.transform.position;
+            elevator_Point_Player.transform.rotation = elevatorBtn_current.GetComponent<NextElevatorPoint>().nextPoint.transform.rotation;
+
+            // 서커스장 가는 엘리베이터
+            if (elevatorBtn_current.GetComponent<NextElevatorPoint>().goTo == "Circus")
+            {
+                life = life_max;
+                lifeText.text = life.ToString();
+                StartCoroutine(AudioOnOffScript.VolumeCoroutine(circusSong, true, 7f, 0.6f));
+            }
+
+            // 이동 시간
+            yield return new WaitForSeconds(6f);
+
+            // 문 열림
+            elevatorBtn_current.GetComponent<NextElevatorPoint>().nextElevatorAnim.Play("Open");
+            player.transform.SetParent(Armatures.transform);
         }
-        //-----------//
-
-        yield return new WaitForSeconds(6f);
-
-        elevatorBtn_current.GetComponent<NextElevatorPoint>().nextElevatorAnim.Play("Open");
-        player.transform.SetParent(Armatures.transform);
     }
 
 
@@ -253,7 +268,7 @@ public class ClownRaycast : MonoBehaviour
         yield return new WaitUntil(() => putDialogScript.isClickMode == false);
         player.GetComponent<PlayerController>().enabled = false;
         player.GetComponent<Rigidbody>().isKinematic = true;
-        fadeInOutScript.FadeIn(fadeInOutImage, 1f);
+        fadeInOutScript.FadeOut(fadeInOutImage, 1f);
         yield return new WaitForSeconds(2f);
 
         // 외발자전거 탑승
@@ -273,7 +288,7 @@ public class ClownRaycast : MonoBehaviour
         unicycle_current.GetComponent<GetComponentScript>().animator.Play("Go", 0, 0.01f);
         unicycle_current.GetComponent<GetComponentScript>().animator.speed = 0f;
 
-        fadeInOutScript.FadeOut(fadeInOutImage, 1f);
+        fadeInOutScript.FadeIn(fadeInOutImage, 1f);
         yield return new WaitForSeconds(2f);
 
         // 가짜 외줄 사라지고 진짜 외줄 나타남

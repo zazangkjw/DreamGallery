@@ -25,56 +25,6 @@ public class LionDanceDirector : MonoBehaviour
 
 
 
-    // ¿ÀÇÁ´× ÄÆ½Å
-    public PlayableDirector openingDirector;
-    public AudioSource frying;
-
-    public void OpeningDirector()
-    {
-        StartCoroutine(OpeningDirectorCoroutine());
-    }
-
-    IEnumerator OpeningDirectorCoroutine()
-    {
-        player.SetActive(false);
-        directorCam.SetActive(true);
-        mouseText.enabled = false;
-        crosshair.enabled = false;
-        fadeInOutImage.color = new Color(0f, 0f, 0f, 1f);
-
-        yield return new WaitForSeconds(2f);
-
-        // letterbox.LetterboxOnImmediately();
-        fadeInOutScript.FadeIn(fadeInOutImage);
-        openingDirector.Play();
-        frying.Play();
-
-        yield return new WaitForSeconds(12f);
-
-        GameManager.instance.urpRenderer.rendererFeatures[0].SetActive(true); // SSAO ÄÑ±â
-
-        directorCam.SetActive(false);
-        player.SetActive(true);
-        crosshair.enabled = true;
-
-        // ¿ÀÇÁ´× ´ë»ç
-        putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[0]["Content"],
-                                                               (string)GameManager.instance.textFileManager.dialog[1]["Content"]});
-
-        yield return new WaitForSeconds(0.1f);
-
-        while (true)
-        {
-            if (!putDialogScript.isClickMode)
-            {
-                // letterbox.LetterboxOff();
-                break;
-            }
-            yield return new WaitForSeconds(0.016f);
-        }
-    }
-
-
 
 
     // ±«¹°ÀÌ À­ÃþÀ¸·Î ¿Ã¶ó°¡´Â ÄÆ½Å

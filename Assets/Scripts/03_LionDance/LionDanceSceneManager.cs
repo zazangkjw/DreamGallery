@@ -1,11 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class LionDanceSceneManager : DefaultSceneManager
 {
     public Material fogMat; // 안개 매테리얼
     public LionDanceDirector lionDanceDirector; // 이 씬의 컷씬이 담겨있는 스크립트
-
+    public PlayableDirector openingDirector;
 
 
 
@@ -13,11 +14,11 @@ public class LionDanceSceneManager : DefaultSceneManager
     {
         WhenStart();
 
-        GameManager.instance.urpRenderer.rendererFeatures[0].SetActive(false); // SSAO 끄기. 컷신 카메라가 프라이팬과 가까워서 이상하게 나오기 때문에 컷신 동안 비활성화
+        //GameManager.instance.urpRenderer.rendererFeatures[0].SetActive(false); // SSAO 끄기. 컷신 카메라가 프라이팬과 가까워서 이상하게 나오기 때문에 컷신 동안 비활성화
         fogMat.color = new Color(1f, 1f, 1f, (255f / 255f)); // 연기 초기화
 
         // 오프닝 시작
-        lionDanceDirector.OpeningDirector();
+        openingDirector.Play();
     }
 
     void Update()

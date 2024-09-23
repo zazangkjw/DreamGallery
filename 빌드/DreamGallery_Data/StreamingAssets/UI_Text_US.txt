@@ -23,3 +23,6 @@ BRAVE CHALLENGER
 SUPER COWARD
 VSYNC
 Talk
+Keep press Spacebar to skip
+Pick up
+Give a gift

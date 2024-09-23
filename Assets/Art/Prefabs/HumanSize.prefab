@@ -808,7 +808,7 @@ MonoBehaviour:
   team: 1
   masterSpeed: 0.5
   walkSpeed: 5
-  runSpeed: 10
+  runSpeed: 15
   crouchSpeed: 2.5
   applySpeed: 0
   jumpForce: 5

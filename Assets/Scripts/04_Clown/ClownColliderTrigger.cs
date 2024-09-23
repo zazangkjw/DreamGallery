@@ -62,7 +62,7 @@ public class ClownColliderTrigger : MonoBehaviour
                 circusFlash.isFlashOn = true;
                 StartCoroutine(AudioOnOffScript.VolumeCoroutine(clownRaycast.applause, true, 2f, 0.5f));
                 clownRaycast.yay.Play();
-                clownRaycast.circusSong.Stop();
+                // clownRaycast.circusSong.Stop();
                 clownRaycast.elevatorAnims[3].Play("Open");
             }
         }
