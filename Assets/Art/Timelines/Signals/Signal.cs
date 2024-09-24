@@ -33,8 +33,10 @@ public class Signal : MonoBehaviour
 
                 if (timer >= 2)
                 {
+                    director.Pause();
                     skipText.SetActive(false);
                     director.time = skipPoint;
+                    director.Play();
                     break;
                 }
             }

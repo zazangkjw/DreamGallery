@@ -225,7 +225,6 @@ public class SpaceshipRaycast : DefaultRaycast
             yield return dialogDelay;
             guard_check.GetComponent<HeadTracking>().isLooking = false;
             guard001_check.GetComponent<HeadTracking>().isLooking = false;
-            putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[26]["Content"], 3f); // "À¸¾Æ¾Ç!"
 
             // °æºñ ³Ñ¾îÁü
             guard001_check.GetComponent<Collider>().enabled = false;

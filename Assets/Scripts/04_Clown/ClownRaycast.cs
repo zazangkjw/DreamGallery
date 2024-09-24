@@ -196,7 +196,7 @@ public class ClownRaycast : MonoBehaviour
             StartCoroutine(AudioOnOffScript.VolumeCoroutine(circusSong, false, 7f));
             StartCoroutine(AudioOnOffScript.VolumeCoroutine(applause, false, 7f));
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(5f);
 
             // 아트갤러리로 복귀
             fadeInOutScript.FadeOut(fadeInOutImage);
@@ -219,7 +219,7 @@ public class ClownRaycast : MonoBehaviour
             {
                 life = life_max;
                 lifeText.text = life.ToString();
-                StartCoroutine(AudioOnOffScript.VolumeCoroutine(circusSong, true, 7f, 0.6f));
+                StartCoroutine(AudioOnOffScript.VolumeCoroutine(circusSong, true, 15f, 0.6f));
             }
 
             // 이동 시간

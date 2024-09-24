@@ -33,6 +33,7 @@ public class LionDanceDirector : MonoBehaviour
     public GameObject lookMonsterCam2;
     public GameObject lookMonsterCam3;
     public AudioSource screaming;
+    public AudioSource horrorSound;
 
     public void LookMonsterDirector()
     {
@@ -47,6 +48,7 @@ public class LionDanceDirector : MonoBehaviour
 
         //lookMonsterDirector.Play();
         lionMonsterAnimator.Play("ClimbUp"); // 괴물이 윗층으로 올라가는 애니메이션 재생
+        horrorSound.Play();
 
         yield return new WaitForSeconds(2.5f);
 
@@ -59,7 +61,7 @@ public class LionDanceDirector : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        putDialogScript.putDialog((string)GameManager.instance.textFileManager.dialog[3]["Content"], 3f);
+        putDialogScript.putDialog((string)GameManager.instance.textFileManager.dialog[3]["Content"], 3f); // "밖에 무언가 있어... 바깥 창문을 닫아야 해"
         StartCoroutine(lionDanceColliderTrigger.BalconyTimerCoroutine()); // 대사 끝나고 5초 뒤에 발코니로 괴물 침입
     }
 
