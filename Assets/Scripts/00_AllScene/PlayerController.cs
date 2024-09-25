@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private bool isGround = true;
     private bool isAbove = false;
     private bool isTryStand = false;
+    public bool isMouseLocked = false;
     private bool isSetDragToZero = false;
     public float knockbackTimer = 0;
 
@@ -387,20 +388,26 @@ public class PlayerController : MonoBehaviour
     // 좌우 캐릭터 회전
     private void CharacterRotation()
     {
-        float _yRotation = Input.GetAxisRaw("Mouse X");
-        Vector3 _characterRotationY = new Vector3(0f, _yRotation, 0f) * lookSensitivity * 0.1f;
-        transform.localEulerAngles = transform.localEulerAngles + _characterRotationY;
+        if (!isMouseLocked)
+        {
+            float _yRotation = Input.GetAxisRaw("Mouse X");
+            Vector3 _characterRotationY = new Vector3(0f, _yRotation, 0f) * lookSensitivity * 0.1f;
+            transform.localEulerAngles = transform.localEulerAngles + _characterRotationY;
+        }
     }
 
     // 상하 카메라 회전
     private void CameraRotation()
     {
-        float _xRotation = Input.GetAxisRaw("Mouse Y");
-        float _cameraRotationX = _xRotation * lookSensitivity * 0.1f;
-        currentCameraRotationX -= _cameraRotationX;
-        currentCameraRotationX = Mathf.Clamp(currentCameraRotationX, -cameraRotationLimit, cameraRotationLimit);
+        if (!isMouseLocked)
+        {
+            float _xRotation = Input.GetAxisRaw("Mouse Y");
+            float _cameraRotationX = _xRotation * lookSensitivity * 0.1f;
+            currentCameraRotationX -= _cameraRotationX;
+            currentCameraRotationX = Mathf.Clamp(currentCameraRotationX, -cameraRotationLimit, cameraRotationLimit);
 
-        theCamera.transform.localEulerAngles = new Vector3(currentCameraRotationX, 0f, 0f);
+            theCamera.transform.localEulerAngles = new Vector3(currentCameraRotationX, 0f, 0f);
+        }
     }
 
     // 상하 카메라 회전값 설정

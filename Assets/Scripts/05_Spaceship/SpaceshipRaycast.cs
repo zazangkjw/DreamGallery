@@ -200,7 +200,7 @@ public class SpaceshipRaycast : DefaultRaycast
             gift.transform.position = new Vector3(19.104f, 9.427f, -83.348f);
             gift.transform.rotation = Quaternion.identity;
             currentItem = empty;
-            inventory[currentSlot - 1] = empty;
+            myItems[currentSlot - 1] = empty;
 
             // ด๋ป็
             guard_check.GetComponent<GetComponentScript>().animator.SetBool("Able", false);

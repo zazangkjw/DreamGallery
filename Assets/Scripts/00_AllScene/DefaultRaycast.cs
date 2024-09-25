@@ -11,10 +11,18 @@ public class DefaultRaycast : MonoBehaviour
     public GameObject itemCategory;
     public List<GameObject> items_check = new List<GameObject>(); // items 체크용
 
-    public int inventorySize;
-    public List<Item> inventory = new List<Item>(); // 인벤토리
+    public GameObject inventory;
+    public GameObject inventorySlot;
+    public GameObject inventory_quickSlot;
+    public GameObject quickSlot;
+
+    public List<GameObject> inventorySlots = new List<GameObject>(); // 인벤토리
+    public List<GameObject> inventory_quickSlots = new List<GameObject>(); // 인벤토리 퀵슬롯
+    public List<GameObject> quickSlots = new List<GameObject>(); // 퀵슬롯
+
     public int currentSlot;
     public Item currentItem;
+    public List<Item> myItems = new List<Item>(); // 보유 아이템들
 
     public RaycastHit hitInfo;
     public GameObject hitObject;
@@ -25,6 +33,7 @@ public class DefaultRaycast : MonoBehaviour
     protected bool isChecking = true;
 
     public DefaultSceneManager defaultSceneManager;
+    public PlayerController playerController;
     public RawImage fadeInOutImage; // 페이드-인, 아웃 이미지
     public FadeInOutScript fadeInOutScript; // 페이드-인, 아웃 스크립트
 
@@ -33,21 +42,34 @@ public class DefaultRaycast : MonoBehaviour
 
     public virtual void WhenStart()
     {
-        currentSlot = 1;
-        currentItem = empty;
-
-        for (int i = 0; i < inventorySize; i++)
+        if(quickSlot != null)
         {
-            inventory.Add(empty);
-        }
+            for (int i = 0; i < inventorySlot.transform.childCount; i++)
+            {
+                inventorySlots.Add(inventorySlot.transform.GetChild(i).gameObject);
+                myItems.Add(empty);
+            }
 
-        items_check.AddRange(GameObject.FindGameObjectsWithTag("Item"));
+            for (int i = 0; i < inventory_quickSlot.transform.childCount; i++)
+            {
+                inventory_quickSlots.Add(inventory_quickSlot.transform.GetChild(i).gameObject);
+                quickSlots.Add(quickSlot.transform.GetChild(i).gameObject);
+                myItems.Add(empty);
+            }
+
+            currentSlot = 1;
+            currentItem = empty;
+            quickSlots[currentSlot - 1].transform.GetChild(1).gameObject.SetActive(true);
+
+            items_check.AddRange(GameObject.FindGameObjectsWithTag("Item"));
+        }
     }
 
     public virtual void WhenUpdate()
     {
         SwitchItem();
         ShootRaycast();
+        Inventory();
     }
 
 
@@ -79,9 +101,33 @@ public class DefaultRaycast : MonoBehaviour
 
 
 
+    // 인벤토리 메서드
+    public void Inventory()
+    {
+        if (Input.GetKeyDown(KeyCode.I) && inventory != null && !defaultSceneManager.isPausing)
+        {
+            if (inventory.activeSelf) // 인벤토리 켜져있으면
+            {
+                inventory.SetActive(false);
+                playerController.isMouseLocked = false;
+                Cursor.visible = false;
+            }
+            else // 인벤토리 꺼져있으면
+            {
+                inventory.SetActive(true);
+                playerController.isMouseLocked = true;
+                Cursor.visible = true;
+            }
+        }
+    }
+
+
+
+
     // 아이템 스위칭
     public void SwitchItem()
     {
+        // 현재 아이템 버리기
         if (currentItem != empty && Input.GetKeyDown(KeyCode.G))
         {
             currentItem.enabled = false;
@@ -105,24 +151,96 @@ public class DefaultRaycast : MonoBehaviour
             }
 
             currentItem = empty;
-            inventory[currentSlot - 1] = empty;
+            myItems[currentSlot - 1] = empty;
+            inventory_quickSlots[currentSlot - 1].transform.GetChild(0).GetComponent<RawImage>().color = Color.clear;
+            quickSlots[currentSlot - 1].transform.GetChild(0).GetComponent<RawImage>().color = Color.clear;
         }
 
+        // 숫자키로 퀵슬롯 바꾸기
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             currentSlot = 1;
+            for (int i = 0; i < quickSlots.Count; i++)
+            {
+                quickSlots[i].transform.GetChild(1).gameObject.SetActive(false);
+            }
+            quickSlots[currentSlot - 1].transform.GetChild(1).gameObject.SetActive(true);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             currentSlot = 2;
+            for (int i = 0; i < quickSlots.Count; i++)
+            {
+                quickSlots[i].transform.GetChild(1).gameObject.SetActive(false);
+            }
+            quickSlots[currentSlot - 1].transform.GetChild(1).gameObject.SetActive(true);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             currentSlot = 3;
+            for (int i = 0; i < quickSlots.Count; i++)
+            {
+                quickSlots[i].transform.GetChild(1).gameObject.SetActive(false);
+            }
+            quickSlots[currentSlot - 1].transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            currentSlot = 4;
+            for (int i = 0; i < quickSlots.Count; i++)
+            {
+                quickSlots[i].transform.GetChild(1).gameObject.SetActive(false);
+            }
+            quickSlots[currentSlot - 1].transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            currentSlot = 5;
+            for (int i = 0; i < quickSlots.Count; i++)
+            {
+                quickSlots[i].transform.GetChild(1).gameObject.SetActive(false);
+            }
+            quickSlots[currentSlot - 1].transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            currentSlot = 6;
+            for (int i = 0; i < quickSlots.Count; i++)
+            {
+                quickSlots[i].transform.GetChild(1).gameObject.SetActive(false);
+            }
+            quickSlots[currentSlot - 1].transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            currentSlot = 7;
+            for (int i = 0; i < quickSlots.Count; i++)
+            {
+                quickSlots[i].transform.GetChild(1).gameObject.SetActive(false);
+            }
+            quickSlots[currentSlot - 1].transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            currentSlot = 8;
+            for (int i = 0; i < quickSlots.Count; i++)
+            {
+                quickSlots[i].transform.GetChild(1).gameObject.SetActive(false);
+            }
+            quickSlots[currentSlot - 1].transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            currentSlot = 9;
+            for (int i = 0; i < quickSlots.Count; i++)
+            {
+                quickSlots[i].transform.GetChild(1).gameObject.SetActive(false);
+            }
+            quickSlots[currentSlot - 1].transform.GetChild(1).gameObject.SetActive(true);
         }
 
         // 현재 아이템이 현재 슬롯 아이템과 다르면 교체 및 활성화
-        if (currentItem != inventory[currentSlot - 1])
+        if (currentItem != inventorySlots[currentSlot - 1])
         {
             currentItem.gameObject.SetActive(false);
 
@@ -138,7 +256,7 @@ public class DefaultRaycast : MonoBehaviour
                 col.enabled = false;
             }
 
-            currentItem = inventory[currentSlot - 1];
+            currentItem = myItems[currentSlot - 1];
             currentItem.gameObject.SetActive(true);
         }
 
@@ -152,13 +270,16 @@ public class DefaultRaycast : MonoBehaviour
     // 아이템 획득
     protected IEnumerator PickUpItemCoroutine()
     {
-        // 필요하면 "GameObject man001_this = hitObject" 생성해서 사용
-
         if (preObject.GetComponent<Item>().isObtainable)
         {
-            for (int i = 1; i < inventory.Count; i++)
+            for (int i = 0; i < myItems.Count; i++)
             {
-                if (inventory[i] == empty)
+                if (myItems[currentSlot - 1] == empty)
+                {
+                    i = currentSlot - 1;
+                }
+
+                if (myItems[i] == empty)
                 {
                     preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 비활성화
 
@@ -171,15 +292,33 @@ public class DefaultRaycast : MonoBehaviour
                     preObject.GetComponent<GetComponentScript>().outline.gameObject.layer = LayerMask.NameToLayer("Hand");
                     preObject.GetComponent<Collider>().enabled = false;
 
-                    inventory[i] = preObject.GetComponent<Item>();
-                    inventory[i].GetComponent<Item>().enabled = true;
+                    myItems[i] = preObject.GetComponent<Item>();
+                    myItems[i].GetComponent<Item>().enabled = true;
+
+                    if (i < quickSlots.Count)
+                    {
+                        inventory_quickSlots[i].transform.GetChild(0).GetComponent<RawImage>().texture = myItems[i].itemImage;
+                        inventory_quickSlots[i].transform.GetChild(0).GetComponent<RawImage>().color = Color.white;
+                        quickSlots[i].transform.GetChild(0).GetComponent<RawImage>().texture = myItems[i].itemImage;
+                        quickSlots[i].transform.GetChild(0).GetComponent<RawImage>().color = Color.white;
+                    }
+                    else
+                    {
+                        inventorySlots[i - inventory_quickSlots.Count].transform.GetChild(0).GetComponent<RawImage>().texture = myItems[i].itemImage;
+                        inventorySlots[i - inventory_quickSlots.Count].transform.GetChild(0).GetComponent<RawImage>().color = Color.white;
+                    }
+
                     break;
+                }
+                else if (i == myItems.Count - 1) // 끝까지 돌았는데 공간이 없을 경우
+                {
+                    putDialogScript.putDialog((string)GameManager.instance.textFileManager.dialog[26]["Content"], 1f); // "가방에 더 이상 공간이 없다"
                 }
             }
         }
         else
         {
-            // 획득 불가능
+            // 획득 불가 아이템
         }
         
         yield return null;

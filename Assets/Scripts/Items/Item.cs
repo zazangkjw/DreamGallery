@@ -5,6 +5,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     public string itemName;
+    public Texture itemImage;
     public int team;
 
     public DefaultRaycast defaultRaycast;

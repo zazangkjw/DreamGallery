@@ -24,6 +24,7 @@ public class DefaultSceneManager : MonoBehaviour
     public Toggle isVSyncOn;
     public TextMeshProUGUI[] uiTexts; // UI 텍스트 목록
 
+    public GameObject inventory;
 
     public void Reset()
     {
@@ -103,13 +104,22 @@ public class DefaultSceneManager : MonoBehaviour
     {
         if (!isPausing && Input.GetKeyDown(KeyCode.Escape)) // 일시정지
         {
-            Cursor.visible = true;
-            isPausing = true;
-            audioMixer.SetFloat("Pitch", 0f);
-            Time.timeScale = 0f;
-            playerController.enabled = false;
-            putDialogScript.enabled = false;
-            pauseUI.SetActive(true);
+            // 인벤토리가 열려있으면 닫기
+            if (inventory != null && inventory.activeSelf)
+            {
+                inventory.SetActive(false);
+                playerController.isMouseLocked = false;
+            }
+            else
+            {
+                Cursor.visible = true;
+                isPausing = true;
+                audioMixer.SetFloat("Pitch", 0f);
+                Time.timeScale = 0f;
+                playerController.enabled = false;
+                putDialogScript.enabled = false;
+                pauseUI.SetActive(true);
+            }
         }
         else if (isPausing && Input.GetKeyDown(KeyCode.Escape))
         {
