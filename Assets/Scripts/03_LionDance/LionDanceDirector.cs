@@ -61,8 +61,8 @@ public class LionDanceDirector : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        putDialogScript.putDialog((string)GameManager.instance.textFileManager.dialog[3]["Content"], 3f); // "밖에 무언가 있어... 바깥 창문을 닫아야 해"
-        StartCoroutine(lionDanceColliderTrigger.BalconyTimerCoroutine()); // 대사 끝나고 5초 뒤에 발코니로 괴물 침입
+        putDialogScript.putDialog((string)GameManager.instance.textFileManager.dialog[3]["Content"], 5f); // "밖에 무언가 있어... 바깥 창문을 닫아야 해"
+        StartCoroutine(lionDanceColliderTrigger.BalconyTimerCoroutine()); // 대사 끝나고 3초 뒤에 발코니로 괴물 침입
     }
 
 

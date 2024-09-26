@@ -240,7 +240,7 @@ public class DefaultRaycast : MonoBehaviour
         }
 
         // 현재 아이템이 현재 슬롯 아이템과 다르면 교체 및 활성화
-        if (currentItem != inventorySlots[currentSlot - 1])
+        if (currentItem != myItems[currentSlot - 1])
         {
             currentItem.gameObject.SetActive(false);
 

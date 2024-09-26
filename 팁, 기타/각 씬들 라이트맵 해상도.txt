@@ -1,5 +1,5 @@
 01_MainMenu = 30
 02_ArtGallery = 30
 03_LionDance = 75
-04_Clown = 30
+04_Clown = 50
 05_Spaceship = 40
