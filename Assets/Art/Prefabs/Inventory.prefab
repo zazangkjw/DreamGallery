@@ -61,7 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -90,6 +90,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 5377836780891706128}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &412324999746003418
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -252,6 +253,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 5791724157332142230}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &479931170281765508
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -414,6 +416,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 1466513216552945152}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &517086715144906955
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,7 +550,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.29411766, g: 0.29411766, b: 0.29411766, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -576,6 +579,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 6430237897894184931}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &1155696125669630897
 GameObject:
   m_ObjectHideFlags: 0
@@ -853,7 +857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.29411766, g: 0.29411766, b: 0.29411766, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -882,6 +886,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 5700879670179601788}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &1848517048873975096
 GameObject:
   m_ObjectHideFlags: 0
@@ -1159,7 +1164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1188,6 +1193,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 4164637599762605668}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &2029859134970258479
 GameObject:
   m_ObjectHideFlags: 0
@@ -1321,7 +1327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1350,6 +1356,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 5221252536413573482}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &2479786647976153486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,7 +1418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1629,7 +1636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1658,6 +1665,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 7307582763380155102}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &3421176813614455717
 GameObject:
   m_ObjectHideFlags: 0
@@ -1719,7 +1727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1748,6 +1756,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 6121167258004432590}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &3599696090653498017
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,7 +1818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.29411766, g: 0.29411766, b: 0.29411766, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1838,6 +1847,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 7824933732179743454}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &3771359985538232289
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,7 +1981,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2000,6 +2010,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 4034399629800194174}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &3956496003021995286
 GameObject:
   m_ObjectHideFlags: 0
@@ -2061,7 +2072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2090,6 +2101,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 6035825196965922737}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &4254057478975979974
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,7 +2163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.29411766, g: 0.29411766, b: 0.29411766, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2180,6 +2192,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 2723085042150501252}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &4606402100087517628
 GameObject:
   m_ObjectHideFlags: 0
@@ -2385,7 +2398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.29411766, g: 0.29411766, b: 0.29411766, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2414,6 +2427,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 8614994143669565692}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &4751909586434097181
 GameObject:
   m_ObjectHideFlags: 0
@@ -2475,7 +2489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.29411766, g: 0.29411766, b: 0.29411766, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2504,6 +2518,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 3391462068198218307}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &4966671180519373504
 GameObject:
   m_ObjectHideFlags: 0
@@ -2637,7 +2652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2666,6 +2681,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 201063630923238585}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &5223643812223030573
 GameObject:
   m_ObjectHideFlags: 0
@@ -2727,7 +2743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.29411766, g: 0.29411766, b: 0.29411766, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2756,6 +2772,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 9213534212609000133}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &5446069940237431638
 GameObject:
   m_ObjectHideFlags: 0
@@ -2961,7 +2978,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2990,6 +3007,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 41404348394132633}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &6134745035425272719
 GameObject:
   m_ObjectHideFlags: 0
@@ -3051,7 +3069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3080,6 +3098,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 4395073050269023418}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &6338244862282250411
 GameObject:
   m_ObjectHideFlags: 0
@@ -3141,7 +3160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3170,6 +3189,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 6421969626653961686}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &6468990481688435437
 GameObject:
   m_ObjectHideFlags: 0
@@ -3375,7 +3395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.29411766, g: 0.29411766, b: 0.29411766, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3404,6 +3424,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 1754569889761480286}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &6872253733831848840
 GameObject:
   m_ObjectHideFlags: 0
@@ -3609,7 +3630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3638,6 +3659,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 4728784719910490467}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &7022607782881275635
 GameObject:
   m_ObjectHideFlags: 0
@@ -3771,7 +3793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3800,6 +3822,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 2528633622685363339}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &7170320109372419670
 GameObject:
   m_ObjectHideFlags: 0
@@ -4173,7 +4196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.29411766, g: 0.29411766, b: 0.29411766, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4202,6 +4225,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 5366580282162549819}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &7956211192128000752
 GameObject:
   m_ObjectHideFlags: 0
@@ -4335,7 +4359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4364,6 +4388,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 4926419477305246395}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &8072806222072544307
 GameObject:
   m_ObjectHideFlags: 0
@@ -4425,7 +4450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4454,6 +4479,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 2006883161959382485}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &8101353524977467181
 GameObject:
   m_ObjectHideFlags: 0
@@ -4587,7 +4613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4616,6 +4642,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 1141814788197187672}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &8217706674507430838
 GameObject:
   m_ObjectHideFlags: 0
@@ -4749,7 +4776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4778,6 +4805,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 6516846930646260971}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &8878495723768822449
 GameObject:
   m_ObjectHideFlags: 0
@@ -4911,7 +4939,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.29411766, g: 0.29411766, b: 0.29411766, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4940,6 +4968,7 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 3089167643993053433}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}
 --- !u!1 &9090755470390370597
 GameObject:
   m_ObjectHideFlags: 0
@@ -5073,7 +5102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5102,3 +5131,4 @@ MonoBehaviour:
   item: {fileID: 0}
   slotImage: {fileID: 365354725935298240}
   backgroundImage: {fileID: 0}
+  connectedSlot: {fileID: 0}

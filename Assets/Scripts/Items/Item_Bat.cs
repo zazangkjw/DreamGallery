@@ -24,7 +24,7 @@ public class Item_Bat : Item
     {
         while (true)
         {
-            if (!putDialogScript.isClickMode && handAnim.GetBool("isReady") && defaultRaycast.currentItem == this) // 클릭형 대사 나오는 동안 기능 비활성화
+            if (!putDialogScript.isClickMode && handAnim.GetBool("isReady") && defaultRaycast.currentItem == this && !DefaultRaycast.inventoryOnOff) // 클릭형 대사 나오는 동안 기능 비활성화
             {
                 // 클릭
                 if (Input.GetMouseButtonDown(0))

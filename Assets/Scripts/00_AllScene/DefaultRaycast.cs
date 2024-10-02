@@ -1,7 +1,8 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class DefaultRaycast : MonoBehaviour
@@ -9,16 +10,18 @@ public class DefaultRaycast : MonoBehaviour
     public GameObject handObject;
     public Item empty;
     public GameObject itemCategory;
-    public List<GameObject> items_check = new List<GameObject>(); // items Ã¼Å©¿ë
+    public List<GameObject> items_check = new List<GameObject>(); // items ì²´í¬ìš©
 
+    public static bool inventoryOnOff;
+    public RawImage cursorImage;
     public GameObject inventory;
     public GameObject inventorySlot;
     public GameObject inventory_quickSlot;
     public GameObject quickSlot;
 
-    public List<Slot> inventorySlots = new List<Slot>(); // ÀÎº¥Åä¸®
-    public List<Slot> inventory_quickSlots = new List<Slot>(); // ÀÎº¥Åä¸® Äü½½·Ô
-    public List<Slot> quickSlots = new List<Slot>(); // Äü½½·Ô
+    public List<Slot> inventorySlots = new List<Slot>(); // ì¸ë²¤í† ë¦¬
+    public List<Slot> inventory_quickSlots = new List<Slot>(); // ì¸ë²¤í† ë¦¬ í€µìŠ¬ë¡¯
+    public List<Slot> quickSlots = new List<Slot>(); // í€µìŠ¬ë¡¯
     public Item currentItem;
 
     public RaycastHit hitInfo;
@@ -29,10 +32,15 @@ public class DefaultRaycast : MonoBehaviour
     public WaitForSeconds dialogDelay = new WaitForSeconds(3f);
     protected bool isChecking = true;
 
+    public Canvas canvas;
+    GraphicRaycaster graphicRaycaster;
+    PointerEventData pointerEventData;
+    List<RaycastResult> result = new List<RaycastResult>();
+
     public DefaultSceneManager defaultSceneManager;
     public PlayerController playerController;
-    public RawImage fadeInOutImage; // ÆäÀÌµå-ÀÎ, ¾Æ¿ô ÀÌ¹ÌÁö
-    public FadeInOutScript fadeInOutScript; // ÆäÀÌµå-ÀÎ, ¾Æ¿ô ½ºÅ©¸³Æ®
+    public RawImage fadeInOutImage; // í˜ì´ë“œ-ì¸, ì•„ì›ƒ ì´ë¯¸ì§€
+    public FadeInOutScript fadeInOutScript; // í˜ì´ë“œ-ì¸, ì•„ì›ƒ ìŠ¤í¬ë¦½íŠ¸
 
 
 
@@ -50,6 +58,8 @@ public class DefaultRaycast : MonoBehaviour
                 quickSlots.Add(quickSlot.transform.GetChild(i).GetComponent<Slot>());
                 quickSlots[i].item = empty;
                 quickSlots[i].index = i;
+
+                inventory_quickSlots[i].connectedSlot = quickSlots[i];
             }
 
             for (int i = 0; i < inventorySlot.transform.childCount; i++)
@@ -59,11 +69,15 @@ public class DefaultRaycast : MonoBehaviour
                 inventorySlots[i].index = i + quickSlots.Count;
             }
 
+            Slot.cursorImage = cursorImage;
             Slot.currentIndex = 1;
             currentItem = inventory_quickSlots[Slot.currentIndex - 1].item;
             quickSlots[Slot.currentIndex - 1].backgroundImage.gameObject.SetActive(true);
 
             items_check.AddRange(GameObject.FindGameObjectsWithTag("Item"));
+
+            graphicRaycaster = canvas.GetComponent<GraphicRaycaster>();
+            pointerEventData = new PointerEventData(null);
         }
     }
 
@@ -72,12 +86,13 @@ public class DefaultRaycast : MonoBehaviour
         SwitchItem();
         ShootRaycast();
         Inventory();
+        CursorImageFollowMouse();
     }
 
 
 
 
-    // Ä«¸Ş¶ó¿¡¼­ ·¹ÀÌÄ³½ºÆ® ½î±â
+    // ì¹´ë©”ë¼ì—ì„œ ë ˆì´ìºìŠ¤íŠ¸ ì˜ê¸°
     public void ShootRaycast()
     {
         Debug.DrawRay(transform.position, transform.forward * 2f, Color.red);
@@ -86,7 +101,7 @@ public class DefaultRaycast : MonoBehaviour
         {
             hitObject = hitInfo.collider.gameObject;
         }
-        // Çã°øÀÏ ¶§
+        // í—ˆê³µì¼ ë•Œ
         else
         {
             hitObject = null;
@@ -103,19 +118,25 @@ public class DefaultRaycast : MonoBehaviour
 
 
 
-    // ÀÎº¥Åä¸® ¸Ş¼­µå
+    // ì¸ë²¤í† ë¦¬ ë©”ì„œë“œ
     public void Inventory()
     {
         if (Input.GetKeyDown(KeyCode.I) && inventory != null && !defaultSceneManager.isPausing)
         {
-            if (inventory.activeSelf) // ÀÎº¥Åä¸® ÄÑÁ®ÀÖÀ¸¸é
+            if (inventory.activeSelf) // ì¸ë²¤í† ë¦¬ ì¼œì ¸ìˆìœ¼ë©´
             {
+                inventoryOnOff = false;
                 inventory.SetActive(false);
                 playerController.isMouseLocked = false;
                 Cursor.visible = false;
+
+                Slot.selectedSlot = null;
+                Slot.cursorImage.texture = null;
+                Slot.cursorImage.gameObject.SetActive(false);
             }
-            else // ÀÎº¥Åä¸® ²¨Á®ÀÖÀ¸¸é
+            else // ì¸ë²¤í† ë¦¬ êº¼ì ¸ìˆìœ¼ë©´
             {
+                inventoryOnOff = true;
                 inventory.SetActive(true);
                 playerController.isMouseLocked = true;
                 Cursor.visible = true;
@@ -126,164 +147,190 @@ public class DefaultRaycast : MonoBehaviour
 
 
 
-    // ¾ÆÀÌÅÛ ½ºÀ§Äª
+    // ì•„ì´í…œ ìŠ¤ìœ„ì¹­
     public void SwitchItem()
     {
-        // ÇöÀç ¾ÆÀÌÅÛ ¹ö¸®±â
-        if (currentItem != empty && Input.GetKeyDown(KeyCode.G))
+        if (quickSlot != null)
         {
-            currentItem.enabled = false;
-            currentItem.transform.SetParent(itemCategory.transform);
-            currentItem.transform.position = transform.position;
-            currentItem.GetComponent<GetComponentScript>().outline.gameObject.layer = LayerMask.NameToLayer("Default");
-            currentItem.GetComponent<Collider>().enabled = true;
-            currentItem.GetComponent<Rigidbody>().useGravity = true;
-            currentItem.GetComponent<Rigidbody>().isKinematic = false;
+            // í˜„ì¬ ì•„ì´í…œ ë²„ë¦¬ê¸°
+            if (currentItem != empty && Input.GetKeyDown(KeyCode.G))
+            {
+                currentItem.enabled = false;
+                currentItem.transform.SetParent(itemCategory.transform);
+                currentItem.transform.position = transform.position;
+                currentItem.GetComponent<GetComponentScript>().outline.gameObject.layer = LayerMask.NameToLayer("Default");
+                currentItem.GetComponent<Collider>().enabled = true;
+                currentItem.GetComponent<Rigidbody>().useGravity = true;
+                currentItem.GetComponent<Rigidbody>().isKinematic = false;
 
-            currentItem.handAnim.SetFloat("ChargeTimer", 0f);
-            currentItem.handAnim.SetBool("isReady", false);
-            currentItem.handAnim.SetBool("isCanceled", false);
-            currentItem.handAnim.SetBool("isCharging", false);
-            currentItem.handAnim.SetBool("isCharged", false);
-            currentItem.handAnim.SetBool("isChargeAttack", false);
-            currentItem.handAnim.SetBool("isChargeAttackEnd", false);
-            foreach (Collider col in currentItem.cols)
-            {
-                col.enabled = false;
-            }
+                currentItem.handAnim.SetFloat("ChargeTimer", 0f);
+                currentItem.handAnim.SetBool("isReady", false);
+                currentItem.handAnim.SetBool("isCanceled", false);
+                currentItem.handAnim.SetBool("isCharging", false);
+                currentItem.handAnim.SetBool("isCharged", false);
+                currentItem.handAnim.SetBool("isChargeAttack", false);
+                currentItem.handAnim.SetBool("isChargeAttackEnd", false);
+                foreach (Collider col in currentItem.cols)
+                {
+                    col.enabled = false;
+                }
 
-            currentItem = empty;
+                currentItem = empty;
 
-            inventory_quickSlots[Slot.currentIndex - 1].item = empty;
-            inventory_quickSlots[Slot.currentIndex - 1].slotImage.texture = null;
-            inventory_quickSlots[Slot.currentIndex - 1].slotImage.gameObject.SetActive(false);
+                inventory_quickSlots[Slot.currentIndex - 1].item = empty;
+                inventory_quickSlots[Slot.currentIndex - 1].slotImage.texture = null;
+                inventory_quickSlots[Slot.currentIndex - 1].slotImage.gameObject.SetActive(false);
 
-            quickSlots[Slot.currentIndex - 1].item = empty;
-            quickSlots[Slot.currentIndex - 1].slotImage.texture = null;
-            quickSlots[Slot.currentIndex - 1].slotImage.gameObject.SetActive(false);
-        }
-
-        // ¼ıÀÚÅ°·Î Äü½½·Ô ¹Ù²Ù±â
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Slot.currentIndex = 1;
-            for (int i = 0; i < quickSlots.Count; i++)
-            {
-                quickSlots[i].backgroundImage.gameObject.SetActive(false);
-            }
-            quickSlots[Slot.currentIndex - 1].backgroundImage.gameObject.SetActive(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Slot.currentIndex = 2;
-            for (int i = 0; i < quickSlots.Count; i++)
-            {
-                quickSlots[i].backgroundImage.gameObject.SetActive(false);
-            }
-            quickSlots[Slot.currentIndex - 1].backgroundImage.gameObject.SetActive(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Slot.currentIndex = 3;
-            for (int i = 0; i < quickSlots.Count; i++)
-            {
-                quickSlots[i].backgroundImage.gameObject.SetActive(false);
-            }
-            quickSlots[Slot.currentIndex - 1].backgroundImage.gameObject.SetActive(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            Slot.currentIndex = 4;
-            for (int i = 0; i < quickSlots.Count; i++)
-            {
-                quickSlots[i].backgroundImage.gameObject.SetActive(false);
-            }
-            quickSlots[Slot.currentIndex - 1].backgroundImage.gameObject.SetActive(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            Slot.currentIndex = 5;
-            for (int i = 0; i < quickSlots.Count; i++)
-            {
-                quickSlots[i].backgroundImage.gameObject.SetActive(false);
-            }
-            quickSlots[Slot.currentIndex - 1].backgroundImage.gameObject.SetActive(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            Slot.currentIndex = 6;
-            for (int i = 0; i < quickSlots.Count; i++)
-            {
-                quickSlots[i].backgroundImage.gameObject.SetActive(false);
-            }
-            quickSlots[Slot.currentIndex - 1].backgroundImage.gameObject.SetActive(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha7))
-        {
-            Slot.currentIndex = 7;
-            for (int i = 0; i < quickSlots.Count; i++)
-            {
-                quickSlots[i].backgroundImage.gameObject.SetActive(false);
-            }
-            quickSlots[Slot.currentIndex - 1].backgroundImage.gameObject.SetActive(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha8))
-        {
-            Slot.currentIndex = 8;
-            for (int i = 0; i < quickSlots.Count; i++)
-            {
-                quickSlots[i].backgroundImage.gameObject.SetActive(false);
-            }
-            quickSlots[Slot.currentIndex - 1].backgroundImage.gameObject.SetActive(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha9))
-        {
-            Slot.currentIndex = 9;
-            for (int i = 0; i < quickSlots.Count; i++)
-            {
-                quickSlots[i].backgroundImage.gameObject.SetActive(false);
-            }
-            quickSlots[Slot.currentIndex - 1].backgroundImage.gameObject.SetActive(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            Slot.currentIndex = 10;
-            for (int i = 0; i < quickSlots.Count; i++)
-            {
-                quickSlots[i].backgroundImage.gameObject.SetActive(false);
-            }
-            quickSlots[Slot.currentIndex - 1].backgroundImage.gameObject.SetActive(true);
-        }
-
-        // ÇöÀç ¾ÆÀÌÅÛÀÌ ÇöÀç ½½·Ô ¾ÆÀÌÅÛ°ú ´Ù¸£¸é ±³Ã¼ ¹× È°¼ºÈ­
-        if (currentItem != inventory_quickSlots[Slot.currentIndex - 1].item)
-        {
-            currentItem.gameObject.SetActive(false);
-
-            currentItem.handAnim.SetFloat("ChargeTimer", 0f);
-            currentItem.handAnim.SetBool("isReady", false);
-            currentItem.handAnim.SetBool("isCanceled", false);
-            currentItem.handAnim.SetBool("isCharging", false);
-            currentItem.handAnim.SetBool("isCharged", false);
-            currentItem.handAnim.SetBool("isChargeAttack", false);
-            currentItem.handAnim.SetBool("isChargeAttackEnd", false);
-            foreach (Collider col in currentItem.cols)
-            {
-                col.enabled = false;
+                quickSlots[Slot.currentIndex - 1].item = empty;
+                quickSlots[Slot.currentIndex - 1].slotImage.texture = null;
+                quickSlots[Slot.currentIndex - 1].slotImage.gameObject.SetActive(false);
             }
 
-            currentItem = inventory_quickSlots[Slot.currentIndex - 1].item;
-            currentItem.gameObject.SetActive(true);
-        }
+            // ì¸ë²¤í† ë¦¬ê°€ ì¼œìˆì„ ë•Œ
+            if (inventoryOnOff)
+            {
+                // ë§ˆìš°ìŠ¤ ì¢Œí´ë¦­
+                if (Input.GetMouseButtonDown(0))
+                {
+                    result.Clear();
+                    pointerEventData.position = Input.mousePosition;
+                    graphicRaycaster.Raycast(pointerEventData, result);
 
-        // ÇöÀç ¾ÆÀÌÅÛÀÌ ²¨Á®ÀÖÀ¸¸é È°¼ºÈ­
-        if (currentItem.gameObject.activeSelf == false)
-        {
-            currentItem.gameObject.SetActive(true);
+                    // ì„ íƒëœ ì•„ì´í…œì´ ìˆìœ¼ë©´
+                    if (Slot.selectedSlot != null)
+                    {
+                        // UI ë°–ì„ í´ë¦­í•˜ë©´ ë²„ë¦¬ê¸°
+                        if (result.Count == 0)
+                        {
+                            Slot.selectedSlot.item.enabled = false;
+                            Slot.selectedSlot.item.transform.SetParent(itemCategory.transform);
+                            Slot.selectedSlot.item.transform.position = transform.position;
+                            Slot.selectedSlot.item.GetComponent<GetComponentScript>().outline.gameObject.layer = LayerMask.NameToLayer("Default");
+                            Slot.selectedSlot.item.GetComponent<Collider>().enabled = true;
+                            Slot.selectedSlot.item.GetComponent<Rigidbody>().useGravity = true;
+                            Slot.selectedSlot.item.GetComponent<Rigidbody>().isKinematic = false;
+                            Slot.selectedSlot.item.gameObject.SetActive(true);
+
+                            Slot.selectedSlot.item.handAnim.SetFloat("ChargeTimer", 0f);
+                            Slot.selectedSlot.item.handAnim.SetBool("isReady", false);
+                            Slot.selectedSlot.item.handAnim.SetBool("isCanceled", false);
+                            Slot.selectedSlot.item.handAnim.SetBool("isCharging", false);
+                            Slot.selectedSlot.item.handAnim.SetBool("isCharged", false);
+                            Slot.selectedSlot.item.handAnim.SetBool("isChargeAttack", false);
+                            Slot.selectedSlot.item.handAnim.SetBool("isChargeAttackEnd", false);
+                            foreach (Collider col in Slot.selectedSlot.item.cols)
+                            {
+                                col.enabled = false;
+                            }
+
+                            Slot.selectedSlot.item = empty;
+                            Slot.selectedSlot.slotImage.texture = null;
+                            Slot.selectedSlot.slotImage.gameObject.SetActive(false);
+                            Slot.selectedSlot = null;
+
+                            cursorImage.texture = null;
+                            cursorImage.gameObject.SetActive(false);
+                        }
+                    }
+                }
+            }
+
+            // íœ ë¡œ í€µìŠ¬ë¡¯ ë°”ê¾¸ê¸°
+            int preIndex = Slot.currentIndex;
+            float wheelInput = Input.GetAxis("Mouse ScrollWheel");
+            if (wheelInput > 0)
+            {
+                // íœ ì„ ë°€ì–´ ëŒë ¸ì„ ë•Œì˜ ì²˜ë¦¬ â†‘
+                Slot.currentIndex = Slot.currentIndex <= 1 ? Slot.currentIndex : Slot.currentIndex - 1;
+            }
+            else if (wheelInput < 0)
+            {
+                // íœ ì„ ë‹¹ê²¨ ì˜¬ë ¸ì„ ë•Œì˜ ì²˜ë¦¬ â†“Â Â Â 
+                Slot.currentIndex = Slot.currentIndex >= quickSlots.Count ? Slot.currentIndex : Slot.currentIndex + 1;
+            }
+
+            // ìˆ«ìí‚¤ë¡œ í€µìŠ¬ë¡¯ ë°”ê¾¸ê¸°
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                Slot.currentIndex = 1;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                Slot.currentIndex = 2;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                Slot.currentIndex = 3;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                Slot.currentIndex = 4;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                Slot.currentIndex = 5;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha6))
+            {
+                Slot.currentIndex = 6;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha7))
+            {
+                Slot.currentIndex = 7;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha8))
+            {
+                Slot.currentIndex = 8;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha9))
+            {
+                Slot.currentIndex = 9;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                Slot.currentIndex = 10;
+            }
+
+            // í€µìŠ¬ë¡¯ ì ìš©
+            if (preIndex != Slot.currentIndex)
+            {
+                foreach (Slot slot in quickSlots)
+                {
+                    slot.backgroundImage.gameObject.SetActive(false);
+                }
+                quickSlots[Slot.currentIndex - 1].backgroundImage.gameObject.SetActive(true);
+            }
+
+            // í˜„ì¬ ì•„ì´í…œì´ í˜„ì¬ ìŠ¬ë¡¯ ì•„ì´í…œê³¼ ë‹¤ë¥´ë©´ êµì²´ ë° í™œì„±í™”
+            if (currentItem != inventory_quickSlots[Slot.currentIndex - 1].item)
+            {
+                currentItem.gameObject.SetActive(false);
+
+                currentItem.handAnim.SetFloat("ChargeTimer", 0f);
+                currentItem.handAnim.SetBool("isReady", false);
+                currentItem.handAnim.SetBool("isCanceled", false);
+                currentItem.handAnim.SetBool("isCharging", false);
+                currentItem.handAnim.SetBool("isCharged", false);
+                currentItem.handAnim.SetBool("isChargeAttack", false);
+                currentItem.handAnim.SetBool("isChargeAttackEnd", false);
+                foreach (Collider col in currentItem.cols)
+                {
+                    col.enabled = false;
+                }
+
+                currentItem = inventory_quickSlots[Slot.currentIndex - 1].item;
+                currentItem.gameObject.SetActive(true);
+            }
+
+            // í˜„ì¬ ì•„ì´í…œì´ êº¼ì ¸ìˆìœ¼ë©´ í™œì„±í™”
+            if (currentItem.gameObject.activeSelf == false)
+            {
+                currentItem.gameObject.SetActive(true);
+            }
         }
     }
 
-    // ¾ÆÀÌÅÛ È¹µæ
+    // ì•„ì´í…œ íšë“
     protected IEnumerator PickUpItemCoroutine()
     {
         if (preObject.GetComponent<Item>().isObtainable)
@@ -299,7 +346,7 @@ public class DefaultRaycast : MonoBehaviour
                 {
                     if (inventory_quickSlots[i].item == empty)
                     {
-                        preObject.GetComponent<GetComponentScript>().outline.enabled = false; // ¿Ü°û¼± ºñÈ°¼ºÈ­
+                        preObject.GetComponent<GetComponentScript>().outline.enabled = false; // ì™¸ê³½ì„  ë¹„í™œì„±í™”
 
                         preObject.SetActive(false);
                         preObject.transform.SetParent(handObject.transform);
@@ -325,7 +372,7 @@ public class DefaultRaycast : MonoBehaviour
                 {
                     if (inventorySlots[i - inventory_quickSlots.Count].item == empty)
                     {
-                        preObject.GetComponent<GetComponentScript>().outline.enabled = false; // ¿Ü°û¼± ºñÈ°¼ºÈ­
+                        preObject.GetComponent<GetComponentScript>().outline.enabled = false; // ì™¸ê³½ì„  ë¹„í™œì„±í™”
 
                         preObject.SetActive(false);
                         preObject.transform.SetParent(handObject.transform);
@@ -343,18 +390,26 @@ public class DefaultRaycast : MonoBehaviour
 
                         break;
                     }
-                    else if (i == inventory_quickSlots.Count + inventorySlots.Count - 1) // ³¡±îÁö µ¹¾Ò´Âµ¥ °ø°£ÀÌ ¾øÀ» °æ¿ì
+                    else if (i == inventory_quickSlots.Count + inventorySlots.Count - 1) // ëê¹Œì§€ ëŒì•˜ëŠ”ë° ê³µê°„ì´ ì—†ì„ ê²½ìš°
                     {
-                        putDialogScript.putDialog((string)GameManager.instance.textFileManager.dialog[26]["Content"], 1f); // "°¡¹æ¿¡ ´õ ÀÌ»ó °ø°£ÀÌ ¾ø´Ù"
+                        putDialogScript.putDialog((string)GameManager.instance.textFileManager.dialog[26]["Content"], 1f); // "ê°€ë°©ì— ë” ì´ìƒ ê³µê°„ì´ ì—†ë‹¤"
                     }
                 }
             }
         }
         else
         {
-            // È¹µæ ºÒ°¡ ¾ÆÀÌÅÛ
+            // íšë“ ë¶ˆê°€ ì•„ì´í…œ
         }
         
         yield return null;
+    }
+
+    public void CursorImageFollowMouse()
+    {
+        if (cursorImage != null)
+        {
+            cursorImage.transform.position = Input.mousePosition;
+        }
     }
 }

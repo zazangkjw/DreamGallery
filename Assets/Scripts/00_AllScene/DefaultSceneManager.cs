@@ -107,8 +107,13 @@ public class DefaultSceneManager : MonoBehaviour
             // 인벤토리가 열려있으면 닫기
             if (inventory != null && inventory.activeSelf)
             {
+                DefaultRaycast.inventoryOnOff = false;
                 inventory.SetActive(false);
                 playerController.isMouseLocked = false;
+
+                Slot.selectedSlot = null;
+                Slot.cursorImage.texture = null;
+                Slot.cursorImage.gameObject.SetActive(false);
             }
             else
             {
