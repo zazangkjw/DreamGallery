@@ -11,6 +11,7 @@ public class DefaultRaycast : MonoBehaviour
     public Item empty;
     public GameObject itemCategory;
     public List<GameObject> items_check = new List<GameObject>(); // items 체크용
+    GameObject forInstantiate;
 
     public static bool inventoryOnOff;
     public RawImage cursorImage;
@@ -150,7 +151,7 @@ public class DefaultRaycast : MonoBehaviour
     // 아이템 스위칭
     public void SwitchItem()
     {
-        if (quickSlot != null)
+        if (quickSlot != null && !defaultSceneManager.isPausing)
         {
             // 현재 아이템 버리기
             if (currentItem != empty && Input.GetKeyDown(KeyCode.G))
@@ -331,7 +332,7 @@ public class DefaultRaycast : MonoBehaviour
     }
 
     // 아이템 획득
-    protected IEnumerator PickUpItemCoroutine()
+    public void PickUpItemCoroutine()
     {
         if (preObject.GetComponent<Item>().isObtainable)
         {
@@ -346,18 +347,30 @@ public class DefaultRaycast : MonoBehaviour
                 {
                     if (inventory_quickSlots[i].item == empty)
                     {
-                        preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 비활성화
+                        if (!preObject.GetComponent<Item>().isStack)
+                        {
+                            inventory_quickSlots[i].item = preObject.GetComponent<Item>();
+                        }
+                        else
+                        {
+                            preObject.GetComponent<GetComponentScript>().outline.enabled = false;
+                            forInstantiate = Instantiate(preObject.GetComponent<Item>().prefab);
+                            preObject.GetComponent<GetComponentScript>().outline.enabled = true;
+                            forInstantiate.GetComponent<Item>().isStack = false;
+                            items_check.Add(forInstantiate);
+                            inventory_quickSlots[i].item = forInstantiate.GetComponent<Item>();
+                        }
 
-                        preObject.SetActive(false);
-                        preObject.transform.SetParent(handObject.transform);
-                        preObject.transform.localPosition = Vector3.zero;
-                        preObject.transform.localRotation = Quaternion.identity;
-                        preObject.GetComponent<Rigidbody>().useGravity = false;
-                        preObject.GetComponent<Rigidbody>().isKinematic = true;
-                        preObject.GetComponent<GetComponentScript>().outline.gameObject.layer = LayerMask.NameToLayer("Hand");
-                        preObject.GetComponent<Collider>().enabled = false;
+                        inventory_quickSlots[i].item.gameObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 비활성화
+                        inventory_quickSlots[i].item.gameObject.SetActive(false);
+                        inventory_quickSlots[i].item.gameObject.transform.SetParent(handObject.transform);
+                        inventory_quickSlots[i].item.gameObject.transform.localPosition = Vector3.zero;
+                        inventory_quickSlots[i].item.gameObject.transform.localRotation = Quaternion.identity;
+                        inventory_quickSlots[i].item.gameObject.GetComponent<Rigidbody>().useGravity = false;
+                        inventory_quickSlots[i].item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                        inventory_quickSlots[i].item.gameObject.GetComponent<GetComponentScript>().outline.gameObject.layer = LayerMask.NameToLayer("Hand");
+                        inventory_quickSlots[i].item.gameObject.GetComponent<Collider>().enabled = false;
 
-                        inventory_quickSlots[i].item = preObject.GetComponent<Item>();
                         inventory_quickSlots[i].item.enabled = true;
                         inventory_quickSlots[i].slotImage.texture = inventory_quickSlots[i].item.itemImage;
                         inventory_quickSlots[i].slotImage.gameObject.SetActive(true);
@@ -372,18 +385,30 @@ public class DefaultRaycast : MonoBehaviour
                 {
                     if (inventorySlots[i - inventory_quickSlots.Count].item == empty)
                     {
-                        preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 비활성화
+                        if (!preObject.GetComponent<Item>().isStack)
+                        {
+                            inventorySlots[i - inventory_quickSlots.Count].item = preObject.GetComponent<Item>();
+                        }
+                        else
+                        {
+                            preObject.GetComponent<GetComponentScript>().outline.enabled = false;
+                            forInstantiate = Instantiate(preObject.GetComponent<Item>().prefab);
+                            preObject.GetComponent<GetComponentScript>().outline.enabled = true;
+                            forInstantiate.GetComponent<Item>().isStack = false;
+                            items_check.Add(forInstantiate);
+                            inventorySlots[i - inventory_quickSlots.Count].item = forInstantiate.GetComponent<Item>();
+                        }
 
-                        preObject.SetActive(false);
-                        preObject.transform.SetParent(handObject.transform);
-                        preObject.transform.localPosition = Vector3.zero;
-                        preObject.transform.localRotation = Quaternion.identity;
-                        preObject.GetComponent<Rigidbody>().useGravity = false;
-                        preObject.GetComponent<Rigidbody>().isKinematic = true;
-                        preObject.GetComponent<GetComponentScript>().outline.gameObject.layer = LayerMask.NameToLayer("Hand");
-                        preObject.GetComponent<Collider>().enabled = false;
+                        inventorySlots[i - inventory_quickSlots.Count].item.gameObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 비활성화
+                        inventorySlots[i - inventory_quickSlots.Count].item.gameObject.SetActive(false);
+                        inventorySlots[i - inventory_quickSlots.Count].item.gameObject.transform.SetParent(handObject.transform);
+                        inventorySlots[i - inventory_quickSlots.Count].item.gameObject.transform.localPosition = Vector3.zero;
+                        inventorySlots[i - inventory_quickSlots.Count].item.gameObject.transform.localRotation = Quaternion.identity;
+                        inventorySlots[i - inventory_quickSlots.Count].item.gameObject.GetComponent<Rigidbody>().useGravity = false;
+                        inventorySlots[i - inventory_quickSlots.Count].item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                        inventorySlots[i - inventory_quickSlots.Count].item.gameObject.GetComponent<GetComponentScript>().outline.gameObject.layer = LayerMask.NameToLayer("Hand");
+                        inventorySlots[i - inventory_quickSlots.Count].item.gameObject.GetComponent<Collider>().enabled = false;
 
-                        inventorySlots[i - inventory_quickSlots.Count].item = preObject.GetComponent<Item>();
                         inventorySlots[i - inventory_quickSlots.Count].item.enabled = true;
                         inventorySlots[i - inventory_quickSlots.Count].slotImage.texture = inventorySlots[i - inventory_quickSlots.Count].item.itemImage;
                         inventorySlots[i - inventory_quickSlots.Count].slotImage.gameObject.SetActive(true);
@@ -401,8 +426,6 @@ public class DefaultRaycast : MonoBehaviour
         {
             // 획득 불가 아이템
         }
-        
-        yield return null;
     }
 
     public void CursorImageFollowMouse()

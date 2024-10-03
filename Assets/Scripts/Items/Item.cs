@@ -6,12 +6,14 @@ public class Item : MonoBehaviour
 {
     public string itemName;
     public Texture itemImage;
+    public GameObject prefab;
     public int team;
 
     public DefaultRaycast defaultRaycast;
     public Animator handAnim;
     public Collider[] cols;
     public bool isObtainable = true; // 획득 가능한지
+    public bool isStack = false; // 계속 획득 가능한 스택형인지(아이템 더미)
 
     protected WaitForSeconds delay = new WaitForSeconds(0.2f);
 

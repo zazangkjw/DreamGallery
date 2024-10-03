@@ -208,11 +208,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Gift
   itemImage: {fileID: 2800000, guid: c8969030faca5cf4c947d37db42cfc56, type: 3}
+  prefab: {fileID: 5247186045316038954}
   team: 1
   defaultRaycast: {fileID: 0}
   handAnim: {fileID: 0}
   cols: []
   isObtainable: 1
+  isStack: 0
   putDialogScript: {fileID: 0}
 --- !u!114 &2578614311316547586
 MonoBehaviour:

@@ -229,12 +229,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Bat
   itemImage: {fileID: 2800000, guid: 3414e8e68c3a40f4198a5c2855d71047, type: 3}
+  prefab: {fileID: 7782502192933116115}
   team: 1
   defaultRaycast: {fileID: 0}
   handAnim: {fileID: 0}
   cols:
   - {fileID: 1935373875271857810}
   isObtainable: 1
+  isStack: 0
   putDialogScript: {fileID: 0}
 --- !u!114 &1707572511473129466
 MonoBehaviour:

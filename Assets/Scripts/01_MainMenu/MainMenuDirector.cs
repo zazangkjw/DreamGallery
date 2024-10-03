@@ -35,7 +35,7 @@ public class MainMenuDirector : MonoBehaviour
         doorAnimator.SetBool("Active", true);
         enterGalleryDirector.Play();
 
-        yield return new WaitForSeconds(0.5f);
+        // yield return new WaitForSeconds(0.5f);
 
         fadeInOutScript.FadeOut(fadeInOutImage);
 

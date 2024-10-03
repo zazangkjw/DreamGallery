@@ -55,7 +55,7 @@ public class SpaceshipRaycast : DefaultRaycast
                     // E키 입력 시
                     if (Input.GetKeyDown(KeyCode.E))
                     {
-                        StartCoroutine(PickUpItemCoroutine());
+                        PickUpItemCoroutine();
                     }
 
                     isChecking = false; // 이후의 항목들은 체크하지 않음

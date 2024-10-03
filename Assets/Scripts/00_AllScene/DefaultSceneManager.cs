@@ -107,6 +107,7 @@ public class DefaultSceneManager : MonoBehaviour
             // 인벤토리가 열려있으면 닫기
             if (inventory != null && inventory.activeSelf)
             {
+                Cursor.visible = false;
                 DefaultRaycast.inventoryOnOff = false;
                 inventory.SetActive(false);
                 playerController.isMouseLocked = false;

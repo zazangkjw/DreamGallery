@@ -19,6 +19,8 @@ public class ArtGalleryRaycast : MonoBehaviour
 
     public GameObject[] dreamObjects; // 꿈 속으로 들어가는 물건들
 
+    public GameObject deskMan_check; // 안내데스크 npc 체크용
+
     void Start()
     {
 
@@ -90,8 +92,44 @@ public class ArtGalleryRaycast : MonoBehaviour
                 }
             }
         }
+
+        // deskMan
+        if (isChecking)
+        {
+            if (hitObject == deskMan_check) // 안내데스크 npc일 떄
+            {
+                if (preObject != hitObject && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
+                {
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
+                }
+
+                preObject = hitObject;
+                preObject.GetComponent<GetComponentScript>().outline.enabled = true; // 외곽선 켜기
+
+                mouseText.text = GameManager.instance.textFileManager.ui[24]; // "대화하기" 텍스트 나옴
+                mouseText.enabled = true;
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    StartCoroutine(DeskManCoroutine());
+                }
+
+                isChecking = false; // 이후의 항목들은 체크하지 않음
+            }
+            else
+            {
+                mouseText.enabled = false;
+
+                if (preObject != null)
+                {
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
+                    preObject = null;
+                }
+            }
+        }
     }
 
+    // 꿈 선택
     IEnumerator SelectDreamCoroutine()
     {
         preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
@@ -111,6 +149,19 @@ public class ArtGalleryRaycast : MonoBehaviour
         }
 
         artGalleryDirector.LookVR();
+
+        yield return null;
+    }
+
+    // 안내데스크 npc 대화
+    IEnumerator DeskManCoroutine()
+    {
+        preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
+
+        // 대화
+        putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[27]["Content"], // "'꿈 전시관'에 오신 것을 환영합니다"
+                                                               (string)GameManager.instance.textFileManager.dialog[28]["Content"], // "이곳에는 꿈과 관련된 다양한 물건들이 전시되어 있으며, 각 전시물 앞에는 VR 기기가 배치되어 있습니다"
+                                                               (string)GameManager.instance.textFileManager.dialog[29]["Content"]}); // "VR 기기를 바라보고 '상호작용' 키(E)를 눌러 꿈을 체험하실 수 있습니다"
 
         yield return null;
     }
