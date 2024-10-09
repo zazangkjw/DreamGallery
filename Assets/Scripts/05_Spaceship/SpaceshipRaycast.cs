@@ -201,6 +201,8 @@ public class SpaceshipRaycast : DefaultRaycast
             gift.transform.rotation = Quaternion.identity;
             currentItem = empty;
             inventory_quickSlots[Slot.currentIndex - 1].item = empty;
+            inventory_quickSlots[Slot.currentIndex - 1].slotImage.texture = null;
+            inventory_quickSlots[Slot.currentIndex - 1].slotImage.gameObject.SetActive(false);
 
             // ด๋ป็
             guard_check.GetComponent<GetComponentScript>().animator.SetBool("Able", false);

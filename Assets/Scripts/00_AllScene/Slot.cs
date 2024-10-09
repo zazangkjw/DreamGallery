@@ -10,7 +10,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     public Item item;
     public RawImage slotImage;
     public RawImage backgroundImage;
-    public Slot connectedSlot;
+    public Slot connectedSlot; // Äü½½·Ô¿¡ ÀÎº¥Åä¸® Äü½½·Ô ¿¬°á
     public static int currentIndex; // Äü½½·Ô ÀÎµ¦½º(1~10)
     public static Slot selectedSlot;
     public static RawImage cursorImage;
@@ -70,19 +70,19 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     {
         if (connectedSlot != null)
         {
-            if (connectedSlot.item != item)
+            if (item != connectedSlot.item)
             {
-                connectedSlot.item = item;
+                item = connectedSlot.item;
             }
 
-            if (connectedSlot.slotImage.texture != slotImage.texture)
+            if (slotImage.texture != connectedSlot.slotImage.texture)
             {
-                connectedSlot.slotImage.texture = slotImage.texture;
+                slotImage.texture = connectedSlot.slotImage.texture;
             }
 
-            if (connectedSlot.slotImage.gameObject.activeSelf != slotImage.gameObject.activeSelf)
+            if (slotImage.gameObject.activeSelf != connectedSlot.slotImage.gameObject.activeSelf)
             {
-                connectedSlot.slotImage.gameObject.SetActive(slotImage.gameObject.activeSelf);
+                slotImage.gameObject.SetActive(connectedSlot.slotImage.gameObject.activeSelf);
             }
         }
     }

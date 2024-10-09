@@ -253,7 +253,7 @@ public class LionDanceColliderTrigger : MonoBehaviour
         if (step == 9)
         {
             mouseText.enabled = false;
-            kitchenWindow.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
+            kitchenWindow.GetComponent<Outline>().enabled = false; // 외곽선 끄기
             step = 11;
             lionMonsterAnimator.Play("Kitchen_All"); // 괴물이 부엌 창문으로 들어와 집을 돌아다니는 애니메이션 재생
             StartCoroutine(SurviveTimerCoroutine(10f)); // 일정 시간 버티면 생존 엔딩

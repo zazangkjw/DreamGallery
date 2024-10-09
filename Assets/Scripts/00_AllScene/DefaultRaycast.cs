@@ -60,7 +60,7 @@ public class DefaultRaycast : MonoBehaviour
                 quickSlots[i].item = empty;
                 quickSlots[i].index = i;
 
-                inventory_quickSlots[i].connectedSlot = quickSlots[i];
+                quickSlots[i].connectedSlot = inventory_quickSlots[i];
             }
 
             for (int i = 0; i < inventorySlot.transform.childCount; i++)
