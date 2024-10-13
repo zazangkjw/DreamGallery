@@ -11,4 +11,5 @@ public class NextElevatorPoint : MonoBehaviour
 
     public GameObject nextPoint;
     public Animator nextElevatorAnim;
+    public AudioSource next_elevator_ding;
 }

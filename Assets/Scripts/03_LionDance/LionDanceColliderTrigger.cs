@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LionDanceColliderTrigger : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class LionDanceColliderTrigger : MonoBehaviour
     public DogAnimationScript dogAnimationScript;
     public Collider[] ColliderTriggers; // 트리거 콜라이더들
     public TextMeshProUGUI mouseText;
+    public RawImage fadeInOutImage; // 페이드-인, 아웃 이미지
+    public FadeInOutScript fadeInOutScript; // 페이드-인, 아웃 스크립트
+    public AudioSource scream;
 
     enum Triggers
     {
@@ -57,7 +61,8 @@ public class LionDanceColliderTrigger : MonoBehaviour
     {
         if (other == lionMonsterCol) // 괴물과 접촉 시 사망
         {
-            LoadSceneScript.FailLoadScene("03_LionDance");
+            lionMonsterCol.enabled = false;
+            StartCoroutine(DieCoroutine());
         }
 
         switch (step)
@@ -287,5 +292,17 @@ public class LionDanceColliderTrigger : MonoBehaviour
         {
             ColliderTriggers[i].enabled = false;
         }
+    }
+
+
+
+
+    // 죽고 다시시작
+    IEnumerator DieCoroutine()
+    {
+        fadeInOutImage.color = Color.black;
+        scream.Play();
+        yield return new WaitForSeconds(2f);
+        LoadSceneScript.FailLoadScene("03_LionDance");
     }
 }

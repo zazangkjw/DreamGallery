@@ -812,6 +812,7 @@ MonoBehaviour:
   crouchSpeed: 2.5
   applySpeed: 0
   jumpForce: 5
+  isMouseLocked: 0
   knockbackTimer: 0
   crouchPosY: -0.3
   originPosY: 0

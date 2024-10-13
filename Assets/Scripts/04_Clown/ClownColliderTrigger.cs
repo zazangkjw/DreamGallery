@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ClownColliderTrigger : MonoBehaviour
 {
@@ -29,6 +29,14 @@ public class ClownColliderTrigger : MonoBehaviour
 
     public bool[] isSuccess = new bool[1];
 
+    public ClownWorm clownWorm;
+
+    public Collider fallTrigger;
+    public AudioSource scream;
+
+    public RawImage fadeInOutImage; // 페이드-인, 아웃 이미지
+    public FadeInOutScript fadeInOutScript; // 페이드-인, 아웃 스크립트
+
 
 
 
@@ -44,7 +52,6 @@ public class ClownColliderTrigger : MonoBehaviour
         if (other == trigger_SafeZone)
         {
             clown_Chase.isSafe = true;
-
         }
 
         // 추격 시작 트리거에 들어가면 플래시 OFF
@@ -65,6 +72,14 @@ public class ClownColliderTrigger : MonoBehaviour
                 // clownRaycast.circusSong.Stop();
                 clownRaycast.elevatorAnims[3].Play("Open");
             }
+        }
+
+        // 실패하면 재시작
+        if(other.gameObject == clownWorm.deadTrigger || other == fallTrigger)
+        {
+            clownWorm.deadTrigger.SetActive(false);
+            fallTrigger.enabled = false;
+            StartCoroutine(DieCoroutine());
         }
     }
 
@@ -97,9 +112,6 @@ public class ClownColliderTrigger : MonoBehaviour
         }
     }
 
-
-
-
     // 사다리 기능
     private void UpLadder()
     {
@@ -116,5 +128,14 @@ public class ClownColliderTrigger : MonoBehaviour
         {
             myRigid.velocity = new Vector3(myRigid.velocity.x, -2.5f, myRigid.velocity.z);
         }
+    }
+
+    // 죽고 다시시작
+    IEnumerator DieCoroutine()
+    {
+        fadeInOutImage.color = Color.black;
+        scream.Play();
+        yield return new WaitForSeconds(2f);
+        LoadSceneScript.FailLoadScene("04_Clown");
     }
 }

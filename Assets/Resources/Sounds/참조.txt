@@ -1,5 +1,28 @@
+[BGM]
 "Neon Tube Light Flickering" - https://freesound.org/people/bolkmar/sounds/500693/ by bolkmar
 
 "Horror Sliding Transition" - https://freesound.org/people/qubodup/sounds/169727/ by qubodup
 
 "Skibka - Voyage 3A (loop).wav" - https://freesound.org/people/SkibkaMusic/sounds/477590/ by SkibkaMusic
+
+"Melody Loop Mix 128 bpm.mp3" - https://freesound.org/people/Vannipat/sounds/415511/ by Vannipat
+
+"8-bit ElectroHouse.wav" - https://freesound.org/people/RutgerMuller/sounds/51239/ by RutgerMuller
+
+"Mix0786BPM.wav" - https://freesound.org/people/deleted_user_984625/sounds/69611/ by deleted_user_984625
+
+Music by Tri-Tachyon - https://soundcloud.com/tri-tachyon/albums
+"Jazzy Vibes #36 - Loop - Smooth Jazz" - https://freesound.org/people/Tri-Tachyon/sounds/466478/ by Tri-Tachyon
+
+"SHORT CIRCUS OR CLOWN MUSIC.wav" - https://freesound.org/people/metrostock99/sounds/514484/ by metrostock99
+
+
+
+[SFX]
+"Explosion_2.ogg" - https://freesound.org/people/Isaac200000/sounds/181377/ by Isaac200000 (Uses this sound as a base: http://freesound.org/people/GregsMedia/sounds/150138/)
+
+"Elevator Ding" - https://freesound.org/people/collierhs_colinlib/sounds/588718/ by collierhs_colinlib
+
+"Metal Shaking" - https://freesound.org/people/qubodup/sounds/216745/ by Iwan Gabovitch
+
+"Scream "Noooh!"" - https://freesound.org/people/jorickhoofd/sounds/180350/ by jorickhoofd

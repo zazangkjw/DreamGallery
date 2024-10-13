@@ -31,6 +31,8 @@ public class UnicycleController : MonoBehaviour
     private Camera theCamera;
     public Rigidbody myRigid;
     public ClownRaycast clownRaycast;
+    public ClownWorm clownWorm;
+    public GameObject ladder;
 
 
 
@@ -125,9 +127,11 @@ public class UnicycleController : MonoBehaviour
                 clownRaycast.booing.Play();
                 if (clownRaycast.life <= 0)
                 {
-                    clownRaycast.circusSong.Stop();
-                    clownRaycast.circusSong.volume = 0f;
+                    clownRaycast.circusSong.pitch = -0.5f;
                     clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[17]["Content"], 5f); // "당신 때문에 관객들이 실망했어요"
+                    clownWorm.navMeshAgent.stoppingDistance = 0f;
+                    clownWorm.deadTrigger.SetActive(true);
+                    ladder.SetActive(false);
                 }
                 else if (clownRaycast.life > 0)
                 {

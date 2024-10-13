@@ -226,6 +226,8 @@ public class ClownRaycast : MonoBehaviour
             yield return new WaitForSeconds(6f);
 
             // ¹® ¿­¸²
+            elevatorBtn_current.GetComponent<NextElevatorPoint>().next_elevator_ding.Play();
+            yield return new WaitForSeconds(1f);
             elevatorBtn_current.GetComponent<NextElevatorPoint>().nextElevatorAnim.Play("Open");
             player.transform.SetParent(Armatures.transform);
         }

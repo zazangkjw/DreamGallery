@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class ClownWorm : MonoBehaviour
 {
+    public GameObject deadTrigger;
+
     public List<Rigidbody> bodies = new List<Rigidbody> ();
     public List<Vector3> positionHistory = new List<Vector3> ();
     public List<Quaternion> rotationHistory = new List<Quaternion>();
@@ -14,7 +16,7 @@ public class ClownWorm : MonoBehaviour
     //public float steerSpeed = 5;
 
     public GameObject target;
-    NavMeshAgent navMeshAgent;
+    public NavMeshAgent navMeshAgent;
 
     void Start()
     {
