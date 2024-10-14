@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
     // 콜라이더 닿으면 비활성화
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Item")
+        if (other.gameObject.tag == "Reflect")
         {
 
         }

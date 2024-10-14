@@ -9,6 +9,7 @@ TagManager:
   - Platform
   - Item
   - Bullet
+  - Reflect
   layers:
   - Default
   - TransparentFX

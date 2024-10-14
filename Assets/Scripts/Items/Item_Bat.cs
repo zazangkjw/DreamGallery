@@ -31,13 +31,20 @@ public class Item_Bat : Item
                 {
                     handAnim.SetBool("isCanceled", false);
                     handAnim.SetFloat("ChargeTimer", 0f);
+                    chargedSoundPlayed = false;
                 }
 
                 // 클릭 유지
                 if (Input.GetMouseButton(0) && !handAnim.GetBool("isCanceled") && !handAnim.GetBool("isChargeAttack") && !handAnim.GetBool("isChargeAttackEnd"))
                 {
                     handAnim.SetBool("isCharging", true);
-                    handAnim.SetFloat("ChargeTimer", handAnim.GetFloat("ChargeTimer") + Time.deltaTime); 
+                    handAnim.SetFloat("ChargeTimer", handAnim.GetFloat("ChargeTimer") + Time.deltaTime);
+
+                    if (handAnim.GetBool("isCharged") && !chargedSoundPlayed)
+                    {
+                        chargedSoundPlayed = true;
+                        chargedSound.Play();
+                    }
                 }
 
                 // 클릭 떼기

@@ -14,7 +14,8 @@ public class SpaceshipRaycast : DefaultRaycast
     public GameObject guard_check; // guard 체크용
     public DoorSensor doorSensor;
 
-
+    // 테스트용
+    public GameObject star;
 
 
     private void Start()
@@ -25,6 +26,15 @@ public class SpaceshipRaycast : DefaultRaycast
     private void Update()
     {
         WhenUpdate();
+
+        // 테스트용
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            star.SetActive(true);
+            star.transform.position = transform.position + transform.forward * 2f;
+            star.GetComponent<Bullet_Star>().isShooting = false;
+            star.GetComponent<Bullet_Star>().team = 2;
+        }
     }
 
 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet_Star : Bullet
@@ -36,6 +34,17 @@ public class Bullet_Star : Bullet
                 col.enabled = true;
             }
             myRigid.MovePosition(myRigid.position + (transform.forward * speed));
+        }
+    }
+
+
+    // 테스트용
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            team = 2;
+            isShooting = !isShooting;
         }
     }
 }

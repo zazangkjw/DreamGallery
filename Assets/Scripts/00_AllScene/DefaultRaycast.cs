@@ -203,6 +203,12 @@ public class DefaultRaycast : MonoBehaviour
                         // UI 밖을 클릭하면 버리기
                         if (result.Count == 0)
                         {
+                            // 선택한 아이템이 지금 손에 들고 있는 아이템이면 손에 들고 있는 아이템을 empty로 바꾸기
+                            if(Slot.selectedSlot.item == currentItem)
+                            {
+                                currentItem = empty;
+                            }
+
                             Slot.selectedSlot.item.enabled = false;
                             Slot.selectedSlot.item.transform.SetParent(itemCategory.transform);
                             Slot.selectedSlot.item.transform.position = transform.position;

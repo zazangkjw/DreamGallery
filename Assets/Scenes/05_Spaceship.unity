@@ -203,6 +203,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gift (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -291,6 +296,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gift (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -552,7 +562,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 5.6e-44, z: 0, w: 1.6114932e-38}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 6e-44, z: 7.1e-44, w: 1.1209e-41}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -1248,7 +1258,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 6e-44, z: 5.6e-44, w: 6.75e-43}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -1385,6 +1395,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gift (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1582,11 +1597,12 @@ MonoBehaviour:
   itemImage: {fileID: 0}
   prefab: {fileID: 0}
   team: 1
-  defaultRaycast: {fileID: 0}
-  handAnim: {fileID: 384628155}
   cols: []
   isObtainable: 1
   isStack: 0
+  chargedSound: {fileID: 0}
+  defaultRaycast: {fileID: 0}
+  handAnim: {fileID: 384628155}
   putDialogScript: {fileID: 807168750}
 --- !u!1001 &155801593
 PrefabInstance:
@@ -1992,6 +2008,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gift (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2193,6 +2214,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bat (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7782502192933116115, guid: bddd2e945f4ff97498c4e32a46adc234,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2670,6 +2696,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gift (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3067,6 +3098,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gift (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3156,6 +3192,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gift (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3236,7 +3277,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 10
-  m_Range: 4
+  m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -3280,7 +3321,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 2.016e-42, z: 6.073e-42, w: -2.4230222e-38}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 6e-44, z: 3.9e-44, w: 1.6482e-41}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -3374,6 +3415,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gift (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3659,6 +3705,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gift (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3866,7 +3917,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 699f7b95ef30bb1489732d5d3605992f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4187,7 +4238,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 1e-43, z: 7.85e-42, w: -2.4230222e-38}
+  m_BoundingSphereOverride: {x: 2.448776e-19, y: 6e-44, z: 5e-44, w: 1.1587e-41}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -4362,6 +4413,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gift (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4742,6 +4798,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gift (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5171,7 +5232,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 4.6e-44, z: 3.585e-42, w: 0}
+  m_BoundingSphereOverride: {x: 52292.805, y: 6e-44, z: 4.3e-44, w: 8.298e-42}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -5253,6 +5314,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gift (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5647,6 +5713,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gift (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6106,6 +6177,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gift (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6413,7 +6489,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 4.9e-44, z: 5.109e-42, w: 0}
+  m_BoundingSphereOverride: {x: 7.29e-43, y: 0, z: 6.953e-42, w: 6.866362e-39}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -7319,6 +7395,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bat (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7782502192933116115, guid: bddd2e945f4ff97498c4e32a46adc234,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7504,6 +7585,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gift (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7653,6 +7739,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3104399323601059071, guid: 2b32abc8bde1336429b00689035fb3f6,
     type: 3}
   m_PrefabInstance: {fileID: 1116712961}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1121585189 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2145080294837004140, guid: b26c372ee1825c94abfbbb4311c076eb,
+    type: 3}
+  m_PrefabInstance: {fileID: 6686983069083950544}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1162032058
 PrefabInstance:
@@ -8464,6 +8556,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gift (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8620,6 +8717,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gift (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8742,6 +8844,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gift (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8830,6 +8937,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gift (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8946,6 +9058,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gift (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9395,6 +9512,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gift (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9457,7 +9579,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 4e787df2c3a41e74c97c230413f5c606, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -10342,6 +10464,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gift (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10661,6 +10788,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gift (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10749,6 +10881,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gift (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11191,7 +11328,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 3.8e-44, z: 1.728e-41, w: -4.294113e-37}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 6e-44, z: 4.6e-44, w: 1.76e-42}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -11284,6 +11421,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bat (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7782502192933116115, guid: bddd2e945f4ff97498c4e32a46adc234,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11528,6 +11670,7 @@ MonoBehaviour:
   guard001_check: {fileID: 2137897007}
   guard_check: {fileID: 1162032061}
   doorSensor: {fileID: 679263373}
+  star: {fileID: 1121585189}
 --- !u!114 &1832103259 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4889662210707910906, guid: 92e0e60a10099544b920e914b56a9c4d,
@@ -12926,7 +13069,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 1.53e-43, z: 7.259e-42, w: 6.816e-42}
+  m_BoundingSphereOverride: {x: 1.5847e-41, y: 0, z: 0, w: -0.00000005507067}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -13009,6 +13152,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gift (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13065,7 +13213,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 44a72e44a4ddc134f917997322cf5329, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -13227,6 +13375,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gift (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13314,22 +13467,22 @@ PrefabInstance:
     - target: {fileID: 5137556929964653553, guid: 4f6f1cdda0791f54da3fddcecea69d0e,
         type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 728288
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5137556929964653553, guid: 4f6f1cdda0791f54da3fddcecea69d0e,
         type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 6.28e-43
+      value: 9.18355e-40
       objectReference: {fileID: 0}
     - target: {fileID: 5137556929964653553, guid: 4f6f1cdda0791f54da3fddcecea69d0e,
         type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 20397.406
+      value: 9.1835e-41
       objectReference: {fileID: 0}
     - target: {fileID: 5137556929964653553, guid: 4f6f1cdda0791f54da3fddcecea69d0e,
         type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 6.28e-43
+      value: 1.8e-43
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2132167589650777262, guid: 4f6f1cdda0791f54da3fddcecea69d0e, type: 3}
@@ -13612,6 +13765,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gift (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13713,6 +13871,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gift (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13802,6 +13965,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gift (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13871,7 +14039,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 4e787df2c3a41e74c97c230413f5c606, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -14096,6 +14264,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gift (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 5247186045316038954, guid: 473ea725a18e67a44aa73f3d280e9962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14319,7 +14492,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 8.3e-44, z: 1.815e-41, w: -4.146258e-37}
+  m_BoundingSphereOverride: {x: 5.67e-42, y: 0, z: 0, w: -0.00000005507067}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -14521,7 +14694,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 3.4e-44, z: 4.167e-42, w: 0}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 1.5e-44, z: 1.2853e-41, w: 0.0000000023316034}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -14641,6 +14814,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bat (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7782502192933116115, guid: bddd2e945f4ff97498c4e32a46adc234,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15804,6 +15982,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Star
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145080294837004140, guid: b26c372ee1825c94abfbbb4311c076eb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9013350725155264841, guid: b26c372ee1825c94abfbbb4311c076eb,
         type: 3}
