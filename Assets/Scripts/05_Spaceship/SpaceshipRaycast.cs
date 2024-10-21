@@ -16,6 +16,7 @@ public class SpaceshipRaycast : DefaultRaycast
 
     // 테스트용
     public GameObject star;
+    public Target target;
 
 
     private void Start()
@@ -34,6 +35,11 @@ public class SpaceshipRaycast : DefaultRaycast
             star.transform.position = transform.position + transform.forward * 2f;
             star.GetComponent<Bullet_Star>().isShooting = false;
             star.GetComponent<Bullet_Star>().team = 2;
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            target.ResetTarget();
         }
     }
 
