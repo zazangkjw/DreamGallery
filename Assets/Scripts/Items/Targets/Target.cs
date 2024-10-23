@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Target : MonoBehaviour
@@ -28,20 +26,13 @@ public class Target : MonoBehaviour
         
     }
 
-
-
-
-
-    // 콜라이더 닿으면 부서지기
-    private void OnTriggerEnter(Collider other)
+    // 파괴
+    public void DestoryTarget()
     {
-        if (other.gameObject.tag == "Bullet")
+        original.SetActive(false);
+        foreach (GameObject part in parts)
         {
-            original.SetActive(false);
-            foreach (GameObject part in parts)
-            {
-                part.SetActive(true);
-            }
+            part.SetActive(true);
         }
     }
 

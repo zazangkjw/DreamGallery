@@ -32,7 +32,23 @@ public class Bullet : MonoBehaviour
     // 콜라이더 닿으면 비활성화
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Reflect")
+        if (other.gameObject.tag == "Ignore")
+        {
+
+        }
+        else if(other.gameObject.tag == "Target")
+        {
+            if(other.GetComponentInParent<Target>().team == team)
+            {
+
+            }
+            else
+            {
+                other.GetComponentInParent<Target>().DestoryTarget();
+                gameObject.SetActive(false);
+            }
+        }
+        else if (other.gameObject.tag == "Reflect")
         {
 
         }

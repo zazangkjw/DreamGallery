@@ -32,7 +32,7 @@ public class SpaceshipRaycast : DefaultRaycast
         if (Input.GetKeyDown(KeyCode.K))
         {
             star.SetActive(true);
-            star.transform.position = transform.position + transform.forward * 2f;
+            star.transform.position = transform.position + transform.forward * 5f;
             star.GetComponent<Bullet_Star>().isShooting = false;
             star.GetComponent<Bullet_Star>().team = 2;
         }
@@ -50,43 +50,74 @@ public class SpaceshipRaycast : DefaultRaycast
     {
         isChecking = true;
 
+        // 상호작용 오브젝트
+        if (isChecking)
+        {
+            if (hitObject != null && hitObject.tag == "InteractiveObject")
+            {
+                if (preObject != hitObject && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
+                {
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
+                }
+
+                preObject = hitObject;
+                preObject.GetComponent<GetComponentScript>().outline.enabled = true; // 외곽선 켜기
+
+                mouseText.text = GameManager.instance.textFileManager.ui[26]; // "줍기" 텍스트 나옴
+                mouseText.enabled = true;
+
+                // E키 입력 시
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    preObject.GetComponent<InteractiveObject>().Action();
+                }
+
+                isChecking = false; // 이후의 항목들은 체크하지 않음
+            }
+            else
+            {
+                mouseText.enabled = false; // 텍스트 없어짐
+
+                if (preObject != null)
+                {
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
+                    preObject = null;
+                }
+            }
+        }
+
         // 아이템
         if (isChecking)
         {
-            foreach (GameObject i in items_check)
+            if (hitObject != null && hitObject.tag == "Item")
             {
-                if (hitObject == i)
+                if (preObject != hitObject && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
                 {
-                    if (preObject != hitObject && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
-                    {
-                        preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
-                    }
-
-                    preObject = hitObject;
-                    preObject.GetComponent<GetComponentScript>().outline.enabled = true; // 외곽선 켜기
-
-                    mouseText.text = GameManager.instance.textFileManager.ui[26]; // "줍기" 텍스트 나옴
-                    mouseText.enabled = true;
-
-                    // E키 입력 시
-                    if (Input.GetKeyDown(KeyCode.E))
-                    {
-                        PickUpItemCoroutine();
-                    }
-
-                    isChecking = false; // 이후의 항목들은 체크하지 않음
-
-                    break;
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
                 }
-                else
-                {
-                    mouseText.enabled = false; // 텍스트 없어짐
 
-                    if (preObject != null)
-                    {
-                        preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
-                        preObject = null;
-                    }
+                preObject = hitObject;
+                preObject.GetComponent<GetComponentScript>().outline.enabled = true; // 외곽선 켜기
+
+                mouseText.text = GameManager.instance.textFileManager.ui[26]; // "줍기" 텍스트 나옴
+                mouseText.enabled = true;
+
+                // E키 입력 시
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    PickUpItemCoroutine();
+                }
+
+                isChecking = false; // 이후의 항목들은 체크하지 않음
+            }
+            else
+            {
+                mouseText.enabled = false; // 텍스트 없어짐
+
+                if (preObject != null)
+                {
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
+                    preObject = null;
                 }
             }
         }
@@ -208,7 +239,7 @@ public class SpaceshipRaycast : DefaultRaycast
 
             // 선물 주기
             Item gift = currentItem;
-            items_check.Remove(gift.gameObject);
+            gift.tag = "Untagged";
             gift.enabled = false;
             gift.transform.SetParent(itemCategory.transform);
             gift.GetComponent<Collider>().enabled = true;

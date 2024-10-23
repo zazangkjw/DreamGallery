@@ -10,7 +10,7 @@ public class DefaultRaycast : MonoBehaviour
     public GameObject handObject;
     public Item empty;
     public GameObject itemCategory;
-    public List<GameObject> items_check = new List<GameObject>(); // items 체크용
+    //public List<GameObject> items_check = new List<GameObject>(); // items 체크용
     GameObject forInstantiate;
 
     public static bool inventoryOnOff;
@@ -75,7 +75,7 @@ public class DefaultRaycast : MonoBehaviour
             currentItem = inventory_quickSlots[Slot.currentIndex - 1].item;
             quickSlots[Slot.currentIndex - 1].backgroundImage.gameObject.SetActive(true);
 
-            items_check.AddRange(GameObject.FindGameObjectsWithTag("Item"));
+            //items_check.AddRange(GameObject.FindGameObjectsWithTag("Item"));
 
             graphicRaycaster = canvas.GetComponent<GraphicRaycaster>();
             pointerEventData = new PointerEventData(null);
@@ -363,7 +363,7 @@ public class DefaultRaycast : MonoBehaviour
                             forInstantiate = Instantiate(preObject.GetComponent<Item>().prefab);
                             preObject.GetComponent<GetComponentScript>().outline.enabled = true;
                             forInstantiate.GetComponent<Item>().isStack = false;
-                            items_check.Add(forInstantiate);
+                            //items_check.Add(forInstantiate);
                             inventory_quickSlots[i].item = forInstantiate.GetComponent<Item>();
                         }
 
@@ -401,7 +401,7 @@ public class DefaultRaycast : MonoBehaviour
                             forInstantiate = Instantiate(preObject.GetComponent<Item>().prefab);
                             preObject.GetComponent<GetComponentScript>().outline.enabled = true;
                             forInstantiate.GetComponent<Item>().isStack = false;
-                            items_check.Add(forInstantiate);
+                            //items_check.Add(forInstantiate);
                             inventorySlots[i - inventory_quickSlots.Count].item = forInstantiate.GetComponent<Item>();
                         }
 

@@ -10,6 +10,9 @@ TagManager:
   - Item
   - Bullet
   - Reflect
+  - InteractiveObject
+  - Ignore
+  - Target
   layers:
   - Default
   - TransparentFX
