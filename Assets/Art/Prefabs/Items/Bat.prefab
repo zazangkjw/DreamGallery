@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 4723512600229980977}
   - component: {fileID: 1935373875271857810}
   - component: {fileID: 4381305245742641891}
+  - component: {fileID: 6717723800101892852}
   m_Layer: 0
   m_Name: Collider_Bat
   m_TagString: Reflect
@@ -197,6 +198,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 4678210661556631040}
   playerCam: {fileID: 0}
+--- !u!114 &6717723800101892852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7336214336634804689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f6dd9bf7a263c43a304e2d542b663a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 4678210661556631040}
 --- !u!1001 &6971688029269730690
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -284,7 +298,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6ad30f05e1f012f4c8a075457ce9ccf6, type: 2}
+      objectReference: {fileID: 2100000, guid: 105d5277e2da1254087adde858943fe5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

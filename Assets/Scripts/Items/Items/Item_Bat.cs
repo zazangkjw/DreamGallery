@@ -13,9 +13,11 @@ public class Item_Bat : Item
     {
         base.OnEnable();
 
+        crosshair.SetActive(true);
         handAnim.Play("Bat_Up");
         StartCoroutine(BatCoroutine());
     }
+
 
 
 
@@ -43,7 +45,7 @@ public class Item_Bat : Item
                     if (handAnim.GetBool("isCharged") && !chargedSoundPlayed)
                     {
                         chargedSoundPlayed = true;
-                        chargedSound.Play();
+                        //chargedSound.Play();
                     }
                 }
 

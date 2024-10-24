@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class DefaultRaycast : MonoBehaviour
 {
+    public GameObject crosshair;
     public GameObject handObject;
     public Item empty;
     public GameObject itemCategory;
@@ -326,12 +327,14 @@ public class DefaultRaycast : MonoBehaviour
                 }
 
                 currentItem = inventory_quickSlots[Slot.currentIndex - 1].item;
+                crosshair.SetActive(false);
                 currentItem.gameObject.SetActive(true);
             }
 
             // 현재 아이템이 꺼져있으면 활성화
             if (currentItem.gameObject.activeSelf == false)
             {
+                crosshair.SetActive(false);
                 currentItem.gameObject.SetActive(true);
             }
         }

@@ -13,6 +13,9 @@ public class Item : MonoBehaviour
     public bool isObtainable = true; // 획득 가능한지
     public bool isStack = false; // 계속 획득 가능한 스택형인지(아이템 더미)
 
+    // 크로스헤어
+    public GameObject crosshair;
+
     // 사운드 효과
     public AudioSource chargedSound; protected bool chargedSoundPlayed;
 

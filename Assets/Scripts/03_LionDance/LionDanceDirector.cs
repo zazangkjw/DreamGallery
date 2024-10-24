@@ -14,7 +14,7 @@ public class LionDanceDirector : MonoBehaviour
     public GameObject player;
     public GameObject directorCam;
     public TextMeshProUGUI mouseText;
-    public RawImage crosshair;
+    public GameObject crosshair;
     public PutDialogScript putDialogScript;
 
     public RawImage fadeInOutImage; // 페이드-인, 아웃 이미지

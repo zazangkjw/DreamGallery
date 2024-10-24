@@ -254,6 +254,7 @@ public class SpaceshipRaycast : DefaultRaycast
             // 대사
             guard_check.GetComponent<GetComponentScript>().animator.SetBool("Able", false);
             guard_check.GetComponent<HeadTracking>().isLooking = true;
+            guard_check.GetComponent<HeadTracking>().target = gift.gameObject;
             putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[24]["Content"], 3f); // "아! 선물을 주셔서 정말 감사합니다"
             yield return dialogDelay;
             GameObject playerCam = guard001_check.GetComponent<HeadTracking>().target;

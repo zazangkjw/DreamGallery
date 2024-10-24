@@ -1,27 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.SearchService;
 using UnityEngine;
 
 public class InteractiveObject_PitchingMachineButton : InteractiveObject
 {
     public TextMeshProUGUI timerText;
     public List<Target> targets = new List<Target>();
+    public List<Bullet> balls = new List<Bullet>();
+    public GameObject pointStart; // 공 출발점
+    public GameObject pointEnd; // 공 도착점
+    IEnumerator currentShootingCoroutine;
+
+    public MeshRenderer pitchingMachineMat;
+    public Material idleMat, shootMat;
 
     float timer;
     public bool timerRunning;
     string displayText;
-    string hello = "HELLO_";
-    string clear = "CLEAR_";
     WaitForSeconds startDelay = new WaitForSeconds(1f);
     WaitForSeconds displayDelay = new WaitForSeconds(0.5f);
     IEnumerator currentDisplayCoroutine;
 
     private void Start()
     {
-        displayText = hello;
-        StartCoroutine(currentDisplayCoroutine = DisplayCoroutine());
+        displayText = "HELLO_";
+        StartCoroutine(currentDisplayCoroutine = DisplaySlideCoroutine());
     }
 
     private void FixedUpdate()
@@ -47,6 +51,7 @@ public class InteractiveObject_PitchingMachineButton : InteractiveObject
         // 띵
         timer = 60f;
         timerRunning = true;
+        StartCoroutine(currentShootingCoroutine = ShootingCoroutine());
 
         // 1단계
         for (int i = 0; i < 3; i++)
@@ -92,10 +97,35 @@ public class InteractiveObject_PitchingMachineButton : InteractiveObject
 
         // 성공
         timerRunning = false;
-        displayText = clear;
-        StartCoroutine(currentDisplayCoroutine = DisplayCoroutine());
+        displayText = "CLEAR";
+        StartCoroutine(currentDisplayCoroutine = DisplayBlinkCoroutine());
+        GetComponent<Collider>().enabled = true;
+        StopCoroutine(currentShootingCoroutine);
+        pitchingMachineMat.material = idleMat;
 
         yield return null;
+    }
+
+    // 공 발사
+    IEnumerator ShootingCoroutine()
+    {
+        int num = 0;
+
+        yield return startDelay;
+
+        while (true)
+        { 
+            yield return startDelay;
+            pitchingMachineMat.material = shootMat;
+            balls[num].transform.position = pointStart.transform.position;
+            balls[num].transform.rotation = Quaternion.LookRotation(pointEnd.transform.position - pointStart.transform.position);
+            balls[num].team = 2;
+            balls[num].gameObject.SetActive(true);
+            num++;
+            num %= balls.Count;
+            yield return startDelay;
+            pitchingMachineMat.material = idleMat;
+        }
     }
 
     // 타이머
@@ -116,13 +146,15 @@ public class InteractiveObject_PitchingMachineButton : InteractiveObject
                 timerRunning = false;
                 timerText.text = "FAIL";
                 StopCoroutine(currentCoroutine);
+                StopCoroutine(currentShootingCoroutine);
                 GetComponent<Collider>().enabled = true;
+                pitchingMachineMat.materials[0] = idleMat;
             }
         }
     }
 
     // 텍스트 슬라이드 효과
-    IEnumerator DisplayCoroutine()
+    IEnumerator DisplaySlideCoroutine()
     {
         int n = 0;
 
@@ -137,6 +169,18 @@ public class InteractiveObject_PitchingMachineButton : InteractiveObject
             }
             n++;
             n %= displayText.Length ;
+        }
+    }
+
+    // 텍스트 깜빡임 효과
+    IEnumerator DisplayBlinkCoroutine()
+    {
+        while (true)
+        {
+            timerText.text = displayText;
+            yield return displayDelay;
+            timerText.text = "";
+            yield return displayDelay;
         }
     }
 }
