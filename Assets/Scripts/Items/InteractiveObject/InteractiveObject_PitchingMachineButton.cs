@@ -49,7 +49,7 @@ public class InteractiveObject_PitchingMachineButton : InteractiveObject
         // ¶ò
         yield return startDelay;
         // ¶ò
-        timer = 60f;
+        timer = 30f;
         timerRunning = true;
         StartCoroutine(currentShootingCoroutine = ShootingCoroutine());
 
