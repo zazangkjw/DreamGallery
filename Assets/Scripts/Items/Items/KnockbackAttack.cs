@@ -25,6 +25,10 @@ public class KnockbackAttack : MonoBehaviour
                 other.transform.GetComponentInParent<PlayerController>().myRigid.AddForce((playerCam.transform.forward * 10f) + (playerCam.transform.right * 0f) + (playerCam.transform.up * 5f), ForceMode.Impulse);
             }
         }
+        else if(other.gameObject.tag == "Item")
+        {
+
+        }
         else if(other.gameObject.tag == "Target")
         {
             //other.GetComponentInParent<Target>().DestoryTarget();
