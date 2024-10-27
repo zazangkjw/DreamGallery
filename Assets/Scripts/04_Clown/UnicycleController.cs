@@ -33,6 +33,8 @@ public class UnicycleController : MonoBehaviour
     public ClownRaycast clownRaycast;
     public ClownWorm clownWorm;
     public GameObject ladder;
+    public GameObject clownWormMesh;
+    public Collider clownWormCol;
 
 
 
@@ -125,14 +127,19 @@ public class UnicycleController : MonoBehaviour
 
                 // 실패 효과음
                 clownRaycast.booing.Play();
+
+                // 기회 모두 소진
                 if (clownRaycast.life <= 0)
                 {
+                    clownWormMesh.gameObject.SetActive(true);
+                    clownWormCol.enabled = true;
                     clownRaycast.circusSong.pitch = -0.5f;
                     clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[17]["Content"], 5f); // "당신 때문에 관객들이 실망했어요"
                     clownWorm.navMeshAgent.stoppingDistance = 0f;
                     clownWorm.deadTrigger.SetActive(true);
                     ladder.SetActive(false);
                 }
+                // 기회 남음
                 else if (clownRaycast.life > 0)
                 {
                     bodyForUnity.transform.localEulerAngles = originRotate;

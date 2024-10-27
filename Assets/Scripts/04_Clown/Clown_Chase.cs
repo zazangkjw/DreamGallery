@@ -90,6 +90,14 @@ public class Clown_Chase : MonoBehaviour
             {
                 point = hitInfoPlayer.point;
                 rb.MoveRotation(Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(point.x - transform.position.x, 0, point.z - transform.position.z)), chaseSpeedX)); // 플레이어를 추격할 때만 센터 좌우 회전
+                /*if (Quaternion.LookRotation(new Vector3(point.x - transform.position.x, 0, point.z - transform.position.z)).eulerAngles.y > rb.rotation.eulerAngles.y)
+                {
+                    rb.MoveRotation(Quaternion.Euler(rb.rotation.eulerAngles + (Vector3.up * chaseSpeedX)));
+                }
+                else if (Quaternion.LookRotation(new Vector3(point.x - transform.position.x, 0, point.z - transform.position.z)).eulerAngles.y < rb.rotation.eulerAngles.y)
+                {
+                    rb.MoveRotation(Quaternion.Euler(rb.rotation.eulerAngles - (Vector3.up * chaseSpeedX)));
+                }*/
             }
             else // 안전 구역에 있을 경우 옥상 복귀
             {
@@ -98,6 +106,14 @@ public class Clown_Chase : MonoBehaviour
 
             // 센터 위 아래 이동
             rb.MovePosition(Vector3.Lerp(rb.position, new Vector3(rb.position.x, point.y, rb.position.z), chaseSpeedY));
+            /*if(point.y < rb.position.y)
+            {
+                rb.MovePosition(rb.position - (Vector3.up * chaseSpeedY));
+            }
+            else if(point.y > rb.position.y)
+            {
+                rb.MovePosition(rb.position + (Vector3.up * chaseSpeedY));
+            }*/
 
             // 센터가 옥상 포인트보다 아래에 있어야만 미친 광대 활성화
             if (rb.position.y < point_Rooftop.position.y - 1)
