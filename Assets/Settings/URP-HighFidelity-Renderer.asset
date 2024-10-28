@@ -15,7 +15,7 @@ MonoBehaviour:
   m_Active: 0
   settings:
     renderPassEvent: 550
-    screenHeight: 90
+    screenHeight: 360
 --- !u!114 &-1878332245247344467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,6 +336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5028f2f00df2eb2418e473937e9ae556, type: 3}
   m_Name: ReflectRenderPass
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   renderPass: 550
   passIndex: 0
