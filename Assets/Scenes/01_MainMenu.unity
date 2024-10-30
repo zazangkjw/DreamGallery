@@ -4991,6 +4991,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Director Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 1074174593539687415, guid: 493b54fc79ff71242934269672b2514d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1147377885930663359, guid: 493b54fc79ff71242934269672b2514d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5004,7 +5009,7 @@ PrefabInstance:
     - target: {fileID: 1147377885930663359, guid: 493b54fc79ff71242934269672b2514d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: 8.337
       objectReference: {fileID: 0}
     - target: {fileID: 1147377885930663359, guid: 493b54fc79ff71242934269672b2514d,
         type: 3}
@@ -5046,6 +5051,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 493b54fc79ff71242934269672b2514d, type: 3}
+--- !u!114 &1165302322 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1465946004427844699, guid: 493b54fc79ff71242934269672b2514d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1165302321}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143330679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1167641430
 GameObject:
   m_ObjectHideFlags: 0
@@ -8392,6 +8409,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1923584212}
   - component: {fileID: 1923584213}
+  - component: {fileID: 1923584214}
+  - component: {fileID: 1923584215}
   m_Layer: 0
   m_Name: EnterGallery Director
   m_TagString: Untagged
@@ -8432,7 +8451,13 @@ PlayableDirector:
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: -9160825089962066005, guid: 7d1ebe2d2ac636e4cbe923073e3b882e, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 1165302322}
+  - key: {fileID: -4167522364948477482, guid: 7d1ebe2d2ac636e4cbe923073e3b882e, type: 2}
+    value: {fileID: 143330679}
+  - key: {fileID: 8898039475940341690, guid: 7d1ebe2d2ac636e4cbe923073e3b882e, type: 2}
+    value: {fileID: 1236195026}
+  - key: {fileID: 4840391169722968484, guid: 7d1ebe2d2ac636e4cbe923073e3b882e, type: 2}
+    value: {fileID: 1413434053}
   m_ExposedReferences:
     m_References:
     - 3d69a07ec0603b44197669ca947e26e8: {fileID: 1971454237}
@@ -8443,6 +8468,84 @@ PlayableDirector:
     - a890e202d5dd7c540861fb01c0e2c34f: {fileID: 0}
     - 49a6248ea94a3494a9fa90efd4152af6: {fileID: 1971454237}
     - 55963b6e184296d419f544bf6d09da0c: {fileID: 633073080}
+--- !u!114 &1923584214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923584211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 210861f6b3edc984f8a8e436bf6f9e6f, type: 2}
+    - {fileID: 11400000, guid: 27c81572dff083941ab07da5b70a0be9, type: 2}
+    - {fileID: 11400000, guid: ca3c707abcc28924b86771bcebb711e0, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1923584215}
+          m_TargetAssemblyTypeName: Signal, Assembly-CSharp
+          m_MethodName: FadeOut
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1923584215}
+          m_TargetAssemblyTypeName: Signal, Assembly-CSharp
+          m_MethodName: White
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1923584215}
+          m_TargetAssemblyTypeName: Signal, Assembly-CSharp
+          m_MethodName: Black
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1923584215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923584211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5da00479b9da147a2466eee3d7ec9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  director: {fileID: 1923584213}
+  skipPoint: 0
+  putDialogScript: {fileID: 0}
+  fadeInOutImage: {fileID: 921811344}
+  fadeInOutScript: {fileID: 2109167727}
+  skipText: {fileID: 0}
 --- !u!1 &1937956313
 GameObject:
   m_ObjectHideFlags: 0

@@ -70,6 +70,11 @@ public class Signal : MonoBehaviour
         fadeInOutImage.color = new Color(0f, 0f, 0f, 1f);
     }
 
+    public void White()
+    {
+        fadeInOutImage.color = new Color(0f, 0f, 0f, 0f);
+    }
+
     public void FadeIn()
     {
         fadeInOutScript.FadeIn(fadeInOutImage);

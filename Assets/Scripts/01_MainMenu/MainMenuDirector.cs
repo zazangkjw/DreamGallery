@@ -29,17 +29,10 @@ public class MainMenuDirector : MonoBehaviour
     IEnumerator EnterGalleryCoroutine()
     {
         Cursor.visible = false;
-        mainCam.SetActive(false);
-        directorCam.SetActive(true);
 
-        doorAnimator.SetBool("Active", true);
         enterGalleryDirector.Play();
 
-        // yield return new WaitForSeconds(0.5f);
-
-        fadeInOutScript.FadeOut(fadeInOutImage);
-
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(3f);
 
         LoadSceneScript.LoadScene("02_ArtGallery");
     }

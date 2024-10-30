@@ -147,7 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   m_Grain:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.25
   m_Noise:
     m_OverrideState: 1
@@ -234,7 +234,7 @@ MonoBehaviour:
     dimension: 1
   dirtIntensity:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 1
 --- !u!114 &849379129802519247
 MonoBehaviour:
   m_ObjectHideFlags: 3
