@@ -9327,6 +9327,8 @@ MonoBehaviour:
   balconyDoor: {fileID: 1835793209}
   kitchenBalconyWindow1: {fileID: 331917068}
   kitchenBalconyWindow2: {fileID: 1122829769}
+  myRoomDoor: {fileID: 1652981334}
+  sisRoomDoor: {fileID: 842313963}
   lionMonsterAnimator: {fileID: 782420762}
   lionDanceSceneManager: {fileID: 503553072}
   lionDanceColliderTrigger: {fileID: 1610533567}

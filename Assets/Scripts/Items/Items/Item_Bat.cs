@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Item_Bat : Item
 {
+    // 사운드 효과
+    public AudioSource chargedSound;
+    protected bool chargedSoundPlayed;
+    public AudioSource swingSound;
+
     void Update()
     {
         
@@ -61,6 +66,7 @@ public class Item_Bat : Item
                         {
                             col.enabled = true;
                         }
+                        //swingSound.Play();
                     }
                     else
                     {

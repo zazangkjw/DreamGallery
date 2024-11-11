@@ -7,6 +7,8 @@ public class KnockbackAttack : MonoBehaviour
     public Item item;
     public GameObject playerCam;
 
+    public AudioSource hitSound;
+
 
 
 
@@ -35,7 +37,7 @@ public class KnockbackAttack : MonoBehaviour
         }
         else if(other.gameObject.tag == "Bullet")
         {
-
+            hitSound.Play();
         }
         else
         {

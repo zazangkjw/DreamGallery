@@ -237,7 +237,7 @@ public class LionDanceColliderTrigger : MonoBehaviour
     }
 
     // 누나 방으로 괴물이 들어오는 카운트다운 코루틴
-    IEnumerator SisRoomTimerCoroutine()
+    public IEnumerator SisRoomTimerCoroutine()
     {
         yield return new WaitForSeconds(5.5f);
         if (step == 7)
@@ -252,7 +252,7 @@ public class LionDanceColliderTrigger : MonoBehaviour
     }
 
     // 부엌 창문으로 괴물이 들어오는 카운트다운 코루틴
-    IEnumerator KitchenTimerCoroutine()
+    public IEnumerator KitchenTimerCoroutine()
     {
         yield return new WaitForSeconds(6f);
         if (step == 9)

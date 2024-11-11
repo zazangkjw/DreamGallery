@@ -89,7 +89,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -211,6 +211,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 4678210661556631040}
+  playerCam: {fileID: 0}
+  hitSound: {fileID: 4133236762940026946}
 --- !u!1001 &6971688029269730690
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -382,10 +384,12 @@ MonoBehaviour:
   - {fileID: 1935373875271857810}
   isObtainable: 1
   isStack: 0
-  chargedSound: {fileID: 4133236762940026946}
   defaultRaycast: {fileID: 0}
   handAnim: {fileID: 0}
   putDialogScript: {fileID: 0}
+  crosshair: {fileID: 0}
+  chargedSound: {fileID: 0}
+  swingSound: {fileID: 4133236762940026946}
 --- !u!114 &1707572511473129466
 MonoBehaviour:
   m_ObjectHideFlags: 0

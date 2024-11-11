@@ -14,6 +14,8 @@ public class LionDanceRaycast : MonoBehaviour
     public GameObject balconyDoor; // 발코니 문 오브젝트
     public GameObject kitchenBalconyWindow1; // 부엌 발코니 창문 오브젝트1
     public GameObject kitchenBalconyWindow2; // 부엌 발코니 창문 오브젝트2
+    public GameObject myRoomDoor;
+    public GameObject sisRoomDoor;
     int openCount;
 
     public Animator lionMonsterAnimator;
@@ -143,6 +145,96 @@ public class LionDanceRaycast : MonoBehaviour
                     lionDanceColliderTrigger.step = 4;
 
                     Debug.Log("발코니 창문 닫음");
+                }
+            }
+            else
+            {
+                mouseText.enabled = false; // 텍스트 없어짐
+
+                if (preObject != null)
+                {
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
+                    preObject = null;
+                }
+            }
+        }
+
+        // step 5일 때. 내 방 문 닫기
+        else if (lionDanceColliderTrigger.step == 5)
+        {
+            if (hitObject == myRoomDoor)
+            {
+                if (preObject != hitObject && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
+                {
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
+                }
+
+                preObject = hitObject;
+                preObject.GetComponent<GetComponentScript>().outline.enabled = true; // 외곽선 켜기
+
+                mouseText.text = GameManager.instance.textFileManager.ui[14]; // "열기/닫기" 텍스트 나옴
+                mouseText.enabled = true;
+
+                // E키 입력 시
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    lionMonsterAnimator.Play("MyRoom"); // 괴물이 내 방 창문으로 들어와 방을 돌아다니는 애니메이션 재생
+                    lionDanceColliderTrigger.step = 7;
+                    mouseText.enabled = false;
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
+                    preObject = null;
+                    Debug.Log("괴물이 내 방 창문으로 들어와 방을 돌아다니는 애니메이션 재생");
+
+                    myRoomDoor.GetComponent<GetComponentScript>().animator.SetBool("Active", false); // 내 방 문 닫히는 애니메이션 재생
+                    myRoomDoor.GetComponent<AudioSource>().Play();
+                    StartCoroutine(lionDanceColliderTrigger.SisRoomTimerCoroutine()); // 5.5초 뒤에 누나 방으로 괴물 침입
+                    lionDanceColliderTrigger.dogAnimator.Play("LookSisRoom");
+                    Debug.Log("내 방 문 닫히는 애니메이션 재생");
+                }
+            }
+            else
+            {
+                mouseText.enabled = false; // 텍스트 없어짐
+
+                if (preObject != null)
+                {
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
+                    preObject = null;
+                }
+            }
+        }
+
+        // step 7일 때. 누나 방 문 닫기
+        else if (lionDanceColliderTrigger.step == 7)
+        {
+            if (hitObject == sisRoomDoor)
+            {
+                if (preObject != hitObject && preObject != null) // 전 오브젝트와 현재 오브젝트가 다를 때, 전 오브젝트 외곽선 끄기
+                {
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
+                }
+
+                preObject = hitObject;
+                preObject.GetComponent<GetComponentScript>().outline.enabled = true; // 외곽선 켜기
+
+                mouseText.text = GameManager.instance.textFileManager.ui[14]; // "열기/닫기" 텍스트 나옴
+                mouseText.enabled = true;
+
+                // E키 입력 시
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    lionMonsterAnimator.Play("SisRoom"); // 괴물이 누나 방 창문으로 들어와 방을 돌아다니는 애니메이션 재생
+                    lionDanceColliderTrigger.step = 9;
+                    mouseText.enabled = false;
+                    preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
+                    preObject = null;
+                    Debug.Log("괴물이 누나 방 창문으로 들어와 방을 돌아다니는 애니메이션 재생");
+
+                    sisRoomDoor.GetComponent<GetComponentScript>().animator.SetBool("Active", false); // 누나 방 문 닫히는 애니메이션 재생
+                    sisRoomDoor.GetComponent<AudioSource>().Play();
+                    StartCoroutine(lionDanceColliderTrigger.KitchenTimerCoroutine()); // 6초 뒤에 부엌으로 괴물 침입
+                    lionDanceColliderTrigger.dogAnimator.Play("Kitchen");
+                    Debug.Log("누나 방 문 닫히는 애니메이션 재생. 부엌 창문으로 괴물이 들어오는 카운트다운 시작");
                 }
             }
             else

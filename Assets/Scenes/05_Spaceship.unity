@@ -1691,11 +1691,10 @@ MonoBehaviour:
   cols: []
   isObtainable: 1
   isStack: 0
-  crosshair: {fileID: 0}
-  chargedSound: {fileID: 0}
   defaultRaycast: {fileID: 0}
   handAnim: {fileID: 384628155}
   putDialogScript: {fileID: 807168750}
+  crosshair: {fileID: 0}
 --- !u!1001 &155801593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2116,6 +2115,11 @@ PrefabInstance:
       propertyPath: putDialogScript
       value: 
       objectReference: {fileID: 807168750}
+    - target: {fileID: 6717723800101892852, guid: bddd2e945f4ff97498c4e32a46adc234,
+        type: 3}
+      propertyPath: playerCam
+      value: 
+      objectReference: {fileID: 1820616374}
     - target: {fileID: 7442990231441785449, guid: bddd2e945f4ff97498c4e32a46adc234,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6067,7 +6071,7 @@ GameObject:
   m_TagString: InteractiveObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 87
+  m_StaticEditorFlags: 83
   m_IsActive: 1
 --- !u!4 &761422114
 Transform:
@@ -8729,6 +8733,11 @@ PrefabInstance:
       propertyPath: putDialogScript
       value: 
       objectReference: {fileID: 807168750}
+    - target: {fileID: 6717723800101892852, guid: bddd2e945f4ff97498c4e32a46adc234,
+        type: 3}
+      propertyPath: playerCam
+      value: 
+      objectReference: {fileID: 1820616374}
     - target: {fileID: 7442990231441785449, guid: bddd2e945f4ff97498c4e32a46adc234,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14309,6 +14318,11 @@ PrefabInstance:
       propertyPath: putDialogScript
       value: 
       objectReference: {fileID: 807168750}
+    - target: {fileID: 6717723800101892852, guid: bddd2e945f4ff97498c4e32a46adc234,
+        type: 3}
+      propertyPath: playerCam
+      value: 
+      objectReference: {fileID: 1820616374}
     - target: {fileID: 7442990231441785449, guid: bddd2e945f4ff97498c4e32a46adc234,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18114,6 +18128,11 @@ PrefabInstance:
       propertyPath: putDialogScript
       value: 
       objectReference: {fileID: 807168750}
+    - target: {fileID: 6717723800101892852, guid: bddd2e945f4ff97498c4e32a46adc234,
+        type: 3}
+      propertyPath: playerCam
+      value: 
+      objectReference: {fileID: 1820616374}
     - target: {fileID: 7442990231441785449, guid: bddd2e945f4ff97498c4e32a46adc234,
         type: 3}
       propertyPath: m_LocalPosition.x
