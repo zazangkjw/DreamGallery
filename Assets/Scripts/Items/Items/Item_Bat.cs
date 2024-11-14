@@ -66,7 +66,7 @@ public class Item_Bat : Item
                         {
                             col.enabled = true;
                         }
-                        //swingSound.Play();
+                        swingSound.Play();
                     }
                     else
                     {
