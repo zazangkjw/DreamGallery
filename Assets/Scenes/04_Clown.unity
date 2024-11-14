@@ -11808,7 +11808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   director: {fileID: 436866273}
-  skipPoint: 17
+  skipPoint: 20
   putDialogScript: {fileID: 807168750}
   fadeInOutImage: {fileID: 303166225}
   fadeInOutScript: {fileID: 807168751}
