@@ -49,6 +49,7 @@ public class SpaceshipSceneManager : DefaultSceneManager
 
     public override void PressExitButton()
     {
+        isPausing = false;
         isIntro = true;
         audioMixer.SetFloat("Pitch", 1f);
         Time.timeScale = 1f;

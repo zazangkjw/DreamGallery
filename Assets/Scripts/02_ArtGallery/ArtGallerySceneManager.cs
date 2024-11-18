@@ -25,6 +25,7 @@ public class ArtGallerySceneManager : DefaultSceneManager
     // 나가기 버튼
     public override void PressExitButton()
     {
+        isPausing = false;
         audioMixer.SetFloat("Pitch", 1f);
         Time.timeScale = 1f;
         LoadSceneScript.LoadScene("01_MainMenu");

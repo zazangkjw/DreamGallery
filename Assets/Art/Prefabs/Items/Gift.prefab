@@ -210,12 +210,13 @@ MonoBehaviour:
   itemImage: {fileID: 2800000, guid: c8969030faca5cf4c947d37db42cfc56, type: 3}
   prefab: {fileID: 5247186045316038954}
   team: 1
-  defaultRaycast: {fileID: 0}
-  handAnim: {fileID: 0}
   cols: []
   isObtainable: 1
   isStack: 0
+  defaultRaycast: {fileID: 0}
+  handAnim: {fileID: 0}
   putDialogScript: {fileID: 0}
+  crosshair: {fileID: 0}
 --- !u!114 &2578614311316547586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +231,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1703414823468885744}
   outline: {fileID: 2483509017430560630}
+  objects:
+  - {fileID: 3032398653393842708}
 --- !u!54 &6215516650991010174
 Rigidbody:
   m_ObjectHideFlags: 0

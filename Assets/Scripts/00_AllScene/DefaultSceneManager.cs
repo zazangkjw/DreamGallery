@@ -12,7 +12,7 @@ public class DefaultSceneManager : MonoBehaviour
 
     public GameObject settingUI; // 설정 UI
     public GameObject pauseUI; // 일시정지 UI
-    public bool isPausing; // 일시정지 상태인지
+    public static bool isPausing; // 일시정지 상태인지
 
     public TMP_Dropdown resolution;
     public Toggle isFullScreen;
@@ -223,6 +223,7 @@ public class DefaultSceneManager : MonoBehaviour
     // 나가기 버튼
     public virtual void PressExitButton()
     {
+        isPausing = false;
         audioMixer.SetFloat("Pitch", 1f);
         Time.timeScale = 1f;
         LoadSceneScript.LoadScene("02_ArtGallery");

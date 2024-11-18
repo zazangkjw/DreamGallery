@@ -137,7 +137,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -231,7 +231,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -1421,7 +1421,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -1640,61 +1640,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &134775543
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 134775544}
-  - component: {fileID: 134775545}
-  m_Layer: 0
-  m_Name: Empty
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &134775544
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 134775543}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1506628599}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &134775545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 134775543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb37e8e5c0a26a74da05615109fecfa5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemName: Empty
-  itemImage: {fileID: 0}
-  prefab: {fileID: 0}
-  team: 1
-  cols: []
-  isObtainable: 1
-  isStack: 0
-  defaultRaycast: {fileID: 0}
-  handAnim: {fileID: 384628155}
-  putDialogScript: {fileID: 807168750}
-  crosshair: {fileID: 0}
 --- !u!1001 &155801593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1892,7 +1837,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -2099,7 +2044,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 4678210661556631040, guid: bddd2e945f4ff97498c4e32a46adc234,
         type: 3}
       propertyPath: crosshair
@@ -3080,7 +3025,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -3302,6 +3247,11 @@ PrefabInstance:
       propertyPath: masterSpeed
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 3836510536374697411, guid: 744483f0613a8604d9e68249090ab01b,
+        type: 3}
+      propertyPath: putDialogScript
+      value: 
+      objectReference: {fileID: 807168750}
     - target: {fileID: 4899200942661150842, guid: 744483f0613a8604d9e68249090ab01b,
         type: 3}
       propertyPath: m_Name
@@ -3415,20 +3365,12 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8887337451633004861, guid: 744483f0613a8604d9e68249090ab01b, type: 3}
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5918704882095272338, guid: 744483f0613a8604d9e68249090ab01b,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 134775544}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4325718456046712251, guid: 744483f0613a8604d9e68249090ab01b,
         type: 3}
       insertIndex: 2
       addedObject: {fileID: 1820616375}
-    - targetCorrespondingSourceObject: {fileID: 1058058999275276964, guid: 744483f0613a8604d9e68249090ab01b,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 384628155}
   m_SourcePrefab: {fileID: 100100000, guid: 744483f0613a8604d9e68249090ab01b, type: 3}
 --- !u!4 &384628153 stripped
 Transform:
@@ -3436,33 +3378,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 384628152}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &384628154 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1058058999275276964, guid: 744483f0613a8604d9e68249090ab01b,
+--- !u!95 &384628154 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5003871642191362349, guid: 744483f0613a8604d9e68249090ab01b,
     type: 3}
   m_PrefabInstance: {fileID: 384628152}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &384628155
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 384628154}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9c85bbc63ad2d15459d2ed6791e9baa3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &384628156 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1249086182956314288, guid: 744483f0613a8604d9e68249090ab01b,
@@ -3473,6 +3394,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a909af89f62aa4e47a67dd31a8699859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &384628157 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3836510536374697411, guid: 744483f0613a8604d9e68249090ab01b,
+    type: 3}
+  m_PrefabInstance: {fileID: 384628152}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb37e8e5c0a26a74da05615109fecfa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &392317525
@@ -3487,7 +3420,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -3581,7 +3514,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -4041,7 +3974,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -4511,7 +4444,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -5335,7 +5268,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -5730,7 +5663,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -6518,7 +6451,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -6917,7 +6850,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -7453,7 +7386,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -8717,7 +8650,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 4678210661556631040, guid: bddd2e945f4ff97498c4e32a46adc234,
         type: 3}
       propertyPath: crosshair
@@ -8917,7 +8850,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -10131,7 +10064,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -10522,7 +10455,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -10649,7 +10582,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -10743,7 +10676,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -10864,7 +10797,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -11560,7 +11493,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -11641,12 +11574,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4871328288422976400, guid: 473ea725a18e67a44aa73f3d280e9962,
     type: 3}
   m_PrefabInstance: {fileID: 1492036092}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1506628599 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5918704882095272338, guid: 744483f0613a8604d9e68249090ab01b,
-    type: 3}
-  m_PrefabInstance: {fileID: 384628152}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1513623262
 GameObject:
@@ -12911,7 +12838,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -13585,7 +13512,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -13745,7 +13672,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -14303,7 +14230,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 4678210661556631040, guid: bddd2e945f4ff97498c4e32a46adc234,
         type: 3}
       propertyPath: crosshair
@@ -14694,7 +14621,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crosshair: {fileID: 615851586}
   handObject: {fileID: 354620212}
-  empty: {fileID: 134775545}
+  empty: {fileID: 384628157}
   itemCategory: {fileID: 1539510992}
   cursorImage: {fileID: 531131154}
   inventory: {fileID: 834298838}
@@ -16226,7 +16153,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -16449,7 +16376,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -16930,7 +16857,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -17036,7 +16963,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -17130,7 +17057,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -17429,7 +17356,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast
@@ -18144,7 +18071,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 4678210661556631040, guid: bddd2e945f4ff97498c4e32a46adc234,
         type: 3}
       propertyPath: crosshair
@@ -19042,7 +18969,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 4678210661556631040, guid: bddd2e945f4ff97498c4e32a46adc234,
         type: 3}
       propertyPath: crosshair
@@ -19337,7 +19264,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handAnim
       value: 
-      objectReference: {fileID: 384628155}
+      objectReference: {fileID: 384628154}
     - target: {fileID: 3717284634248370890, guid: 473ea725a18e67a44aa73f3d280e9962,
         type: 3}
       propertyPath: defaultRaycast

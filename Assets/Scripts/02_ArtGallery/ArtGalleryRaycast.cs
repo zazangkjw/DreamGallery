@@ -36,7 +36,7 @@ public class ArtGalleryRaycast : MonoBehaviour
     {
         Debug.DrawRay(transform.position, transform.forward * 2f, Color.red);
 
-        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, 2f) && !artGallerySceneManager.isPausing && !putDialogScript.isClickMode)
+        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, 2f) && !DefaultSceneManager.isPausing && !putDialogScript.isClickMode)
         {
             hitObject = hitInfo.collider.gameObject;
         }

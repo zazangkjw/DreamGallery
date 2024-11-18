@@ -14,6 +14,7 @@ public class DefaultRaycast : MonoBehaviour
     //public List<GameObject> items_check = new List<GameObject>(); // items 체크용
     GameObject forInstantiate;
 
+    public bool inventory_enabled = true;
     public static bool inventoryOnOff;
     public RawImage cursorImage;
     public GameObject inventory;
@@ -99,7 +100,7 @@ public class DefaultRaycast : MonoBehaviour
     {
         Debug.DrawRay(transform.position, transform.forward * 2f, Color.red);
 
-        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, 2f) && !defaultSceneManager.isPausing && !putDialogScript.isClickMode)
+        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, 2f) && !DefaultSceneManager.isPausing && !putDialogScript.isClickMode)
         {
             hitObject = hitInfo.collider.gameObject;
         }
@@ -123,7 +124,7 @@ public class DefaultRaycast : MonoBehaviour
     // 인벤토리 메서드
     public void Inventory()
     {
-        if (Input.GetKeyDown(KeyCode.I) && inventory != null && !defaultSceneManager.isPausing)
+        if (inventory_enabled && Input.GetKeyDown(KeyCode.I) && inventory != null && !DefaultSceneManager.isPausing)
         {
             if (inventory.activeSelf) // 인벤토리 켜져있으면
             {
@@ -152,7 +153,7 @@ public class DefaultRaycast : MonoBehaviour
     // 아이템 스위칭
     public void SwitchItem()
     {
-        if (quickSlot != null && !defaultSceneManager.isPausing)
+        if (quickSlot != null && !DefaultSceneManager.isPausing)
         {
             // 현재 아이템 버리기
             if (currentItem != empty && Input.GetKeyDown(KeyCode.G))
@@ -160,7 +161,10 @@ public class DefaultRaycast : MonoBehaviour
                 currentItem.enabled = false;
                 currentItem.transform.SetParent(itemCategory.transform);
                 currentItem.transform.position = transform.position;
-                currentItem.GetComponent<GetComponentScript>().outline.gameObject.layer = LayerMask.NameToLayer("Default");
+                foreach (GameObject o in currentItem.GetComponent<GetComponentScript>().objects)
+                {
+                    o.layer = LayerMask.NameToLayer("Default");
+                }
                 currentItem.GetComponent<Collider>().enabled = true;
                 currentItem.GetComponent<Rigidbody>().useGravity = true;
                 currentItem.GetComponent<Rigidbody>().isKinematic = false;
@@ -213,7 +217,10 @@ public class DefaultRaycast : MonoBehaviour
                             Slot.selectedSlot.item.enabled = false;
                             Slot.selectedSlot.item.transform.SetParent(itemCategory.transform);
                             Slot.selectedSlot.item.transform.position = transform.position;
-                            Slot.selectedSlot.item.GetComponent<GetComponentScript>().outline.gameObject.layer = LayerMask.NameToLayer("Default");
+                            foreach (GameObject o in Slot.selectedSlot.item.GetComponent<GetComponentScript>().objects)
+                            {
+                                o.layer = LayerMask.NameToLayer("Default");
+                            }
                             Slot.selectedSlot.item.GetComponent<Collider>().enabled = true;
                             Slot.selectedSlot.item.GetComponent<Rigidbody>().useGravity = true;
                             Slot.selectedSlot.item.GetComponent<Rigidbody>().isKinematic = false;
@@ -366,7 +373,6 @@ public class DefaultRaycast : MonoBehaviour
                             forInstantiate = Instantiate(preObject.GetComponent<Item>().prefab);
                             preObject.GetComponent<GetComponentScript>().outline.enabled = true;
                             forInstantiate.GetComponent<Item>().isStack = false;
-                            //items_check.Add(forInstantiate);
                             inventory_quickSlots[i].item = forInstantiate.GetComponent<Item>();
                         }
 
@@ -377,7 +383,10 @@ public class DefaultRaycast : MonoBehaviour
                         inventory_quickSlots[i].item.gameObject.transform.localRotation = Quaternion.identity;
                         inventory_quickSlots[i].item.gameObject.GetComponent<Rigidbody>().useGravity = false;
                         inventory_quickSlots[i].item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                        inventory_quickSlots[i].item.gameObject.GetComponent<GetComponentScript>().outline.gameObject.layer = LayerMask.NameToLayer("Hand");
+                        foreach(GameObject o in inventory_quickSlots[i].item.gameObject.GetComponent<GetComponentScript>().objects)
+                        {
+                            o.layer = LayerMask.NameToLayer("Hand");
+                        }
                         inventory_quickSlots[i].item.gameObject.GetComponent<Collider>().enabled = false;
 
                         inventory_quickSlots[i].item.enabled = true;
@@ -404,7 +413,6 @@ public class DefaultRaycast : MonoBehaviour
                             forInstantiate = Instantiate(preObject.GetComponent<Item>().prefab);
                             preObject.GetComponent<GetComponentScript>().outline.enabled = true;
                             forInstantiate.GetComponent<Item>().isStack = false;
-                            //items_check.Add(forInstantiate);
                             inventorySlots[i - inventory_quickSlots.Count].item = forInstantiate.GetComponent<Item>();
                         }
 
@@ -415,7 +423,10 @@ public class DefaultRaycast : MonoBehaviour
                         inventorySlots[i - inventory_quickSlots.Count].item.gameObject.transform.localRotation = Quaternion.identity;
                         inventorySlots[i - inventory_quickSlots.Count].item.gameObject.GetComponent<Rigidbody>().useGravity = false;
                         inventorySlots[i - inventory_quickSlots.Count].item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                        inventorySlots[i - inventory_quickSlots.Count].item.gameObject.GetComponent<GetComponentScript>().outline.gameObject.layer = LayerMask.NameToLayer("Hand");
+                        foreach (GameObject o in inventorySlots[i - inventory_quickSlots.Count].item.gameObject.GetComponent<GetComponentScript>().objects)
+                        {
+                            o.layer = LayerMask.NameToLayer("Hand");
+                        }
                         inventorySlots[i - inventory_quickSlots.Count].item.gameObject.GetComponent<Collider>().enabled = false;
 
                         inventorySlots[i - inventory_quickSlots.Count].item.enabled = true;
