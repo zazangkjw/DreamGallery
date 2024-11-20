@@ -381,6 +381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1851573372}
   outline: {fileID: 423936546}
+  objects: []
 --- !u!65 &49495203
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1471,6 +1472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1399178254}
   outline: {fileID: 874112708}
+  objects: []
 --- !u!65 &331917072
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1686,6 +1688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1851573372}
   outline: {fileID: 423936546}
+  objects: []
 --- !u!65 &366441756
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2422,6 +2425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1850409672}
   outline: {fileID: 1332924514}
+  objects: []
 --- !u!65 &485648322
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2566,6 +2570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 100894532}
   outline: {fileID: 2087926907}
+  objects: []
 --- !u!65 &493456548
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2818,7 +2823,6 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: cd8bd5d3d09c1ab4fa93086d582ce4a3, type: 2}
   settingUI: {fileID: 301235221}
   pauseUI: {fileID: 233521066}
-  isPausing: 0
   resolution: {fileID: 280139915}
   isFullScreen: {fileID: 234926946}
   mouseSens: {fileID: 80735271}
@@ -3857,6 +3861,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1731314038}
   outline: {fileID: 792982548}
+  objects: []
 --- !u!65 &640121863
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4981,6 +4986,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1343073607}
   outline: {fileID: 1583935089}
+  objects: []
 --- !u!82 &842313968
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6274,6 +6280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1695457686}
   outline: {fileID: 1155026355}
+  objects: []
 --- !u!65 &1084802905
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6515,6 +6522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1399178254}
   outline: {fileID: 874112708}
+  objects: []
 --- !u!65 &1122829773
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6760,6 +6768,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1716013579}
   outline: {fileID: 1365078961}
+  objects: []
 --- !u!65 &1137293566
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7212,6 +7221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1793555914}
   outline: {fileID: 1128954735}
+  objects: []
 --- !u!65 &1227478221
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7490,6 +7500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1716013579}
   outline: {fileID: 1365078961}
+  objects: []
 --- !u!65 &1275715933
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11103,7 +11114,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5cea5ff5c4c7ac449bd6d02f674edf2e, type: 2}
+      objectReference: {fileID: 2100000, guid: 2c9ef7859d31404489c901c3568d69e8, type: 2}
     - target: {fileID: 8769849732778254475, guid: 2c906d44e40a82e49a379b9639b8e95b,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -11651,6 +11662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1527948290}
   outline: {fileID: 1546349927}
+  objects: []
 --- !u!65 &1652981338
 BoxCollider:
   m_ObjectHideFlags: 0

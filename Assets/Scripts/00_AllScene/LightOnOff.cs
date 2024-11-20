@@ -26,6 +26,9 @@ public class LightOnOff : MonoBehaviour
 
     IEnumerator coroutine;
 
+    public AudioSource light_on_sound;
+    public AudioSource light_off_sound;
+
     void Start()
     {
         maxIntensity = myLight.intensity;
@@ -36,7 +39,8 @@ public class LightOnOff : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "NPC")
         {
-            if(coroutine != null) { StopCoroutine(coroutine); }
+            if (light_on_sound != null) { light_on_sound.Play(); }
+            if (coroutine != null) { StopCoroutine(coroutine); }
             coroutine = LightOn();
             StartCoroutine(coroutine);
             if(myMesh != null) { myMesh.materials = emissionOnMats;  }
@@ -47,6 +51,8 @@ public class LightOnOff : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "NPC")
         {
+            if (light_off_sound != null) { light_off_sound.Play(); }
+            light_on_sound.Play();
             if (coroutine != null) { StopCoroutine(coroutine); }
             coroutine = LightOff();
             StartCoroutine(coroutine);

@@ -15,8 +15,10 @@ public class Item_Switch : Item
     public Material object_l_on_mat;
     public Material object_l_off_mat;
 
-    public List<MeshRenderer> objects_l = new List<MeshRenderer>();
-    public List<MeshRenderer> objects_r = new List<MeshRenderer>();
+    public List<GameObject> objects_l = new List<GameObject>();
+    public List<GameObject> objects_r = new List<GameObject>();
+
+    public AudioSource button_sound;
 
 
     // Start is called before the first frame update
@@ -48,19 +50,23 @@ public class Item_Switch : Item
                 // 클릭
                 if (Input.GetMouseButtonDown(0))
                 {
+                    button_sound.Play();
+
                     // 왼쪽 ON
                     if (mode == 2)
                     {
                         mode = 1;
                         led_l.material = led_l_mat;
                         led_r.material = led_off_mat;
-                        foreach(MeshRenderer m in objects_l)
+                        foreach(GameObject o in objects_l)
                         {
-                            m.material = object_l_on_mat;
+                            o.gameObject.GetComponent<MeshRenderer>().material = object_l_on_mat;
+                            o.gameObject.GetComponent<Collider>().enabled = true;
                         }
-                        foreach (MeshRenderer m in objects_r)
+                        foreach (GameObject o in objects_r)
                         {
-                            m.material = object_r_off_mat;
+                            o.gameObject.GetComponent<MeshRenderer>().material = object_r_off_mat;
+                            o.gameObject.GetComponent<Collider>().enabled = false;
                         }
                     }
                     // 오른쪽 ON
@@ -69,13 +75,15 @@ public class Item_Switch : Item
                         mode = 2;
                         led_l.material = led_off_mat;
                         led_r.material = led_r_mat;
-                        foreach (MeshRenderer m in objects_l)
+                        foreach (GameObject o in objects_l)
                         {
-                            m.material = object_l_off_mat;
+                            o.gameObject.GetComponent<MeshRenderer>().material = object_l_off_mat;
+                            o.gameObject.GetComponent<Collider>().enabled = false;
                         }
-                        foreach (MeshRenderer m in objects_r)
+                        foreach (GameObject o in objects_r)
                         {
-                            m.material = object_r_on_mat;
+                            o.gameObject.GetComponent<MeshRenderer>().material = object_r_on_mat;
+                            o.gameObject.GetComponent<Collider>().enabled = true;
                         }
                     }
                 }

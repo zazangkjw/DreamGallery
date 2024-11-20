@@ -87,8 +87,8 @@ Transform:
   - {fileID: 6048628980783071832}
   - {fileID: 8298564750348245210}
   - {fileID: 2105563544124329024}
-  - {fileID: 548604174271397162}
   - {fileID: 775860331873981373}
+  - {fileID: 548604174271397162}
   - {fileID: 5636114484523465911}
   - {fileID: 1950386632639099466}
   - {fileID: 592191673463173190}
@@ -619,6 +619,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafeZone_Light
       objectReference: {fileID: 0}
+    - target: {fileID: 8934188613730427026, guid: 0fb50eb36508dee4187ab495b4f9750d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -707,6 +712,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafeZone_Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934188613730427026, guid: 0fb50eb36508dee4187ab495b4f9750d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

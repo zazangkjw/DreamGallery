@@ -6106,6 +6106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   outline: {fileID: 761422120}
+  objects: []
 --- !u!114 &761422120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6756,7 +6757,6 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: cd8bd5d3d09c1ab4fa93086d582ce4a3, type: 2}
   settingUI: {fileID: 1447428595}
   pauseUI: {fileID: 184913419}
-  isPausing: 0
   resolution: {fileID: 1960581625}
   isFullScreen: {fileID: 56139409}
   mouseSens: {fileID: 515856952}
@@ -8044,6 +8044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 975488111}
   outline: {fileID: 689893956}
+  objects: []
 --- !u!114 &975488117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9045,20 +9046,10 @@ PrefabInstance:
       propertyPath: m_AdditionalLightsShadowResolutionTier
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 5286858414667354106, guid: 2b32abc8bde1336429b00689035fb3f6,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 7097680648911437846, guid: 2b32abc8bde1336429b00689035fb3f6,
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8244365428173056133, guid: 2b32abc8bde1336429b00689035fb3f6,
-        type: 3}
-      propertyPath: minIntensity
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9250,6 +9241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 87607534}
   outline: {fileID: 0}
+  objects: []
 --- !u!114 &1162032066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14623,6 +14615,7 @@ MonoBehaviour:
   handObject: {fileID: 354620212}
   empty: {fileID: 384628157}
   itemCategory: {fileID: 1539510992}
+  inventory_enabled: 1
   cursorImage: {fileID: 531131154}
   inventory: {fileID: 834298838}
   inventorySlot: {fileID: 834298841}
@@ -18346,6 +18339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 632392021}
   outline: {fileID: 1032741771}
+  objects: []
 --- !u!65 &2137897012
 BoxCollider:
   m_ObjectHideFlags: 0

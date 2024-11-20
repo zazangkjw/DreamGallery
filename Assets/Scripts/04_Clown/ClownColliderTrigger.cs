@@ -27,6 +27,17 @@ public class ClownColliderTrigger : MonoBehaviour
     [SerializeField]
     ClownRaycast clownRaycast;
 
+    bool is_falling;
+    public GameObject bed;
+    public AudioSource bounce_sound;
+    public AudioSource neck_crack_sound;
+    public AudioSource wind_sound;
+
+    bool is_chasing_music_on;
+    bool pre_is_chasing_music_on;
+    public AudioSource chasing_music;
+    Coroutine audio_coroutine;
+
     public bool[] isSuccess = new bool[1];
 
     public ClownWorm clownWorm;
@@ -42,21 +53,47 @@ public class ClownColliderTrigger : MonoBehaviour
 
     void Start()
     {
+        wind_sound.Stop();
+        is_falling = true;
         myRigid = GetComponent<Rigidbody>();
     }
 
+    private void Update()
+    {
+        
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (is_falling)
+        {
+            if (collision.gameObject == bed)
+            {
+                bounce_sound.Play();
+            }
+            else
+            {
+                neck_crack_sound.Play();
+                StartCoroutine(DieCoroutine());
+            }
+            is_falling = false;
+            wind_sound.Stop();
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         // 안전 구역 트리거
         if (other == trigger_SafeZone)
         {
+            ChasingMusicControl(false);
             clown_Chase.isSafe = true;
         }
 
         // 추격 시작 트리거에 들어가면 플래시 OFF
         if (other == trigger_Chase)
         {
+            ChasingMusicControl(true);
             circusFlash.isFlashOn = false;
         }
 
@@ -77,6 +114,8 @@ public class ClownColliderTrigger : MonoBehaviour
         // 실패하면 재시작
         if(other.gameObject == clownWorm.deadTrigger || other == fallTrigger)
         {
+            is_falling = false;
+            wind_sound.Stop();
             clownWorm.deadTrigger.SetActive(false);
             fallTrigger.enabled = false;
             StartCoroutine(DieCoroutine());
@@ -104,11 +143,26 @@ public class ClownColliderTrigger : MonoBehaviour
         // 추격 시작 트리거에서 나가면 광대 추격 종료
         if (other == trigger_Chase)
         {
+            ChasingMusicControl(false);
             clown_Chase.isChasing = false;
         }
         if (other == trigger_SafeZone)
         {
             clown_Chase.isSafe = false;
+        }
+    }
+
+    // 광대 추격 음악 재생
+    void ChasingMusicControl(bool turnOnOff)
+    {
+        if (turnOnOff != pre_is_chasing_music_on)
+        {
+            pre_is_chasing_music_on = turnOnOff;
+            if (audio_coroutine != null)
+            {
+                StopCoroutine(audio_coroutine);
+            }
+            audio_coroutine = StartCoroutine(AudioOnOffScript.VolumeCoroutine(chasing_music, turnOnOff, 1f, 0.7f));
         }
     }
 

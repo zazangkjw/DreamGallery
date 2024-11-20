@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
     // 카메라 한계
     [SerializeField]
     private float cameraRotationLimit;
-    private float currentCameraRotationX = 0;
+    public float currentCameraRotationX = 0;
 
     // 필요한 컴포넌트
     public Camera theCamera;
