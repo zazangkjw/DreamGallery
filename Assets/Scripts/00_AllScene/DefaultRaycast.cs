@@ -265,43 +265,43 @@ public class DefaultRaycast : MonoBehaviour
             }
 
             // 숫자키로 퀵슬롯 바꾸기
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (Input.GetKeyDown(KeyCode.Alpha1) && quickSlots.Count >= 1)
             {
                 Slot.currentIndex = 1;
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            else if (Input.GetKeyDown(KeyCode.Alpha2) && quickSlots.Count >= 2)
             {
                 Slot.currentIndex = 2;
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            else if (Input.GetKeyDown(KeyCode.Alpha3) && quickSlots.Count >= 3)
             {
                 Slot.currentIndex = 3;
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha4))
+            else if (Input.GetKeyDown(KeyCode.Alpha4) && quickSlots.Count >= 4)
             {
                 Slot.currentIndex = 4;
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha5))
+            else if (Input.GetKeyDown(KeyCode.Alpha5) && quickSlots.Count >= 5)
             {
                 Slot.currentIndex = 5;
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha6))
+            else if (Input.GetKeyDown(KeyCode.Alpha6) && quickSlots.Count >= 6)
             {
                 Slot.currentIndex = 6;
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha7))
+            else if (Input.GetKeyDown(KeyCode.Alpha7) && quickSlots.Count >= 7)
             {
                 Slot.currentIndex = 7;
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha8))
+            else if (Input.GetKeyDown(KeyCode.Alpha8) && quickSlots.Count >= 8)
             {
                 Slot.currentIndex = 8;
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha9))
+            else if (Input.GetKeyDown(KeyCode.Alpha9) && quickSlots.Count >= 9)
             {
                 Slot.currentIndex = 9;
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha0))
+            else if (Input.GetKeyDown(KeyCode.Alpha0) && quickSlots.Count >= 10)
             {
                 Slot.currentIndex = 10;
             }

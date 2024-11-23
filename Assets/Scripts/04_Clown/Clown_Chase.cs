@@ -103,33 +103,32 @@ public class Clown_Chase : MonoBehaviour
             {
                 point = point_Rooftop.position;
             }
-
-            // 센터 위 아래 이동
-            rb.MovePosition(Vector3.Lerp(rb.position, new Vector3(rb.position.x, point.y, rb.position.z), chaseSpeedY));
-            /*if(point.y < rb.position.y)
-            {
-                rb.MovePosition(rb.position - (Vector3.up * chaseSpeedY));
-            }
-            else if(point.y > rb.position.y)
-            {
-                rb.MovePosition(rb.position + (Vector3.up * chaseSpeedY));
-            }*/
-
-            // 센터가 옥상 포인트보다 아래에 있어야만 미친 광대 활성화
-            if (rb.position.y < point_Rooftop.position.y - 1)
-            {
-                clownMesh.SetActive(true);
-                MoveClown();
-            }
-            else if(rb.position.y >= point_Rooftop.position.y - 1)
-            {
-                clownMesh.SetActive(false);
-            }
         }
         else // 추격 상태가 아닐 경우
         {
+            point = point_Rooftop.position;
+        }
+
+        // 센터 위 아래 이동
+        rb.MovePosition(Vector3.Lerp(rb.position, new Vector3(rb.position.x, point.y, rb.position.z), chaseSpeedY));
+        /*if(point.y < rb.position.y)
+        {
+            rb.MovePosition(rb.position - (Vector3.up * chaseSpeedY));
+        }
+        else if(point.y > rb.position.y)
+        {
+            rb.MovePosition(rb.position + (Vector3.up * chaseSpeedY));
+        }*/
+
+        // 센터가 옥상 포인트보다 아래에 있어야만 미친 광대 활성화
+        if (rb.position.y < point_Rooftop.position.y - 1)
+        {
+            clownMesh.SetActive(true);
+            MoveClown();
+        }
+        else if (rb.position.y >= point_Rooftop.position.y - 1)
+        {
             clownMesh.SetActive(false);
-            rb.position = point_Rooftop.position;
         }
     }
 

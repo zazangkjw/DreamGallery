@@ -86,14 +86,14 @@ public class ClownColliderTrigger : MonoBehaviour
         // 안전 구역 트리거
         if (other == trigger_SafeZone)
         {
-            ChasingMusicControl(false);
+            ChasingMusicControl(false, 0f);
             clown_Chase.isSafe = true;
         }
 
         // 추격 시작 트리거에 들어가면 플래시 OFF
         if (other == trigger_Chase)
         {
-            ChasingMusicControl(true);
+            ChasingMusicControl(true, 0.7f);
             circusFlash.isFlashOn = false;
         }
 
@@ -143,7 +143,7 @@ public class ClownColliderTrigger : MonoBehaviour
         // 추격 시작 트리거에서 나가면 광대 추격 종료
         if (other == trigger_Chase)
         {
-            ChasingMusicControl(false);
+            ChasingMusicControl(false, 0f);
             clown_Chase.isChasing = false;
         }
         if (other == trigger_SafeZone)
@@ -153,7 +153,7 @@ public class ClownColliderTrigger : MonoBehaviour
     }
 
     // 광대 추격 음악 재생
-    void ChasingMusicControl(bool turnOnOff)
+    void ChasingMusicControl(bool turnOnOff, float volume)
     {
         if (turnOnOff != pre_is_chasing_music_on)
         {
@@ -162,7 +162,7 @@ public class ClownColliderTrigger : MonoBehaviour
             {
                 StopCoroutine(audio_coroutine);
             }
-            audio_coroutine = StartCoroutine(AudioOnOffScript.VolumeCoroutine(chasing_music, turnOnOff, 1f, 0.7f));
+            audio_coroutine = StartCoroutine(AudioOnOffScript.VolumeCoroutine(chasing_music, turnOnOff, 1f, volume));
         }
     }
 

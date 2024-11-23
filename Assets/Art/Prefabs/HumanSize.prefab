@@ -1087,6 +1087,7 @@ MonoBehaviour:
   crouchCollider: {fileID: 939743644317174623}
   lookSensitivity: 15
   cameraRotationLimit: 90
+  currentCameraRotationX: 0
   theCamera: {fileID: 8808456680538861695}
   myRigid: {fileID: 939184853154282642}
 --- !u!4 &7723381267031593568 stripped
