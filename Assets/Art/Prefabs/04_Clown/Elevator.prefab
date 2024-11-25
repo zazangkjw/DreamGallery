@@ -677,6 +677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4085710459130003758}
   outline: {fileID: 4994289349647168082}
+  objects: []
 --- !u!114 &2132167589650777262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,6 +695,7 @@ MonoBehaviour:
   thisElevatorAnim: {fileID: 4085710459130003758}
   nextPoint: {fileID: 0}
   nextElevatorAnim: {fileID: 0}
+  next_elevator_ding: {fileID: 0}
 --- !u!1 &4148124227989343220 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7044846985596660156, guid: 9def1f657fb390241bd2868be671821f,

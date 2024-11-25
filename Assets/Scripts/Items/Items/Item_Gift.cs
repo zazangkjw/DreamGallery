@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item_Gift : Item
 {
-    
+    public AudioSource gift_sound;
 
     void Update()
     {

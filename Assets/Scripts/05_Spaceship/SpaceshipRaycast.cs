@@ -14,6 +14,8 @@ public class SpaceshipRaycast : DefaultRaycast
     public GameObject guard_check; // guard 체크용
     public DoorSensor doorSensor;
 
+    public AudioSource gift_sound;
+
     // 테스트용
     public GameObject star;
     public Target target;
@@ -238,7 +240,7 @@ public class SpaceshipRaycast : DefaultRaycast
             guard001_check.GetComponent<GetComponentScript>().animator.Play("TakeGift");
 
             // 선물 주기
-            Item gift = currentItem;
+            Item_Gift gift = (Item_Gift)currentItem;
             gift.tag = "Untagged";
             gift.enabled = false;
             gift.transform.SetParent(itemCategory.transform);
@@ -266,6 +268,7 @@ public class SpaceshipRaycast : DefaultRaycast
             gift.GetComponent<Rigidbody>().useGravity = true;
             gift.GetComponent<Rigidbody>().isKinematic = false;
             gift.GetComponent<Rigidbody>().AddForce(Vector3.up * 10f, ForceMode.VelocityChange);
+            gift.gift_sound.Play();
 
             yield return dialogDelay;
 

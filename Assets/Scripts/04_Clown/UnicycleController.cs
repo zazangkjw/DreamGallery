@@ -98,7 +98,7 @@ public class UnicycleController : MonoBehaviour
                 clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.Play("Return", 0, 1f - clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
                 clownRaycast.unicycleClown.GetComponent<GetComponentScript>().animator.Play("WheelTurnReverse", 1);
 
-                clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[16]["Content"], 5f); // "잘했어요!"
+                //clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[16]["Content"], 5f); // "잘했어요!"
 
                 // 컨트롤러 교체
                 playerController.enabled = true;
@@ -134,7 +134,8 @@ public class UnicycleController : MonoBehaviour
                     clownWormMesh.gameObject.SetActive(true);
                     clownWormCol.enabled = true;
                     clownRaycast.circusSong.pitch = -0.5f;
-                    clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[17]["Content"], 5f); // "당신 때문에 관객들이 실망했어요"
+                    //clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[17]["Content"], 5f); // "당신 때문에 관객들이 실망했어요"
+                    clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[30]["Content"], 5f); // "......"
                     clownWorm.navMeshAgent.stoppingDistance = 0f;
                     clownWorm.deadTrigger.SetActive(true);
                     ladder.SetActive(false);
@@ -153,11 +154,11 @@ public class UnicycleController : MonoBehaviour
 
                     if (clownRaycast.life == 2)
                     {
-                        clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[13]["Content"], 5f); // "이게 어려우세요?"
+                        //clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[13]["Content"], 5f); // "이게 어려우세요?"
                     }
                     else if (clownRaycast.life == 1)
                     {
-                        clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[14]["Content"], 5f); // "일부러 그러세요?"
+                        //clownRaycast.putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[14]["Content"], 5f); // "일부러 그러세요?"
                     }
                 }
             }

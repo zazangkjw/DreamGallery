@@ -19,6 +19,7 @@ public class Clown_Chase : MonoBehaviour
 
     [SerializeField]
     GameObject clownMesh;
+    public GameObject sound_and_collider;
 
     [SerializeField]
     Rigidbody clownRoot;
@@ -124,11 +125,13 @@ public class Clown_Chase : MonoBehaviour
         if (rb.position.y < point_Rooftop.position.y - 1)
         {
             clownMesh.SetActive(true);
-            MoveClown();
+            sound_and_collider.SetActive(true);
+            MoveClown(); 
         }
         else if (rb.position.y >= point_Rooftop.position.y - 1)
         {
             clownMesh.SetActive(false);
+            sound_and_collider.SetActive(false);
         }
     }
 

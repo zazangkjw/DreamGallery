@@ -35,15 +35,19 @@ public class LightOnOff : MonoBehaviour
         myLight.intensity = 0f;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "NPC")
         {
-            if (light_on_sound != null) { light_on_sound.Play(); }
-            if (coroutine != null) { StopCoroutine(coroutine); }
-            coroutine = LightOn();
-            StartCoroutine(coroutine);
-            if(myMesh != null) { myMesh.materials = emissionOnMats;  }
+            if (!flag_on)
+            {
+                if (light_on_sound != null) { light_on_sound.Play(); }
+                if (coroutine != null) { StopCoroutine(coroutine); }
+                coroutine = LightOn();
+                StartCoroutine(coroutine);
+                if (myMesh != null) { myMesh.materials = emissionOnMats; }
+                flag_on = true;
+            }
         }
     }
 
@@ -51,12 +55,15 @@ public class LightOnOff : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "NPC")
         {
-            if (light_off_sound != null) { light_off_sound.Play(); }
-            light_on_sound.Play();
-            if (coroutine != null) { StopCoroutine(coroutine); }
-            coroutine = LightOff();
-            StartCoroutine(coroutine);
-            if (myMesh != null) { myMesh.materials = emissionOffMats; }
+            if (flag_on)
+            {
+                if (light_off_sound != null) { light_off_sound.Play(); }
+                if (coroutine != null) { StopCoroutine(coroutine); }
+                coroutine = LightOff();
+                StartCoroutine(coroutine);
+                if (myMesh != null) { myMesh.materials = emissionOffMats; }
+                flag_on = false;
+            }
         }
     }
 

@@ -12,6 +12,7 @@ public class ClownColliderTrigger : MonoBehaviour
 
     [SerializeField]
     Clown_Chase clown_Chase;
+    public Collider clown_chase_col;
 
     [SerializeField]
     Collider[] triggers_CircusSuccess;
@@ -91,7 +92,7 @@ public class ClownColliderTrigger : MonoBehaviour
         }
 
         // 추격 시작 트리거에 들어가면 플래시 OFF
-        if (other == trigger_Chase)
+        if (other == trigger_Chase && clown_Chase.isSafe == false)
         {
             ChasingMusicControl(true, 0.7f);
             circusFlash.isFlashOn = false;
@@ -112,8 +113,13 @@ public class ClownColliderTrigger : MonoBehaviour
         }
 
         // 실패하면 재시작
-        if(other.gameObject == clownWorm.deadTrigger || other == fallTrigger)
+        if(other.gameObject == clownWorm.deadTrigger || other == fallTrigger || other == clown_chase_col)
         {
+            if(other == clown_chase_col)
+            {
+                clown_Chase.sound_and_collider.transform.parent.gameObject.SetActive(false);
+                neck_crack_sound.Play();
+            }
             is_falling = false;
             wind_sound.Stop();
             clownWorm.deadTrigger.SetActive(false);
@@ -148,7 +154,7 @@ public class ClownColliderTrigger : MonoBehaviour
         }
         if (other == trigger_SafeZone)
         {
-            clown_Chase.isSafe = false;
+            //clown_Chase.isSafe = false;
         }
     }
 
