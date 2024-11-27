@@ -26,3 +26,4 @@ VSYNC
 Skip [SPACEBAR]
 [E] Pick up
 [E] Give a gift
+[E]

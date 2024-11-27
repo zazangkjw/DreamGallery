@@ -159,8 +159,8 @@ public class ClownRaycast : DefaultRaycast
                     preObject = hitObject;
                     preObject.GetComponent<GetComponentScript>().outline.enabled = true; // 외곽선 켜기
 
-                    // mouseText.text = GameManager.instance.textFileManager.ui[24]; // "대화하기" 텍스트 나옴
-                    // mouseText.enabled = true;
+                    mouseText.text = GameManager.instance.textFileManager.ui[28]; // "[E]" 텍스트 나옴
+                    mouseText.enabled = true;
 
                     // E키 입력 시
                     if (Input.GetKeyDown(KeyCode.E))
@@ -298,24 +298,24 @@ public class ClownRaycast : DefaultRaycast
         // 대화
         if (life == life_max)
         {
-            /*putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[4]["Content"], // "첫 번째 도전입니다"
+            putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[4]["Content"], // "도전에 대해 설명드리겠습니다"
                                                                    (string)GameManager.instance.textFileManager.dialog[5]["Content"], // "이 외발자전거로 외줄을 건너서 반대편 타워까지 가세요"
                                                                    (string)GameManager.instance.textFileManager.dialog[6]["Content"], // "자전거는 자동으로 앞으로 갑니다. 그러니 좌우로 균형만 잘 잡아주세요"
-                                                                   (string)GameManager.instance.textFileManager.dialog[7]["Content"] }); // "만약 중간에 떨어진다면 다시 여기로 와 주세요"*/
+                                                                   (string)GameManager.instance.textFileManager.dialog[7]["Content"] }); // "만약 떨어진다면 다시 여기로 와 주세요"*/
         }
 
         if(life > 1)
         {
-            //putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[8]["Content"] + life + (string)GameManager.instance.textFileManager.dialog[9]["Content"] }); // "남은 도전 기회는 n번입니다"
-            putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[30]["Content"], "..." + life.ToString() + "..." }); // "......" "...n..."
+            putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[8]["Content"] + life + (string)GameManager.instance.textFileManager.dialog[9]["Content"] }); // "남은 도전 기회는 n번입니다"
+            //putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[30]["Content"], "..." + life.ToString() + "..." }); // "......" "...n..."
         }
         else if(life == 1)
         {
-            //putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[15]["Content"] }); // "마지막 기회입니다. 이번에도 실패하면 관객들이 분노할 거예요"
-            putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[30]["Content"], "...1..."}); // "......" "...1..."
+            putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[15]["Content"] }); // "마지막 기회입니다"
+            //putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[30]["Content"], "...1..."}); // "......" "...1..."
         }
 
-        //putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[10]["Content"] }); // "제 뒤를 잘 따라오세요"
+        //putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[10]["Content"] }); // "저를 잘 따라오세요"
         
         yield return new WaitUntil(() => putDialogScript.isClickMode == false);
         player.GetComponent<PlayerController>().enabled = false;
@@ -351,9 +351,10 @@ public class ClownRaycast : DefaultRaycast
             //yield return new WaitForSeconds(6f);
             rope.SetActive(true);
             rope_fake.SetActive(false);
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1f);
             //putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[12]["Content"], 3f); // "너무 쉬울까봐 조금 수정했어요. 이제 출발합니다"
-            //yield return new WaitForSeconds(5f);
+            putDialogScript.putDialogPrint((string)GameManager.instance.textFileManager.dialog[10]["Content"], 3f); // "저를 잘 따라오세요"
+            yield return new WaitForSeconds(2f);
         }
 
         // 광대 출발

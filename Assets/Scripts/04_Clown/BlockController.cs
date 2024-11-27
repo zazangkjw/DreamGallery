@@ -12,7 +12,7 @@ public class BlockController : MonoBehaviour
         time -= Time.deltaTime;
         if (time <= 0)
         {
-            time = Random.Range(1, 3);
+            time = Random.Range(0.5f, 1.5f);
             for (int i = 0; i < 50; i++)
             {
                 int n = Random.Range(0, anims.Length);

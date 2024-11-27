@@ -65,7 +65,7 @@ public class SpaceshipRaycast : DefaultRaycast
                 preObject = hitObject;
                 preObject.GetComponent<GetComponentScript>().outline.enabled = true; // 외곽선 켜기
 
-                mouseText.text = GameManager.instance.textFileManager.ui[26]; // "줍기" 텍스트 나옴
+                mouseText.text = GameManager.instance.textFileManager.ui[28]; // "[E]" 텍스트 나옴
                 mouseText.enabled = true;
 
                 // E키 입력 시
