@@ -26,3 +26,12 @@ VSYNC
 Skip [SPACEBAR]
 [E] Pick up
 [E] Give a gift
+[E]
+WELCOME
+Welcome to the Dream Gallery where you can experience other people's dreams.<br>There are many things related to dreams on display here.<br>These dreams have independent stories, so various experiences are possible.
+How to experience a dream
+VR devices are placed in front of each exhibits.<br>You can interact with VR devices to experience dreams related to the exhibits.
+CONTROLS
+Move
+Sprint & Crouch
+Interaction

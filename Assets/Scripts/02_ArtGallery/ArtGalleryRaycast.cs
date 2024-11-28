@@ -20,6 +20,10 @@ public class ArtGalleryRaycast : MonoBehaviour
     public GameObject[] dreamObjects; // 꿈 속으로 들어가는 물건들
 
     public GameObject deskMan_check; // 안내데스크 npc 체크용
+    public GameObject informationUI;
+    public static bool is_pop_up;
+
+    public PlayerController playerController;
 
     void Start()
     {
@@ -159,10 +163,26 @@ public class ArtGalleryRaycast : MonoBehaviour
         preObject.GetComponent<GetComponentScript>().outline.enabled = false; // 외곽선 끄기
 
         // 대화
-        putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[27]["Content"], // "'꿈 전시관'에 오신 것을 환영합니다"
+        /*putDialogScript.putDialogPrintWithClick(new string[] { (string)GameManager.instance.textFileManager.dialog[27]["Content"], // "'꿈 전시관'에 오신 것을 환영합니다"
                                                                (string)GameManager.instance.textFileManager.dialog[28]["Content"], // "이곳에는 꿈과 관련된 다양한 물건들이 전시되어 있으며, 각 전시물 앞에는 VR 기기가 배치되어 있습니다"
-                                                               (string)GameManager.instance.textFileManager.dialog[29]["Content"]}); // "VR 기기를 바라보고 '상호작용' 키(E)를 눌러 꿈을 체험하실 수 있습니다"
+                                                               (string)GameManager.instance.textFileManager.dialog[29]["Content"]}); // "VR 기기를 바라보고 '상호작용' 키(E)를 눌러 꿈을 체험하실 수 있습니다"*/
+
+        informationUI.SetActive(true);
+        playerController.enabled = false;
+        playerController.myRigid.isKinematic = true;
+        is_pop_up = true;
+        Cursor.visible = true; // 마우스 커서 켜기
 
         yield return null;
+    }
+
+    public void PopUpControl(bool b)
+    {
+        is_pop_up = b;
+    }
+
+    public void CursorVisible(bool b)
+    {
+        Cursor.visible = b;
     }
 }

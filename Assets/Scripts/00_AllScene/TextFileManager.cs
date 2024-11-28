@@ -31,6 +31,21 @@ public class TextFileManager : MonoBehaviour
                 UIFileName = "/UI_Text_US.txt";
                 break;
 
+            case 2:
+                DialogFileName = "/Dialog_Text_VN.csv";
+                UIFileName = "/UI_Text_VN.txt";
+                break;
+
+            case 3:
+                DialogFileName = "/Dialog_Text_CN1.csv";
+                UIFileName = "/UI_Text_CN1.txt";
+                break;
+
+            case 4:
+                DialogFileName = "/Dialog_Text_CN2.csv";
+                UIFileName = "/UI_Text_CN2.txt";
+                break;
+
             default:
                 break;
         }

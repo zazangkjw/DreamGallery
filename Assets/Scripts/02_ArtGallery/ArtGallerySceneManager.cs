@@ -20,7 +20,48 @@ public class ArtGallerySceneManager : DefaultSceneManager
     }
 
 
-    
+    // ESC 누르면 일시정지 및 창 꺼짐
+    public override void PressESC()
+    {
+        if (!isPausing && Input.GetKeyDown(KeyCode.Escape) && !ArtGalleryRaycast.is_pop_up) // 일시정지
+        {
+            // 인벤토리가 열려있으면 닫기
+            if (inventory != null && inventory.activeSelf)
+            {
+                Cursor.visible = false;
+                DefaultRaycast.inventoryOnOff = false;
+                inventory.SetActive(false);
+                playerController.isMouseLocked = false;
+
+                Slot.selectedSlot = null;
+                Slot.cursorImage.texture = null;
+                Slot.cursorImage.gameObject.SetActive(false);
+            }
+            else
+            {
+                Cursor.visible = true;
+                isPausing = true;
+                audioMixer.SetFloat("Pitch", 0f);
+                Time.timeScale = 0f;
+                playerController.enabled = false;
+                putDialogScript.enabled = false;
+                pauseUI.SetActive(true);
+            }
+        }
+        else if (isPausing && Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (settingUI.activeInHierarchy) // 설정창 열려있으면 닫기
+            {
+                PressCancelButon();
+            }
+            else // 일시정지 풀림
+            {
+                PressReturnButton();
+            }
+        }
+    }
+
+
 
     // 나가기 버튼
     public override void PressExitButton()
@@ -52,5 +93,13 @@ public class ArtGallerySceneManager : DefaultSceneManager
         uiTexts[12].text = GameManager.instance.textFileManager.ui[20];
         uiTexts[13].text = GameManager.instance.textFileManager.ui[23];
         uiTexts[14].text = GameManager.instance.textFileManager.ui[25];
+        uiTexts[15].text = GameManager.instance.textFileManager.ui[29];
+        uiTexts[16].text = GameManager.instance.textFileManager.ui[30];
+        uiTexts[17].text = GameManager.instance.textFileManager.ui[31];
+        uiTexts[18].text = GameManager.instance.textFileManager.ui[32];
+        uiTexts[19].text = GameManager.instance.textFileManager.ui[33];
+        uiTexts[20].text = GameManager.instance.textFileManager.ui[34];
+        uiTexts[21].text = GameManager.instance.textFileManager.ui[35];
+        uiTexts[22].text = GameManager.instance.textFileManager.ui[36];
     }
 }
