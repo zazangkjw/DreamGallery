@@ -145,7 +145,7 @@ public class Clown_Chase : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.forward, out hitInfoCenter, 20f, layerMask_Wall))
         {
             clownRoot.MovePosition(hitInfoCenter.point + (-hitInfoCenter.normal * 0.85f) + (Vector3.down * 0.95f));
-            clownRoot.rotation = Quaternion.LookRotation(hitInfoCenter.normal) * Quaternion.Euler(new Vector3(0f, 90f, 90f));
+            clownRoot.rotation = Quaternion.LookRotation(hitInfoCenter.normal) * Quaternion.Euler(new Vector3(0f, 180f, 0f));
             //clownRootForUnity.transform.rotation = Quaternion.LookRotation(playerCam.transform.position - clownRootForUnity.transform.position);// 몸이 플레이어 방향으로 회전
             //clownRootForUnity.transform.localEulerAngles = new Vector3(0, clownRootForUnity.transform.localEulerAngles.y, 0); // 몸이 플레이어 방향으로 회전
             clownHead.transform.rotation = Quaternion.LookRotation(playerCam.transform.position - clownHead.transform.position) * Quaternion.Euler(new Vector3(0f, 90f, 0f));

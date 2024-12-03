@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 
 public class ClownColliderTrigger : MonoBehaviour
@@ -38,6 +39,7 @@ public class ClownColliderTrigger : MonoBehaviour
     bool pre_is_chasing_music_on;
     public AudioSource chasing_music;
     Coroutine audio_coroutine;
+    public PlayableDirector dead_director;
 
     public bool[] isSuccess = new bool[1];
 
@@ -113,13 +115,16 @@ public class ClownColliderTrigger : MonoBehaviour
         }
 
         // 실패하면 재시작
-        if(other.gameObject == clownWorm.deadTrigger || other == fallTrigger || other == clown_chase_col)
+        if (other == clown_chase_col)
         {
-            if(other == clown_chase_col)
-            {
-                clown_Chase.sound_and_collider.transform.parent.gameObject.SetActive(false);
-                neck_crack_sound.Play();
-            }
+            dead_director.Play();
+            /*clown_Chase.sound_and_collider.transform.parent.gameObject.SetActive(false);
+            neck_crack_sound.Play();*/
+            StartCoroutine(DieCoroutine2());
+        }
+
+        if (other.gameObject == clownWorm.deadTrigger || other == fallTrigger)
+        {
             is_falling = false;
             wind_sound.Stop();
             clownWorm.deadTrigger.SetActive(false);
@@ -196,6 +201,12 @@ public class ClownColliderTrigger : MonoBehaviour
         fadeInOutImage.color = Color.black;
         scream.Play();
         yield return new WaitForSeconds(2f);
+        LoadSceneScript.FailLoadScene("04_Clown");
+    }
+
+    IEnumerator DieCoroutine2()
+    {
+        yield return new WaitForSeconds(1.5f);
         LoadSceneScript.FailLoadScene("04_Clown");
     }
 }
